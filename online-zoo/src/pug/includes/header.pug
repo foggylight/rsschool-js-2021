@@ -1,15 +1,18 @@
+- var page = 'main';
+
 header
-  nav
+  h1.visually-hidden Online zoo
+  nav.header-nav
     ul
-      li
-        a(href="../main/index.html") About
-      li
-        a(href="../map/index.html") Map
-      li
-        a(href="../translation/index.html") Zoos
-      li
-        a(href="../404/index.html") Contact us
-      li
-        a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo") Design
+      li.header-nav__item
+        a(href="../main/index.html").header-nav__item-link About
+      li.header-nav__item
+        a(href="../map/index.html").header-nav__item-link Map
+      li.header-nav__item
+        a(href="../translation/index.html").header-nav__item-link Zoos
+      li.header-nav__item
+        a(href="../404/index.html").header-nav__item-link Contact us
+      li.header-nav__item
+        a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo").header-nav__item-link Design
   .profile-enter
     a(href="#").avatar
