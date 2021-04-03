@@ -1,3 +1,5 @@
+- let currentPage = 'map';
+
 doctype html
 html(lang="en")
   head
@@ -9,5 +11,21 @@ html(lang="en")
     link(rel="stylesheet", href="styles.css")
     title Online zoo. Zoos map
   body
+    .body__wrapper
 
-    include ../includes/header.pug
+      include ../includes/header.pug
+
+      main.content
+
+        include ../includes/sidebar.pug
+
+        .map
+          .animal-card
+              img(src="../../assets/images/map-eagle.jpg", alt="Eagle").animal-card__image
+              .text-block
+                h3.text-block__subtitle Eagle
+                p.text-block__text The broadcast is from an island near Los Angeles. Watch their real life.
+                a(href="#").animal-card__link Watch now
+          a(href="").map__link_active
+          a(href="").map__link
+          a(href="").map__link

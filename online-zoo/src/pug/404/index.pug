@@ -1,3 +1,5 @@
+- let currentPage = '404';
+
 doctype html
 html(lang="en")
   head
@@ -9,5 +11,16 @@ html(lang="en")
     link(rel="stylesheet", href="styles.css")
     title Online zoo. Page not found
   body
+    .body__wrapper
 
-    include ../includes/header.pug
+      include ../includes/header.pug
+
+      main.content
+        .content__wrapper
+          .text-block
+              p.text-block__subtitle Oops... you seem to be lost
+              p.text-404 Just don't be discouraged, but there is no such page :( We can offer you to watch a video with cute pandas or return to the main page
+              a(href="../main/index.html").btn_dark Back to main page
+          p You can write to support and we will try to solve your problem, click here to go to support.
+
+      include ../includes/footer.pug
