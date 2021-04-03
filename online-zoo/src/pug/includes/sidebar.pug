@@ -1,13 +1,29 @@
 aside.sidebar
   .sidebar__item
     a(href="#").logo-link
-  .sidebar__item
-    ul.social-icons
-      li.social-icons__item
-        a(href="#").social-icons__item-link
-      li.social-icons__item
-        a(href="#").social-icons__item-link
-      li.social-icons__item
-        a(href="#").social-icons__item-link
-  .sidebar__item
-    a(href="#").go-up-link
+  if currentPage !== 'main'
+    .sidebar__item
+        a(href="").sidebar__nav-up
+    .sidebar__item
+      ul.animals
+        li.animals__item
+          a(href="#").animals__animal-icon
+        li.animals__animal-icon
+          a(href="#").animals__animal-icon
+        li.animals__animal-icon
+          a(href="#").animals__animal-icon
+        li.animals__animal-icon
+          a(href="#").animals__animal-icon
+    .sidebar__item
+      a(href="").sidebar__nav-down  
+  else
+    .sidebar__item
+      ul.social-icons
+        li.social-icons__item
+          a(href="#").social-icons__item-link
+        li.social-icons__item
+          a(href="#").social-icons__item-link
+        li.social-icons__item
+          a(href="#").social-icons__item-link
+    .sidebar__item
+      a(href="#").sidebar__go-up-link
