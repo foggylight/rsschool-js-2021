@@ -1,18 +1,18 @@
-- var page = 'main';
+- const pages = ['main', 'map', 'translation', '404'];
+- const texts = ['About', 'Map', 'Zoos', 'Contact us'];
+
+mixin nav(page)
+  nav.header-nav
+    ul
+      each val, i in pages
+        li.header-nav__item
+          a(href=`../${val}/index.html`, class=`header-nav__item-link${page === val ? '_active' : ''}`) #{texts[i]}
+      li.header-nav__item
+        a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo").header-nav__item-link Design
+
 
 header
   h1.visually-hidden Online zoo
-  nav.header-nav
-    ul
-      li.header-nav__item
-        a(href="../main/index.html").header-nav__item-link About
-      li.header-nav__item
-        a(href="../map/index.html").header-nav__item-link Map
-      li.header-nav__item
-        a(href="../translation/index.html").header-nav__item-link Zoos
-      li.header-nav__item
-        a(href="../404/index.html").header-nav__item-link Contact us
-      li.header-nav__item
-        a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo").header-nav__item-link Design
+  +nav(currentPage)
   .profile-enter
     a(href="#").avatar
