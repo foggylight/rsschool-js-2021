@@ -54,6 +54,11 @@ body {
 .content {
   grid-column: 2 / 11;
   margin: 90px 0 0;
+
+  p a {
+    text-decoration: underline;
+    color: $hardBlue;
+  }
 }
 
 .content__item {

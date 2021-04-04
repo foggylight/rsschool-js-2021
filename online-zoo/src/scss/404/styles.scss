@@ -1,5 +1,73 @@
 @import '../variables';
-@import 'mixins';
+@import '../mixins';
 @import '../general';
 @import '../header';
 @import '../footer';
+
+.header-block {
+  display: flex;
+  align-items: center;
+
+  border: none;
+
+  &::before {
+    display: block;
+    height: 40px;
+    width: 53px;
+    margin: 0 0 0 16px;
+
+    background-image: url(../../assets/icons/logo.svg);
+
+    transition: 0.3s;
+
+    content: "";
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.header-block__wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav__list {
+  margin: 0 0 0 120px;
+}
+
+.content {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  .text-block {
+    max-width: 873px;
+
+    background-image: url(../../assets/images/404-bg.svg);
+    background-position: center 20%;
+    background-repeat: no-repeat;
+
+    font-size: 24px;
+    line-height: 154%;
+  }
+
+  .text-block__subtitle {
+    margin: 136px 0 35px;
+  }
+
+  .btn_dark {
+    margin: 48px auto 80px;
+
+    font-size: 18px;
+  }
+}
+
+.text-404 {
+  margin: 60px 0 80px;
+}
