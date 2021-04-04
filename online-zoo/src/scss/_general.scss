@@ -2,7 +2,6 @@
 @import 'mixins';
 
 a {
-  background-color: transparent;
   text-decoration: none;
   color: inherit;
 }
@@ -115,24 +114,25 @@ body {
 }
 
 .animal-card {
+  display: flex;
+  flex-direction: column;
   height: 512px;
   width: 344px;
   border-radius: 15px;
   overflow: hidden;
 
+  background-color: $white;
   box-shadow: 4px 12px 22px rgba(0, 0, 0, 0.06);
 
   text-align: center;
 
   .text-block {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    margin: 20px 40px 0;
-  }
-
-  .text-block__text {
-    margin: 20px 0 50px;
+    margin: 20px 40px 40px;
   }
 }
 

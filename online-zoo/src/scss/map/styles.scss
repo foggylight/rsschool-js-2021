@@ -1,5 +1,76 @@
 @import '../variables';
-@import 'mixins';
+@import '../mixins';
 @import '../general';
 @import '../header';
 @import '../sidebar';
+
+.content-wrapper {
+  margin: 0;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header-block {
+  margin: 25px 60px 0;
+}
+
+.sidebar {
+  position: fixed;
+
+  margin: 0 60px 75px;
+}
+
+.map {
+  position: relative;
+  z-index: 1;
+
+  height: 100%;
+  width: 100%;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    z-index: -10;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url(../../assets/images/map.jpg);
+    background-position: 60% 60%;
+    background-size: contain;
+
+    content: "";
+  }
+
+  .map__link {
+    &.alligator {
+      left: 251px;
+      top: 205px;
+    }
+
+    &.gorilla {
+      left: 952px;
+      top: 444px;
+    }
+
+    &.panda {
+      left: 1628px;
+      top: 247px;
+    }
+
+    &.active{
+      transform: scale(1.2);
+    }
+  }
+}
+
+.animal-card {
+  position: absolute;
+  left: 583px;
+  top: 240px;
+}
+
+.animal-card.hidden {
+  display: none;
+}
