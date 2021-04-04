@@ -25,12 +25,15 @@ ul {
 
 body {
   box-sizing: border-box;
+  overflow-x: hidden;
 
   font-family: $font-main;
   font-size: 18px;
   font-weight: 400;
   line-height: 154%;
   color: $gray;
+
+  background-color: $white;
 }
 
 * {
@@ -49,7 +52,13 @@ body {
 }
 
 .content {
+  grid-column: 2 / 11;
   margin: 90px 0 0;
+}
+
+.content__item {
+  @include grid(9, $gridGap);
+  align-items: center;
 }
 
 .heading {
@@ -66,6 +75,7 @@ body {
 
 .btn_dark {
   @extend %btn;
+  @extend %btn-text;
   background-color: $blue;
 
   color: $white;
@@ -81,6 +91,7 @@ body {
 
 .btn_light {
   @extend %btn;
+  @extend %btn-text;
   border: 2px solid $blue;
 
   color: $blue;
@@ -96,5 +107,82 @@ body {
 
 .text-block__btn-wrapper {
   display: flex;
-  justify-content: space-between;
+}
+
+.animal-card {
+  height: 512px;
+  width: 344px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 4px 12px 22px rgba(0, 0, 0, 0.06);
+
+  text-align: center;
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 40px 0;
+  }
+
+  .text-block__text {
+    margin: 20px 0 50px;
+  }
+}
+
+.animal-card__image {
+  width: 100%;
+}
+
+.animal-card__link {
+  display: inline-flex;
+
+  font-weight: 500;
+  line-height: normal;
+  color: $hardBlue;
+}
+
+.animal-card__link-arrow {
+  display: block;
+  margin: 5px 0 0 10px;
+}
+
+.map__link {
+  position: absolute;
+
+  display: block;
+  height: 106px;
+  width: 82px;
+  padding: 2px;
+
+  filter: drop-shadow(1px 12px 22px rgba(0, 0, 0, 0.09));
+  //box-shadow: 1px 12px 22px rgba(0, 0, 0, 0.09);
+  transition: 0.3s;
+
+  svg {
+    overflow: visible;
+  }
+
+  .bg {
+    transition: 0.3s;
+  }
+
+  &.active{
+    transform: scale(1.4);
+
+    .bg {
+      stroke: $lightBlue;
+      stroke-width: 2;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.4);
+  }
+
+  &:hover .bg {
+    stroke: $lightBlue;
+    stroke-width: 2;
+  }
 }

@@ -21,6 +21,8 @@ $gridColumnsCount: 10;
 $gridGap: 40px;
 $gridColumns: calc((100% - 9 * $gridGap) / $gridColumnsCount);
 
+$icons: "eagle", "alligator", "gorilla", "panda";
+
 %heading {
   font-weight: 400;
   font-size: 22px;
@@ -29,16 +31,17 @@ $gridColumns: calc((100% - 9 * $gridGap) / $gridColumnsCount);
   color: $black;
 }
 
+%btn-text {
+  font-weight: 500;
+  line-height: normal;
+}
+
 %btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 61px;
-  width: 250px;
+  padding: 20px 75px;
   border-radius: 5px;
-
-  font-weight: 500;
-  line-height: 21px;
 
   transition: 0.2s;
 }

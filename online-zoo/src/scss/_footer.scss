@@ -34,6 +34,7 @@
   padding: 50px 0 59px;
   border-top: 1px solid $gray;
 
+  font-size: 16px;
   line-height: normal;
 }
 
@@ -110,6 +111,9 @@
 
 .btn_footer {
   @extend %btn;
+  @extend %btn-text;
+  min-width: 339px;
+  padding: 20px 0;
   border: 2px solid $white;
 
   color: $white;
