@@ -1,0 +1,77 @@
+@import '../variables';
+
+.sidebar {
+  position: sticky;
+  top: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100vh - 85px);
+  width: 90px;
+  padding: 0 0 100px;
+  border: 1px solid $lightGray;
+}
+
+.sidebar__item.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+
+.logo__logo-link {
+  display: block;
+  height: 40px;
+  width: 53px;
+
+  background-image: url(../../assets/icons/logo.svg);
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 172px;
+}
+
+.social-icons__item-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  border: 2px solid transparent;
+  border-radius: 24px;
+
+  &:hover {
+    border-color: $wightBlue;
+  }
+}
+
+.social-icons__item-link:active svg.social-icons__svg {
+  fill: $active;
+}
+
+.sidebar__go-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  border: 2px solid $lightGray;
+  border-radius: 24px;
+
+  &:hover {
+    border-color: $lightBlue;
+  }
+}
+
+.sidebar__go-up-link {
+  display: block;
+  height: 19px;
+  width: 16px;
+
+  background-image: url(../../assets/icons/go-up-sidebar.svg);
+}

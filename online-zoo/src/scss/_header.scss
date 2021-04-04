@@ -1,1 +1,41 @@
+@import '../variables';
 
+.header-block {
+  position: absolute;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  margin: 25px 0 0;
+  padding: 0 94px 0 184px;
+  border: 1px solid $lightGray;
+}
+
+.header-nav__list {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.header-nav__item-link {
+  color: $dark-blue;
+
+  &:hover {
+    font-weight: 500;
+  }
+
+  &.active {
+    font-weight: 500;
+    cursor: default;
+  }
+}
+
+.profile-enter__avatar {
+  display: block;
+  height: 52px;
+  width: 52px;
+
+  background-image: url(../../assets/icons/profile.svg);
+}

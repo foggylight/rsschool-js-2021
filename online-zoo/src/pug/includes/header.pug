@@ -3,16 +3,16 @@
 
 mixin nav(page)
   nav.header-nav
-    ul
+    ul.header-nav__list
       each val, i in pages
         li.header-nav__item
-          a(href=`../${val}/index.html`, class=`header-nav__item-link${page === val ? '_active' : ''}`) #{texts[i]}
+          a(href=`../${val}/index.html`, class=`header-nav__item-link${page === val ? ' active' : ''}`) #{texts[i]}
       li.header-nav__item
         a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo").header-nav__item-link Design
 
 
-header
+header.header-block
   h1.visually-hidden Online zoo
   +nav(currentPage)
   .profile-enter
-    a(href="#").avatar
+    a(href="#").profile-enter__avatar
