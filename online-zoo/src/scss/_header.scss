@@ -5,8 +5,11 @@
   z-index: 2;
 
   height: 90px;
-  width: 100%;
+  width: calc(100% - 120px);
+  margin: 0 60px 0;
   border: 2px solid $lightGray;
+
+  background: rgba(252, 252, 252, 1);
 }
 
 .header-block__wrapper {
@@ -28,7 +31,7 @@
 }
 
 .header-nav__item-link {
-  color: $dark-blue;
+  color: $darkBlue;
 
   &:hover {
     font-weight: 500;
