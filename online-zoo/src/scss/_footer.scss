@@ -1,2 +1,145 @@
 @import 'variables';
 @import 'mixins';
+
+.footer {
+  @include grid($gridColumnsCount, $gridGap);
+  height: 766px;
+  padding: 100px 60px 0;
+
+  background-color: $black;
+
+  color: $fontColorFooter;
+}
+
+.footer__col-1 {
+  grid-column: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer__col-2 {
+  grid-column: 5 / 7;
+}
+
+.footer__col-3 {
+  grid-column: 8 / 10;
+}
+
+.footer__copyright {
+  grid-column: 2 / 10;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 150px;
+  padding: 50px 0 59px;
+  border-top: 1px solid $gray;
+
+  line-height: normal;
+}
+
+.logo__logo-link_big {
+  display: block;
+  height: 117px;
+  width: 153px;
+
+  background-image: url(../../assets/icons/logo-big.svg);
+
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  margin: 0 0 13px;
+}
+
+.logo__divider {
+  margin: 0 24px;
+
+  color: $white;
+}
+
+.logo__yem-logo-link {
+  display: block;
+  height: 62px;
+  width: 118px;
+
+  background-image: url(../../assets/icons/logo-yem.svg);
+}
+
+.logo__rs-logo-link {
+  display: block;
+  height: 47px;
+  width: 128px;
+
+  background-image: url(../../assets/icons/logo-rs.svg);
+}
+
+.footer__heading {
+  @extend %heading;
+  color: $white;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 318px;
+  margin: 40px 0 0;
+}
+
+.footer-nav__item-link {
+  transition: 0.2s;
+
+  &:hover {
+    color: $wightBlue;
+  }
+
+  &:active {
+    color: $hardBlue;
+  }
+}
+
+.footer__text {
+  margin: 46px 0 40px;
+}
+
+.btn_footer {
+  @extend %btn;
+  border: 2px solid $white;
+
+  color: $white;
+
+  &:hover {
+    border-color: $gray;
+  }
+
+  &:active {
+    border-color: $hardBlue;
+  }
+}
+
+.social-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social {
+  margin: 85px 0 0;
+  font-weight: 500;
+  font-size: 20px;
+
+  transition: 0.2s;
+
+  &:hover {
+    color: $wightBlue;
+  }
+
+  &:active {
+    color: $hardBlue;
+  }
+}

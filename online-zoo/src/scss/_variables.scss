@@ -1,11 +1,12 @@
 $font-main: 'Rubik', sans-serif;
 $font-heading: 'Merriweather', serif;
 
-$font-color-body: #747474;
 //$border-color-header: #F0F0F0;
+$gray: #747474;
+$fontColorFooter: #BCBCBC;
 $white: #FCFCFC;
 $black: #0B0B0B;
-$dark-blue: #080029;
+$darkBlue: #080029;
 $blue: #0F0049;
 $lightGray: #F0F0F0; //#D3D3D3;
 $dark: #181818;
@@ -19,3 +20,25 @@ $active: #150068;
 $gridColumnsCount: 10;
 $gridGap: 40px;
 $gridColumns: calc((100% - 9 * $gridGap) / $gridColumnsCount);
+
+%heading {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.115em;
+  color: $black;
+}
+
+%btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 61px;
+  width: 250px;
+  border-radius: 5px;
+
+  font-weight: 500;
+  line-height: 21px;
+
+  transition: 0.2s;
+}
