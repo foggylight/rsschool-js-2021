@@ -1,4 +1,4 @@
-@import '../variables';
+@import 'variables';
 
 .sidebar {
   position: sticky;
@@ -11,7 +11,9 @@
   height: calc(100vh - 85px);
   width: 90px;
   padding: 0 0 100px;
-  border: 1px solid $lightGray;
+  border: 2px solid $lightGray;
+
+  backdrop-filter: blur(5px);
 }
 
 .sidebar__item.logo {
@@ -34,6 +36,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 172px;
+  margin-top: 90px;
 }
 
 .social-icons__item-link {

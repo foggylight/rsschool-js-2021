@@ -11,18 +11,18 @@ html(lang="en")
     link(rel="stylesheet", href="styles.css")
     title Online zoo
   body
-    .body__wrapper
+    .wrapper
 
       include ../includes/header.pug
 
-      main.content
+      main.content-wrapper
 
         include ../includes/sidebar.pug
 
-        .content__wrapper
+        .content
           section#watch-online
             .text-block
-              h2.heading Wild park
+              h2.heading.watch-online-heading Wild park
               p.text-block__subtitle.watch-online-subtitle Watch your favorite animal online
               .text-block__btn-wrapper
                 a(href="../map/index.html").btn_dark Choose zoo

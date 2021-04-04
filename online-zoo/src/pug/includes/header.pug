@@ -13,6 +13,7 @@ mixin nav(page)
 
 header.header-block
   h1.visually-hidden Online zoo
-  +nav(currentPage)
-  .profile-enter
-    a(href="#").profile-enter__avatar
+  .header-block__wrapper
+    +nav(currentPage)
+    .profile-enter
+      a(href="#").profile-enter__avatar

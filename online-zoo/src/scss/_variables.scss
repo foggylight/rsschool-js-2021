@@ -2,3 +2,20 @@ $font-main: 'Rubik', sans-serif;
 $font-heading: 'Merriweather', serif;
 
 $font-color-body: #747474;
+//$border-color-header: #F0F0F0;
+$white: #FCFCFC;
+$black: #0B0B0B;
+$dark-blue: #080029;
+$blue: #0F0049;
+$lightGray: #F0F0F0; //#D3D3D3;
+$dark: #181818;
+$lightBlue: #609FFF;
+$wightBlue: #D9E8FF;
+$hardBlue: #3888FF;
+$active: #150068;
+
+// 1920px
+
+$gridColumnsCount: 10;
+$gridGap: 40px;
+$gridColumns: calc((100% - 9 * $gridGap) / $gridColumnsCount);
