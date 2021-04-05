@@ -7,24 +7,26 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="../../assets/css/normalize.css")
-    link(rel="stylesheet", href="../../assets/css/fonts.css")
-    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="../../../assets/css/normalize.css")
+    link(rel="stylesheet", href="../../../assets/css/fonts.css")
+    link(rel="stylesheet", href="../styles.css")
     title Online zoo. Zoos translations
   body
     .wrapper
 
-      include ../includes/header.pug
+      include ../../includes/header.pug
 
       main.content-wrapper
 
-        include ../includes/sidebar.pug
+        include ../../includes/sidebar.pug
 
         .content
           section#main-cam
             .video-block
               <iframe class="video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/65JHo3Cy2tY" frameborder="0"></iframe>
             .sub-block
+              .sub-block__avatar
+                img(src="../../../assets/images/translation-panda-sub.png", alt="Shenshuping Panda Center")
               .sub-block__info
                 p.sub-block__name Shenshuping Panda Center
                 p.sub-block__watching 506 watching now
@@ -86,6 +88,6 @@ html(lang="en")
                 p.accordion__text The giant panda is a unique predator. Her digestion was originally focused on animal feed. But - millions of years have passed in the process of evolution, digestion has adapted to the digestion of bamboo. The exact reason is unknown. Most likely - there were few animals around that could be caught. And the plant won't run away. Despite the 99% bamboo diet, pandas extract only 17% of the nutrients from it. This is too little. Therefore, these bears must constantly eat. The rest of the time is sleep and rest to save energy.
                 p.accordion__text The food process is perfected by pandas. Optimal seated position, freeing the front legs - to take more bamboo. On the paws there are special skin pads and a false thumb - to hold food more tightly. Strong jaws and complex intestinal microflora - to better digest bamboo. He has no chance. In fairness - giant pandas, on occasion, can eat fish, honey, eggs, leaves, fruits, roots and even small animals. But bamboo is somehow easier. More familiar.
 
-          include ../includes/pay-and-feed.pug
+          include ../../includes/pay-and-feed.pug
 
-      include ../includes/footer.pug
+      include ../../includes/footer.pug

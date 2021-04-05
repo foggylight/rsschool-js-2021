@@ -1,4 +1,4 @@
-- const pages = ['main', 'map', 'translation', '404'];
+- const pages = ['main', 'map', 'translation/panda', '404'];
 - const texts = ['About', 'Map', 'Zoos', 'Contact us'];
 
 mixin nav(page)
@@ -6,7 +6,7 @@ mixin nav(page)
     ul.header-nav__list
       each val, i in pages
         li.header-nav__item
-          a(href=`../${val}/index.html`, class=`header-nav__item-link${page === val ? ' active' : ''}`) #{texts[i]}
+          a(href=`${page === 'translation' ? `../../${val}/index.html` : `../${val}/index.html`}`, class=`header-nav__item-link${page === val || page + '/panda' === val ? ' active' : ''}`) #{texts[i]}
       li.header-nav__item
         a(href="https://www.figma.com/file/74wXlorl9mZQP0uhqDg83j/Online-Zoo" target="_blank").header-nav__item-link Design
 

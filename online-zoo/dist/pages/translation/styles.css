@@ -942,15 +942,12 @@ body {
   border-bottom: 1px solid #E3E3E3;
 }
 
-#main-cam .sub-block::before {
-  display: block;
+#main-cam .sub-block .sub-block__avatar {
   height: 70px;
   width: 70px;
   margin: 0 20px 0 0;
   border-radius: 35px;
-  background-image: url(../../assets/images/translation-panda-sub.png);
-  background-position: center;
-  content: "";
+  overflow: hidden;
 }
 
 #main-cam .sub-block .sub-block__name {

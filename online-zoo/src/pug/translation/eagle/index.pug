@@ -1,0 +1,95 @@
+- let currentPage = 'translation';
+- let activeAnimal = 'eagle';
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="../../../assets/css/normalize.css")
+    link(rel="stylesheet", href="../../../assets/css/fonts.css")
+    link(rel="stylesheet", href="../styles.css")
+    title Online zoo. Zoos translations
+  body
+    .wrapper
+
+      include ../../includes/header.pug
+
+      main.content-wrapper
+
+        include ../../includes/sidebar.pug
+
+        .content
+          section#main-cam
+            .video-block
+              <iframe class="video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/eTAsANPVqB8" frameborder="0"></iframe>
+            .sub-block
+              .sub-block__avatar
+                img(src="../../../assets/images/translation-eagle-sub.png", alt="Shenshuping Panda Center")
+              .sub-block__info
+                p.sub-block__name Raptor resourse project
+                p.sub-block__watching 235 watching now
+            .text-block
+              h3.text-block__subtitle.small You can donate to this animals for a wonderful lunch.
+              p.text-block__text Eagles will receive a mixture of bamboo shoots, carrots and apples. Animals will receive your gift in about 5-15 minutes
+              .text-block__btn-wrapper
+                a(href="#").btn_dark Feed the eagle
+          section#other-cams
+            h2.text-block__subtitle.block-heading Other cams
+            .video-slider
+              .video-slider__video-item
+                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/UmclL6funN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.small 27 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+              .video-slider__video-item.active
+                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/eTAsANPVqB8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.small 475 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+              .video-slider__video-item
+                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/DH0VmRsj05c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.small 16 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+              .video-slider__video-item
+                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/xYInTHcdkWc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.small 11 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+            .text-block__btn-wrapper.slider-nav
+                a(href="#").slider-nav__arrow_prev
+                a(href="#").slider-nav__arrow_next
+          section#facts
+            .text-block
+              h2.text-block__subtitle Interesting facts
+              p.text-block__text Welcome to Decorah, Iowa! This live cam overlooks a bald eagle nest high in a white oak tree in a secluded valley north of Decorah. Watch live and learn more about the eagles.
+            .accordion
+              .accordion__item.active
+                .accordion__title-block
+                  h4.accordion__title Species population
+                  .btn-more
+                p.accordion__text The distribution area of ​​eagles is quite wide, and the habitat depends on the species of bird. Nevertheless, all representatives of the representatives prefer to settle away from civilization and humans, choosing mountainous or semi-open landscapes.
+                p.accordion__text For example, the golden eagle inhabiting the territory of Russia (in the north of the Caucasus and the south of Primorye) nests in a hard-to-reach forest zone, and its Australian relative, the wedge-tailed golden eagle, feels comfortable in the forests of New Guinea. Steppe eagles live in steppes and semi-desert zones, inhabiting them from Transbaikalia to the Black Sea coast. The burial eagle took a fancy to the forest-steppes of Ukraine, the Kazakh steppe regions, the forests of the Czech Republic, Spain and Romania. Eagles are found in Iran and China, in Hungary and Slovakia, in Greece and Germany.
+              .accordion__item.active
+                .accordion__title-block
+                  h4.accordion__title Region of habitat
+                  .btn-more
+                p.accordion__text The habitat of the giant panda includes the mountainous regions of the Tibet-Qinghai Plateau, western central China and southwest China. The giant panda lives mainly in the Sichuan province. There are also small populations of this animal in the Shaanxi and Gansu provinces. Before extensive land reclamation and deforestation began, the giant panda lived in many low-lying areas of China's interior.
+              .accordion__item.active
+                .accordion__title-block
+                  h4.accordion__title Nutrition
+                  .btn-more
+                p.accordion__text Currently, birds of prey from the Hawk family, represented by:
+                p.accordion__text Hawk eagle (A.fаsciata or H.fаsciatus); <br>Indian hawk eagle (Lorhotriorchis kieneri); <br>Berkut (A. chrysaetos); <br>Stone eagle (A. arakh); <br>Kaffir eagle (A.verreauuxii); <br>Silver eagle (A.wahlbergi); <br>Wedge-tailed eagle (A.audax).
+                p.accordion__text The birds received the conservation status "Vulnerable Species":
+                p.accordion__text Burial ground (A. helias); <br>Spanish burial ground (A.adalberti); <br>Greater spotted eagle (A. clanga). <br>The endangered species is represented by the Steppe eagle (A. niralensis), and the close to vulnerable position is the Moluccan eagle (Аquila gurneyi). The dwarf eagle (A. renata or H. renata) and the burial ground in a number of countries are included in the pages of the national Red Book.
+
+          include ../../includes/pay-and-feed.pug
+
+      include ../../includes/footer.pug
