@@ -59,7 +59,7 @@
   border: 2px solid transparent;
   border-radius: 24px;
 
-  transition: 0.5s;
+  transition: 0.3s;
 
   &:hover {
     border-color: $wightBlue;
@@ -84,7 +84,7 @@
   border: 2px solid $lightGray;
   border-radius: 24px;
 
-  transition: 0.5s;
+  transition: 0.3s;
 
   &:hover {
     border-color: $wightBlue;
@@ -162,6 +162,8 @@
   width: 55px;
   border: 2px solid $wightBlue;
   border-radius: 28px;
+
+  color: $blue;
 
   transition: 0.3s;
 

@@ -13,6 +13,9 @@ mixin nav(page)
 
 header.header-block
   h1.visually-hidden Online zoo
+  if currentPage === '404'
+    .logo
+      a(href="../main/index.html").logo__logo-link
   .header-block__wrapper
     +nav(currentPage)
     .profile-enter

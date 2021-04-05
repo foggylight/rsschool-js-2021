@@ -12,6 +12,28 @@
   background: rgba(252, 252, 252, 1);
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88px;
+  width: 88px;
+}
+
+.logo__logo-link {
+  display: block;
+  height: 40px;
+  width: 53px;
+
+  background-image: url(../../assets/icons/logo.svg);
+
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
 .header-block__wrapper {
   display: flex;
   justify-content: space-between;

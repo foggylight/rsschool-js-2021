@@ -75,6 +75,10 @@ body {
   font-size: 36px;
   line-height: 145%;
   color: $darkBlue;
+
+  &.small {
+    font-size: 26px;
+  }
 }
 
 .btn_dark {
@@ -136,6 +140,58 @@ body {
   }
 }
 
+.slider-nav__arrow {
+  &_prev,
+  &_next {
+    display: block;
+    height: 65px;
+    width:  65px;
+    border-radius: 32.5px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: 0.3s;
+  }
+
+  &_prev {
+    margin: 0 20px 0 0;
+    background-image: url(../../assets/icons/slider-nav-prev.svg);
+  }
+
+  &_next {
+    background-image: url(../../assets/icons/slider-nav-next.svg);
+  }
+
+  &_prev:hover {
+    transform: translate(-5px);
+  }
+
+  &_next:hover {
+    transform: translate(5px);
+  }
+}
+
+.slider-content_hover {
+  .slider__item-link {
+    display: flex;
+    align-items: center;
+
+    @extend %btn-text;
+
+    &::after {
+      display: block;
+      height: 14px;
+      width: 22px;
+      margin: 0 0 0 18px;
+
+      background-image: url(../../assets/icons/arrow-next.svg);
+
+      content: "";
+    }
+  }
+}
+
 .animal-card__image {
   width: 100%;
 }
@@ -146,11 +202,27 @@ body {
   font-weight: 500;
   line-height: normal;
   color: $hardBlue;
+
+  transition: 0.3s;
+
+  &:hover .animal-card__link-arrow{
+    transform: translate(5px);
+  }
+
+  &:hover {
+    color: $active;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 .animal-card__link-arrow {
   display: block;
   margin: 5px 0 0 10px;
+
+  transition: 0.2s;
 }
 
 .map__link {
@@ -162,7 +234,6 @@ body {
   padding: 2px;
 
   filter: drop-shadow(1px 12px 22px rgba(0, 0, 0, 0.09));
-  //box-shadow: 1px 12px 22px rgba(0, 0, 0, 0.09);
   transition: 0.3s;
 
   svg {

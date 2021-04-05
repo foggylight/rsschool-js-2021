@@ -19,6 +19,10 @@
   position: fixed;
 
   margin: 0 60px 75px;
+
+  .animals__item.addition {
+    display: none;
+  }
 }
 
 .map {
