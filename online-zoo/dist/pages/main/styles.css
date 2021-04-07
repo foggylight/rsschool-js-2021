@@ -980,6 +980,7 @@ body {
 }
 
 #how-it-works .text-block__subtitle {
+  min-width: 700px;
   margin: 50px 0 40px;
 }
 

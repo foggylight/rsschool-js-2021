@@ -10,17 +10,17 @@ footer.footer
       h2.footer__heading Navigation
       ul.footer-nav
         li.footer-nav__item
-          a(href="../main/index.html#watch-online").footer-nav__item-link Watch online
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#watch-online` : `../main/index.html#watch-online`}`).footer-nav__item-link Watch online
         li.footer-nav__item
-          a(href="../main/index.html#how-it-works").footer-nav__item-link How it works
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#how-it-works` : `../main/index.html#how-it-works`}`).footer-nav__item-link How it works
         li.footer-nav__item
-          a(href="../main/index.html#famous-pets").footer-nav__item-link Famous pets
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#famous-pets` : `../main/index.html#famous-pets`}`).footer-nav__item-link Famous pets
         li.footer-nav__item
-          a(href="../main/index.html#pay-and-feed").footer-nav__item-link Pay & feed
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#pay-and-feed` : `../main/index.html#pay-and-feed`}`).footer-nav__item-link Pay & feed
         li.footer-nav__item
-          a(href="../main/index.html#testimonials").footer-nav__item-link Testimonials
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#testimonials` : `../main/index.html#testimonials`}`).footer-nav__item-link Testimonials
         li.footer-nav__item
-          a(href="../main/index.html#zoogeography").footer-nav__item-link Zoogeography
+          a(href=`${currentPage === 'translation' ? `../../main/index.html#zoogeography` : `../main/index.html#zoogeography`}`).footer-nav__item-link Zoogeography
   .footer__col-3
     h2.footer__heading Support of volunteers
     p.footer__text You can thank the volunteers for their work. For example, caring for animals and sincere love for them.
