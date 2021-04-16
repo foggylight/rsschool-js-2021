@@ -252,7 +252,7 @@ body {
   height: 14px;
   width: 22px;
   margin: 0 0 0 18px;
-  background-image: url(../../assets/icons/arrow-next.svg);
+  background-image: url(../../assets/icons/text-arrow.svg);
   content: "";
 }
 
@@ -1004,7 +1004,7 @@ body {
   height: 13px;
   width: 17px;
   margin: 0 0 0 12px;
-  background-image: url(../../assets/icons/polygon-cams.svg);
+  background-image: url(../../assets/icons/other-cams-arrow.svg);
   background-position: center;
   background-repeat: no-repeat;
   content: "";

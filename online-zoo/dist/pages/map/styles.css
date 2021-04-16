@@ -252,7 +252,7 @@ body {
   height: 14px;
   width: 22px;
   margin: 0 0 0 18px;
-  background-image: url(../../assets/icons/arrow-next.svg);
+  background-image: url(../../assets/icons/text-arrow.svg);
   content: "";
 }
 
@@ -634,22 +634,22 @@ body {
   content: "";
 }
 
-.map .map__link.alligator {
+.map__link.alligator {
   left: 251px;
   top: 205px;
 }
 
-.map .map__link.gorilla {
+.map__link.gorilla {
   left: 952px;
   top: 444px;
 }
 
-.map .map__link.panda {
+.map__link.panda {
   left: 1628px;
   top: 247px;
 }
 
-.map .map__link.active {
+.map__link.active {
   transform: scale(1.2);
 }
 
