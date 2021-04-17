@@ -3,6 +3,7 @@
 @import '../general';
 @import '../header';
 @import '../sidebar';
+@import '../map';
 
 .content-wrapper {
   margin: 0;
@@ -19,15 +20,14 @@
   position: fixed;
 
   margin: 0 60px 75px;
+}
 
-  .animals__item.addition {
-    display: none;
-  }
+.animals__item-addition {
+  display: none;
 }
 
 .map {
   position: relative;
-  z-index: 1;
 
   height: 100%;
   width: 100%;
@@ -46,35 +46,40 @@
 
     content: "";
   }
+}
 
-  .map__link {
-    &.alligator {
-      left: 251px;
-      top: 205px;
-    }
+.map__link {
+  &-eagle {
+    left: -97px;
+    top: -48px;
+  }
 
-    &.gorilla {
-      left: 952px;
-      top: 444px;
-    }
+  &-alligator {
+    left: 251px;
+    top: 205px;
+  }
 
-    &.panda {
-      left: 1628px;
-      top: 247px;
-    }
+  &-gorilla {
+    left: 952px;
+    top: 444px;
+  }
 
-    &.active{
-      transform: scale(1.2);
-    }
+  &-panda {
+    left: 1628px;
+    top: 247px;
+  }
+
+  &_active{
+    transform: scale(1.2);
+  }
+
+  &:hover {
+    transform: scale(1.2);
   }
 }
 
-.animal-card {
+.animal-card__gorilla {
   position: absolute;
   left: 583px;
   top: 240px;
-}
-
-.animal-card.hidden {
-  display: none;
 }

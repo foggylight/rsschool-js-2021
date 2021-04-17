@@ -12,16 +12,6 @@ ul {
   list-style-type: none;
 }
 
-.visually-hidden {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
-
 body {
   box-sizing: border-box;
   overflow-x: hidden;
@@ -39,6 +29,16 @@ body {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -117,29 +117,6 @@ body {
   display: flex;
 }
 
-.animal-card {
-  display: flex;
-  flex-direction: column;
-  height: 512px;
-  width: 344px;
-  border-radius: 15px;
-  overflow: hidden;
-
-  background-color: $white;
-  box-shadow: 4px 12px 22px rgba(0, 0, 0, 0.06);
-
-  text-align: center;
-
-  .text-block {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 40px 40px;
-  }
-}
-
 .slider-nav__arrow {
   &_prev,
   &_next {
@@ -192,73 +169,4 @@ body {
   }
 }
 
-.animal-card__image {
-  width: 100%;
-}
 
-.animal-card__link {
-  display: inline-flex;
-
-  font-weight: 500;
-  line-height: normal;
-  color: $hardBlue;
-
-  transition: 0.3s;
-
-  &:hover .animal-card__link-arrow{
-    transform: translate(5px);
-  }
-
-  &:hover {
-    color: $active;
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
-}
-
-.animal-card__link-arrow {
-  display: block;
-  margin: 5px 0 0 10px;
-
-  transition: 0.2s;
-}
-
-.map__link {
-  position: absolute;
-
-  display: block;
-  height: 106px;
-  width: 82px;
-  padding: 2px;
-
-  filter: drop-shadow(1px 12px 22px rgba(0, 0, 0, 0.09));
-  transition: 0.3s;
-
-  svg {
-    overflow: visible;
-  }
-
-  .bg {
-    transition: 0.3s;
-  }
-
-  &.active{
-    transform: scale(1.4);
-
-    .bg {
-      stroke: $lightBlue;
-      stroke-width: 2;
-    }
-  }
-
-  &:hover {
-    transform: scale(1.4);
-  }
-
-  &:hover .bg {
-    stroke: $lightBlue;
-    stroke-width: 2;
-  }
-}

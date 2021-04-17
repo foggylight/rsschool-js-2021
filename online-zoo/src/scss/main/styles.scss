@@ -4,6 +4,7 @@
 @import '../header';
 @import '../sidebar';
 @import '../pay-and-feed';
+@import '../map';
 @import '../footer';
 
 #watch-online {
@@ -386,53 +387,53 @@
   }
 }
 
-#zoogeography {
+.zoogeography {
   align-items: start;
+}
 
-  .heading {
-    grid-column: 1 / span 2;
-    margin: 100px 0 0;
+.zoogeography__heading{
+  grid-column: 1 / span 2;
+  margin: 100px 0 0;
+}
+
+.animal-card__eagle {
+  grid-column: 1 / 3;
+  margin: 0 0 100px;
+}
+
+.map {
+  position: relative;
+
+  grid-column: 3 / 10;
+  grid-row: 1 / span 2;
+  height: 700px;
+  margin: 50px 0 112px;
+
+  background-image: url(../../assets/images/map-main.svg);
+  background-repeat: no-repeat;
+}
+
+.map__link {
+  height: 89px;
+  width: 69px;
+
+  &-alligator {
+    left: 273px;
+    top: 216px;
   }
 
-  .animal-card {
-    grid-column: 1 / 3;
-    margin: 0 0 100px;
+  &-eagle {
+    left: 138px;
+    top: 182px;
   }
 
-  .map {
-    position: relative;
-
-    grid-column: 3 / 10;
-    grid-row: 1 / span 2;
-    height: 700px;
-    margin: 50px 0 112px;
-
-    background-image: url(../../assets/images/map-main.svg);
-    background-repeat: no-repeat;
+  &-gorilla {
+    left: 591px;
+    top: 343px;
   }
 
-  .map__link {
-    height: 89px;
-    width: 69px;
-
-    &.alligator {
-      left: 273px;
-      top: 216px;
-    }
-
-    &.eagle {
-      left: 138px;
-      top: 182px;
-    }
-
-    &.gorilla {
-      left: 591px;
-      top: 343px;
-    }
-
-    &.panda {
-      left: 909px;
-      top: 204px;
-    }
+  &-panda {
+    left: 909px;
+    top: 204px;
   }
 }

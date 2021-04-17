@@ -1,0 +1,96 @@
+@import 'variables';
+@import 'mixins';
+
+.animal-card {
+  display: none;
+  flex-direction: column;
+  height: 512px;
+  width: 344px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  background-color: $white;
+  box-shadow: 4px 12px 22px rgba(0, 0, 0, 0.06);
+
+  text-align: center;
+}
+
+.animal-card__text-block {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px 40px;
+}
+
+.animal-card_active {
+  display: flex;
+}
+
+.animal-card__image {
+  width: 100%;
+}
+
+.animal-card__link {
+  display: inline-flex;
+
+  font-weight: 500;
+  line-height: normal;
+  color: $hardBlue;
+
+  transition: 0.3s;
+
+  &:hover .animal-card__link-arrow{
+    transform: translate(5px);
+  }
+
+  &:hover {
+    color: $active;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.animal-card__link-arrow {
+  display: block;
+  margin: 5px 0 0 10px;
+
+  transition: 0.2s;
+}
+
+.map__link {
+  position: absolute;
+
+  display: block;
+  height: 106px;
+  width: 82px;
+  padding: 2px;
+
+  filter: drop-shadow(1px 12px 22px rgba(0, 0, 0, 0.09));
+  transition: 0.3s;
+
+  &_active{
+    transform: scale(1.4);
+
+    .map__marker-bg {
+      stroke: $lightBlue;
+      stroke-width: 2;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.4);
+  }
+
+  &:hover .map__marker-bg {
+    stroke: $lightBlue;
+    stroke-width: 2;
+  }
+}
+
+.map__marker {
+  overflow: visible;
+}
