@@ -21,101 +21,115 @@ html(lang="en")
         include ../includes/sidebar.pug
 
         .content
-          section#watch-online.content__item
-            .text-block
+          section#watch-online.watch-online.content__item
+            .watch-online__text-block
               h2.watch-online-heading Wild park
-              p.text-block__subtitle.watch-online-subtitle Watch your favorite animal onl<span><span class="dot">.</span><span class="stack">ı</span></span>ne
+              p.text-block__subtitle.watch-online-subtitle Watch your favorite animal onl<span class="letter" ><span class="dot">.</span><span class="stack">ı</span></span>ne
               // <span><span class="dot">.</span><span class="stack">i</span></span>
               .text-block__btn-wrapper
                 a(href="../map/index.html").btn_dark.watch-online-btn Choose zoo
                 a(href="../translation/panda/index.html").btn_light Watch online
-            img(src="../../assets/images/watch-online.jpg", alt="Watch your favorite animal online").photo-block
+            img(src="../../assets/images/watch-online.jpg", alt="Watch your favorite animal online").photo-block__photo-block
 
-          section#how-it-works.content__item
-            img(src="../../assets/images/how-works.jpg", alt="How Zoo online works").photo-block
-            .text-block
+          section#how-it-works.how-it-works.content__item
+            img(src="../../assets/images/how-works.jpg", alt="How Zoo online works").how-it-works__photo-block
+            .how-it-works__text-block
               h2.heading How Zoo online works
-              p.text-block__subtitle Our service will give you an unforgettable experience of observing and interacting with animals remotely
-              p.text-block__text Zoo Online is a web application with which you can watch live cages of different animals in nature reserves and zoos online and, if you wish, donate to the needs of the animal you like
+              p.text-block__subtitle.how-it-works__subtitle  Our service will give you an unforgettable experience of observing and interacting with animals remotely
+              p.text-block__text.how-it-works__text Zoo Online is a web application with which you can watch live cages of different animals in nature reserves and zoos online and, if you wish, donate to the needs of the animal you like
               .text-block__btn-wrapper
                 a(href="../translation/panda/index.html").btn_dark Try now
 
-          section#famous-pets.content__item
-            .text-block
+          section#famous-pets.famous-pets.content__item
+            .text-block.famous-pets__text-block
               h2.heading Famous pets
-              p.text-block__subtitle You can choose any animal <br>you like
+              p.text-block__subtitle.famous-pets__subtitle You can choose any animal <br>you like
               .text-block__btn-wrapper.slider-nav
                 a(href="#").slider-nav__arrow_prev
                 a(href="#").slider-nav__arrow_next
             .slider
               .slider__item
                 img(src="../../assets/images/slider-red-panda.jpg", alt="Little panda").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover China, East Asia
                   .slider__item-heading Little panda
-                  a(href="../translation/panda/index.html").slider__item-link Follow
+                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
               .slider__item
                 img(src="../../assets/images/slider-penguin.jpg", alt="Penguin").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover In the sea of the Southern Hemisphere, Antarctic waters
                   .slider__item-heading Penguin
-                  a(href="../translation/panda/index.html").slider__item-link Follow
+                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
               .slider__item
                 img(src="../../assets/images/slider-squirrel.jpg", alt="Squirrel").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover Russia, forests in the Orenburg region
                   .slider__item-heading Squirrel
-                  a(href="../translation/panda/index.html").slider__item-link Follow
+                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
               .slider__item
                 img(src="../../assets/images/slider-panda.jpg", alt="Panda").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover Western central China
                   .slider__item-heading Panda
-                  a(href="../translation/panda/index.html").slider__item-link Follow
+                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
               .slider__item
                 img(src="../../assets/images/slider-eagle.jpg", alt="Eagles").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover North America, islands near Los Angeles
                   .slider__item-heading Eagles
-                  a(href="../translation/eagle/index.html").slider__item-link Follow
+                  a(href="../translation/eagle/index.html").slider__item-link.slider__item-link_hover Follow
               .slider__item
                 img(src="../../assets/images/slider-gorilla.jpg", alt="Gorilla").slider__image
-                .slider__item-content.slider-content_hover
+                .slider__item-content.slider__content_hover
                   .slider__item-circle
-                    p.slider__item-text_hover North America, islands <br>near Los Angeles
+                    p.slider__item-text_hover Equatorial forests of western and central Africa
                   .slider__item-heading Gorilla
-                  a(href="../translation/gorilla/index.html").slider__item-link Follow
+                  a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
+              .slider__item.hidden
+                img(src="../../assets/images/slider-tiger.jpg", alt="Tiger").slider__image
+                .slider__item-content.slider__content_hover
+                  .slider__item-circle
+                    p.slider__item-text_hover Russia, Amur region
+                  .slider__item-heading Tiger
+                  a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
+              .slider__item.hidden
+                img(src="../../assets/images/slider-alligator.jpg", alt="Alligator").slider__image
+                .slider__item-content.slider__content_hover
+                  .slider__item-circle
+                    p.slider__item-text_hover American state of Florida
+                  .slider__item-heading Alligator
+                  a(href="../translation/alligator/index.html").slider__item-link.slider__item-link_hover Follow
 
           include ../includes/pay-and-feed.pug
 
-          section#testimonials.content__item
-            .text-block
-              h2.heading Testimonials
-              p.text-block__subtitle You can make us smile
+          section#testimonials.testimonials.content__item
+            .text-block.testimonials__text-block
+              h2.heading.testimonials__heading Testimonials
+              p.text-block__subtitle.testimonials__subtitle You can make us smile
               p.text-block__text We want to make animal observation and interaction accessible. You can leave your wishes on how to make the service more convenient, and most importantly, more interesting for you.
               .text-block__btn-wrapper
-                a(href="../translation/panda/index.html").btn_testimonial Leave feedback
-            .testimonial-slider
-              a(href="#").testimonial-slider__link See more reviews
-              .testimonial-slider__items-wrapper
-                .testimonial-slider-item
-                  .testimonial-slider-item__title
-                    img(src="../../assets/images/testim-avatar.jpg", alt="avatar").testimonial-slider-item__avatar
-                    .testimonial-slider-item__name Alena Andreeva
-                  .testimonial-slider-item__text “Had a great time with my kids and made the cute pandas happy with delicious treats. I think I will use your service more than once, thanks!”
-                .testimonial-slider-item
-                  .testimonial-slider-item__title
-                    img(src="../../assets/images/testim-avatar-without-ph.svg", alt="avatar").testimonial-slider-item__avatar
-                    .testimonial-slider-item__name Joe Brown
-                  .testimonial-slider-item__text “Thank you for the cool service, I turn on broadcasts with animals while working in the background, it relaxes and cheers up”
-              .slider-nav
-                a(href="#").slider-nav__arrow_prev
-                a(href="#").slider-nav__arrow_next
+                a(href="../translation/panda/index.html").testimonials-btn Leave feedback
+            .testimonials-slider
+              a(href="#").testimonials-slider__link See more reviews
+              .testimonials-slider__items-wrapper
+                .testimonials-slider-item
+                  .testimonials-slider-item__title
+                    img(src="../../assets/images/testim-avatar.jpg", alt="avatar").testimonials-slider-item__avatar
+                    .testimonials-slider-item__name Alena Andreeva
+                  .testimonials-slider-item__text “Had a great time with my kids and made the cute pandas happy with delicious treats. I think I will use your service more than once, thanks!”
+                .testimonials-slider-item
+                  .testimonials-slider-item__title
+                    img(src="../../assets/images/testim-avatar-without-ph.svg", alt="avatar").testimonials-slider-item__avatar
+                    .testimonials-slider-item__name Joe Brown
+                  .testimonials-slider-item__text “Thank you for the cool service, I turn on broadcasts with animals while working in the background, it relaxes and cheers up”
+              .slider-nav.testimonials-slider__nav
+                a(href="#").slider-nav__arrow_prev.testimonials-slider__nav-arrow_prev
+                a(href="#").slider-nav__arrow_next.testimonials-slider__nav-arrow_next
 
           section#zoogeography.content__item.zoogeography
             h2.heading.zoogeography__heading Zoogeography

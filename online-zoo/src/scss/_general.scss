@@ -41,6 +41,10 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 .wrapper {
   position: relative;
 }
@@ -154,22 +158,20 @@ body {
   }
 }
 
-.slider-content_hover {
-  .slider__item-link {
-    display: flex;
-    align-items: center;
+.slider__item-link_hover {
+  display: flex;
+  align-items: center;
 
-    @extend %btn-text;
+  @extend %btn-text;
 
-    &::after {
-      display: block;
-      height: 14px;
-      width: 22px;
-      margin: 0 0 0 18px;
+  &::after {
+    display: block;
+    height: 14px;
+    width: 22px;
+    margin: 0 0 0 18px;
 
-      background-image: url(../../assets/icons/text-arrow.svg);
+    background-image: url(../../assets/icons/text-arrow.svg);
 
-      content: "";
-    }
+    content: "";
   }
 }
