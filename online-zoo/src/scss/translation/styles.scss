@@ -6,115 +6,116 @@
 @import '../pay-and-feed';
 @import '../footer';
 
-#main-cam {
+.main-cam {
   @include grid(9, $gridGap);
   align-items: start;
   padding: 70px 0 60px;
+}
 
-  .video-block {
-    grid-column: 1 / span 6;
-    grid-row: 1 / 3;
-    height: calc(0.55 * (0.6 * (100vw - 120px)));
-  }
+.main-cam__video {
+  grid-column: 1 / span 6;
+  grid-row: 1 / 3;
+  aspect-ratio: 16 / 9;
+  height: calc(0.55 * (0.6 * (100vw - 120px)));
+}
 
-  .sub-block {
-    grid-column: span 3 / -1;
-    display: flex;
-    height: 110px;
-    max-width: 420px;
-    border-bottom: 1px solid $borderSub;
+.sub-block {
+  grid-column: span 3 / -1;
+  display: flex;
+  height: 110px;
+  max-width: 420px;
+  border-bottom: 1px solid $borderSub;
+}
 
-    .sub-block__avatar {
-      height: 70px;
-      width: 70px;
-      margin: 0 20px 0 0;
-      border-radius: 35px;
-      overflow: hidden;
-    }
+.sub-block__avatar {
+  height: 70px;
+  width: 70px;
+  margin: 0 20px 0 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
-    .sub-block__name {
-      margin: 8px 0 0;
+.sub-block__name {
+  margin: 8px 0 0;
 
-      font-size: 24px;
-      color: $black;
-    }
+  font-size: 24px;
+  color: $black;
+}
 
-    .sub-block__watching {
-      display: flex;
-      align-items: center;
-      color: $gray;
+.sub-block__watching {
+  display: flex;
+  align-items: center;
+  color: $gray;
 
-      &::before {
-        display: block;
-        margin: 0 5px 0 0;
-        height: 20px;
-        width: 20px;
+  &::before {
+    display: block;
+    margin: 0 5px 0 0;
+    height: 20px;
+    width: 20px;
 
-        background-image: url(../../assets/icons/eye.svg);
-        background-position: center;
+    background-image: url(../../assets/icons/eye.svg);
+    background-position: center;
 
-        content: "";
-      }
-    }
-  }
-
-  .text-block {
-    grid-column: span 3 / -1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 290px;
-    max-width: 420px;
-    margin: 0 0 120px;
-  }
-
-  .text-block__text {
-    max-width: 336px;
+    content: "";
   }
 }
 
-#other-cams {
+.main-cam__text-block {
+  grid-column: span 3 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 290px;
+  max-width: 420px;
+  margin: 0 0 120px;
+}
+
+.main-cam__text {
+  max-width: 336px;
+}
+
+.other-cams {
   @include grid(9, $gridGap);
   padding: 0 0 60px;
+}
 
-  .text-block__subtitle.block-heading {
-    grid-column: 1 / 3;
-    display: flex;
-    align-items: center;
+.other-cams__heading {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: center;
 
-    &::after {
-      display: block;
-      height: 13px;
-      width: 17px;
-      margin: 0 0 0 12px;
+  &::after {
+    display: block;
+    height: 13px;
+    width: 17px;
+    margin: 0 0 0 12px;
 
-      background-image: url(../../assets/icons/other-cams-arrow.svg);
-      background-position: center;
-      background-repeat: no-repeat;
+    background-image: url(../../assets/icons/other-cams-arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 
-      content: "";
-    }
+    content: "";
+  }
+}
+
+.slider-nav {
+  grid-column: 1 / 3;
+}
+
+.slider-nav__arrow {
+  &_prev,
+  &_next {
+    background-color: $blue;
   }
 
-  .slider-nav {
-    grid-column: 1 / 3;
+  &_prev:hover,
+  &_next:hover {
+    background-color: $darkBlue;
   }
 
-  .slider-nav__arrow {
-    &_prev,
-    &_next {
-      background-color: $blue;
-    }
-
-    &_prev:hover,
-    &_next:hover {
-      background-color: $darkBlue;
-    }
-
-    &_prev:active,
-    &_next:active {
-      background-color: $active;
-    }
+  &_prev:active,
+  &_next:active {
+    background-color: $active;
   }
 }
 
@@ -128,6 +129,7 @@
   position: relative;
 
   grid-column: span 2;
+  aspect-ratio: 16 / 9;
   height: calc(0.55 * (0.2 * (100vw - 120px - 140px)));
   overflow: hidden;
 
@@ -162,98 +164,100 @@
     background: rgba($black, 0.4);
     opacity: 1;
   }
-
-  .text-block__subtitle.small {
-    color: $white;
-  }
-
-  .divider {
-    height: 1px;
-    width: 150px;
-    margin: 10px 0 20px;
-
-    background-color: $white;
-  }
 }
 
-#facts {
+.divider {
+  height: 1px;
+  width: 150px;
+  margin: 10px 0 20px;
+
+  background-color: $white;
+}
+
+.text-block__subtitle_white {
+  color: $white;
+}
+
+.facts {
   @include grid(9, $gridGap);
 
   a {
     color: $lightBlue;
   }
+}
 
-  .text-block {
-    grid-column: 1 / span 3;
-    margin: 0 0 46px;
+.facts__text {
+  grid-column: 1 / span 3;
+  margin: 0 0 46px;
+}
 
-    .text-block__subtitle {
-      margin: 0 0 30px;
-    }
+.facts__subtitle {
+  margin: 0 0 30px;
+}
+
+.accordion {
+  grid-column: 1 / span 8;
+}
+
+.accordion__item {
+  margin: 0 0 20px;
+  padding: 0 0 30px;
+  border-bottom: 1px solid $lightBlue;
+}
+
+.accordion__title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+
+  cursor: pointer;
+
+
+}
+
+.accordion__btn-more {
+  height: 2px;
+  width: 22px;
+  margin: 14px;
+
+  background-color: $blue;
+
+  &::before {
+    position: relative;
+    left: 10px;
+    top: -10px;
+
+    display: block;
+    height: 22px;
+    width: 2px;
+
+    background-color: $blue;
+    content: "";
   }
+}
 
-  .accordion {
-    grid-column: 1 / span 8;
-  }
+.accordion__title {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 145%;
+}
 
-  .accordion__item {
-    margin: 0 0 20px;
-    padding: 0 0 30px;
-    border-bottom: 1px solid $lightBlue;
-  }
+.accordion__text {
+  margin: 0 0 27px;
+}
 
-  .accordion__title-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 75px;
-
-    cursor: pointer;
-
-    .btn-more {
-      height: 2px;
-      width: 22px;
-      margin: 14px;
-
-      background-color: $blue;
-
-      &::before {
-        position: relative;
-        left: 10px;
-        top: -10px;
-
-        display: block;
-        height: 22px;
-        width: 2px;
-
-        background-color: $blue;
-        content: "";
-      }
-    }
-  }
-
+.accordion__item_active {
   .accordion__title {
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 145%;
+    color: $lightBlue;
   }
 
-  .accordion__text {
-    margin: 0 0 27px;
+  .accordion__btn-more {
+    background-color: $lightBlue;
   }
 
-  .accordion__item.active {
-    .accordion__title {
-      color: $lightBlue;
-    }
-
-    .btn-more {
-      background-color: $lightBlue;
-    }
-
-    .btn-more::before {
-      transform: rotate(90deg);
-      background-color: $lightBlue;
-    }
+  .accordion__btn-more::before {
+    transform: rotate(90deg);
+    background-color: $lightBlue;
   }
 }

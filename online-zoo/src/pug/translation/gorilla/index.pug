@@ -21,63 +21,64 @@ html(lang="en")
         include ../../includes/sidebar.pug
 
         .content
-          section#main-cam
-            .video-block
-              <iframe class="video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/rgXWDk7rh4w" frameborder="0"></iframe>
+          section#main-cam.main-cam
+            <iframe class="main-cam__video video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/rgXWDk7rh4w" frameborder="0"></iframe>
             .sub-block
               .sub-block__avatar
                 img(src="../../../assets/images/translation-gorilla-sub.png", alt="Grace gorillas")
               .sub-block__info
                 p.sub-block__name Grace gorillas
                 p.sub-block__watching 235 watching now
-            .text-block
-              h3.text-block__subtitle.small You can donate to this animals for a wonderful lunch.
-              p.text-block__text Gorillas will receive a mixture of bamboo shoots, carrots and apples. Animals will receive your gift in about 5-15 minutes
+            .text-block.main-cam__text-block
+              h3.text-block__subtitle.text-block__subtitle_small You can donate to this animals for a wonderful lunch.
+              p.text-block__text.main-cam__text Gorillas will receive a mixture of bamboo shoots, carrots and apples. Animals will receive your gift in about 5-15 minutes
               .text-block__btn-wrapper
                 a(href="#").btn_dark Feed the gorilla
-          section#other-cams
-            h2.text-block__subtitle.block-heading Other cams
+
+          section#other-cams.other-cams
+            h2.text-block__subtitle.other-cams__heading Other cams
             .video-slider
               .video-slider__video-item
-                img(class="video-slider__video", src="../../../assets/images/cam-2-gorilla.jpg", alt="")
+                img(class="video video-slider__video", src="../../../assets/images/cam-2-gorilla.jpg", alt="")
                 a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 68 viewers
-                  .divider
-                  span.video-item__link.slider__item-link Watch
-              .video-slider__video-item.active
-                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/rgXWDk7rh4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 18 viewers
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 68 viewers
                   .divider
                   span.video-item__link.slider__item-link Watch
               .video-slider__video-item
-                img(class="video-slider__video", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/rgXWDk7rh4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 18 viewers
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+              .video-slider__video-item
+                img(class="video video-slider__video", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
                   .divider
                   span.video-item__link.slider__item-link Watch
             .text-block__btn-wrapper.slider-nav
                 a(href="#").slider-nav__arrow_prev
                 a(href="#").slider-nav__arrow_next
-          section#facts
-            .text-block
-              h2.text-block__subtitle Interesting facts
+
+          section#facts.facts
+            .text-block.facts__text
+              h2.text-block__subtitle.facts__subtitle Interesting facts
               p.text-block__text The Gorilla Rehabilitation and Conservation Education Center is located near the Tayna Nature Reserve in the Republic of Congo. Watch live and learn more about the gorillas.
             .accordion
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Species population
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text All species (and subspecies) of gorilla are listed as endangered or critically endangered on the IUCN Red List. Now, over 100,000 western lowland gorillas are thought to exist in the wild, with 4,000 in zoos, thanks to conservation; eastern lowland gorillas have a population of under 5,000 in the wild and 24 in zoos.
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Region of habitat
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text In nature, gorillas live in the equatorial forests of western and central Africa, mountain gorillas - on the slopes of the volcanic mountains of Virunga, covered with forest. They keep in small groups, consisting of a male leader, several females and their cubs (from 5 to 30 individuals in total).
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Nutrition
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text The gorilla's diet is based on plant foods. Among the plants used, one can distinguish wild celery, bedstraw, nettles, bamboo shoots, blue pygeum fruits. Fruits and nuts are an addition to the main diet, while animal foods.
                 p.accordion__text Gorillas also use various mineral supplements in their diet: they eat, for example, some types of clay, thus compensating for the lack of salt in food. Gorillas hardly have to drink: juicy greens already have enough moisture. Reservoirs and water in general are avoided whenever possible, and rain is disliked.
 

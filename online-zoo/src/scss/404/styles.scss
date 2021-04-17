@@ -28,27 +28,27 @@
   align-items: center;
 
   text-align: center;
+}
 
-  .text-block {
-    max-width: 873px;
+.text-block {
+  max-width: 873px;
 
-    background-image: url(../../assets/images/404-bg.svg);
-    background-position: center 20%;
-    background-repeat: no-repeat;
+  background-image: url(../../assets/images/404-bg.svg);
+  background-position: center 20%;
+  background-repeat: no-repeat;
 
-    font-size: 24px;
-    line-height: 154%;
-  }
+  font-size: 24px;
+  line-height: 154%;
+}
 
-  .text-block__subtitle {
-    margin: 136px 0 35px;
-  }
+.text-block__subtitle {
+  margin: 136px 0 35px;
+}
 
-  .btn_dark {
-    margin: 48px auto 80px;
+.btn_dark {
+  margin: 48px auto 80px;
 
-    font-size: 18px;
-  }
+  font-size: 18px;
 }
 
 .text-404 {

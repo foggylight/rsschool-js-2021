@@ -76,7 +76,7 @@ body {
   line-height: 145%;
   color: $darkBlue;
 
-  &.small {
+  &_small {
     font-size: 26px;
   }
 }
@@ -117,13 +117,18 @@ body {
   display: flex;
 }
 
+.video {
+  border-radius: 5px;
+  aspect-ratio: 16 / 9;
+}
+
 .slider-nav__arrow {
   &_prev,
   &_next {
     display: block;
     height: 65px;
     width:  65px;
-    border-radius: 32.5px;
+    border-radius: 50%;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -168,5 +173,3 @@ body {
     }
   }
 }
-
-

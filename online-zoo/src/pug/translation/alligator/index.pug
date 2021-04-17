@@ -21,63 +21,64 @@ html(lang="en")
         include ../../includes/sidebar.pug
 
         .content
-          section#main-cam
-            .video-block
-              <iframe width="100%%" height="100%" src="https://www.youtube.com/embed/EnxRJii_dp8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          section#main-cam.main-cam
+            <iframe class="main-cam__video video" width="100%" height="100%" src="https://www.youtube.com/embed/EnxRJii_dp8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             .sub-block
               .sub-block__avatar
                 img(src="../../../assets/images/translation-alligator-sub.png", alt="ST. Augustine alligator farm")
               .sub-block__info
                 p.sub-block__name ST. Augustine alligator farm
                 p.sub-block__watching 111 watching now
-            .text-block
-              h3.text-block__subtitle.small You can donate to this animals for a wonderful lunch.
-              p.text-block__text Alligators will receive a piece of meat or fresh fish. Animals will receive your gift in about 5-15 minutes
+            .text-block.main-cam__text-block
+              h3.text-block__subtitle.text-block__subtitle_small You can donate to this animals for a wonderful lunch.
+              p.text-block__text.main-cam__text Alligators will receive a piece of meat or fresh fish. Animals will receive your gift in about 5-15 minutes
               .text-block__btn-wrapper
                 a(href="#").btn_dark Feed the alligator
-          section#other-cams
-            h2.text-block__subtitle.block-heading Other cams
+
+          section#other-cams.other-cams
+            h2.text-block__subtitle.other-cams__heading Other cams
             .video-slider
               .video-slider__video-item
-                img(class="video-slider__video", src="../../../assets/images/cam-2-alligator.jpg", alt="")
+                img(class="video video-slider__video", src="../../../assets/images/cam-2-alligator.jpg", alt="")
                 a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 68 viewers
-                  .divider
-                  span.video-item__link.slider__item-link Watch
-              .video-slider__video-item.active
-                <iframe class="video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/EnxRJii_dp8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 10 viewers
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 68 viewers
                   .divider
                   span.video-item__link.slider__item-link Watch
               .video-slider__video-item
-                img(class="video-slider__video", src="../../../assets/images/cam-4-alligator.jpg", alt="")
+                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/EnxRJii_dp8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 a(href="#").video-slider__closing-block.slider-content_hover
-                  p.text-block__subtitle.small 10 viewers
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 10 viewers
+                  .divider
+                  span.video-item__link.slider__item-link Watch
+              .video-slider__video-item
+                img(class="video video-slider__video", src="../../../assets/images/cam-4-alligator.jpg", alt="")
+                a(href="#").video-slider__closing-block.slider-content_hover
+                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 10 viewers
                   .divider
                   span.video-item__link.slider__item-link Watch
             .text-block__btn-wrapper.slider-nav
                 a(href="#").slider-nav__arrow_prev
                 a(href="#").slider-nav__arrow_next
-          section#facts
-            .text-block
-              h2.text-block__subtitle Interesting facts
+
+          section#facts.facts
+            .text-block.facts__text
+              h2.text-block__subtitle.facts__subtitle Interesting facts
               p.text-block__text Keep an eye out for alligators basking in the sun and tune in for feeding demonstrations at 12:00 PM and 3:00 PM ET. Watch live and learn more about the alligators.
             .accordion
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Species population
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text Most American alligators live in Florida and Louisiana. In Florida alone, their number is 1 million individuals. Florida is the only place on Earth where alligators and real crocodiles coexist.
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Region of habitat
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text There are only two countries in the world where representatives of this genus live - these are the United States of America and China. The Chinese alligator is endangered and lives only in the Yangtze River Valley. The American alligator lives on the east coast of the United States from North Carolina to Texas.
-              .accordion__item.active
+              .accordion__item.accordion__item_active
                 .accordion__title-block
                   h4.accordion__title Nutrition
-                  .btn-more
+                  .accordion__btn-more
                 p.accordion__text Alligators feed on almost anything they can catch. Juveniles prey on fish, insects, snails and crustaceans. As they grow, Mississippi alligators choose larger prey: large fish, such as carapace pike (Lepisosteidae); turtles, small mammals, birds and other reptiles, while Chinese alligators, due to their small size, still consume a large number of very small animals. Foreign bodies are often found in the stomachs of alligators. If alligators are hungry enough, they can eat carrion as well. Adult Mississippi alligators can sometimes hunt deer, feral pigs, or even younger alligators, although they are much inferior to most true crocodiles and black caimans for capturing large prey.
 
           include ../../includes/pay-and-feed.pug
