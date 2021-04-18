@@ -128,6 +128,7 @@
 .slider__item {
   position: relative;
 
+  max-width: 328px;
   height: -moz-fit-content;
   height: fit-content;
 
@@ -434,5 +435,13 @@
   &-panda {
     left: 909px;
     top: 204px;
+  }
+
+  &_active {
+    transform: scale(1.4);
+  }
+
+  &:hover {
+    transform: scale(1.4);
   }
 }

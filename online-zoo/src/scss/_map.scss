@@ -2,6 +2,8 @@
 @import 'mixins';
 
 .animal-card {
+  z-index: 5;
+
   display: none;
   flex-direction: column;
   height: 512px;
@@ -26,6 +28,10 @@
 
 .animal-card_active {
   display: flex;
+}
+
+.animal-card__eagle-text {
+  margin: 0 0 40px;
 }
 
 .animal-card__image {
@@ -67,22 +73,16 @@
   display: block;
   height: 106px;
   width: 82px;
-  padding: 2px;
+  //padding: 2px;
 
   filter: drop-shadow(1px 12px 22px rgba(0, 0, 0, 0.09));
   transition: 0.3s;
 
-  &_active{
-    transform: scale(1.4);
-
+  &_active {
     .map__marker-bg {
       stroke: $lightBlue;
       stroke-width: 2;
     }
-  }
-
-  &:hover {
-    transform: scale(1.4);
   }
 
   &:hover .map__marker-bg {

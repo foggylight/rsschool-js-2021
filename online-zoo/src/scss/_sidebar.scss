@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: calc(100vh - 25px - 85px);
+  height: calc(100vh - 25px - 75px);
   width: 90px;
   margin: 0 0 85px;
   border: 2px solid $lightGray;
@@ -57,7 +57,7 @@
   height: 48px;
   width: 48px;
   border: 2px solid transparent;
-  border-radius: 24px;
+  border-radius: 50%;
 
   transition: 0.3s;
 
@@ -82,7 +82,7 @@
   width: 48px;
   margin: 0 0 100px;
   border: 2px solid $lightGray;
-  border-radius: 24px;
+  border-radius: 50%;
 
   transition: 0.3s;
 
@@ -161,7 +161,7 @@
   height: 55px;
   width: 55px;
   border: 2px solid $wightBlue;
-  border-radius: 28px;
+  border-radius: 50%;
 
   color: $blue;
 

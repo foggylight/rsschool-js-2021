@@ -6,10 +6,30 @@
 @import '../map';
 
 .content-wrapper {
+  overflow: hidden;
+
+  display: flex;
   margin: 0;
-  display: block;
   height: 100vh;
   width: 100vw;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    z-index: -10;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url(../../assets/images/map.jpg);
+    background-position: calc(50% + 30px) calc(50% - 37px);
+
+    content: "";
+  }
+}
+
+.header-block__wrapper {
+  padding: 0 85px 0 94px;
 }
 
 .header-block {
@@ -29,23 +49,10 @@
 .map {
   position: relative;
 
-  height: 100%;
-  width: 100%;
-
-  &::before {
-    position: absolute;
-    left: 0;
-    z-index: -10;
-
-    height: 100vh;
-    width: 100vw;
-
-    background-image: url(../../assets/images/map.jpg);
-    background-position: 60% 60%;
-    background-size: contain;
-
-    content: "";
-  }
+  height: 860px;
+  width: 1920px;
+  margin: 0 auto;
+  align-self: center;
 }
 
 .map__link {
