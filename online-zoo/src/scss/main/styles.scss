@@ -66,8 +66,9 @@
   @include _1200 {
     grid-column: 4 / span 3;
     justify-self: end;
-    max-width: 263px;
-    margin: 75px 0 0;
+    width: calc(100% - 21px);
+    // max-width: 263px;
+    margin: 75px 0 0 97px;
   }
 
   @include _640 {
@@ -250,6 +251,7 @@
   @include _1200 {
     max-width: 550px;
     margin: 0 0 40px;
+    white-space: normal;
   }
 
   @include _640 {
@@ -325,15 +327,18 @@
     content: "";
 
     @include _1919 {
-      height: 734px;
+      // height: 734px;
+      height: calc((((100vw - 170px) / 4) * 2) + 218px);
     }
 
     @include _1200 {
-      height: 855px;
+      // height: 855px;
+      height: calc((((100vw - 100px) / 3) * 2) + 487px);
     }
 
     @include _640 {
-      height: 692px;
+      // height: 692px;
+      height: calc((((100vw - 40px) / 2) * 2) + 379px);
     }
   }
 
@@ -410,7 +415,7 @@
   position: relative;
   overflow: hidden;
 
-  max-width: 328px;
+  //max-width: 328px;
   // height: -moz-fit-content;
   // height: fit-content;
   border-radius: 5px;
@@ -770,7 +775,7 @@
 }
 
 .testimonials-slider {
-  grid-column: 4 / -2;
+  grid-column: 4 / -1;
 
   @include _1200 {
     display: flex;
@@ -801,7 +806,9 @@
   color: $dark;
 
   &:nth-child(2) {
-    display: none;
+    @include _1919 {
+      display: none;
+    }
   }
 
   @include _1919 {
@@ -1041,7 +1048,7 @@
   @include _1200 {
     top: 380px;
 
-    width: 100%;
+    width: 600px;
     margin: 0 auto;
 
     background-position: center;

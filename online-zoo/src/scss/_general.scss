@@ -27,6 +27,11 @@ body {
   @include _1919 {
     font-size: 16px;
   }
+
+  @include _320 {
+    overflow: scroll;
+    width: 320px;
+  }
 }
 
 * {
@@ -68,6 +73,7 @@ body {
   }
 
   @include _640 {
+    @include grid(4, 20px);
     margin: 0 10px;
   }
 }
