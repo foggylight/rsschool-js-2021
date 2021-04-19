@@ -81,8 +81,16 @@ body {
     color: $hardBlue;
   }
 
+  @include _1919 {
+    margin: 70px 0 0;
+  }
+
   @include _1200 {
     grid-column: 1 / -1;
+  }
+
+  @include _640 {
+    margin: 59px 0 0;
   }
 }
 
