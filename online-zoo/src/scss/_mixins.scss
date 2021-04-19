@@ -5,3 +5,52 @@
   grid-template-columns: repeat($column, 1fr);
   column-gap: $gap;
 }
+
+@mixin _max {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}
+
+// 1200 - 1920
+@mixin _1919 {
+  @media (max-width: 1919px) {
+    @content;
+  }
+}
+
+
+// 640 - 1200
+@mixin _1200 {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+// 320 - 640
+@mixin _640 {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin _320 {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 75px;
+
+  @include _1919 {
+    padding: 16px 60px;
+  }
+
+  border-radius: 5px;
+
+  transition: 0.2s;
+}

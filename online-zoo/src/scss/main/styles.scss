@@ -7,17 +7,43 @@
 @import '../map';
 @import '../footer';
 
-.watch-online {
-  height: calc(870px - 25px - 90px);
+// .watch-online {
+//   height: calc(870px - 25px - 90px);
+// }
+
+.logo {
+  @include _1200 {
+    display: flex;
+  }
+}
+
+.sidebar {
+  @include _1200 {
+    display: none;
+  }
+}
+
+.logo__logo-link {
+
+  @include _640 {
+    margin: 0;
+  }
 }
 
 .watch-online__text-block {
-  grid-column: 1 / 5;
+  grid-column: 1 / span 4;
 }
 
-.photo-block__photo-block {
-  grid-column: 5 / 9;
-  margin: 30px 0 0;
+.watch-online__photo-block {
+  grid-column: 5 / span 4;
+  height: auto;
+  width: 100%;
+  margin: 55px 0 17px;
+}
+
+.watch-online__photo {
+  width: 100%;
+  border-radius: 5px;
 }
 
 .watch-online-heading {
@@ -29,6 +55,10 @@
   margin: 25px 0 60px;
   font-size: 84px;
   line-height: normal;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .letter {
@@ -63,8 +93,14 @@
   }
 }
 
-.how-it-works {
-  align-items: center;
+@media (max-width: 1919px) {
+  .watch-online__photo-block {
+    grid-column: 5 / span 3;
+  }
+
+  .watch-online-subtitle {
+    font-size: 56px;
+  }
 }
 
 .how-it-works__subtitle {
@@ -79,6 +115,7 @@
 .how-it-works__photo-block {
   grid-column: 1 / 4;
   margin: 110px 0;
+  border-radius: 5px;
 }
 
 .how-it-works__text-block {
@@ -102,9 +139,9 @@
 
 .slider {
   grid-column: 3 / 9;
-  @include grid(3, $gridGap);
+  @include grid(3, 40px);
   grid-template-rows: repeat(2, 1fr);
-  row-gap: $gridGap;
+  row-gap: 40px;
   margin: 100px 0;
 }
 
@@ -127,10 +164,12 @@
 
 .slider__item {
   position: relative;
+  overflow: hidden;
 
   max-width: 328px;
   height: -moz-fit-content;
   height: fit-content;
+  border-radius: 5px;
 
   line-height: 0;
 }
@@ -273,7 +312,7 @@
 
 .testimonials-btn {
   @extend %btn-text;
-  @extend %btn;
+  @include btn();
 
   margin: 60px 0 0;
   border: 2px solid $white;
@@ -292,13 +331,13 @@
 }
 
 .testimonials-slider__items-wrapper {
-  @include grid(6, $gridGap);
+  @include grid(6, 40px);
 }
 
 .testimonials-slider-item {
   grid-column: auto / span 3;
   height: 273px;
-  margin: 20px 0 30px;
+  margin: 25px 0 30px;
   padding: 40px;
   border-radius: 15px;
 
@@ -314,6 +353,7 @@
 .testimonials-slider__link {
   display: flex;
   align-items: center;
+  margin: 5px 0 0;
 
   transition: 0.2s;
 
@@ -393,7 +433,7 @@
 
 .zoogeography__heading{
   grid-column: 1 / span 2;
-  margin: 100px 0 0;
+  margin: 108px 0 0;
 }
 
 .animal-card__eagle {
@@ -407,7 +447,7 @@
   grid-column: 3 / 10;
   grid-row: 1 / span 2;
   height: 700px;
-  margin: 50px 0 112px;
+  margin: 55px 0 112px;
 
   background-image: url(../../assets/images/map-main.svg);
   background-repeat: no-repeat;

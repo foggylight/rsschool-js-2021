@@ -3,6 +3,10 @@
 
 mixin nav(page)
   nav.header-nav
+    .burger-menu
+      input(class="burger-menu__checkbox" id="menu__toggle" type="checkbox")
+      label(class="burger-menu__btn" for="menu__toggle")
+        span.burger-menu__btn-part
     ul.header-nav__list
       each val, i in pages
         li.header-nav__item
@@ -13,9 +17,8 @@ mixin nav(page)
 
 header.header-block
   h1.visually-hidden Online zoo
-  if currentPage === '404'
-    .logo
-      a(href="../main/index.html").logo__logo-link
+  .logo
+    a(href=`${currentPage === 'translation' ? `../../main/index.html` : `../main/index.html`}`).logo__logo-link
   .header-block__wrapper
     +nav(currentPage)
     .profile-enter

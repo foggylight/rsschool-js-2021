@@ -15,10 +15,35 @@
   width: 100%;
   margin: 0;
   padding: 0;
+
+  @include _1200 {
+    width: auto;
+    margin: 0 20px 0 0;
+  }
+
+  @include _640 {
+    margin: 0 10px 0 0;
+  }
+}
+
+.logo {
+  display: flex;
+}
+
+.header-nav {
+  margin: 0;
 }
 
 .header-nav__list {
   margin: 0 0 0 100px;
+
+  @include _1919 {
+    margin: 0 0 0 80px;
+  }
+}
+
+.profile-enter__avatar {
+  margin: 0;
 }
 
 .content {

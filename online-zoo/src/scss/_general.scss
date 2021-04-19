@@ -23,6 +23,10 @@ body {
   color: $gray;
 
   background-color: $white;
+
+  @include _1919 {
+    font-size: 16px;
+  }
 }
 
 * {
@@ -50,23 +54,45 @@ body {
 }
 
 .content-wrapper {
-  @include grid($gridColumnsCount, $gridGap);
+  @include grid(10, 40px);
   margin: 25px 60px 0;
+
+  @include _1919 {
+    @include grid(8, 30px);
+    margin: 25px 40px 0;
+  }
+
+  @include _1200 {
+    @include grid(6, 30px);
+    margin: 0 20px;
+  }
+
+  @include _640 {
+    margin: 0 10px;
+  }
 }
 
 .content {
-  grid-column: 2 / 11;
+  grid-column: 2 / -1;
   margin: 90px 0 0;
 
   p a {
     text-decoration: underline;
     color: $hardBlue;
   }
+
+  @include _1200 {
+    grid-column: 1 / -1;
+  }
 }
 
 .content__item {
-  @include grid(9, $gridGap);
+  @include grid(9, 40px);
   align-items: center;
+
+  @include _1919 {
+    @include grid(7, 30px);
+  }
 }
 
 .heading {
@@ -86,7 +112,7 @@ body {
 }
 
 .btn_dark {
-  @extend %btn;
+  @include btn();
   @extend %btn-text;
   background-color: $blue;
 
@@ -102,7 +128,7 @@ body {
 }
 
 .btn_light {
-  @extend %btn;
+  @include btn();
   @extend %btn-text;
   border: 2px solid $blue;
 

@@ -17,28 +17,66 @@
   background: rgba(252, 252, 252, 1);
 
   backdrop-filter: blur(5px);
+
+  @include _1919 {
+    width: 70px;
+    margin: 0 0 100px;
+  }
+
+  @include _1200 {
+    top: calc(100vh - 103px);
+    bottom: 23px;
+
+    grid-column: 1 / -1;
+    flex-direction: row;
+    width: calc(100vw - 52px);
+    height: 80px;
+    border-radius: 15px;
+  }
+
+  @include _640 {
+    top: calc(100vh - 78px);
+
+    width: calc(100vw - 32px);
+    height: 75px;
+  }
 }
 
-.sidebar__item.logo {
+.logo-sidebar {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 88px;
   width: 88px;
   border-bottom: 2px solid $lightGray;
+
+  @include _1919 {
+    height: 68px;
+    width: 68px;
+  }
+
+  @include _1200 {
+    display: none;
+  }
 }
 
-.logo__logo-link {
+.logo__logo-link-sidebar {
   display: block;
   height: 40px;
   width: 53px;
 
   background-image: url(../../assets/icons/logo.svg);
+  background-size: contain;
 
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @include _1919 {
+    height: 32px;
+    width: 41.5px;
   }
 }
 
@@ -48,6 +86,11 @@
   justify-content: space-between;
   height: 196px;
   margin-top: 150px;
+
+  @include _1919 {
+    height: 168px;
+    margin-top: 130px;
+  }
 }
 
 .social-icons__item-link {
@@ -68,10 +111,22 @@
   &:active {
     border-color: $lightBlue;
   }
+
+  @include _1919 {
+    height: 44px;
+    width: 44px;
+  }
 }
 
 .social-icons__item-link:active svg.social-icons__svg {
   fill: $active;
+}
+
+.social-icons__svg {
+  @include _1919 {
+    height: 18px;
+    width: 18px;
+  }
 }
 
 .sidebar__go-up {
@@ -94,6 +149,12 @@
   &:active {
     border-color: $lightBlue;
   }
+
+  @include _1919 {
+    height: 44px;
+    width: 44px;
+    margin: 0 0 60px;
+  }
 }
 
 .sidebar__go-up-link {
@@ -113,6 +174,16 @@
 
   transition: 0.3s;
 
+  @include _1919 {
+    height: 66px;
+    width: 66px;
+  }
+
+  @include _640 {
+    height: 69px;
+    width: 25px;
+  }
+
   &.up,
   &.down {
     &::before {
@@ -126,20 +197,48 @@
     }
   }
 
+  &.up {
+    @include _640 {
+      margin: 0 5px 0 0;
+    }
+  }
+
+  &.down {
+    @include _1200 {
+      margin: 0 7px 0 0;
+    }
+  }
+
   &.up::before {
     background-image: url(../../assets/icons/arrow-sidebar-up.svg);
+
+    @include _1200 {
+      transform: rotate(-90deg);
+    }
   }
 
   &.down::before {
     background-image: url(../../assets/icons/arrow-sidebar-down.svg);
+
+    @include _1200 {
+      transform: rotate(-90deg);
+    }
   }
 
   &.up:hover {
     transform: translate(0, -10px);
+
+    @include _1200 {
+      transform: translate(-5px, 0);
+    }
   }
 
   &.down:hover {
     transform: translate(0, 10px);
+
+    @include _1200 {
+      transform: translate(5px, 0);
+    }
   }
 }
 
@@ -151,6 +250,38 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+
+    @include _1919 {
+      justify-content: space-between;
+    }
+
+    @include _1200 {
+      flex-direction: row;
+    }
+  }
+}
+
+.animals__item-panda {
+  @include _640 {
+    order: 1;
+  }
+}
+
+.animals__item-alligator {
+  @include _640 {
+    order: 2;
+  }
+}
+
+.animals__item-eagle {
+  @include _640 {
+    order: 4;
+  }
+}
+
+.animals__item-gorilla {
+  @include _640 {
+    order: 3;
   }
 }
 
@@ -175,5 +306,40 @@
   &:active {
     border-color: $hardBlue;
     transform: scale(0.9);
+  }
+
+  @include _1919 {
+    height: 45px;
+    width: 45px;
+  }
+}
+
+.animals__item-icon {
+  &-panda {
+    @include _1919 {
+      height: 21px;
+      width: 28px;
+    }
+  }
+
+  &-alligator {
+    @include _1919 {
+      height: 29px;
+      width: 23px;
+    }
+  }
+
+  &-eagle {
+    @include _1919 {
+      height: 27px;
+      width: 21px;
+    }
+  }
+
+  &-gorilla {
+    @include _1919 {
+      height: 29px;
+      width: 25px;
+    }
   }
 }

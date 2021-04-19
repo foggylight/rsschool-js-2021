@@ -28,18 +28,66 @@
   }
 }
 
-.header-block__wrapper {
-  padding: 0 85px 0 94px;
-}
-
 .header-block {
   margin: 25px 60px 0;
+
+  @include _1919 {
+    margin: 25px 40px 0
+  }
+
+  @include _1200 {
+    margin: 0;
+    border: none;
+
+    background-color: transparent;
+  }
+}
+
+.logo {
+  @include _1200 {
+    display: flex;
+  }
+}
+
+.profile-enter__avatar {
+  @include _max {
+    margin: 0 86px 0 0;
+  }
 }
 
 .sidebar {
   position: fixed;
 
   margin: 0 60px 75px;
+
+  @include _1919 {
+    height: calc(100vh - 80px);
+    margin: 0 40px 55px;
+  }
+
+  @include _1200 {
+    width: calc(100vw - 52px);
+    height: 80px;
+    margin: 0 20px 0;
+  }
+
+  @include _640 {
+    top: calc(100vh - 92px);
+
+    width: calc(100vw - 34px);
+    height: 75px;
+    margin: 0 10px 0;
+  }
+}
+
+.sidebar__nav.down {
+  @include _1200 {
+    margin: 0;
+  }
+
+  @include _640 {
+    margin: 0 7px 0 0;
+  }
 }
 
 .animals__item-addition {

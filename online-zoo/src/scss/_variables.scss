@@ -16,14 +16,6 @@ $wightBlue: #D9E8FF;
 $hardBlue: #3888FF;
 $active: #150068;
 
-// 1920px
-
-$gridColumnsCount: 10;
-$gridGap: 40px;
-$gridColumns: calc((100% - 9 * $gridGap) / $gridColumnsCount);
-
-$icons: "eagle", "alligator", "gorilla", "panda";
-
 %heading {
   font-weight: 400;
   font-size: 22px;
@@ -34,15 +26,5 @@ $icons: "eagle", "alligator", "gorilla", "panda";
 
 %btn-text {
   font-weight: 500;
-  line-height: normal;
-}
-
-%btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 75px;
-  border-radius: 5px;
-
-  transition: 0.2s;
+  line-height: 1;
 }

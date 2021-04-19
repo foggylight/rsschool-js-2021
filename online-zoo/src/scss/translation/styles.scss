@@ -6,8 +6,48 @@
 @import '../pay-and-feed';
 @import '../footer';
 
+.logo {
+  @include _1200 {
+    display: flex;
+  }
+}
+
+.profile-enter__avatar {
+  @include _max {
+    margin: 0 86px 0 0;
+  }
+}
+
+.sidebar {
+  @include _1919 {
+    height: calc(100vh - 75px);
+    margin: 0 0 85px;
+  }
+
+  @include _1200 {
+    height: 80px;
+    margin: 0 0 23px;
+  }
+
+  @include _640 {
+    height: 75px;
+  }
+}
+
+.animals {
+  @include _max {
+    margin: 10px 0;
+  }
+}
+
+.animals__item-addition {
+  @include _1200 {
+    display: none;
+  }
+}
+
 .main-cam {
-  @include grid(9, $gridGap);
+  @include grid(9, 40px);
   align-items: start;
   padding: 70px 0 60px;
 }
@@ -75,7 +115,7 @@
 }
 
 .other-cams {
-  @include grid(9, $gridGap);
+  @include grid(9, 40px);
   padding: 0 0 60px;
 }
 
@@ -121,7 +161,7 @@
 
 .video-slider {
   grid-column: 1 / span 8;
-  @include grid(8, $gridGap);
+  @include grid(8, 40px);
   margin: 40px 0;
 }
 
@@ -179,7 +219,7 @@
 }
 
 .facts {
-  @include grid(9, $gridGap);
+  @include grid(9, 40px);
 
   a {
     color: $lightBlue;
