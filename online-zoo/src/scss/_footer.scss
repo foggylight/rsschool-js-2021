@@ -231,7 +231,7 @@
 }
 
 .footer__heading {
-  @extend %heading;
+  @include heading;
   color: $white;
 
   @include _640 {

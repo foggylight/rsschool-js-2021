@@ -101,10 +101,26 @@ body {
   @include _1919 {
     @include grid(7, 30px);
   }
+
+  @include _1200 {
+    @include grid(6, 30px);
+  }
+
+  @include _640 {
+    @include grid(4, 20px);
+  }
 }
 
 .heading {
-  @extend %heading;
+  @include heading;
+
+  @include _1919 {
+    font-size: 20px;
+  }
+
+  @include _640 {
+    font-size: 16px;
+  }
 }
 
 .text-block__subtitle {
@@ -116,6 +132,18 @@ body {
 
   &_small {
     font-size: 26px;
+  }
+
+  @include _1919 {
+    font-size: 28px;
+  }
+
+  @include _1200 {
+    font-size: 24px;
+  }
+
+  @include _640 {
+    font-size: 20px;
   }
 }
 
@@ -172,6 +200,11 @@ body {
     background-repeat: no-repeat;
 
     transition: 0.3s;
+
+    @include _1919 {
+      width: 56px;
+      height: 56px;
+    }
   }
 
   &_prev {
@@ -205,7 +238,15 @@ body {
     margin: 0 0 0 18px;
 
     background-image: url(../../assets/icons/text-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 
     content: "";
+
+    @include _640 {
+      margin: 0 0 0 3px;
+
+      background-size: 15px;
+    }
   }
 }

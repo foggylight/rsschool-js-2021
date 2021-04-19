@@ -15,6 +15,20 @@
   box-shadow: 4px 12px 22px rgba(0, 0, 0, 0.06);
 
   text-align: center;
+
+  @include _1919 {
+    width: 292px;
+    height: 448px;
+  }
+
+  @include _1200 {
+    width: 250px;
+    height: 390px;
+  }
+
+  @include _640 {
+    height: 374px;
+  }
 }
 
 .animal-card__text-block {
@@ -24,6 +38,20 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px 40px 40px;
+
+  @include _1919 {
+    margin: 20px 15px 40px;
+  }
+
+  @include _1200 {
+    margin: 20px 15px 30px;
+  }
+
+  .text-block__text {
+    @include _1200 {
+      font-size: 14px;
+    }
+  }
 }
 
 .animal-card_active {
@@ -32,10 +60,28 @@
 
 .animal-card__eagle-text {
   margin: 0 0 40px;
+
+  @include _1919 {
+    margin: 0 0 20px;
+  }
+
+  @include _1200 {
+    max-width: 212px;
+
+    line-height: 22px;
+  }
 }
 
 .animal-card__image {
   width: 100%;
+
+  @include _1919 {
+    height: 190px;
+  }
+
+  @include _1200 {
+    height: 160px;
+  }
 }
 
 .animal-card__link {
@@ -93,4 +139,8 @@
 
 .map__marker {
   overflow: visible;
+}
+
+.animals-map {
+  display: none;
 }
