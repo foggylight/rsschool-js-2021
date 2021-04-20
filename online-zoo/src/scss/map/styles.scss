@@ -25,6 +25,20 @@
     background-position: calc(50% + 30px) calc(50% - 37px);
 
     content: "";
+
+    @include _1919 {
+      background-position: calc(50% + 98px) calc(50% + 27px);
+      background-size: 1400px;
+    }
+
+    @include _1200 {
+      background-position: calc(50% + 40px) calc(50% - 22px);
+    }
+
+    @include _640 {
+      background-position: calc(50% + 53px) calc(50% - 23px);
+      background-size: 836px;
+    }
   }
 }
 
@@ -57,6 +71,7 @@
 
 .sidebar {
   position: fixed;
+  z-index: 10;
 
   margin: 0 60px 75px;
 
@@ -66,7 +81,7 @@
   }
 
   @include _1200 {
-    width: calc(100vw - 52px);
+    width: calc(100vw - 40px);
     height: 80px;
     margin: 0 20px 0;
   }
@@ -74,7 +89,7 @@
   @include _640 {
     top: calc(100vh - 92px);
 
-    width: calc(100vw - 34px);
+    width: calc(100vw - 20px);
     height: 75px;
     margin: 0 10px 0;
   }
@@ -101,27 +116,102 @@
   width: 1920px;
   margin: 0 auto;
   align-self: center;
+
+  @include _1919 {
+    height: 700px;
+    width: 1200px;
+  }
+
+  @include _1200 {
+    width: 640px;
+    height: 800px;
+  }
+
+  @include _640 {
+    width: 320px;
+    height: 480px;
+  }
 }
 
 .map__link {
   &-eagle {
     left: -97px;
     top: -48px;
+
+    @include _1919 {
+      left: 1px;
+      top: 94px;
+    }
+
+    @include _1200 {
+      left: -337px;
+      top: 94px;
+    }
+
+    @include _640 {
+      left: -204px;
+      top: 46px;
+    }
   }
 
   &-alligator {
     left: 251px;
     top: 205px;
+
+    @include _1919 {
+      left: 225px;
+      top: 257px;
+    }
+
+    @include _1200 {
+      left: -113px;
+      top: 257px;
+    }
+
+    @include _640 {
+      left: -72px;
+      top: 143px;
+    }
   }
 
   &-gorilla {
     left: 952px;
     top: 444px;
+
+    @include _1919 {
+      left: 673px;
+      top: 399px;
+    }
+
+    @include _1200 {
+      left: 339px;
+      top: 399px;
+    }
+
+    @include _640 {
+      left: 200px;
+      top: 232px;
+    }
   }
 
   &-panda {
     left: 1628px;
     top: 247px;
+
+    @include _1919 {
+      left: 1111px;
+      top: 284px;
+    }
+
+    @include _1200 {
+      left: 773px;
+      top: 284px;
+    }
+
+    @include _640 {
+      left: 457px;
+      top: 159px;
+    }
   }
 
   &_active{
@@ -133,8 +223,35 @@
   }
 }
 
+
+.map__marker {
+  @include _1919 {
+    width: 53px;
+    height: 68px;
+  }
+
+  @include _640 {
+    width: 35px;
+    height: 45px
+  }
+}
+
 .animal-card__gorilla {
   position: absolute;
-  left: 583px;
-  top: 240px;
+  top: calc(50% - 190px);
+  left: calc(50% - 379px);
+
+  @include _1919 {
+    top: calc(50% - 145px);
+    left: calc(50% - 244px);
+  }
+
+  @include _1200 {
+    top: calc(50% - 165px);
+    left: calc(50% - 255px);
+  }
+
+  @include _640 {
+    display: none;
+  }
 }
