@@ -22,7 +22,8 @@ html(lang="en")
 
         .content
           section#main-cam.main-cam
-            <iframe class="main-cam__video video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/65JHo3Cy2tY" frameborder="0"></iframe>
+            .main-cam__video-block
+              <iframe class="main-cam__video video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/65JHo3Cy2tY" frameborder="0"></iframe>
             .sub-block
               .sub-block__avatar
                 img(src="../../../assets/images/translation-panda-sub.png", alt="Shenshuping Panda Center")
@@ -30,41 +31,42 @@ html(lang="en")
                 p.sub-block__name Shenshuping Panda Center
                 p.sub-block__watching 506 watching now
             .text-block.main-cam__text-block
-              h3.text-block__subtitle.text-block__subtitle_small You can donate to this animals for a wonderful lunch.
+              h3.text-block__subtitle.text-block__subtitle_small You can donate &NewLine;to this animals for a wonderful lunch.
               p.text-block__text.main-cam__text Pandas will receive a mixture of bamboo shoots, carrots and apples. Animals will receive your gift in about 5-15 minutes
               .text-block__btn-wrapper
-                a(href="#").btn_dark Feed the panda
+                a(href="#").btn_dark.btn-big-screen Feed the panda
+                a(href="#").btn_dark.btn-small-screen Try now
 
-          section#other-cams.other-cams
-            h2.text-block__subtitle.other-cams__heading Other cams
-            .video-slider
-              .video-slider__video-item
-                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/OObOQ2GElhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                a(href="#").video-slider__closing-block.slider__content_hover
-                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 68 viewers
-                  .divider
-                  span.video-item__link.slider__item-link.slider__item-link_hover Watch
-              .video-slider__video-item
-                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/65JHo3Cy2tY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                a(href="#").video-slider__closing-block.slider__content_hover
-                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 25 viewers
-                  .divider
-                  span.video-item__link.slider__item-link.slider__item-link_hover Watch
-              .video-slider__video-item
-                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/58aHnTp0-JY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                a(href="#").video-slider__closing-block.slider__content_hover
-                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white Off season
-                  .divider
-                  span.video-item__link.slider__item-link.slider__item-link_hover Watch Highlights
-              .video-slider__video-item
-                <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/tCcd6ZkExuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                a(href="#").video-slider__closing-block.slider__content_hover
-                  p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white Off season
-                  .divider
-                  span.video-item__link.slider__item-link.slider__item-link_hover Watch Highlights
-            .text-block__btn-wrapper.slider-nav
-                a(href="#").slider-nav__arrow_prev
-                a(href="#").slider-nav__arrow_next
+            section#other-cams.other-cams
+              h2.text-block__subtitle.other-cams__heading Other cams
+              .video-slider
+                .video-slider__video-item
+                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/OObOQ2GElhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 68 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/65JHo3Cy2tY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 25 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/58aHnTp0-JY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white Off season
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch Highlights
+                .video-slider__video-item
+                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/tCcd6ZkExuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white Off season
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch Highlights
+              .text-block__btn-wrapper.slider-nav
+                  a(href="#").slider-nav__arrow_prev
+                  a(href="#").slider-nav__arrow_next
 
           section#facts.facts
             .text-block.facts__text
