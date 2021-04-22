@@ -204,7 +204,7 @@
   }
 
   @include _1200 {
-    margin: 120px 0 0;
+    margin: 115px 0 0;
   }
 
   @include _640 {
@@ -227,7 +227,7 @@
 
   @include _1200 {
     max-width: 550px;
-    margin: 45px auto 28px;
+    margin: 45px auto 30px;
     font-size: 26px;
   }
 
@@ -235,7 +235,6 @@
     margin: 30px auto 28px;
 
     font-size: 20px;
-    white-space: pre-wrap;
   }
 }
 
@@ -251,13 +250,13 @@
   @include _1200 {
     max-width: 550px;
     margin: 0 0 40px;
-    white-space: normal;
+
+    font-size: 16px;
   }
 
   @include _640 {
     font-size: 14px;
     line-height: 22px;
-    white-space: pre-wrap;
   }
 }
 
@@ -338,7 +337,7 @@
 
     @include _640 {
       // height: 692px;
-      height: calc((((100vw - 40px) / 2) * 2) + 379px);
+      height: calc((((100vw - 40px) / 2) * 2) + 395px);
     }
   }
 
@@ -569,6 +568,8 @@
   transition: 0.2s;
 
   @include _640 {
+    position: relative;
+    top: 10px;
     font-size: 14px;
   }
 }
@@ -686,16 +687,11 @@
   }
 
   .text-block__text {
-    @include _1919 {
-      white-space: pre-wrap;
-    }
-
     @include _1200 {
       max-width: 392px;
 
       font-size: 16px;
       line-height: 25px;
-      white-space: normal;
     }
 
     @include _640 {

@@ -237,6 +237,11 @@ body {
 
   @extend %btn-text;
 
+  @include _640 {
+    display: flex;
+    height: 5px;
+  }
+
   &::after {
     display: block;
     height: 14px;
@@ -250,9 +255,43 @@ body {
     content: "";
 
     @include _640 {
+      height: 5px;
       margin: 0 0 0 3px;
 
       background-size: 15px;
     }
   }
 }
+
+.br1200 {
+  display: none;
+
+  @include _1919 {
+    display: inline;
+  }
+
+  @include _1200 {
+    display: none;
+  }
+}
+
+.br640 {
+  display: none;
+
+  @include _1200 {
+    display: inline;
+  }
+
+  @include _640 {
+    display: none;
+  }
+}
+
+.br320 {
+  display: none;
+
+  @include _640 {
+    display: inline;
+  }
+}
+

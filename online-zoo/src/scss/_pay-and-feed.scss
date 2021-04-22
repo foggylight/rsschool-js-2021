@@ -69,13 +69,10 @@
   @include _1200 {
     font-size: 18px;
     line-height: 28px;
-
-    white-space: pre-wrap;
   }
 
   @include _640 {
     font-size: 14px;
-    white-space: normal;
 
     line-height: 22px;
   }
