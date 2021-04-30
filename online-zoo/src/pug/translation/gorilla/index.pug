@@ -67,23 +67,28 @@ html(lang="en")
               h2.text-block__subtitle.facts__subtitle Interesting facts
               p.text-block__text The Gorilla Rehabilitation and Conservation Education Center is located near the Tayna Nature Reserve in the Republic of Congo. Watch live and learn more about the gorillas.
             .accordion
-              .accordion__item.accordion__item_active
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Species population
-                  .accordion__btn-more
-                p.accordion__text All species (and subspecies) of gorilla are listed as endangered or critically endangered on the IUCN Red List. Now, over 100,000 western lowland gorillas are thought to exist in the wild, with 4,000 in zoos, thanks to conservation; eastern lowland gorillas have a population of under 5,000 in the wild and 24 in zoos.
-              .accordion__item.accordion__item_active
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text All species (and subspecies) of gorilla are listed as endangered or critically endangered on the IUCN Red List. Now, over 100,000 western lowland gorillas are thought to exist in the wild, with 4,000 in zoos, thanks to conservation; eastern lowland gorillas have a population of under 5,000 in the wild and 24 in zoos.
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Region of habitat
-                  .accordion__btn-more
-                p.accordion__text In nature, gorillas live in the equatorial forests of western and central Africa, mountain gorillas - on the slopes of the volcanic mountains of Virunga, covered with forest. They keep in small groups, consisting of a male leader, several females and their cubs (from 5 to 30 individuals in total).
-              .accordion__item.accordion__item_active
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text In nature, gorillas live in the equatorial forests of western and central Africa, mountain gorillas - on the slopes of the volcanic mountains of Virunga, covered with forest. They keep in small groups, consisting of a male leader, several females and their cubs (from 5 to 30 individuals in total).
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Nutrition
-                  .accordion__btn-more
-                p.accordion__text The gorilla's diet is based on plant foods. Among the plants used, one can distinguish wild celery, bedstraw, nettles, bamboo shoots, blue pygeum fruits. Fruits and nuts are an addition to the main diet, while animal foods.
-                p.accordion__text Gorillas also use various mineral supplements in their diet: they eat, for example, some types of clay, thus compensating for the lack of salt in food. Gorillas hardly have to drink: juicy greens already have enough moisture. Reservoirs and water in general are avoided whenever possible, and rain is disliked.
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text The gorilla's diet is based on plant foods. Among the plants used, one can distinguish wild celery, bedstraw, nettles, bamboo shoots, blue pygeum fruits. Fruits and nuts are an addition to the main diet, while animal foods.
+                  p.accordion__text Gorillas also use various mineral supplements in their diet: they eat, for example, some types of clay, thus compensating for the lack of salt in food. Gorillas hardly have to drink: juicy greens already have enough moisture. Reservoirs and water in general are avoided whenever possible, and rain is disliked.
 
           include ../../includes/pay-and-feed.pug
 
       include ../../includes/footer.pug
+
+    script(type="module" src="../index.js")

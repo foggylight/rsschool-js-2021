@@ -1,15 +1,12 @@
 @import '../variables';
 @import '../mixins';
-@import '../general';
-@import '../header';
-@import '../sidebar';
-@import '../pay-and-feed';
-@import '../map';
-@import '../footer';
 
-// .watch-online {
-//   height: calc(870px - 25px - 90px);
-// }
+@import '../general';
+@import '../includes/header';
+@import '../includes/sidebar';
+@import '../includes/pay-and-feed';
+@import '../includes/map';
+@import '../includes/footer';
 
 .logo {
   @include _1200 {
@@ -319,7 +316,7 @@
     z-index: -10;
 
     height: 896px;
-    width: 100vw;
+    width: 100%;
 
     background-color: $wightBlue;
 
@@ -650,7 +647,7 @@
     z-index: -10;
 
     height: 616px;
-    width: 100vw;
+    width: 100%;
 
     background-color: $darkBlue;
 

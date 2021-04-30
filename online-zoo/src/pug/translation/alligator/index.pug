@@ -67,22 +67,27 @@ html(lang="en")
               h2.text-block__subtitle.facts__subtitle Interesting facts
               p.text-block__text Keep an eye out for alligators basking in the sun and tune in for feeding demonstrations at 12:00 PM and 3:00 PM ET. Watch live and learn more about the alligators.
             .accordion
-              .accordion__item.accordion__item_active
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Species population
-                  .accordion__btn-more
-                p.accordion__text Most American alligators live in Florida and Louisiana. In Florida alone, their number is 1 million individuals. Florida is the only place on Earth where alligators and real crocodiles coexist.
-              .accordion__item.accordion__item_active
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text Most American alligators live in Florida and Louisiana. In Florida alone, their number is 1 million individuals. Florida is the only place on Earth where alligators and real crocodiles coexist.
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Region of habitat
-                  .accordion__btn-more
-                p.accordion__text There are only two countries in the world where representatives of this genus live - these are the United States of America and China. The Chinese alligator is endangered and lives only in the Yangtze River Valley. The American alligator lives on the east coast of the United States from North Carolina to Texas.
-              .accordion__item.accordion__item_active
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text There are only two countries in the world where representatives of this genus live - these are the United States of America and China. The Chinese alligator is endangered and lives only in the Yangtze River Valley. The American alligator lives on the east coast of the United States from North Carolina to Texas.
+              .accordion__item
                 .accordion__title-block
                   h4.accordion__title Nutrition
-                  .accordion__btn-more
-                p.accordion__text Alligators feed on almost anything they can catch. Juveniles prey on fish, insects, snails and crustaceans. As they grow, Mississippi alligators choose larger prey: large fish, such as carapace pike (Lepisosteidae); turtles, small mammals, birds and other reptiles, while Chinese alligators, due to their small size, still consume a large number of very small animals. Foreign bodies are often found in the stomachs of alligators. If alligators are hungry enough, they can eat carrion as well. Adult Mississippi alligators can sometimes hunt deer, feral pigs, or even younger alligators, although they are much inferior to most true crocodiles and black caimans for capturing large prey.
+                  .accordion__btn
+                .accordion__text-block.expanded
+                  p.accordion__text Alligators feed on almost anything they can catch. Juveniles prey on fish, insects, snails and crustaceans. As they grow, Mississippi alligators choose larger prey: large fish, such as carapace pike (Lepisosteidae); turtles, small mammals, birds and other reptiles, while Chinese alligators, due to their small size, still consume a large number of very small animals. Foreign bodies are often found in the stomachs of alligators. If alligators are hungry enough, they can eat carrion as well. Adult Mississippi alligators can sometimes hunt deer, feral pigs, or even younger alligators, although they are much inferior to most true crocodiles and black caimans for capturing large prey.
 
           include ../../includes/pay-and-feed.pug
 
       include ../../includes/footer.pug
+
+    script(type="module" src="../index.js")

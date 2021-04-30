@@ -7,7 +7,6 @@ function serve() {
   browserSync.init({
     server: {
       baseDir: "dist",
-      //index: "/pages/main/index.html"
     },
     startPath: "/pages/main/index.html",
   });
@@ -32,11 +31,17 @@ function styles() {
     .pipe(browserSync.stream());
 }
 
+function scripts() {
+  return src("src/js/**/*.js")
+    .pipe(dest("dist/pages"));
+}
+
 function watchFiles() {
   watch("src/scss/**/*.scss", styles);
+  watch("src/js/**/*.js", scripts);
   watch("src/pug/**/*.pug", html);
   watch("dist/**/*.html").on("change", browserSync.reload);
 }
 
-exports.build = series(html, styles);
+exports.build = series(html, styles, scripts);
 exports.default = parallel(serve, watchFiles);

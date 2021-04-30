@@ -16,8 +16,10 @@ html(lang="en")
 
       include ../includes/header.pug
 
-      main.content-wrapper
+      main(draggable="true").content-wrapper
 
         include ../includes/sidebar.pug
 
         include ../includes/map.pug
+
+    script(src="index.js")

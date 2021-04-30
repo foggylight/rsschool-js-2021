@@ -1,10 +1,11 @@
 @import '../variables';
 @import '../mixins';
+
 @import '../general';
-@import '../header';
-@import '../sidebar';
-@import '../pay-and-feed';
-@import '../footer';
+@import '../includes/header';
+@import '../includes/sidebar';
+@import '../includes/pay-and-feed';
+@import '../includes/footer';
 
 .logo {
   @include _1200 {
@@ -603,8 +604,7 @@
 
 .accordion__item {
   margin: 0 0 20px;
-  padding: 0 0 30px;
-  border-bottom: 1px solid $lightBlue;
+  border-bottom: 1px solid $superLightGray;
 }
 
 .accordion__title-block {
@@ -616,7 +616,7 @@
   cursor: pointer;
 }
 
-.accordion__btn-more {
+.accordion__btn {
   height: 2px;
   width: 22px;
   margin: 14px;
@@ -654,6 +654,17 @@
     font-size: 18px;
   }
 }
+.accordion__title {
+  color: $darkBlue;
+}
+
+.accordion__text-block {
+  overflow: hidden;
+
+  max-height: 0;
+
+  transition: max-height 0.2s ease-out;
+}
 
 .accordion__text {
   margin: 0 0 27px;
@@ -664,17 +675,24 @@
 }
 
 .accordion__item_active {
+  border-bottom: 1px solid $lightBlue;
+
   .accordion__title {
     color: $lightBlue;
   }
 
-  .accordion__btn-more {
+  .accordion__btn {
     background-color: $lightBlue;
   }
 
-  .accordion__btn-more::before {
+  .accordion__btn::before {
     transform: rotate(90deg);
     background-color: $lightBlue;
+  }
+
+  .accordion__text-block {
+    //max-height: 100%;
+    margin: 0 0 30px;
   }
 }
 
