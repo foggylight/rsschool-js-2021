@@ -1,8 +1,8 @@
 export class Carousel {
-  constructor(initCarousel) {
-    this.carousel = initCarousel.carouselNode;
-    this.prevBtn = initCarousel.carouselPrev;
-    this.nextBtn = initCarousel.carouselNext;
+  constructor(initObj) {
+    this.carousel = initObj.carouselNode;
+    this.prevBtn = initObj.carouselPrev;
+    this.nextBtn = initObj.carouselNext;
     this.items = this.carousel.children;
     this.transitionDuration = 0.5;
 
@@ -50,5 +50,33 @@ export class Carousel {
 
   resizeWithWindow() {
     window.addEventListener("resize", () => this.setSizes());
+  }
+}
+
+export class CamsCarousel extends Carousel {
+  constructor(initObj) {
+    super(initObj);
+
+    this.changeVideo();
+  }
+
+  changeVideoHandler(e) {
+    e.preventDefault();
+
+    const mainVideo = document.querySelector('.main-cam__video');
+    const parentBlock = e.target.closest('.video-slider__video-item');
+    const newMainVideo = parentBlock.querySelector('.video-slider__video')
+
+    mainVideo.replaceWith(newMainVideo);
+    newMainVideo.classList.remove('video-slider__video');
+    newMainVideo.classList.add('main-cam__video');
+
+    parentBlock.prepend(mainVideo);
+    mainVideo.classList.remove('main-cam__video');
+    mainVideo.classList.add('video-slider__video');
+  }
+
+  changeVideo() {
+    [...this.items].forEach((item) => item.addEventListener('click', (e) => this.changeVideoHandler(e)));
   }
 }

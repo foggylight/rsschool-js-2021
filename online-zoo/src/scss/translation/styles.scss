@@ -481,6 +481,8 @@
 }
 
 .video-slider__video {
+  pointer-events: none;
+  
   @include _1919 {
     position: absolute;
     top: 0;
