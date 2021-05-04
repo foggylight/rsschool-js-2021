@@ -23,7 +23,7 @@ html(lang="en")
         .content
           section#main-cam.main-cam
             .main-cam__video-block
-              <iframe class="main-cam__video video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/rgXWDk7rh4w" frameborder="0"></iframe>
+              <iframe class="main-cam__video video" width="100%" height="100%" showinfo="0" controls="0" src="https://www.youtube.com/embed/rgXWDk7rh4w" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             .sub-block
               .sub-block__avatar
                 img(src="../../../assets/images/translation-gorilla-sub.png", alt="Grace gorillas")
@@ -39,34 +39,58 @@ html(lang="en")
 
             section#other-cams.other-cams
               h2.text-block__subtitle.other-cams__heading Other cams
-              .video-slider
+              .video-slider#video-slider
                 .video-slider__video-item
-                  img(class="video video-slider__video", src="../../../assets/images/cam-2-gorilla.jpg", alt="")
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-2-gorilla.jpg", alt="")
                   a(href="#").video-slider__closing-block.slider__content_hover
                     p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 68 viewers
                     .divider
                     span.video-item__link.slider__item-link.slider__item-link_hover Watch
                 .video-slider__video-item
-                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/rgXWDk7rh4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                  <iframe class="video video-slider__video" width="100%" height="100%" src="https://www.youtube.com/embed/NdE7bANJIz0" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   a(href="#").video-slider__closing-block.slider__content_hover
                     p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
                     .divider
                     span.video-item__link.slider__item-link.slider__item-link_hover Watch
                 .video-slider__video-item
-                  img(class="video video-slider__video", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-3-gorilla.jpg", alt="")
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
+                  a(href="#").video-slider__closing-block.slider__content_hover
+                    p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
+                    .divider
+                    span.video-item__link.slider__item-link.slider__item-link_hover Watch
+                .video-slider__video-item
+                  img(class="video video-slider__video", width="100%", height="100%", src="../../../assets/images/cam-4-gorilla.jpg", alt="")
                   a(href="#").video-slider__closing-block.slider__content_hover
                     p.text-block__subtitle.text-block__subtitle_small.text-block__subtitle_white 18 viewers
                     .divider
                     span.video-item__link.slider__item-link.slider__item-link_hover Watch
               .text-block__btn-wrapper.slider-nav
-                  a(href="#").slider-nav__arrow_prev
-                  a(href="#").slider-nav__arrow_next
+                a(href="#").slider-nav__arrow_prev
+                a(href="#").slider-nav__arrow_next
 
           section#facts.facts
             .text-block.facts__text
               h2.text-block__subtitle.facts__subtitle Interesting facts
               p.text-block__text The Gorilla Rehabilitation and Conservation Education Center is located near the Tayna Nature Reserve in the Republic of Congo. Watch live and learn more about the gorillas.
-            .accordion
+            .accordion#accordion
               .accordion__item
                 .accordion__title-block
                   h4.accordion__title Species population

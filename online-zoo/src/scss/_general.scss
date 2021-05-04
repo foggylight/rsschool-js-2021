@@ -221,13 +221,13 @@ body {
     background-image: url(../../assets/icons/slider-nav-next.svg);
   }
 
-  &_prev:hover {
-    transform: translate(-5px);
-  }
+  // &_prev:hover {
+  //   transform: translate(-5px);
+  // }
 
-  &_next:hover {
-    transform: translate(5px);
-  }
+  // &_next:hover {
+  //   transform: translate(5px);
+  // }
 }
 
 .slider__item-link_hover {
