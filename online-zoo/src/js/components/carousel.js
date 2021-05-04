@@ -1,4 +1,4 @@
-export class Carousel {
+class Carousel {
   constructor(initObj) {
     this.carousel = initObj.carouselNode;
     this.prevBtn = initObj.carouselPrev;
@@ -50,6 +50,34 @@ export class Carousel {
 
   resizeWithWindow() {
     window.addEventListener("resize", () => this.setSizes());
+  }
+}
+
+export class PetsCarousel extends Carousel {
+  setSizes() {
+    super.setSizes();
+    this.gap = Math.round((this.carouselWidth - (this.itemWidth * (this.displayedItems.length / 2))) / (this.displayedItems.length / 2 - 1));
+  }
+
+  slide(e, direction) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.carousel.style.transition = `transform ${this.transitionDuration}s`;
+    this.carousel.style.transform = `translateX(${direction === 'next' ? '-' : ''}${this.itemWidth + this.gap}px)`;
+
+    setTimeout(() => {
+      if (direction === 'prev') {
+        this.carousel.prepend(this.items[this.items.length - 1]);
+        this.carousel.prepend(this.items[this.items.length - 1]);
+      } else {
+        this.carousel.append(this.items[0]);
+        this.carousel.append(this.items[0]);
+      }
+      this.carousel.style.transition = 'none';
+      this.carousel.style.transform = 'none';
+    }, this.transitionDuration * 1000);
   }
 }
 

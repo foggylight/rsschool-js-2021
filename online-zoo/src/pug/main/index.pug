@@ -53,65 +53,66 @@ html(lang="en")
               h2.heading.famous-pets-heading Famous pets
               p.text-block__subtitle.famous-pets__subtitle You can choose any animal <br>you like
               .text-block__btn-wrapper.slider-nav
-                a(href="#").slider-nav__arrow_prev
-                a(href="#").slider-nav__arrow_next
-            .slider
-              .slider__item.slider__item-red-panda
-                img(src="../../assets/images/slider-red-panda.jpg", alt="Little panda").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover China, East Asia
-                  .slider__item-heading Little panda
-                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.slider__item-penguin
-                img(src="../../assets/images/slider-penguin.jpg", alt="Penguin").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover South Sea, Antarctic waters
-                  .slider__item-heading Penguin
-                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.slider__item-panda
-                img(src="../../assets/images/slider-squirrel.jpg", alt="Squirrel").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover Russia, forests in the Orenburg region
-                  .slider__item-heading Squirrel
-                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.slider__item-
-                img(src="../../assets/images/slider-panda.jpg", alt="Panda").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover Western central China
-                  .slider__item-heading Panda
-                  a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.slider__item-eagle
-                img(src="../../assets/images/slider-eagle.jpg", alt="Eagles").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover North America, islands near Los Angeles
-                  .slider__item-heading Eagle
-                  a(href="../translation/eagle/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.slider__item-gorilla
-                img(src="../../assets/images/slider-gorilla.jpg", alt="Gorilla").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover Equatorial forests of western and central Africa
-                  .slider__item-heading Gorilla
-                  a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.hidden
-                img(src="../../assets/images/slider-tiger.jpg", alt="Tiger").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover Russia, Amur region
-                  .slider__item-heading Tiger
-                  a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
-              .slider__item.hidden
-                img(src="../../assets/images/slider-alligator.jpg", alt="Alligator").slider__image
-                .slider__item-content.slider__content_hover
-                  .slider__item-circle
-                    p.slider__item-text_hover American state of Florida
-                  .slider__item-heading Alligator
-                  a(href="../translation/alligator/index.html").slider__item-link.slider__item-link_hover Follow
+                a(href="#").slider-nav__arrow_prev.famous-pets-nav__arrow_prev
+                a(href="#").slider-nav__arrow_next.famous-pets-nav__arrow_next
+            .slider-wrapper
+              .slider#famous-pets-slider
+                .slider__item.slider__item-red-panda
+                  img(src="../../assets/images/slider-red-panda.jpg", alt="Little panda").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover China, East Asia
+                    .slider__item-heading Little panda
+                    a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item.slider__item-panda
+                  img(src="../../assets/images/slider-panda.jpg", alt="Panda").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover Western central China
+                    .slider__item-heading Panda
+                    a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item.slider__item-penguin
+                  img(src="../../assets/images/slider-penguin.jpg", alt="Penguin").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover South Sea, Antarctic waters
+                    .slider__item-heading Penguin
+                    a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item.slider__item-eagle
+                  img(src="../../assets/images/slider-eagle.jpg", alt="Eagles").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover North America, islands near Los Angeles
+                    .slider__item-heading Eagle
+                    a(href="../translation/eagle/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item.slider__item-squirrel
+                  img(src="../../assets/images/slider-squirrel.jpg", alt="Squirrel").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover Russia, forests in the Orenburg region
+                    .slider__item-heading Squirrel
+                    a(href="../translation/panda/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item.slider__item-gorilla
+                  img(src="../../assets/images/slider-gorilla.jpg", alt="Gorilla").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover Equatorial forests of western and central Africa
+                    .slider__item-heading Gorilla
+                    a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item
+                  img(src="../../assets/images/slider-tiger.jpg", alt="Tiger").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover Russia, Amur region
+                    .slider__item-heading Tiger
+                    a(href="../translation/gorilla/index.html").slider__item-link.slider__item-link_hover Follow
+                .slider__item
+                  img(src="../../assets/images/slider-alligator.jpg", alt="Alligator").slider__image
+                  .slider__item-content.slider__content_hover
+                    .slider__item-circle
+                      p.slider__item-text_hover American state of Florida
+                    .slider__item-heading Alligator
+                    a(href="../translation/alligator/index.html").slider__item-link.slider__item-link_hover Follow
 
           include ../includes/pay-and-feed.pug
 
@@ -147,4 +148,4 @@ html(lang="en")
 
       include ../includes/footer.pug
 
-    script(src="index.js")
+    script(type="module" src="index.js")
