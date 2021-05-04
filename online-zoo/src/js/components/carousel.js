@@ -21,7 +21,7 @@ class Carousel {
     this.carouselWidth = +window.getComputedStyle(this.carousel).getPropertyValue('width').slice(0, -2);
     this.itemWidth = this.items[0].offsetWidth;
     this.displayedItems = [...this.items].filter((item) => window.getComputedStyle(item).getPropertyValue('display') !== 'none');
-    this.gap = Math.round((this.carouselWidth - (this.itemWidth * this.displayedItems.length)) / (this.displayedItems.length - 1));
+    this.gap = +window.getComputedStyle(this.carousel).getPropertyValue('column-gap').slice(0, -2);
   }
 
   controls() {
@@ -54,11 +54,6 @@ class Carousel {
 }
 
 export class PetsCarousel extends Carousel {
-  setSizes() {
-    super.setSizes();
-    this.gap = Math.round((this.carouselWidth - (this.itemWidth * (this.displayedItems.length / 2))) / (this.displayedItems.length / 2 - 1));
-  }
-
   slide(e, direction) {
     if (e) {
       e.preventDefault();
@@ -78,6 +73,27 @@ export class PetsCarousel extends Carousel {
       this.carousel.style.transition = 'none';
       this.carousel.style.transform = 'none';
     }, this.transitionDuration * 1000);
+  }
+}
+
+export class TestimonialsCarousel extends Carousel {
+  constructor(initObj) {
+    super(initObj);
+
+    this.automaticSlide();
+  }
+
+  automaticSlide() {
+    let autoSlide = setInterval(() => this.slide(null, 'next'), 10000);
+
+    const timeout = () => {
+      clearInterval(autoSlide);
+      setTimeout(() => (autoSlide = setInterval(() => this.slide(null, 'next'), 10000)), 10000);
+    }
+
+    this.prevBtn.addEventListener('click', timeout);
+    this.nextBtn.addEventListener('click', timeout);
+    [...this.items].forEach((item) => item.addEventListener('click', timeout));
   }
 }
 

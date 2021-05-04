@@ -771,7 +771,13 @@
 }
 
 .testimonials-slider {
+  overflow: hidden;
+
   grid-column: 4 / -1;
+
+  @include _1919 {
+    grid-column: 4 / -2;
+  }
 
   @include _1200 {
     display: flex;
@@ -781,7 +787,12 @@
 }
 
 .testimonials-slider__items-wrapper {
-  @include grid(6, 40px);
+  @include grid(12, 40px);
+  width: calc(100% + 100%);
+
+  @include _1919 {
+    @include grid(6, 30px)
+  }
 
   @include _1200 {
     display: flex;
@@ -801,14 +812,8 @@
 
   color: $dark;
 
-  &:nth-child(2) {
-    @include _1919 {
-      display: none;
-    }
-  }
-
   @include _1919 {
-    min-width: 454px;
+    min-width: 0;
     max-height: 235px;
 
     padding: 30px;
