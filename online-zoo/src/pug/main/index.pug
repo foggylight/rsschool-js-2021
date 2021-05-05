@@ -122,7 +122,21 @@ html(lang="en")
               p.text-block__subtitle.testimonials__subtitle You can make us smile
               p.text-block__text We want to make animal observation <br class="br320">and interaction accessible. You can leave your wishes <br class="br1200">on how <br class="br640">to make the service more convenient, <br class="br1200"><br class="br640">and most importantly, <br class="br320">more interesting for you.
               .text-block__btn-wrapper
-                a(href="../translation/panda/index.html").testimonials-btn Leave feedback
+                button.testimonials-btn Leave feedback
+              .leave-feedback-popup#leave-feedback-popup.hidden
+                form(action="").feedback-form
+                  h3.text-block__subtitle Your feedback
+                  .feedback-name
+                    label(for="name") Your name:
+                    input(type="text" id="name" placeholder="Ellie Coward" required).feedback-input
+                  .feedback-email
+                    label(for="email") Your e-mail:
+                    input(type="email" id="email" placeholder="example@gmail.com" required).feedback-input
+                  .feedback-review
+                    label(for="text-feedback") Your review:
+                    textarea(id="text-feedback" required).feedback-textarea
+                  button(class="feedback-btn invalid" id="send" type="submit") Send for moderation
+              .cover.hidden
             .testimonials-slider
               a(href="#").testimonials-slider__link See more reviews
               .testimonials-slider__items-wrapper#testimonials-slider

@@ -1,5 +1,6 @@
 import { PetsCarousel, TestimonialsCarousel } from '../components/carousel.js';
 import { Card } from '../components/card.js';
+import { Popup } from '../components/popup.js';
 
 new PetsCarousel({
   carouselNode: document.getElementById('famous-pets-slider'),
@@ -14,3 +15,9 @@ new TestimonialsCarousel({
 });
 
 new Card(document.getElementById('cards-wrapper'), document.getElementById('map'));
+
+new Popup({
+  btnElem: document.querySelector('.testimonials-btn'),
+  popupElem: document.getElementById('leave-feedback-popup'),
+  coverElem: document.querySelector('.cover')
+});

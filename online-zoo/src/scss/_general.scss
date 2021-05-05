@@ -12,6 +12,14 @@ ul {
   list-style-type: none;
 }
 
+button,
+input,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}
+
 body {
   box-sizing: border-box;
 
@@ -47,6 +55,26 @@ body {
   height: 1px;
   width: 1px;
   overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.notScrollable {
+  overflow: hidden;
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .wrapper {
