@@ -1,5 +1,5 @@
 import { PetsCarousel, TestimonialsCarousel } from '../components/carousel.js';
-import { Card } from '../components/map.js';
+import { Card } from '../components/card.js';
 
 new PetsCarousel({
   carouselNode: document.getElementById('famous-pets-slider'),

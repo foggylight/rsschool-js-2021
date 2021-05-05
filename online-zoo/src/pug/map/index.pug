@@ -16,10 +16,12 @@ html(lang="en")
 
       include ../includes/header.pug
 
-      main(draggable="true").content-wrapper
+      main.content-wrapper
 
         include ../includes/sidebar.pug
 
+        .map-cover
+
         include ../includes/map.pug
 
-    script(src="index.js")
+    script(type="module" src="index.js")
