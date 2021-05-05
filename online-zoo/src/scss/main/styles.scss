@@ -835,12 +835,16 @@
   border: none;
   border-radius: 5px;
 
-  background-color: $superLightGray;
+  background-color: $dark;
 
   @extend %btn-text;
   color: #FFFFFF;
 
   cursor: pointer;
+}
+
+.invalid {
+  background-color: $superLightGray;
 }
 
 .testimonials-slider {

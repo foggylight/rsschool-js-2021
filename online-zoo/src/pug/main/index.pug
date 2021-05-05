@@ -128,13 +128,13 @@ html(lang="en")
                   h3.text-block__subtitle Your feedback
                   .feedback-name
                     label(for="name") Your name:
-                    input(type="text" id="name" placeholder="Ellie Coward" required).feedback-input
+                    input(type="text" id="name" name="name" placeholder="Ellie Coward" required).feedback-input
                   .feedback-email
                     label(for="email") Your e-mail:
-                    input(type="email" id="email" placeholder="example@gmail.com" required).feedback-input
+                    input(type="email" id="email" name="email" placeholder="example@gmail.com" required).feedback-input
                   .feedback-review
                     label(for="text-feedback") Your review:
-                    textarea(id="text-feedback" required).feedback-textarea
+                    textarea(id="text-feedback" name="feedback" required).feedback-textarea
                   button(class="feedback-btn invalid" id="send" type="submit") Send for moderation
               .cover.hidden
             .testimonials-slider
