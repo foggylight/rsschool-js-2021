@@ -88,7 +88,17 @@ export class TestimonialsCarousel extends Carousel {
 
     const timeout = () => {
       clearInterval(autoSlide);
-      setTimeout(() => (autoSlide = setInterval(() => this.slide(null, 'next'), 10000)), 10000);
+
+      setTimeout(() => {
+        autoSlide = setInterval(() => this.slide(null, 'next'), 10000);
+        this.prevBtn.addEventListener('click', timeout);
+        this.nextBtn.addEventListener('click', timeout);
+        [...this.items].forEach((item) => item.addEventListener('click', timeout));
+      }, 10000);
+
+      this.prevBtn.removeEventListener('click', timeout);
+      this.nextBtn.removeEventListener('click', timeout);
+      [...this.items].forEach((item) => item.removeEventListener('click', timeout));
     }
 
     this.prevBtn.addEventListener('click', timeout);
