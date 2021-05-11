@@ -36,12 +36,18 @@ function scripts() {
     .pipe(dest("dist/pages"));
 }
 
+function assets() {
+  return src("src/assets/**/*")
+    .pipe(dest("dist/"));
+}
+
 function watchFiles() {
   watch("src/scss/**/*.scss", styles);
   watch("src/js/**/*.js", scripts);
+  watch("src/assets/**/*", assets);
   watch("src/pug/**/*.pug", html);
   watch("dist/**/*.html").on("change", browserSync.reload);
 }
 
-exports.build = series(html, styles, scripts);
+exports.build = series(html, styles, scripts, assets);
 exports.default = parallel(serve, watchFiles);
