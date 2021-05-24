@@ -1,0 +1,60 @@
+@import '../utils/variables';
+
+@import'../components/logo';
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $headerHeight;
+  padding: 0 25px;
+
+  background-color: $accent;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  color: $white;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    display: block;
+    width: 96px;
+  }
+}
+
+.logo {
+  flex-grow: 1;
+}
+
+.navigation {
+  flex-grow: 4;
+
+  &__about::before {
+    background-image: url('../assets/about.svg');
+  }
+
+  &__score::before {
+    background-image: url('../assets/score.svg');
+  }
+
+  &__settings::before {
+    background-image: url('../assets/settings.svg');
+  }
+}
+
+.navigation__link {
+  display: block;
+
+  text-align: center;
+
+  &::before {
+    display: block;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto 5px;
+
+    content: '';
+  }
+}

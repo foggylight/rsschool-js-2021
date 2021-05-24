@@ -1,0 +1,14 @@
+@import '../utils/variables';
+
+.btn {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 4px;
+
+  background-color: $white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  color: $accent;
+
+  cursor: pointer;
+}
