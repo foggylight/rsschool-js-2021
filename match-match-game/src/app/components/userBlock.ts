@@ -1,5 +1,5 @@
-import BaseComponent from '../../components/baseComponent';
-import Button from '../../components/btn';
+import BaseComponent from './baseComponent';
+import Button from './shared/btn';
 
 export default class UserBlock extends BaseComponent {
   private btn: Button | null;
