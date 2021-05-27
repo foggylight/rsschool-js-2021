@@ -1,0 +1,21 @@
+@import '../utils/variables';
+
+@import '../components/select';
+@import '../components/score';
+@import '../components/aboutBlocks';
+
+.content-wrapper {
+  display: flex;
+  height: calc(100vh - #{$headerHeight});
+}
+
+.content {
+  width: 1000px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 5px;
+
+  background-color: #e9e9e9;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+}

@@ -4,6 +4,11 @@ export default class Navigation extends BaseComponent {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'nav', ['navigation']);
 
+    this.init();
+    this.render();
+  }
+
+  init(): void {
     const list = document.createElement('ul');
     const listContent = [
       { name: 'About Game', class: 'navigation__about', href: '/' },
@@ -28,8 +33,6 @@ export default class Navigation extends BaseComponent {
     }
 
     this.node.append(list);
-
-    this.render();
   }
 
   render(): void {

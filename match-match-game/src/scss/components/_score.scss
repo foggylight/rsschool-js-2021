@@ -1,0 +1,31 @@
+@import '../utils/variables';
+
+.player__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  border-bottom: 1px solid $lightGray;
+
+  color: $gray;
+}
+
+.player__name {
+  margin: 0 0 5px;
+
+  font-weight: 600;
+}
+
+.player__email {
+  margin: 0;
+
+  font-size: 12px;
+}
+
+.player__score {
+  margin: 0;
+}
+
+.player__score-value {
+  color: $accent;
+}

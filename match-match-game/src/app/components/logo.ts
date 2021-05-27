@@ -5,6 +5,11 @@ export default class Logo extends BaseComponent {
     super(parentNode, 'a', ['logo']);
     this.node.setAttribute('href', '/');
 
+    this.init();
+    this.render();
+  }
+
+  init(): void {
     const spanTop = document.createElement('span');
     spanTop.textContent = 'match';
 
@@ -21,8 +26,6 @@ export default class Logo extends BaseComponent {
 
     this.node.append(topBlock);
     this.node.append(bottomBlock);
-
-    this.render();
   }
 
   render(): void {
