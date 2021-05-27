@@ -17,7 +17,9 @@ export default class PageContent extends BaseComponent {
     const about = new AboutPage(this.node);
     const score = new ScorePage(this.node);
     const settings = new SettingsPage(this.node);
+
     const { router } = state;
+    router.routes = [];
     router.routes.push({ path: about.path, view: about });
     router.routes.push({ path: score.path, view: score });
     router.routes.push({ path: settings.path, view: settings });
@@ -30,6 +32,6 @@ export default class PageContent extends BaseComponent {
         route.view.init();
       }
     });
-    console.log('content', this.node);
+    console.log('content render', this.node);
   }
 }

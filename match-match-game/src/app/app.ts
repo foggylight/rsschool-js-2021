@@ -10,14 +10,13 @@ export default class App implements Component {
   private content: PageContent | null;
 
   constructor(private readonly rootNode: HTMLElement) {
+    state.router.currentRoute = `/${window.location.hash.slice(1)}`;
+
     this.header = null;
     this.content = null;
-
-    state.router.currentRoute = `/${window.location.hash.slice(1)}`;
   }
 
   init(): void {
-    this.rootNode.innerHTML = '';
     this.header = new Header(this.rootNode);
     this.content = new PageContent(this.rootNode);
   }
@@ -32,9 +31,11 @@ export default class App implements Component {
   }
 
   render(): void {
+    this.rootNode.innerHTML = '';
     this.init();
     this.header?.render();
     this.content?.render();
     this.enableRouteChange();
+    console.log('app render');
   }
 }
