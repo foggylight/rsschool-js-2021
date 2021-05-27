@@ -11,15 +11,15 @@ const listContent = [
   },
 ];
 
-const addListener = (link: HTMLAnchorElement): void => {
-  const linkHandler = (e: Event) => {
-    const a = e.target as HTMLAnchorElement;
+// const addListener = (link: HTMLAnchorElement): void => {
+//   const linkHandler = (e: Event) => {
+//     const a = e.target as HTMLAnchorElement;
 
-    if (!a.dataset.link) return;
-    state.router.currentRoute = a.dataset.link;
-  };
-  link.addEventListener('click', linkHandler);
-};
+//     if (!a.dataset.link) return;
+//     state.router.currentRoute = a.dataset.link;
+//   };
+//   link.addEventListener('click', linkHandler);
+// };
 
 export default class Navigation extends BaseComponent {
   constructor(parentNode: HTMLElement) {
@@ -42,7 +42,7 @@ export default class Navigation extends BaseComponent {
       link.textContent = listContent[i].name;
       link.dataset.link = listContent[i].href;
       link.href = `#${listContent[i].href.slice(1)}`;
-      addListener(link);
+      // addListener(link);
 
       listItem.append(link);
       list.append(listItem);

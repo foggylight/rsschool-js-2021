@@ -12,6 +12,8 @@ export default class App implements Component {
   constructor(private readonly rootNode: HTMLElement) {
     this.header = null;
     this.content = null;
+
+    state.router.currentRoute = `/${window.location.hash.slice(1)}`;
   }
 
   init(): void {
