@@ -13,15 +13,6 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
   color: $white;
-
-  ul {
-    display: flex;
-  }
-
-  li {
-    display: block;
-    width: 96px;
-  }
 }
 
 .logo {
@@ -30,6 +21,7 @@
 
 .navigation {
   flex-grow: 4;
+  height: 100%;
 
   &__about::before {
     background-image: url('../assets/about.svg');
@@ -44,10 +36,28 @@
   }
 }
 
-.navigation__link {
+.navigation__list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+.navigation__item {
   display: block;
+  height: 100%;
+  width: 96px;
+}
+
+.navigation__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 
   text-align: center;
+  font-size: 12px;
 
   &::before {
     display: block;
@@ -57,4 +67,8 @@
 
     content: '';
   }
+}
+
+.navigation__link_active {
+  background-color: $active;
 }

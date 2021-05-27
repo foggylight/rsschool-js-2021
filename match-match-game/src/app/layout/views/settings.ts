@@ -1,28 +1,26 @@
 import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 
+const settings = [
+  {
+    heading: 'Game cards',
+    description: 'select game cards type',
+    options: ['dogs', 'cats', 'furby'],
+  },
+  {
+    heading: 'Difficulty',
+    description: 'select game type',
+    options: ['4х4', '6х6'],
+  },
+];
+
 export default class SettingsPage extends BasePage {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/settings';
-
-    this.render();
   }
 
   init(): void {
-    const settings = [
-      {
-        heading: 'Game cards',
-        description: 'select game cards type',
-        options: ['dogs', 'cats', 'furby'],
-      },
-      {
-        heading: 'Difficulty',
-        description: 'select game type',
-        options: ['4х4', '6х6'],
-      },
-    ];
-
     settings.forEach(item => {
       const heading = new BaseComponent(this.node, 'h2', ['heading']);
       heading.node.textContent = item.heading;
@@ -49,9 +47,5 @@ export default class SettingsPage extends BasePage {
     });
 
     this.parentNode.append(this.node);
-  }
-
-  render(): void {
-    console.log('about', this.node);
   }
 }

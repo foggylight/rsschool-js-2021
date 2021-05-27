@@ -7,8 +7,6 @@ export default class ScorePage extends BasePage {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/score';
-
-    this.render();
   }
 
   init(): void {
@@ -34,9 +32,5 @@ export default class ScorePage extends BasePage {
 
       this.parentNode.append(this.node);
     });
-  }
-
-  render(): void {
-    console.log('about', this.node);
   }
 }

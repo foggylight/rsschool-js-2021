@@ -1,4 +1,6 @@
-export default class BasePage {
+import { View } from '../../app.api';
+
+export default class BasePage implements View {
   public path: string;
 
   public node: HTMLElement;

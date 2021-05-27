@@ -1,15 +1,16 @@
-import BaseComponent from './baseComponent';
+export default class Button {
+  public node: HTMLElement;
 
-export default class Button extends BaseComponent {
-  constructor(
-    parentNode: HTMLElement,
-    type: 'button' | 'submit',
-    className: string,
-    content: string,
-  ) {
-    super(parentNode, 'button', ['btn']);
+  constructor(type: 'button' | 'submit', className: string[], content: string) {
+    const elem = document.createElement('button');
+    elem.classList.add('btn');
+    this.node = elem;
     this.node.setAttribute('type', type);
-    this.node.classList.add(className);
+    this.node.classList.add(...className);
     this.node.textContent = content;
+  }
+
+  addToPage(parent: HTMLElement): void {
+    parent.append(this.node);
   }
 }

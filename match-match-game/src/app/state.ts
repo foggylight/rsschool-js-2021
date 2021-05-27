@@ -1,8 +1,15 @@
 import { StateObj } from './app.api';
 
 const state: StateObj = {
-  currentView: 'about',
-  routes: [],
+  router: {
+    routes: [],
+    root: '/',
+    currentRoute: '/',
+  },
+  user: {
+    name: null,
+    email: null,
+  },
   bestPlayers: [
     {
       name: 'Sasha',
@@ -10,6 +17,10 @@ const state: StateObj = {
       score: 456,
     },
   ],
+  settings: {
+    cards: null,
+    difficulty: null,
+  },
 };
 
 export default state;

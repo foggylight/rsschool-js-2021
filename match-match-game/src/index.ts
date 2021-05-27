@@ -8,7 +8,7 @@ const addApp = () => {
   if (!rootElem) throw Error('There is no element with "app" id');
 
   const app = new App(rootElem);
-  app.init();
+  app.render();
 };
 
 addApp();

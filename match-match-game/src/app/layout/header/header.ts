@@ -4,8 +4,6 @@ import Navigation from '../../components/navigation';
 import UserBlock from './userBlock';
 
 export default class Header extends BaseComponent {
-  private logo: Logo | null;
-
   private nav: Navigation | null;
 
   private userBlock: UserBlock | null;
@@ -13,20 +11,20 @@ export default class Header extends BaseComponent {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'header', ['page-header']);
 
-    this.logo = null;
     this.nav = null;
     this.userBlock = null;
-
-    this.render();
   }
 
   init(): void {
-    this.logo = new Logo(this.node);
+    const logo = new Logo(this.node);
+    logo.init();
     this.nav = new Navigation(this.node);
     this.userBlock = new UserBlock(this.node);
   }
 
   render(): void {
-    console.log('header', this.node);
+    this.init();
+    this.nav?.render();
+    this.userBlock?.render();
   }
 }

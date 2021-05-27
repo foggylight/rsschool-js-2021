@@ -4,9 +4,6 @@ export default class Logo extends BaseComponent {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'a', ['logo']);
     this.node.setAttribute('href', '/');
-
-    this.init();
-    this.render();
   }
 
   init(): void {
@@ -26,9 +23,5 @@ export default class Logo extends BaseComponent {
 
     this.node.append(topBlock);
     this.node.append(bottomBlock);
-  }
-
-  render(): void {
-    console.log('logo', this.node);
   }
 }
