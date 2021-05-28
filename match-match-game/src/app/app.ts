@@ -5,18 +5,14 @@ import PageContent from './layout/pageContent';
 import state from './state';
 
 export default class App implements Component {
-  private header: Header | null;
+  private header: Header;
 
-  private content: PageContent | null;
+  private content: PageContent;
 
   constructor(private readonly rootNode: HTMLElement) {
     state.router.currentRoute = `/${window.location.hash.slice(1)}`;
+    this.enableRouteChange();
 
-    this.header = null;
-    this.content = null;
-  }
-
-  init(): void {
     this.header = new Header(this.rootNode);
     this.content = new PageContent(this.rootNode);
   }
@@ -25,17 +21,12 @@ export default class App implements Component {
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.slice(1);
       state.router.currentRoute = `/${hash}`;
-      console.log(state);
       this.render();
     });
   }
 
   render(): void {
-    this.rootNode.innerHTML = '';
-    this.init();
-    this.header?.render();
-    this.content?.render();
-    this.enableRouteChange();
-    console.log('app render');
+    this.header.render();
+    this.content.render();
   }
 }

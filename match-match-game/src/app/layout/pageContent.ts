@@ -7,6 +7,8 @@ import ScorePage from './views/score';
 import SettingsPage from './views/settings';
 
 export default class PageContent extends BaseComponent {
+  // content: null;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['content-wrapper']);
 
@@ -26,12 +28,12 @@ export default class PageContent extends BaseComponent {
   }
 
   render(): void {
+    this.node.innerHTML = '';
     const { router } = state;
     router.routes.forEach(route => {
       if (route?.view.path === router.currentRoute) {
-        route.view.init();
+        this.node.append(route.view.node);
       }
     });
-    console.log('content render', this.node);
   }
 }

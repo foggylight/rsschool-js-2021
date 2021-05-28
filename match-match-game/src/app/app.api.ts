@@ -3,6 +3,7 @@ export interface Component {
 }
 
 export interface View {
+  node: HTMLElement;
   path: string;
   init(): void;
 }
@@ -16,6 +17,7 @@ export interface StateObj {
   user: {
     name: string | null;
     email: string | null;
+    imageSrc: string;
   };
   bestPlayers: [{ name: string; email: string; score: number }?];
   settings: {

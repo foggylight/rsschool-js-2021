@@ -4,9 +4,7 @@ export default class Logo extends BaseComponent {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'a', ['logo']);
     this.node.setAttribute('href', '/');
-  }
 
-  init(): void {
     const spanTop = document.createElement('span');
     spanTop.textContent = 'match';
 

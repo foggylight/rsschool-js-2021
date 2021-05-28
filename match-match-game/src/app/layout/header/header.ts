@@ -8,22 +8,17 @@ export default class Header extends BaseComponent {
 
   private userBlock: UserBlock | null;
 
+  private logo: Logo;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'header', ['page-header']);
 
-    this.nav = null;
-    this.userBlock = null;
-  }
-
-  init(): void {
-    const logo = new Logo(this.node);
-    logo.init();
+    this.logo = new Logo(this.node);
     this.nav = new Navigation(this.node);
     this.userBlock = new UserBlock(this.node);
   }
 
   render(): void {
-    this.init();
     this.nav?.render();
     this.userBlock?.render();
   }
