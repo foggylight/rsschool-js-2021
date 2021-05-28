@@ -1,6 +1,7 @@
 import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 import state from '../../state';
+import Heading from '../../components/shared/heading';
 
 interface ISettingsOption {
   description: string;
@@ -68,8 +69,8 @@ export default class SettingsPage extends BasePage {
 
   init(): void {
     settings.forEach(item => {
-      const heading = new BaseComponent(this.node, 'h2', ['heading']);
-      heading.node.textContent = item.heading;
+      const heading = new Heading(item.heading).node;
+      this.node.append(heading);
 
       const form = new BaseComponent(this.node, 'form', ['settings__form']);
       const select = new BaseComponent(form.node, 'select', [

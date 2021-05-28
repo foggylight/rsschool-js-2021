@@ -2,6 +2,7 @@ import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 
 import state from '../../state';
+import Heading from '../../components/shared/heading';
 
 export default class ScorePage extends BasePage {
   constructor(parentNode: HTMLElement) {
@@ -10,8 +11,8 @@ export default class ScorePage extends BasePage {
   }
 
   init(): void {
-    const heading = new BaseComponent(this.node, 'h2', ['heading']);
-    heading.node.textContent = 'Best players';
+    const heading = new Heading('Best players').node;
+    this.node.append(heading);
 
     state.bestPlayers.forEach(player => {
       if (!player) {
