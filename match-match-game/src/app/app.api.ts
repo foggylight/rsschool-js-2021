@@ -19,7 +19,12 @@ export interface StateObj {
   };
   bestPlayers: [{ name: string; email: string; score: number }?];
   settings: {
-    cards: string | null;
+    cardsType: string | null;
     difficulty: string | null;
+  };
+  game: {
+    time: number | null;
+    mistakes: number | null;
+    comparisons: number | null;
   };
 }

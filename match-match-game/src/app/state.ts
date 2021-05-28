@@ -18,8 +18,13 @@ const state: StateObj = {
     },
   ],
   settings: {
-    cards: null,
+    cardsType: null,
     difficulty: null,
+  },
+  game: {
+    time: null,
+    mistakes: null,
+    comparisons: null,
   },
 };
 
