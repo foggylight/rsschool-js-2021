@@ -3,6 +3,41 @@ import BaseComponent from './baseComponent';
 import Button from './shared/btn';
 import ModalBox from './shared/modalBox';
 
+const validate = (input: HTMLInputElement | null): void => {
+  if (!input) return;
+  const label: HTMLLabelElement | undefined | null = input
+    .closest('.form__input-container')
+    ?.querySelector('.form__label');
+
+  const addWarning = (): void => {
+    if (!label) return;
+    const warning = document.createElement('span');
+    warning.classList.add('form__input-warning');
+    warning.textContent = 'Value is invalid';
+    if (!label.querySelector('.form__input-warning')) {
+      label.append(warning);
+    }
+  };
+
+  const regName = /^[^ ][^0-9~!@#$%*()_—+=|:;"'`<>,.?/^]{1,30}$/;
+  const regEmail =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (
+    input.type === 'text'
+      ? regName.test(input.value)
+      : regEmail.test(input.value) && input.value.length < 31
+  ) {
+    label?.querySelector('.form__input-warning')?.remove();
+    input.classList.remove('input_invalid');
+    input.classList.add('input_valid');
+  } else {
+    addWarning();
+    input.classList.add('input_invalid');
+    input.classList.remove('input_valid');
+  }
+};
+
 export default class Form {
   public node: HTMLFormElement;
 
@@ -11,6 +46,10 @@ export default class Form {
   private btnCancel: HTMLButtonElement;
 
   private modalBox: ModalBox;
+
+  private inputsName: NodeListOf<HTMLInputElement> | null;
+
+  private inputEmail: HTMLInputElement | null;
 
   constructor(parentNode: ModalBox) {
     this.modalBox = parentNode;
@@ -23,16 +62,16 @@ export default class Form {
     container.node.innerHTML = `
       <div class="form__text-fields">
         <div class="form__input-container">
-          <label for="first-name">First Name</label>
-          <input class="form__input" type="text" placeholder="Enter First Name" name="first-name" required>
+          <label class="form__label" for="first-name">First Name</label>
+          <input class="form__input form__input-name" type="text" placeholder="Enter First Name" name="first-name" required>
         </div>
         <div class="form__input-container">
-          <label for="last-name">Last Name</label>
-          <input class="form__input" type="text" placeholder="Enter Last Name" name="last-name" required>
+          <label class="form__label" for="last-name">Last Name</label>
+          <input class="form__input form__input-name" type="text" placeholder="Enter Last Name" name="last-name" required>
         </div>
         <div class="form__input-container">
-          <label for="email">E-mail</label>
-          <input class="form__input" type="email" placeholder="Enter E-mail" name="email" required>
+          <label class="form__label" for="email">E-mail</label>
+          <input class="form__input form__input-email" type="email" placeholder="Enter E-mail" name="email" required>
         </div>
       </div>
       <div class="form__avatar-container">
@@ -43,7 +82,7 @@ export default class Form {
 
     this.btnSubmit = new Button(
       'submit',
-      ['form__btn-submit', 'btn_dark'],
+      ['form__btn-submit', 'btn_dark', 'btn_invalid'],
       'Add user',
     ).node;
     this.btnCancel = new Button(
@@ -59,8 +98,23 @@ export default class Form {
     btnContainer.node.append(this.btnSubmit);
     btnContainer.node.append(this.btnCancel);
 
+    this.inputsName = this.node.querySelectorAll('.form__input-name');
+    this.inputEmail = this.node.querySelector('.form__input-email');
+
     this.addAvatarListener();
     this.addCloseBtnListener();
+    this.addInputNameListener();
+    this.addInputEmailListener();
+  }
+
+  addInputNameListener(): void {
+    this.inputsName?.forEach(input =>
+      input.addEventListener('input', () => validate(input)),
+    );
+  }
+
+  addInputEmailListener(): void {
+    this.inputEmail?.addEventListener('input', () => validate(this.inputEmail));
   }
 
   addCloseBtnListener(): void {
