@@ -1,0 +1,26 @@
+@import '../utils/variables';
+
+.modal-box__cover {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal-box {
+  position: fixed;
+  top: calc(50vh - 230px);
+  left: calc(50vw - 320px);
+  z-index: 100;
+
+  width: 639px;
+  height: 460px;
+  padding: 30px 25px;
+  border-radius: 4px;
+
+  background-color: $white;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+}

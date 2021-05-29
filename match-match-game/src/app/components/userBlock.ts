@@ -20,7 +20,7 @@ export default class UserBlock extends BaseComponent {
   }
 
   init(): void {
-    if (state.user.name) {
+    if (state.user.imageSrc) {
       this.btn = new Button(
         'button',
         ['user-block__btn-start-game'],

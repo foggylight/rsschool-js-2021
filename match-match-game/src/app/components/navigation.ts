@@ -12,12 +12,8 @@ const listContent = [
 ];
 
 export default class Navigation extends BaseComponent {
-  private links: HTMLAnchorElement[];
-
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'nav', ['navigation']);
-
-    this.links = [];
 
     const list = document.createElement('ul');
     list.classList.add('navigation__list');
@@ -35,7 +31,6 @@ export default class Navigation extends BaseComponent {
       link.dataset.link = listContent[i].href;
       link.href = `#${listContent[i].href.slice(1)}`;
 
-      this.links.push(link);
       listItem.append(link);
       list.append(listItem);
     }

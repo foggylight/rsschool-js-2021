@@ -1,5 +1,5 @@
 export default class Button {
-  public node: HTMLElement;
+  public node: HTMLButtonElement;
 
   constructor(type: 'button' | 'submit', className: string[], content: string) {
     const elem = document.createElement('button');

@@ -12,4 +12,17 @@
   text-transform: uppercase;
 
   cursor: pointer;
+
+  &:hover {
+    background-color: $bgLightGray;
+  }
+}
+
+.btn_dark {
+  background-color: $accent;
+  color: $white;
+
+  &:hover {
+    background-color: $accentHover;
+  }
 }

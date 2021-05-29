@@ -9,6 +9,7 @@ const state: StateObj = {
   user: {
     name: null,
     email: null,
+    imageSrc: '',
   },
   bestPlayers: [
     {

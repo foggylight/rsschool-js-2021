@@ -1,0 +1,106 @@
+@import '../utils/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85%;
+}
+
+.form__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__input-container {
+  width: 330px;
+  height: 56px;
+  padding: 5px 15px;
+  margin: 0 0 15px;
+  border-radius: 4px;
+
+  background-color: $bgLightGray;
+
+  font-size: 12px;
+}
+
+.form__input {
+  display: block;
+  height: 24px;
+  width: 100%;
+  margin: 3px 0 0;
+  padding: 0;
+  border: none;
+
+  background-color: $bgLightGray;
+
+  color: $black;
+  font-size: 16px;
+
+  &::placeholder {
+    color: $lightGray;
+    font-size: 12px;
+  }
+
+  &:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+}
+
+.form__avatar-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.form__avatar-upload {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.form__avatar-label {
+  position: relative;
+
+  cursor: pointer;
+
+  &:hover {
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+
+      background-color: $bgImageCover;
+      background-image: url('../assets/user-image-add.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: '';
+    }
+  }
+}
+
+.form__uploaded-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+
+  background-image: url('../assets/user-image.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.form__btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form__btn-cancel {
+  margin: 0 0 0 15px;
+}
