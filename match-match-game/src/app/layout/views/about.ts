@@ -5,6 +5,11 @@ import img2 from '../../../assets/about-2.jpg';
 import img3 from '../../../assets/about-3.jpg';
 
 export default class AboutPage extends BasePage {
+  constructor(parentNode: HTMLElement) {
+    super(parentNode);
+    this.init();
+  }
+
   init(): void {
     const template = `
     <h2 class="heading">How to play?</h2>
@@ -33,6 +38,6 @@ export default class AboutPage extends BasePage {
 
     this.node.innerHTML = template;
 
-    this.parentNode.append(this.node);
+    // this.parentNode.append(this.node);
   }
 }

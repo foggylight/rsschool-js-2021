@@ -5,14 +5,14 @@ import RegisterButton from './registerBtn';
 import Button from './shared/btn';
 
 export default class UserBlock extends BaseComponent {
-  private btn: Button;
+  private btn: Button | null;
 
   private userImg: HTMLElement | null;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['user-block']);
 
-    this.btn = new RegisterButton(this);
+    this.btn = null;
 
     this.userImg = null;
   }
@@ -25,6 +25,7 @@ export default class UserBlock extends BaseComponent {
         'button',
         ['user-block__btn-start-game'],
         'Start game',
+        '#game',
       );
 
       const imageContainer = document.createElement('div');

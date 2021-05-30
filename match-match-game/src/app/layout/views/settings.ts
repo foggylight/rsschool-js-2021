@@ -65,6 +65,7 @@ export default class SettingsPage extends BasePage {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/settings';
+    this.init();
   }
 
   init(): void {
@@ -96,6 +97,6 @@ export default class SettingsPage extends BasePage {
       });
     });
 
-    this.parentNode.append(this.node);
+    // this.parentNode.append(this.node);
   }
 }

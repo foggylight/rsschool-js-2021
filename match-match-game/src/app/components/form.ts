@@ -41,9 +41,9 @@ const validate = (input: HTMLInputElement | null): void => {
 export default class Form {
   public node: HTMLFormElement;
 
-  private btnSubmit: HTMLButtonElement;
+  private btnSubmit: HTMLButtonElement | HTMLAnchorElement;
 
-  private btnCancel: HTMLButtonElement;
+  private btnCancel: HTMLButtonElement | HTMLAnchorElement;
 
   private modalBox: ModalBox;
 
@@ -108,6 +108,7 @@ export default class Form {
   }
 
   checkFormValidity(): void {
+    if (this.btnSubmit instanceof HTMLAnchorElement) return;
     if (this.node.querySelectorAll('.input_valid').length === 3) {
       this.btnSubmit.disabled = false;
     } else {

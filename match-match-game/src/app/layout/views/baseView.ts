@@ -12,8 +12,6 @@ export default class BasePage implements View {
     const elem = document.createElement('div');
     elem.classList.add('content');
     this.node = elem;
-
-    this.init();
   }
 
   init(): void {

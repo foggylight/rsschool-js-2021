@@ -5,10 +5,9 @@ import BaseComponent from '../components/baseComponent';
 import AboutPage from './views/about';
 import ScorePage from './views/score';
 import SettingsPage from './views/settings';
+import Game from './views/game';
 
 export default class PageContent extends BaseComponent {
-  // content: null;
-
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['content-wrapper']);
 
@@ -19,18 +18,23 @@ export default class PageContent extends BaseComponent {
     const about = new AboutPage(this.node);
     const score = new ScorePage(this.node);
     const settings = new SettingsPage(this.node);
+    const game = new Game(this.node);
 
     const { router } = state;
     router.routes = [];
     router.routes.push({ path: about.path, view: about });
     router.routes.push({ path: score.path, view: score });
     router.routes.push({ path: settings.path, view: settings });
+    router.routes.push({ path: game.path, view: game });
   }
 
   render(): void {
     this.node.innerHTML = '';
     const { router } = state;
     router.routes.forEach(route => {
+      if (router.currentRoute === '/game') {
+        route?.view.init();
+      }
       if (route?.view.path === router.currentRoute) {
         this.node.append(route.view.node);
       }

@@ -8,6 +8,7 @@ export default class ScorePage extends BasePage {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/score';
+    this.init();
   }
 
   init(): void {
@@ -31,7 +32,7 @@ export default class ScorePage extends BasePage {
       ]);
       scoreVal.node.textContent = `${player.score}`;
 
-      this.parentNode.append(this.node);
+      // this.parentNode.append(this.node);
     });
   }
 }

@@ -1,15 +1,26 @@
 export default class Button {
-  public node: HTMLButtonElement;
+  public node: HTMLButtonElement | HTMLAnchorElement;
 
-  constructor(type: 'button' | 'submit', className: string[], content: string) {
-    const elem = document.createElement('button');
-    elem.classList.add('btn');
+  constructor(
+    type: 'button' | 'submit',
+    className: string[],
+    content: string,
+    href: string | null = null,
+  ) {
+    let elem;
+    if (href) {
+      elem = document.createElement('a');
+      elem.href = href;
+    } else {
+      elem = document.createElement('button');
+      elem.setAttribute('type', type);
+    }
     this.node = elem;
-    this.node.setAttribute('type', type);
+    this.node.classList.add('btn');
     this.node.classList.add(...className);
     this.node.textContent = content;
 
-    if (type === 'submit') {
+    if (type === 'submit' && this.node instanceof HTMLButtonElement) {
       this.node.disabled = true;
     }
   }
