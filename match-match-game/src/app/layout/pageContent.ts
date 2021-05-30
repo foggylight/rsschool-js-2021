@@ -32,10 +32,10 @@ export default class PageContent extends BaseComponent {
     this.node.innerHTML = '';
     const { router } = state;
     router.routes.forEach(route => {
-      if (router.currentRoute === '/game') {
-        route?.view.init();
-      }
       if (route?.view.path === router.currentRoute) {
+        if (router.currentRoute === '/game') {
+          route?.view.init();
+        }
         this.node.append(route.view.node);
       }
     });
