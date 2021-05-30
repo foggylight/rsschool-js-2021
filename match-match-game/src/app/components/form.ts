@@ -54,7 +54,7 @@ export default class Form {
   constructor(parentNode: ModalBox) {
     this.modalBox = parentNode;
     const form = document.createElement('form');
-    form.method = 'POST';
+    // form.method = 'POST';
     form.classList.add('form');
     this.node = form;
 
@@ -63,11 +63,11 @@ export default class Form {
       <div class="form__text-fields">
         <div class="form__input-container">
           <label class="form__label" for="first-name">First Name</label>
-          <input class="form__input form__input-name" type="text" placeholder="Enter First Name" name="first-name" required>
+          <input class="form__input form__input-name" type="text" placeholder="Enter First Name" name="firstname" required>
         </div>
         <div class="form__input-container">
           <label class="form__label" for="last-name">Last Name</label>
-          <input class="form__input form__input-name" type="text" placeholder="Enter Last Name" name="last-name" required>
+          <input class="form__input form__input-name" type="text" placeholder="Enter Last Name" name="lastname" required>
         </div>
         <div class="form__input-container">
           <label class="form__label" for="email">E-mail</label>
@@ -82,7 +82,7 @@ export default class Form {
 
     this.btnSubmit = new Button(
       'submit',
-      ['form__btn-submit', 'btn_dark', 'btn_invalid'],
+      ['form__btn-submit', 'btn_dark'],
       'Add user',
     ).node;
     this.btnCancel = new Button(
@@ -107,14 +107,28 @@ export default class Form {
     this.addInputEmailListener();
   }
 
+  checkFormValidity(): void {
+    if (this.node.querySelectorAll('.input_valid').length === 3) {
+      this.btnSubmit.disabled = false;
+    } else {
+      this.btnSubmit.disabled = true;
+    }
+  }
+
   addInputNameListener(): void {
     this.inputsName?.forEach(input =>
-      input.addEventListener('input', () => validate(input)),
+      input.addEventListener('input', () => {
+        validate(input);
+        this.checkFormValidity();
+      }),
     );
   }
 
   addInputEmailListener(): void {
-    this.inputEmail?.addEventListener('input', () => validate(this.inputEmail));
+    this.inputEmail?.addEventListener('input', () => {
+      validate(this.inputEmail);
+      this.checkFormValidity();
+    });
   }
 
   addCloseBtnListener(): void {

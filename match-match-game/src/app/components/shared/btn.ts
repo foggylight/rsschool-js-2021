@@ -8,6 +8,10 @@ export default class Button {
     this.node.setAttribute('type', type);
     this.node.classList.add(...className);
     this.node.textContent = content;
+
+    if (type === 'submit') {
+      this.node.disabled = true;
+    }
   }
 
   addToPage(parent: HTMLElement): void {

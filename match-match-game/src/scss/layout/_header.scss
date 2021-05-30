@@ -19,3 +19,20 @@
 
   color: $white;
 }
+
+.user-block {
+  display: flex;
+}
+
+.avatar-container {
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+  margin: 0 0 0 30px;
+  border-radius: 50%;
+}
+
+.user-block__avatar {
+  object-fit: cover;
+  height: 100%;
+}

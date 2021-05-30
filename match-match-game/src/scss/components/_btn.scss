@@ -25,12 +25,12 @@
   &:hover {
     background-color: $accentHover;
   }
-}
 
-.btn_invalid {
-  background-color: $bgLightGray;
-
-  &:hover {
+  &:disabled {
     background-color: $bgLightGray;
+
+    &:hover {
+      background-color: $bgLightGray;
+    }
   }
 }
