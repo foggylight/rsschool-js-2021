@@ -1,5 +1,7 @@
 import BaseComponent from '../baseComponent';
 
+import defaultImage from '../../../assets/user-image.png';
+
 export default class ModalBox extends BaseComponent {
   private cover: HTMLElement;
 
@@ -21,7 +23,24 @@ export default class ModalBox extends BaseComponent {
     this.cover.classList.remove('hidden');
   }
 
+  clear(): void {
+    this.node.querySelector('form')?.reset();
+    this.node.querySelectorAll('.form__input-warning').forEach(warning => {
+      warning.remove();
+    });
+    this.node.querySelectorAll('.form__input').forEach(input => {
+      input.classList.remove('input_valid');
+      input.classList.remove('input_invalid');
+    });
+    const imageContainer: HTMLElement | null = this.node.querySelector(
+      '.form__uploaded-image',
+    );
+    if (imageContainer)
+      imageContainer.style.backgroundImage = `url('${defaultImage}')`;
+  }
+
   public close(): void {
+    this.clear();
     this.node.classList.add('hidden');
     this.cover.classList.add('hidden');
   }

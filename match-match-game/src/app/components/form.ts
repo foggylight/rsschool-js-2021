@@ -139,7 +139,7 @@ export default class Form {
 
       const imageURL = URL.createObjectURL(input.files[0]);
       state.user.imageSrc = imageURL;
-      console.log(state.user);
+      console.log(input.value);
       console.log(imageURL);
       if (imageContainer)
         imageContainer.style.backgroundImage = `url('${imageURL}')`;
@@ -151,6 +151,9 @@ export default class Form {
     if (!imageInput) return;
     console.log(imageInput);
 
-    imageInput.addEventListener('change', () => updateUserImage(imageInput));
+    imageInput.addEventListener('change', () => {
+      updateUserImage(imageInput);
+      imageInput.value = '';
+    });
   }
 }
