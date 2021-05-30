@@ -48,6 +48,19 @@
   }
 }
 
+.input_invalid {
+  border-bottom: 2px solid $inputInvalid;
+}
+
+.input_valid {
+  border-bottom: 2px solid $inputValid;
+}
+
+.form__input-warning {
+  margin: 0 0 0 10px;
+  color: $inputInvalid;
+}
+
 .form__avatar-container {
   display: flex;
   flex-direction: column;

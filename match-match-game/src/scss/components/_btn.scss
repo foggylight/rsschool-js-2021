@@ -26,3 +26,11 @@
     background-color: $accentHover;
   }
 }
+
+.btn_invalid {
+  background-color: $bgLightGray;
+
+  &:hover {
+    background-color: $bgLightGray;
+  }
+}
