@@ -1,4 +1,5 @@
 export interface Component {
+  node: HTMLElement;
   render(): void;
 }
 
@@ -14,6 +15,14 @@ export interface StateObj {
     root: string;
     currentRoute: string;
   };
+  form: {
+    state: 'valid' | 'invalid';
+    data: {
+      firstName: string | null;
+      lastName: string | null;
+      email: string | null;
+    };
+  };
   user: {
     name: string | null;
     email: string | null;
@@ -26,7 +35,8 @@ export interface StateObj {
   };
   game: {
     time: number | null;
-    mistakes: number | null;
-    comparisons: number | null;
+    mistakes: number;
+    comparisons: number;
+    score: number | null;
   };
 }

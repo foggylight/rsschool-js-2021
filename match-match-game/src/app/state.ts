@@ -6,6 +6,14 @@ const state: StateObj = {
     root: '/',
     currentRoute: '/',
   },
+  form: {
+    state: 'invalid',
+    data: {
+      firstName: null,
+      lastName: null,
+      email: null,
+    },
+  },
   user: {
     name: null,
     email: null,
@@ -24,8 +32,9 @@ const state: StateObj = {
   },
   game: {
     time: null,
-    mistakes: null,
-    comparisons: null,
+    mistakes: 0,
+    comparisons: 0,
+    score: null,
   },
 };
 

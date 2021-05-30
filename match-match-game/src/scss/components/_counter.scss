@@ -1,0 +1,14 @@
+@import '../utils/variables';
+
+.game-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: $counterHeight;
+  margin: 0 auto;
+
+  font-size: 36px;
+
+  background-color: $white;
+}

@@ -36,15 +36,11 @@ const settings = [
     options: [
       {
         description: '4х4',
-        value: 8,
+        value: 16,
       },
       {
         description: '6х6',
-        value: 18,
-      },
-      {
-        description: '6х8',
-        value: 24,
+        value: 36,
       },
     ],
   },

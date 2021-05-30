@@ -1,0 +1,12 @@
+@import '../utils/variables';
+
+.cards-field {
+  display: grid;
+  // grid-template-columns: repeat(6, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+
+  height: calc(100% - #{$counterHeight} - 20px);
+  margin: 20px auto 0;
+  aspect-ratio: 1 / 1;
+}
