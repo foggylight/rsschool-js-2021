@@ -1,10 +1,9 @@
-import { Component } from './app.api';
 import Header from './layout/header/header';
 import PageContent from './layout/pageContent';
 
 import state from './state';
 
-export default class App implements Component {
+export default class App {
   private header: Header;
 
   private content: PageContent;

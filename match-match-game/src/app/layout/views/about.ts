@@ -7,6 +7,7 @@ import img3 from '../../../assets/about-3.jpg';
 export default class AboutPage extends BasePage {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
+    this.node.classList.add('content-scrollable');
     this.init();
   }
 
@@ -18,14 +19,14 @@ export default class AboutPage extends BasePage {
         <span class="about__number">1</span>
         <p class="about__text">Register new player in game</p>
       </div>
-      <img src="${img1}" alt="Registration form">
+      <img width="302px" src="${img1}" alt="Registration form">
     </div>
     <div class="about__step">
       <div class="about__text-block">
         <span class="about__number">2</span>
         <p class="about__text">Configure your game settings</p>
       </div>
-      <img src="${img2}" alt="Settings button">
+      <img width="116px" src="${img2}" alt="Settings button">
     </div>
     <div class="about__step">
       <div class="about__text-block">

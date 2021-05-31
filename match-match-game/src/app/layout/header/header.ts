@@ -4,9 +4,9 @@ import Navigation from '../../components/navigation';
 import UserBlock from '../../components/userBlock';
 
 export default class Header extends BaseComponent {
-  private nav: Navigation | null;
+  private nav: Navigation;
 
-  private userBlock: UserBlock | null;
+  private userBlock: UserBlock;
 
   private logo: Logo;
 
