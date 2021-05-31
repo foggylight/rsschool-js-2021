@@ -1,6 +1,5 @@
 import BaseComponent from './baseComponent';
-
-import state from '../state';
+import cardBackImg from '../../assets/card-back.jpg';
 
 export default class Card extends BaseComponent {
   card: BaseComponent;
@@ -17,14 +16,16 @@ export default class Card extends BaseComponent {
       .node;
     const cardBack = new BaseComponent(this.card.node, 'div', ['card__back'])
       .node;
-    // cardFront.node.style.backgroundImage = `url(${imgSrc})`;
+    cardBack.style.backgroundImage = `url(${cardBackImg})`;
+    cardFront.style.backgroundImage = `url('./images/${img}')`;
   }
 
-  public flip(): void {
-    this.card.node.classList.toggle('flipped');
-  }
-
-  addListener(): void {
-    this.node.addEventListener('click', () => this.flip(), { once: true });
+  public flip(): Promise<void> {
+    return new Promise(res => {
+      this.card.node.classList.toggle('flipped');
+      this.card.node.addEventListener('transitionend', () => res(), {
+        once: true,
+      });
+    });
   }
 }

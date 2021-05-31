@@ -25,7 +25,7 @@ const settings = [
       },
       {
         description: 'cats',
-        value: 'dogs',
+        value: 'cats',
       },
     ],
   },

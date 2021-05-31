@@ -4,17 +4,9 @@ import BaseComponent from '../../components/baseComponent';
 import state from '../../state';
 import Card from '../../components/card';
 
-const match = (card1: Card, card2: Card, isMatch: boolean) => {
-  const front1 = card1.node.querySelector('.card__front');
-  const front2 = card2.node.querySelector('.card__front');
-  const highlightClass = isMatch ? 'match' : 'mistake';
-  front1?.classList.add(highlightClass);
-  front2?.classList.add(highlightClass);
-  setTimeout(() => {
-    front1?.classList.remove(highlightClass);
-    front2?.classList.remove(highlightClass);
-  }, 2000);
-};
+// const scoreCount = () => {
+//   state.game;
+// };
 
 export default class Game extends BasePage {
   private counter: HTMLElement | null;
@@ -49,8 +41,19 @@ export default class Game extends BasePage {
       +state.settings.difficulty,
     )}, 1fr)`;
 
+    const images: string[] = [];
+    for (let i = 1; i <= +state.settings.difficulty / 2; i += 1) {
+      images.push(`${i}.jpg`);
+      images.push(`${i}.jpg`);
+    }
+    images.sort(() => Math.random() - 0.5);
+
     for (let i = 0; i < +state.settings.difficulty; i += 1) {
-      const card = new Card(cardsField.node, '');
+      if (!state.settings.cardsType) state.settings.cardsType = 'cats';
+      const card = new Card(
+        cardsField.node,
+        `${state.settings.cardsType}/${images[i]}`,
+      );
       this.cards.push(card);
     }
 
@@ -63,7 +66,8 @@ export default class Game extends BasePage {
 
   clear(): void {
     this.cards = [];
-    this.counter = null;
+    if (this.timer) clearTimeout(this.timer);
+    // if (this.counter) this.counter.textContent = '00:00';
     this.node.innerHTML = '';
   }
 
@@ -72,7 +76,9 @@ export default class Game extends BasePage {
     const timer = setInterval(() => {
       value += 1;
       if (!this.counter) return;
-      this.counter.textContent = `${Math.floor(value / 60)}:${value % 60}`;
+      const min = Math.floor(value / 60);
+      const sec = value % 60;
+      this.counter.textContent = `${min}:${sec}`;
     }, 1000);
     return timer;
   }
@@ -81,34 +87,56 @@ export default class Game extends BasePage {
     const showTime = 3;
     setTimeout(() => {
       this.cards.forEach(card => card.flip());
-      this.cards.forEach(card => card.addListener());
       this.cards.forEach(card =>
-        card.node.addEventListener('click', () => this.cardsHandler(card)),
+        card.node.addEventListener('click', () => this.cardsHandler(card), {
+          once: true,
+        }),
       );
-      // this.addCardListener();
-      console.log('game start');
       this.timer = this.initCounter();
     }, showTime * 1000);
+  }
+
+  match(card1: Card, card2: Card, isMatch: boolean): void {
+    const front1 = card1.node.querySelector('.card__front');
+    const front2 = card2.node.querySelector('.card__front');
+    const highlightClass = isMatch ? 'match' : 'mistake';
+    front1?.classList.add(highlightClass);
+    front2?.classList.add(highlightClass);
+    setTimeout(() => {
+      front1?.classList.remove(highlightClass);
+      front2?.classList.remove(highlightClass);
+      if (!isMatch) {
+        card1.flip();
+        card2.flip();
+      }
+      card1.node.addEventListener('click', () => this.cardsHandler(card1), {
+        once: true,
+      });
+      card2.node.addEventListener('click', () => this.cardsHandler(card2), {
+        once: true,
+      });
+    }, 2000);
   }
 
   stopGame(): void {
     this.clear();
   }
 
-  cardsHandler(card: Card) {
+  async cardsHandler(card: Card): Promise<void> {
+    await card.flip();
     if (!this.currentCard) {
       this.currentCard = card;
     } else if (this.currentCard.image === card.image) {
       console.log('match');
       state.game.comparisons += 1;
-      match(this.currentCard, card, true);
+      await this.match(this.currentCard, card, true);
       this.currentCard = null;
     } else {
+      console.log('mistake!');
       state.game.comparisons += 1;
       state.game.mistakes += 1;
-      match(this.currentCard, card, false);
-      this.currentCard.flip();
-      card.flip();
+      console.log(state);
+      this.match(this.currentCard, card, false);
       this.currentCard = null;
     }
   }
