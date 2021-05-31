@@ -28,15 +28,16 @@ export interface StateObj {
     email: string | null;
     imageSrc: string;
   };
-  bestPlayers: [{ name: string; email: string; score: number }?];
+  bestPlayers: { name: string; email: string; score: number }[];
   settings: {
     cardsType: string | null;
     difficulty: string | null;
   };
   game: {
-    time: number | null;
+    time: number;
     mistakes: number;
     comparisons: number;
+    matches: number;
     score: number | null;
   };
 }

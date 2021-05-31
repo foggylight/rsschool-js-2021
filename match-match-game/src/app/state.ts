@@ -20,21 +20,22 @@ const state: StateObj = {
     imageSrc: '',
   },
   bestPlayers: [
-    {
-      name: 'Sasha',
-      email: 'default@gmail.com',
-      score: 456,
-    },
+    // {
+    //   name: 'Sasha',
+    //   email: 'default@gmail.com',
+    //   score: 456,
+    // },
   ],
   settings: {
     cardsType: null,
     difficulty: null,
   },
   game: {
-    time: null,
+    time: 0,
     mistakes: 0,
     comparisons: 0,
-    score: null,
+    matches: 0,
+    score: 0,
   },
 };
 

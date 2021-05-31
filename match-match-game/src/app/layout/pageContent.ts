@@ -33,7 +33,10 @@ export default class PageContent extends BaseComponent {
     const { router } = state;
     router.routes.forEach(route => {
       if (route?.view.path === router.currentRoute) {
-        if (router.currentRoute === '/game') {
+        if (
+          router.currentRoute === '/game' ||
+          router.currentRoute === '/score'
+        ) {
           route?.view.init();
         }
         this.node.append(route.view.node);
