@@ -1,6 +1,13 @@
+import { DataBase } from './db';
+
 export interface Component {
   node: HTMLElement;
   render(): void;
+}
+
+export interface Page {
+  node: HTMLElement;
+  db: DataBase;
 }
 
 export interface View {
@@ -11,24 +18,23 @@ export interface View {
 
 export interface StateObj {
   router: {
-    routes: [{ path: string; view: View }?];
-    root: string;
+    routes: {
+      path: string;
+      view: View;
+    }[];
     currentRoute: string;
-  };
-  form: {
-    state: 'valid' | 'invalid';
-    data: {
-      firstName: string | null;
-      lastName: string | null;
-      email: string | null;
-    };
   };
   user: {
     name: string | null;
     email: string | null;
     imageSrc: string;
   };
-  bestPlayers: { name: string; email: string; score: number }[];
+  bestPlayers: {
+    name: string;
+    email: string;
+    score: number;
+    avatar: string;
+  }[];
   settings: {
     cardsType: string | null;
     difficulty: string | null;

@@ -54,7 +54,6 @@ export default class Form {
   constructor(parentNode: ModalBox) {
     this.modalBox = parentNode;
     const form = document.createElement('form');
-    // form.method = 'POST';
     form.classList.add('form');
     this.node = form;
 
@@ -145,26 +144,21 @@ export default class Form {
       );
       if (!input.files) return;
 
-      // const file = input.files[0];
-      // const reader = new FileReader();
-      // reader.onload = () => {
-      //   image.src = reader.result;
-      // };
-      // reader.readAsDataURL(file);
-
-      const imageURL = URL.createObjectURL(input.files[0]);
-      state.user.imageSrc = imageURL;
-      console.log(input.value);
-      console.log(imageURL);
-      if (imageContainer)
-        imageContainer.style.backgroundImage = `url('${imageURL}')`;
+      let imageURL;
+      const reader = new FileReader();
+      reader.onload = () => {
+        imageURL = reader.result;
+        if (typeof imageURL === 'string') state.user.imageSrc = imageURL;
+        if (imageContainer)
+          imageContainer.style.backgroundImage = `url('${imageURL}')`;
+      };
+      reader.readAsDataURL(input.files[0]);
     };
 
     const imageInput: HTMLInputElement | null = this.node.querySelector(
       '.form__avatar-upload',
     );
     if (!imageInput) return;
-    console.log(imageInput);
 
     imageInput.addEventListener('change', () => {
       updateUserImage(imageInput);

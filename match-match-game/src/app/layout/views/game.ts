@@ -5,11 +5,10 @@ import state from '../../state';
 import Card from '../../components/card';
 import ModalBox from '../../components/shared/modalBox';
 import Button from '../../components/shared/btn';
+import { Page } from '../../app.api';
 
 const isOver = (): boolean => {
   if (!state.settings.difficulty) return false;
-  console.log('matches', state.game.matches);
-  console.log('all', +state.settings.difficulty / 2);
   return state.game.matches === +state.settings.difficulty / 2;
 };
 
@@ -30,7 +29,7 @@ export default class Game extends BasePage {
 
   private counterValue: number;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: Page) {
     super(parentNode);
     this.path = '/game';
 
@@ -98,7 +97,7 @@ export default class Game extends BasePage {
   }
 
   startGame(): void {
-    const showTime = 5;
+    const showTime = 30;
     setTimeout(() => {
       this.cards.forEach(card => card.flip());
       this.cards.forEach(card =>
@@ -145,13 +144,11 @@ export default class Game extends BasePage {
       'ok',
       '#score',
     );
-    // closeBtn.node.addEventListener('click', () => endGameModal.close());
     endGameModal.node.append(closeBtn.node);
     endGameModal.open();
   }
 
   stopGame(): void {
-    console.log('stop!', this.counterValue);
     if (this.timer) clearTimeout(this.timer);
     const { game, user } = state;
     state.game.time = this.counterValue;
@@ -161,13 +158,22 @@ export default class Game extends BasePage {
       this.initEndGameModal();
       return;
     }
+    this.parent.db.init('foggylight').then(() => {
+      if (!user.name || !user.email || !game.score) return;
+      this.parent.db.add({
+        name: user.name,
+        email: user.email,
+        score: game.score,
+        avatar: user.imageSrc,
+      });
+    });
     state.bestPlayers.push({
       name: user.name,
       email: user.email,
       score: game.score,
+      avatar: user.imageSrc,
     });
     this.initEndGameModal();
-    console.log(state);
   }
 
   async cardsHandler(card: Card): Promise<void> {

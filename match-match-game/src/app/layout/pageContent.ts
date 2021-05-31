@@ -6,19 +6,23 @@ import AboutPage from './views/about';
 import ScorePage from './views/score';
 import SettingsPage from './views/settings';
 import Game from './views/game';
+import { DataBase } from '../db';
 
 export default class PageContent extends BaseComponent {
-  constructor(parentNode: HTMLElement) {
+  public db: DataBase;
+
+  constructor(parentNode: HTMLElement, dataBase: DataBase) {
     super(parentNode, 'div', ['content-wrapper']);
 
+    this.db = dataBase;
     this.addRoutes();
   }
 
   addRoutes(): void {
-    const about = new AboutPage(this.node);
-    const score = new ScorePage(this.node);
-    const settings = new SettingsPage(this.node);
-    const game = new Game(this.node);
+    const about = new AboutPage(this);
+    const score = new ScorePage(this);
+    const settings = new SettingsPage(this);
+    const game = new Game(this);
 
     const { router } = state;
     router.routes = [];

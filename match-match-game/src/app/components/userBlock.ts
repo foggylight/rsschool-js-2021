@@ -3,6 +3,7 @@ import state from '../state';
 import BaseComponent from './baseComponent';
 import RegisterButton from './registerBtn';
 import Button from './shared/btn';
+import Avatar from './shared/userAvatar';
 
 export default class UserBlock extends BaseComponent {
   private btn: Button | null;
@@ -20,22 +21,14 @@ export default class UserBlock extends BaseComponent {
   render(): void {
     this.node.innerHTML = '';
 
-    if (state.user.imageSrc) {
+    if (state.user.name) {
       this.btn = new Button(
         'button',
         ['user-block__btn-start-game'],
         'Start game',
         '#game',
       );
-
-      const imageContainer = document.createElement('div');
-      imageContainer.classList.add('avatar-container');
-      const image = new Image();
-      image.src = state.user.imageSrc;
-      image.alt = 'user avatar';
-      image.classList.add('user-block__avatar');
-      imageContainer.append(image);
-      this.userImg = imageContainer;
+      this.userImg = new Avatar(state.user.imageSrc).node;
     } else {
       this.btn = new RegisterButton(this);
     }

@@ -4,8 +4,10 @@ import img1 from '../../../assets/about-1.jpg';
 import img2 from '../../../assets/about-2.jpg';
 import img3 from '../../../assets/about-3.jpg';
 
+import { Page } from '../../app.api';
+
 export default class AboutPage extends BasePage {
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: Page) {
     super(parentNode);
     this.node.classList.add('content-scrollable');
     this.init();
@@ -38,7 +40,5 @@ export default class AboutPage extends BasePage {
   `;
 
     this.node.innerHTML = template;
-
-    // this.parentNode.append(this.node);
   }
 }

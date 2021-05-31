@@ -2,6 +2,7 @@ import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 import state from '../../state';
 import Heading from '../../components/shared/heading';
+import { Page } from '../../app.api';
 
 interface ISettingsOption {
   description: string;
@@ -58,7 +59,7 @@ const addListener = (field: HTMLElement): void => {
 };
 
 export default class SettingsPage extends BasePage {
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: Page) {
     super(parentNode);
     this.path = '/settings';
     this.init();
@@ -92,7 +93,5 @@ export default class SettingsPage extends BasePage {
         optionNode.node.textContent = option.description;
       });
     });
-
-    // this.parentNode.append(this.node);
   }
 }

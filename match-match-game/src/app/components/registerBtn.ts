@@ -6,8 +6,6 @@ import Button from './shared/btn';
 import Heading from './shared/heading';
 import ModalBox from './shared/modalBox';
 
-import defaultImage from '../../assets/user-image.png';
-
 export default class RegisterButton extends Button {
   private parentComponent: Component;
 
@@ -66,10 +64,6 @@ export default class RegisterButton extends Button {
           'lastname',
         )}`;
         state.user.email = `${formData.get('email')}`;
-        if (state.user.imageSrc.length === 0) {
-          state.user.imageSrc = defaultImage;
-        }
-        console.log(state.user);
 
         this.modal?.close();
         this.parentComponent.render();

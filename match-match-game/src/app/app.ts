@@ -1,3 +1,4 @@
+import { DataBase } from './db';
 import Header from './layout/header/header';
 import PageContent from './layout/pageContent';
 
@@ -8,12 +9,16 @@ export default class App {
 
   private content: PageContent;
 
+  dataBase: DataBase;
+
   constructor(private readonly rootNode: HTMLElement) {
     state.router.currentRoute = `/${window.location.hash.slice(1)}`;
     this.enableRouteChange();
 
+    this.dataBase = new DataBase();
+
     this.header = new Header(this.rootNode);
-    this.content = new PageContent(this.rootNode);
+    this.content = new PageContent(this.rootNode, this.dataBase);
   }
 
   private enableRouteChange() {
