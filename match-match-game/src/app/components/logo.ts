@@ -1,9 +1,9 @@
 import BaseComponent from './baseComponent';
 
-export default class Logo extends BaseComponent {
+export default class Logo extends BaseComponent<HTMLAnchorElement> {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'a', ['logo']);
-    this.node.setAttribute('href', '/');
+    if (this.node instanceof HTMLAnchorElement) this.node.href = '/';
 
     const spanTop = document.createElement('span');
     spanTop.textContent = 'match';

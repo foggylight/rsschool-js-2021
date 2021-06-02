@@ -1,35 +1,41 @@
 import state from '../state';
+import { DataBase } from '../db';
 
 import BaseComponent from '../components/baseComponent';
+import { View } from '../app.api';
 
 import AboutPage from './views/about';
 import ScorePage from './views/score';
 import SettingsPage from './views/settings';
 import Game from './views/game';
-import { DataBase } from '../db';
 
-export default class PageContent extends BaseComponent {
+export default class PageContent extends BaseComponent<HTMLElement> {
   public db: DataBase;
+
+  private views: View[];
 
   constructor(parentNode: HTMLElement, dataBase: DataBase) {
     super(parentNode, 'div', ['content-wrapper']);
 
     this.db = dataBase;
+
+    this.views = [
+      new AboutPage(this),
+      new ScorePage(this),
+      new SettingsPage(this),
+      new Game(this),
+    ];
+
     this.addRoutes();
   }
 
   addRoutes(): void {
-    const about = new AboutPage(this);
-    const score = new ScorePage(this);
-    const settings = new SettingsPage(this);
-    const game = new Game(this);
-
     const { router } = state;
     router.routes = [];
-    router.routes.push({ path: about.path, view: about });
-    router.routes.push({ path: score.path, view: score });
-    router.routes.push({ path: settings.path, view: settings });
-    router.routes.push({ path: game.path, view: game });
+
+    this.views.forEach(item =>
+      router.routes.push({ path: item.path, view: item }),
+    );
   }
 
   render(): void {

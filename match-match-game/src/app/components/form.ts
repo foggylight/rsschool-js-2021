@@ -57,7 +57,9 @@ export default class Form {
     form.classList.add('form');
     this.node = form;
 
-    const container = new BaseComponent(this.node, 'div', ['form__container']);
+    const container = new BaseComponent<HTMLElement>(this.node, 'div', [
+      'form__container',
+    ]);
     container.node.innerHTML = `
       <div class="form__text-fields">
         <div class="form__input-container">
@@ -90,7 +92,7 @@ export default class Form {
       'cancel',
     ).node;
 
-    const btnContainer = new BaseComponent(this.node, 'div', [
+    const btnContainer = new BaseComponent<HTMLElement>(this.node, 'div', [
       'form__btn-container',
     ]);
 

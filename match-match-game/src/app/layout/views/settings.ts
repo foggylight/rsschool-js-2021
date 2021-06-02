@@ -70,25 +70,30 @@ export default class SettingsPage extends BasePage {
       const heading = new Heading(item.heading).node;
       this.node.append(heading);
 
-      const form = new BaseComponent(this.node, 'form', ['settings__form']);
-      const select = new BaseComponent(form.node, 'select', [
+      const form = new BaseComponent<HTMLFormElement>(this.node, 'form', [
+        'settings__form',
+      ]);
+      const select = new BaseComponent<HTMLSelectElement>(form.node, 'select', [
         'settings__select',
       ]);
       select.node.dataset.settingName = item.name;
       addListener(select.node);
 
-      const defaultVal = new BaseComponent(select.node, 'option', [
-        'options',
-        'select__default',
-      ]);
+      const defaultVal = new BaseComponent<HTMLOptionElement>(
+        select.node,
+        'option',
+        ['options', 'select__default'],
+      );
 
       defaultVal.node.setAttribute('value', 'default');
       defaultVal.node.textContent = item.defaultVal;
 
       item.options.forEach((option: ISettingsOption) => {
-        const optionNode = new BaseComponent(select.node, 'option', [
-          'options',
-        ]);
+        const optionNode = new BaseComponent<HTMLOptionElement>(
+          select.node,
+          'option',
+          ['options'],
+        );
         optionNode.node.setAttribute('value', `${option.value}`);
         optionNode.node.textContent = option.description;
       });

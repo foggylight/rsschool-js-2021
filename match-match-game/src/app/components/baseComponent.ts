@@ -1,14 +1,13 @@
-export default class BaseComponent {
-  public node: HTMLElement;
+export default class BaseComponent<T> {
+  public node: T | HTMLElement;
 
   constructor(
-    private readonly parentNode: HTMLElement,
+    private parentNode: HTMLElement,
     tagName = 'div',
     classNames: string[],
   ) {
-    const elem = document.createElement(tagName);
-    elem.classList.add(...classNames);
-    this.node = elem;
+    this.node = document.createElement(tagName);
+    this.node.classList.add(...classNames);
     parentNode.append(this.node);
   }
 }

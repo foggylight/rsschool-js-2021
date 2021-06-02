@@ -5,7 +5,7 @@ import RegisterButton from './registerBtn';
 import Button from './shared/btn';
 import Avatar from './shared/userAvatar';
 
-export default class UserBlock extends BaseComponent {
+export default class UserBlock extends BaseComponent<HTMLElement> {
   private btn: Button | null;
 
   private userImg: HTMLElement | null;

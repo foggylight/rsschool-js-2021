@@ -1,23 +1,25 @@
 import BaseComponent from './baseComponent';
 import cardBackImg from '../../assets/card-back.jpg';
 
-export default class Card extends BaseComponent {
-  card: BaseComponent;
+export default class Card extends BaseComponent<HTMLElement> {
+  card: BaseComponent<HTMLElement>;
 
   image;
 
-  constructor(parentNode: HTMLElement, readonly img: string) {
+  constructor(parentNode: HTMLElement, readonly bgImageName: string) {
     super(parentNode, 'div', ['card-container']);
 
-    this.image = img;
+    this.image = bgImageName;
 
-    this.card = new BaseComponent(this.node, 'div', ['card']);
-    const cardFront = new BaseComponent(this.card.node, 'div', ['card__front'])
-      .node;
-    const cardBack = new BaseComponent(this.card.node, 'div', ['card__back'])
-      .node;
+    this.card = new BaseComponent<HTMLElement>(this.node, 'div', ['card']);
+    const cardFront = new BaseComponent<HTMLElement>(this.card.node, 'div', [
+      'card__front',
+    ]).node;
+    const cardBack = new BaseComponent<HTMLElement>(this.card.node, 'div', [
+      'card__back',
+    ]).node;
     cardBack.style.backgroundImage = `url(${cardBackImg})`;
-    cardFront.style.backgroundImage = `url('./images/${img}')`;
+    cardFront.style.backgroundImage = `url('./images/${bgImageName}')`;
   }
 
   public flip(): Promise<void> {

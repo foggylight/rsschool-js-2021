@@ -2,12 +2,12 @@ import BaseComponent from '../baseComponent';
 
 import defaultImage from '../../../assets/user-image.png';
 
-export default class ModalBox extends BaseComponent {
+export default class ModalBox extends BaseComponent<HTMLElement> {
   private cover: HTMLElement;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['modal-box', 'hidden']);
-    this.cover = new BaseComponent(parentNode, 'div', [
+    this.cover = new BaseComponent<HTMLElement>(parentNode, 'div', [
       'modal-box__cover',
       'hidden',
     ]).node;

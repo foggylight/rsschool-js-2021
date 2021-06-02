@@ -1,9 +1,9 @@
-import BaseComponent from '../../components/baseComponent';
-import Logo from '../../components/logo';
-import Navigation from '../../components/navigation';
-import UserBlock from '../../components/userBlock';
+import BaseComponent from '../components/baseComponent';
+import Logo from '../components/logo';
+import Navigation from '../components/navigation';
+import UserBlock from '../components/userBlock';
 
-export default class Header extends BaseComponent {
+export default class Header extends BaseComponent<HTMLElement> {
   private nav: Navigation;
 
   private userBlock: UserBlock;

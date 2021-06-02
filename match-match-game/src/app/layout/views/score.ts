@@ -25,24 +25,36 @@ export default class ScorePage extends BasePage {
     state.bestPlayers = users;
 
     if (state.bestPlayers.length === 0) {
-      const text = new BaseComponent(this.node, 'p', ['score-page__text']);
+      const text = new BaseComponent<HTMLElement>(this.node, 'p', [
+        'score-page__text',
+      ]);
       text.node.textContent = 'No one has played yet!';
     }
 
     state.bestPlayers.sort((a, b) => b.score - a.score);
     state.bestPlayers = state.bestPlayers.slice(0, 10);
     state.bestPlayers.forEach(player => {
-      const block = new BaseComponent(this.node, 'div', ['player__block']);
+      const block = new BaseComponent<HTMLElement>(this.node, 'div', [
+        'player__block',
+      ]);
       const playerImage = new Avatar(player.avatar).node;
       block.node.append(playerImage);
-      const nameBlock = new BaseComponent(block.node, 'div', ['name-block']);
-      const name = new BaseComponent(nameBlock.node, 'p', ['player__name']);
+      const nameBlock = new BaseComponent<HTMLElement>(block.node, 'div', [
+        'name-block',
+      ]);
+      const name = new BaseComponent<HTMLElement>(nameBlock.node, 'p', [
+        'player__name',
+      ]);
       name.node.textContent = player.name;
-      const email = new BaseComponent(nameBlock.node, 'p', ['player__email']);
+      const email = new BaseComponent<HTMLElement>(nameBlock.node, 'p', [
+        'player__email',
+      ]);
       email.node.textContent = player.email;
-      const score = new BaseComponent(block.node, 'p', ['player__score']);
+      const score = new BaseComponent<HTMLElement>(block.node, 'p', [
+        'player__score',
+      ]);
       score.node.textContent = 'Score: ';
-      const scoreVal = new BaseComponent(score.node, 'span', [
+      const scoreVal = new BaseComponent<HTMLElement>(score.node, 'span', [
         'player__score-value',
       ]);
       scoreVal.node.textContent = `${player.score}`;

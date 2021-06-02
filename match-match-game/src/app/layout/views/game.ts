@@ -43,13 +43,17 @@ export default class Game extends BasePage {
   init(): void {
     this.clear();
 
-    this.counter = new BaseComponent(this.node, 'div', ['game-counter']).node;
+    this.counter = new BaseComponent<HTMLElement>(this.node, 'div', [
+      'game-counter',
+    ]).node;
     this.counter.textContent = '00:00';
 
     if (!state.settings.difficulty) {
       state.settings.difficulty = '16';
     }
-    const cardsField = new BaseComponent(this.node, 'div', ['cards-field']);
+    const cardsField = new BaseComponent<HTMLElement>(this.node, 'div', [
+      'cards-field',
+    ]);
     cardsField.node.style.cssText = `grid-template-columns: repeat(${Math.sqrt(
       +state.settings.difficulty,
     )}, 1fr)`;
@@ -134,7 +138,9 @@ export default class Game extends BasePage {
   initEndGameModal(): void {
     const endGameModal = new ModalBox(this.node);
     endGameModal.node.classList.add('end-game-modal');
-    const text = new BaseComponent(endGameModal.node, 'p', ['game-end-text']);
+    const text = new BaseComponent<HTMLElement>(endGameModal.node, 'p', [
+      'game-end-text',
+    ]);
     text.node.textContent = `Congratulations! You successfully found all matches in ${Math.floor(
       this.counterValue / 60,
     )}:${this.counterValue % 60} minutes! Your score is ${state.game.score}.`;
