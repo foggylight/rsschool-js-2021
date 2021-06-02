@@ -18,22 +18,24 @@
   flex-grow: 1;
 }
 
-.player__name {
-  margin: 0 0 5px;
+.player {
+  &__name {
+    margin: 0 0 5px;
 
-  font-weight: 600;
-}
+    font-weight: 600;
+  }
 
-.player__email {
-  margin: 0;
+  &__email {
+    margin: 0;
 
-  font-size: 12px;
-}
+    font-size: 12px;
+  }
 
-.player__score {
-  margin: 0;
-}
+  &__score {
+    margin: 0;
+  }
 
-.player__score-value {
-  color: $accent;
+  &__score-value {
+    color: $accent;
+  }
 }

@@ -16,26 +16,26 @@
   &:hover {
     background-color: $bgLightGray;
   }
-}
 
-.btn_dark {
-  background-color: $accent;
-  color: $white;
-
-  &:hover {
-    background-color: $accentHover;
-  }
-
-  &:disabled {
-    background-color: $bgLightGray;
+  &_dark {
+    background-color: $accent;
+    color: $white;
 
     &:hover {
+      background-color: $accentHover;
+    }
+
+    &:disabled {
       background-color: $bgLightGray;
+
+      &:hover {
+        background-color: $bgLightGray;
+      }
     }
   }
-}
 
-.btn_end-game {
-  display: inline-block;
-  margin: 10px auto 0;
+  &_end-game {
+    display: inline-block;
+    margin: 10px auto 0;
+  }
 }

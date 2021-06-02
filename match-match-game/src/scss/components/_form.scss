@@ -5,115 +5,116 @@
   flex-direction: column;
   justify-content: space-between;
   height: 85%;
-}
 
-.form__container {
-  display: flex;
-  justify-content: space-between;
-}
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.form__input-container {
-  width: 330px;
-  height: 56px;
-  padding: 5px 15px;
-  margin: 0 0 15px;
-  border-radius: 4px;
+  &__input-container {
+    width: 330px;
+    height: 56px;
+    padding: 5px 15px;
+    margin: 0 0 15px;
+    border-radius: 4px;
 
-  background-color: $bgLightGray;
+    background-color: $bgLightGray;
 
-  font-size: 12px;
-}
-
-.form__input {
-  display: block;
-  height: 24px;
-  width: 100%;
-  margin: 3px 0 0;
-  padding: 0;
-  border: none;
-
-  background-color: $bgLightGray;
-
-  color: $black;
-  font-size: 16px;
-
-  &::placeholder {
-    color: $lightGray;
     font-size: 12px;
   }
 
-  &:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-}
+  &__input {
+    display: block;
+    height: 24px;
+    width: 100%;
+    margin: 3px 0 0;
+    padding: 0;
+    border: none;
 
-.input_invalid {
-  border-bottom: 2px solid $inputInvalid;
-}
+    background-color: $bgLightGray;
 
-.input_valid {
-  border-bottom: 2px solid $inputValid;
-}
+    color: $black;
+    font-size: 16px;
 
-.form__input-warning {
-  margin: 0 0 0 10px;
-  color: $inputInvalid;
-}
+    &::placeholder {
+      color: $lightGray;
+      font-size: 12px;
+    }
 
-.form__avatar-container {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.form__avatar-upload {
-  width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-.form__avatar-label {
-  position: relative;
-
-  cursor: pointer;
-
-  &:hover {
-    &::before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      height: 100%;
-      width: 100%;
-      border-radius: 50%;
-
-      background-color: $bgImageCover;
-      background-image: url('../assets/user-image-add.png');
-      background-position: center;
-      background-repeat: no-repeat;
-      content: '';
+    &:focus {
+      background-color: #ddd;
+      outline: none;
     }
   }
+
+  &__input-warning {
+    margin: 0 0 0 10px;
+    color: $inputInvalid;
+  }
+
+  &__avatar-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__avatar-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__avatar-label {
+    position: relative;
+
+    cursor: pointer;
+
+    &:hover {
+      &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+
+        background-color: $bgImageCover;
+        background-image: url('../assets/user-image-add.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        content: '';
+      }
+    }
+  }
+
+  &__uploaded-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+
+    background-image: url('../assets/user-image.png');
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__btn-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__btn-cancel {
+    margin: 0 0 0 15px;
+  }
 }
 
-.form__uploaded-image {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
+.input {
+  &_invalid {
+    border-bottom: 2px solid $inputInvalid;
+  }
 
-  background-image: url('../assets/user-image.png');
-  background-position: center;
-  background-size: cover;
-}
-
-.form__btn-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.form__btn-cancel {
-  margin: 0 0 0 15px;
+  &_valid {
+    border-bottom: 2px solid $inputValid;
+  }
 }
