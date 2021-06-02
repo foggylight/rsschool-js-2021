@@ -1,5 +1,4 @@
 import BaseComponent from '../components/baseComponent';
-import Logo from '../components/logo';
 import Navigation from '../components/navigation';
 import UserBlock from '../components/userBlock';
 
@@ -8,17 +7,26 @@ export default class Header extends BaseComponent<HTMLElement> {
 
   private userBlock: UserBlock;
 
-  private logo: Logo;
-
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'header', ['page-header']);
 
-    this.logo = new Logo(this.node);
+    const logo = new BaseComponent<HTMLAnchorElement>(this.node, 'a', ['logo'])
+      .node;
+    if (logo instanceof HTMLAnchorElement) logo.href = '/';
+    logo.innerHTML = `
+    <div class="logo__top-block">
+      <span>match</span>
+    </div>
+    <div class="logo__bottom-block">
+      <span>match</span>
+    </div>
+    `;
+
     this.nav = new Navigation(this.node);
     this.userBlock = new UserBlock(this.node);
   }
 
-  render(): void {
+  public render(): void {
     this.nav?.render();
     this.userBlock?.render();
   }
