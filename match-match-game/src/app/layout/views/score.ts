@@ -1,10 +1,12 @@
 import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 
-import state from '../../state';
 import Heading from '../../components/shared/heading';
-import { Page } from '../../app.api';
 import Avatar from '../../components/shared/userAvatar';
+
+import state from '../../state';
+import { Page } from '../../app.api';
+import DBName from '../../constants';
 
 export default class ScorePage extends BasePage {
   constructor(parentNode: Page) {
@@ -14,13 +16,13 @@ export default class ScorePage extends BasePage {
     this.node.classList.add('content-scrollable');
   }
 
-  async init(): Promise<void> {
+  async render(): Promise<void> {
     this.node.innerHTML = '';
     const heading = new Heading('Best players').node;
     this.node.append(heading);
 
     const users = await this.parent.db
-      .init('foggylight')
+      .init(DBName)
       .then(() => this.parent.db.readFiltered());
     state.bestPlayers = users;
 
@@ -59,5 +61,7 @@ export default class ScorePage extends BasePage {
       ]);
       scoreVal.node.textContent = `${player.score}`;
     });
+
+    this.parent.node.append(this.node);
   }
 }

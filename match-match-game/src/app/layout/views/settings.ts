@@ -10,8 +10,8 @@ interface ISettingsOption {
 }
 
 interface ISettingsType {
-  cardsType: string | null;
-  difficulty: string | null;
+  cardsType: string;
+  difficulty: string;
 }
 
 const settings = [
@@ -62,10 +62,7 @@ export default class SettingsPage extends BasePage {
   constructor(parentNode: Page) {
     super(parentNode);
     this.path = '/settings';
-    this.init();
-  }
 
-  init(): void {
     settings.forEach(item => {
       const heading = new Heading(item.heading).node;
       this.node.append(heading);
@@ -98,5 +95,9 @@ export default class SettingsPage extends BasePage {
         optionNode.node.textContent = option.description;
       });
     });
+  }
+
+  render(): void {
+    this.parent.node.append(this.node);
   }
 }

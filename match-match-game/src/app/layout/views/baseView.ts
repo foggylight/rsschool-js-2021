@@ -1,6 +1,6 @@
-import { Page, View } from '../../app.api';
+import { Page } from '../../app.api';
 
-export default class BasePage implements View {
+export default class BasePage {
   public path: string;
 
   public node: HTMLElement;
@@ -12,9 +12,5 @@ export default class BasePage implements View {
     const elem = document.createElement('div');
     elem.classList.add('content');
     this.node = elem;
-  }
-
-  init(): void {
-    this.parent.node.append(this.node);
   }
 }

@@ -29,7 +29,7 @@ export default class PageContent extends BaseComponent<HTMLElement> {
     this.addRoutes();
   }
 
-  addRoutes(): void {
+  private addRoutes(): void {
     const { router } = state;
     router.routes = [];
 
@@ -38,18 +38,12 @@ export default class PageContent extends BaseComponent<HTMLElement> {
     );
   }
 
-  render(): void {
+  public render(): void {
     this.node.innerHTML = '';
     const { router } = state;
     router.routes.forEach(route => {
       if (route?.view.path === router.currentRoute) {
-        if (
-          router.currentRoute === '/game' ||
-          router.currentRoute === '/score'
-        ) {
-          route?.view.init();
-        }
-        this.node.append(route.view.node);
+        route?.view.render();
       }
     });
   }

@@ -13,7 +13,7 @@ export interface Page {
 export interface View {
   node: HTMLElement;
   path: string;
-  init(): void;
+  render(): void;
 }
 
 export interface StateObj {

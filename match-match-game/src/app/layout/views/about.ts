@@ -6,15 +6,7 @@ import img3 from '../../../assets/about-3.jpg';
 
 import { Page } from '../../app.api';
 
-export default class AboutPage extends BasePage {
-  constructor(parentNode: Page) {
-    super(parentNode);
-    this.node.classList.add('content-scrollable');
-    this.init();
-  }
-
-  init(): void {
-    const template = `
+const template = `
     <h2 class="heading">How to play?</h2>
     <div class="about__step">
       <div class="about__text-block">
@@ -39,6 +31,14 @@ export default class AboutPage extends BasePage {
     </div>
   `;
 
+export default class AboutPage extends BasePage {
+  constructor(parentNode: Page) {
+    super(parentNode);
+    this.node.classList.add('content-scrollable');
+  }
+
+  render(): void {
     this.node.innerHTML = template;
+    this.parent.node.append(this.node);
   }
 }

@@ -1,11 +1,13 @@
 import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
 
-import state from '../../state';
 import Card from '../../components/card';
 import ModalBox from '../../components/shared/modalBox';
 import Button from '../../components/shared/btn';
+
+import state from '../../state';
 import { Page } from '../../app.api';
+import DBName from '../../constants';
 
 const isOver = (): boolean => {
   if (!state.settings.difficulty) return false;
@@ -40,7 +42,7 @@ export default class Game extends BasePage {
     this.currentCard = null;
   }
 
-  init(): void {
+  public render(): void {
     this.clear();
 
     this.counter = new BaseComponent<HTMLElement>(this.node, 'div', [
@@ -75,6 +77,8 @@ export default class Game extends BasePage {
     }
 
     this.startGame();
+
+    this.parent.node.append(this.node);
   }
 
   clear(): void {
@@ -164,7 +168,7 @@ export default class Game extends BasePage {
       this.initEndGameModal();
       return;
     }
-    this.parent.db.init('foggylight').then(() => {
+    this.parent.db.init(DBName).then(() => {
       if (!user.name || !user.email || !game.score) return;
       this.parent.db.add({
         name: user.name,
@@ -172,12 +176,6 @@ export default class Game extends BasePage {
         score: game.score,
         avatar: user.imageSrc,
       });
-    });
-    state.bestPlayers.push({
-      name: user.name,
-      email: user.email,
-      score: game.score,
-      avatar: user.imageSrc,
     });
     this.initEndGameModal();
   }
