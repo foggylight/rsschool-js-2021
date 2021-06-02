@@ -11,10 +11,10 @@ export default class ModalBox extends BaseComponent<HTMLElement> {
       'modal-box__cover',
       'hidden',
     ]).node;
-    this.addListeners();
+    this.addListener();
   }
 
-  addContent(content: HTMLElement[]): void {
+  public addContent(content: HTMLElement[]): void {
     this.node.append(...content);
   }
 
@@ -23,7 +23,7 @@ export default class ModalBox extends BaseComponent<HTMLElement> {
     this.cover.classList.remove('hidden');
   }
 
-  clear(): void {
+  private clear(): void {
     this.node.querySelector('form')?.reset();
     this.node.querySelectorAll('.form__input-warning').forEach(warning => {
       warning.remove();
@@ -45,7 +45,7 @@ export default class ModalBox extends BaseComponent<HTMLElement> {
     this.cover.classList.add('hidden');
   }
 
-  addListeners(): void {
+  private addListener(): void {
     this.cover.addEventListener('click', () => this.close());
   }
 }

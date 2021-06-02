@@ -16,14 +16,14 @@ export default class ScorePage extends BasePage {
     this.node.classList.add('content-scrollable');
   }
 
-  async render(): Promise<void> {
+  public async render(): Promise<void> {
     this.node.innerHTML = '';
     const heading = new Heading('Best players').node;
     this.node.append(heading);
 
     const users = await this.parent.db
       .init(DBName)
-      .then(() => this.parent.db.readFiltered());
+      .then(() => this.parent.db.getData());
     state.bestPlayers = users;
 
     if (state.bestPlayers.length === 0) {

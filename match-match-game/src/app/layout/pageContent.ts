@@ -1,5 +1,5 @@
 import state from '../state';
-import { DataBase } from '../db';
+import DataBase from '../db';
 
 import BaseComponent from '../components/baseComponent';
 import { View } from '../app.api';

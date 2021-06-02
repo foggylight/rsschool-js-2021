@@ -1,8 +1,8 @@
-import { DataBase } from './db';
-import Header from './layout/header/header';
+import Header from './layout/header';
 import PageContent from './layout/pageContent';
 
 import state from './state';
+import DataBase from './db';
 
 export default class App {
   private header: Header;
@@ -29,7 +29,7 @@ export default class App {
     });
   }
 
-  render(): void {
+  public render(): void {
     this.header.render();
     this.content.render();
   }

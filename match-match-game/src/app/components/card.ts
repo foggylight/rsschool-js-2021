@@ -1,4 +1,5 @@
 import BaseComponent from './baseComponent';
+
 import cardBackImg from '../../assets/card-back.jpg';
 
 export default class Card extends BaseComponent<HTMLElement> {

@@ -18,7 +18,7 @@ export default class UserBlock extends BaseComponent<HTMLElement> {
     this.userImg = null;
   }
 
-  render(): void {
+  public render(): void {
     this.node.innerHTML = '';
 
     if (state.user.name) {

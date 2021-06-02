@@ -44,7 +44,7 @@ export default class Navigation extends BaseComponent<HTMLElement> {
     }
   }
 
-  render(): void {
+  public render(): void {
     this.links.forEach(link => {
       link.classList.remove('navigation__link_active');
       if (

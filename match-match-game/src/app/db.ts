@@ -1,18 +1,18 @@
-export interface User {
+interface User {
   name: string;
   email: string;
   score: number;
   avatar: string;
 }
 
-export class DataBase {
+export default class DataBase {
   public db: IDBDatabase | null = null;
 
   async init(name: string, version?: number): Promise<void> {
     this.db = await this.open(name, version);
   }
 
-  open(name: string, version?: number): Promise<IDBDatabase> {
+  private open(name: string, version?: number): Promise<IDBDatabase> {
     return new Promise(res => {
       const IDB = window.indexedDB;
       const openReq = IDB.open(name, version);
@@ -33,7 +33,7 @@ export class DataBase {
     });
   }
 
-  add(user: User): void {
+  public add(user: User): void {
     if (!this.db) {
       return;
     }
@@ -42,40 +42,12 @@ export class DataBase {
       .objectStore('users')
       .add(user);
 
-    // request.onsuccess = () => {
-    //   console.log(`${user.name} added`);
-    // };
-
     request.onerror = () => {
       throw new Error('user adding failed');
     };
   }
 
-  read(email: string): void {
-    if (!this.db) {
-      return;
-    }
-    const transaction = this.db.transaction('users');
-    const objectStore = transaction.objectStore('users');
-    const request = objectStore.get(email);
-
-    request.onerror = () => {
-      throw new Error('reading failed');
-    };
-  }
-
-  readAll(collection: string): void {
-    if (!this.db) {
-      return;
-    }
-    const transaction = this.db.transaction([collection], 'readonly');
-    const objectStore = transaction.objectStore(collection);
-    const res = objectStore.getAll();
-
-    transaction.oncomplete = () => res.result;
-  }
-
-  readFiltered(): Promise<User[]> {
+  public getData(): Promise<User[]> {
     return new Promise(resolve => {
       if (!this.db) {
         return;

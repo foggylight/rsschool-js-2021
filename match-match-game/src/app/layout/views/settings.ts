@@ -1,7 +1,8 @@
 import BasePage from './baseView';
 import BaseComponent from '../../components/baseComponent';
-import state from '../../state';
 import Heading from '../../components/shared/heading';
+
+import state from '../../state';
 import { Page } from '../../app.api';
 
 interface ISettingsOption {
@@ -97,7 +98,7 @@ export default class SettingsPage extends BasePage {
     });
   }
 
-  render(): void {
+  public render(): void {
     this.parent.node.append(this.node);
   }
 }

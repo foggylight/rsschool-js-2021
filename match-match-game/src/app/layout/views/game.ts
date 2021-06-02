@@ -81,7 +81,7 @@ export default class Game extends BasePage {
     this.parent.node.append(this.node);
   }
 
-  clear(): void {
+  private clear(): void {
     this.cards = [];
     state.game.comparisons = 0;
     state.game.matches = 0;
@@ -92,7 +92,7 @@ export default class Game extends BasePage {
     this.node.innerHTML = '';
   }
 
-  initCounter(): NodeJS.Timeout {
+  private initCounter(): NodeJS.Timeout {
     this.counterValue = 0;
     const timer = setInterval(() => {
       this.counterValue += 1;
@@ -104,7 +104,7 @@ export default class Game extends BasePage {
     return timer;
   }
 
-  startGame(): void {
+  private startGame(): void {
     const showTime = 30;
     setTimeout(() => {
       this.cards.forEach(card => card.flip());
@@ -117,7 +117,7 @@ export default class Game extends BasePage {
     }, showTime * 1000);
   }
 
-  match(card1: Card, card2: Card, isMatch: boolean): void {
+  private match(card1: Card, card2: Card, isMatch: boolean): void {
     const front1 = card1.node.querySelector('.card__front');
     const front2 = card2.node.querySelector('.card__front');
     const highlightClass = isMatch ? 'match' : 'mistake';
@@ -139,7 +139,7 @@ export default class Game extends BasePage {
     }, 1500);
   }
 
-  initEndGameModal(): void {
+  private initEndGameModal(): void {
     const endGameModal = new ModalBox(this.node);
     endGameModal.node.classList.add('end-game-modal');
     const text = new BaseComponent<HTMLElement>(endGameModal.node, 'p', [
@@ -158,7 +158,7 @@ export default class Game extends BasePage {
     endGameModal.open();
   }
 
-  stopGame(): void {
+  private stopGame(): void {
     if (this.timer) clearTimeout(this.timer);
     const { game, user } = state;
     state.game.time = this.counterValue;
@@ -180,7 +180,7 @@ export default class Game extends BasePage {
     this.initEndGameModal();
   }
 
-  async cardsHandler(card: Card): Promise<void> {
+  private async cardsHandler(card: Card): Promise<void> {
     await card.flip();
     if (!this.currentCard) {
       this.currentCard = card;

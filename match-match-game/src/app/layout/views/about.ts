@@ -37,7 +37,7 @@ export default class AboutPage extends BasePage {
     this.node.classList.add('content-scrollable');
   }
 
-  render(): void {
+  public render(): void {
     this.node.innerHTML = template;
     this.parent.node.append(this.node);
   }

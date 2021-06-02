@@ -25,7 +25,7 @@ export default class Button {
     }
   }
 
-  addToPage(parent: HTMLElement): void {
+  public addToPage(parent: HTMLElement): void {
     parent.append(this.node);
   }
 }

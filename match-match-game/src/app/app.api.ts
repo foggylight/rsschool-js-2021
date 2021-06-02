@@ -1,4 +1,4 @@
-import { DataBase } from './db';
+import DataBase from './db';
 
 export interface Component {
   node: HTMLElement;

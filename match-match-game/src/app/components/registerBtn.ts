@@ -1,10 +1,10 @@
-import { Component } from '../app.api';
-import state from '../state';
 import Form from './form';
-
 import Button from './shared/btn';
 import Heading from './shared/heading';
 import ModalBox from './shared/modalBox';
+
+import state from '../state';
+import { Component } from '../app.api';
 
 export default class RegisterButton extends Button {
   private parentComponent: Component;
@@ -21,14 +21,10 @@ export default class RegisterButton extends Button {
     this.modal = null;
 
     this.initModalForm();
-    this.addListener();
+    this.addBtnListener();
   }
 
-  addToPage(): void {
-    super.addToPage(this.parentNode);
-  }
-
-  initModalForm(): void {
+  private initModalForm(): void {
     const content = [];
     const heading = new Heading('Register new Player').node;
     content.push(heading);
@@ -45,14 +41,14 @@ export default class RegisterButton extends Button {
     this.addFormListener();
   }
 
-  addListener(): void {
+  private addBtnListener(): void {
     const btnHandler = () => {
       this.modal?.open();
     };
     this.node.addEventListener('click', btnHandler);
   }
 
-  addFormListener(): void {
+  private addFormListener(): void {
     this.parentNode
       .querySelector('.form')
       ?.addEventListener('submit', (e: Event) => {

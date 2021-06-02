@@ -1,7 +1,8 @@
-import state from '../state';
 import BaseComponent from './baseComponent';
 import Button from './shared/btn';
 import ModalBox from './shared/modalBox';
+
+import state from '../state';
 
 const validate = (input: HTMLInputElement | null): void => {
   if (!input) return;
@@ -53,21 +54,22 @@ export default class Form {
 
   constructor(parentNode: ModalBox) {
     this.modalBox = parentNode;
-    const form = document.createElement('form');
-    form.classList.add('form');
-    this.node = form;
+
+    this.node = document.createElement('form');
+    this.node.classList.add('form');
 
     const container = new BaseComponent<HTMLElement>(this.node, 'div', [
       'form__container',
-    ]);
-    container.node.innerHTML = `
+    ]).node;
+
+    container.innerHTML = `
       <div class="form__text-fields">
         <div class="form__input-container">
-          <label class="form__label" for="first-name">First Name</label>
+          <label class="form__label" for="firstname">First Name</label>
           <input class="form__input form__input-name" type="text" placeholder="Enter First Name" name="firstname" required>
         </div>
         <div class="form__input-container">
-          <label class="form__label" for="last-name">Last Name</label>
+          <label class="form__label" for="lastname">Last Name</label>
           <input class="form__input form__input-name" type="text" placeholder="Enter Last Name" name="lastname" required>
         </div>
         <div class="form__input-container">
@@ -108,7 +110,7 @@ export default class Form {
     this.addInputEmailListener();
   }
 
-  checkFormValidity(): void {
+  private checkFormValidity(): void {
     if (this.btnSubmit instanceof HTMLAnchorElement) return;
     if (this.node.querySelectorAll('.input_valid').length === 3) {
       this.btnSubmit.disabled = false;
@@ -117,7 +119,7 @@ export default class Form {
     }
   }
 
-  addInputNameListener(): void {
+  private addInputNameListener(): void {
     this.inputsName?.forEach(input =>
       input.addEventListener('input', () => {
         validate(input);
@@ -126,20 +128,20 @@ export default class Form {
     );
   }
 
-  addInputEmailListener(): void {
+  private addInputEmailListener(): void {
     this.inputEmail?.addEventListener('input', () => {
       validate(this.inputEmail);
       this.checkFormValidity();
     });
   }
 
-  addCloseBtnListener(): void {
+  private addCloseBtnListener(): void {
     this.btnCancel.addEventListener('click', () => {
       this.modalBox.close();
     });
   }
 
-  addAvatarListener(): void {
+  private addAvatarListener(): void {
     const updateUserImage = (input: HTMLInputElement): void => {
       const imageContainer: HTMLElement | null = this.node.querySelector(
         '.form__uploaded-image',
