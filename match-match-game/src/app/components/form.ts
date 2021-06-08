@@ -1,8 +1,9 @@
-import BaseComponent from './baseComponent';
-import Button from './shared/btn';
+import BaseComponent from './shared/baseComponent';
+import Button from './shared/button';
 import ModalBox from './shared/modalBox';
 
 import state from '../state';
+import { ButtonType } from '../app.models';
 
 const validate = (input: HTMLInputElement | null): void => {
   if (!input) return;
@@ -84,12 +85,12 @@ export default class Form {
     `;
 
     this.btnSubmit = new Button(
-      'submit',
+      ButtonType.submit,
       ['form__btn-submit', 'btn_dark'],
       'Add user',
     ).node;
     this.btnCancel = new Button(
-      'button',
+      ButtonType.button,
       ['form__btn-cancel', 'btn_dark'],
       'cancel',
     ).node;
@@ -111,11 +112,9 @@ export default class Form {
   }
 
   private checkFormValidity(): void {
-    if (this.btnSubmit instanceof HTMLAnchorElement) return;
-    if (this.node.querySelectorAll('.input_valid').length === 3) {
-      this.btnSubmit.disabled = false;
-    } else {
-      this.btnSubmit.disabled = true;
+    if (!(this.btnSubmit instanceof HTMLAnchorElement)) {
+      this.btnSubmit.disabled =
+        this.node.querySelectorAll('.input_valid').length !== 3;
     }
   }
 

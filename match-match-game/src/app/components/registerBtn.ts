@@ -1,10 +1,10 @@
 import Form from './form';
-import Button from './shared/btn';
+import Button from './shared/button';
 import Heading from './shared/heading';
 import ModalBox from './shared/modalBox';
 
 import state from '../state';
-import { Component } from '../app.api';
+import { ButtonType, Component } from '../app.models';
 
 export default class RegisterButton extends Button {
   private parentComponent: Component;
@@ -14,7 +14,11 @@ export default class RegisterButton extends Button {
   private modal: ModalBox | null;
 
   constructor(parentComponent: Component) {
-    super('button', ['user-block__btn-register'], 'register new player');
+    super(
+      ButtonType.button,
+      ['user-block__btn-register'],
+      'register new player',
+    );
     this.parentComponent = parentComponent;
     this.parentNode = parentComponent.node;
 

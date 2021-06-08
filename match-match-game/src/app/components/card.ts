@@ -1,4 +1,4 @@
-import BaseComponent from './baseComponent';
+import BaseComponent from './shared/baseComponent';
 
 import cardBackImg from '../../assets/card-back.jpg';
 

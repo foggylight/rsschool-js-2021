@@ -1,17 +1,21 @@
 import BasePage from './baseView';
-import BaseComponent from '../../components/baseComponent';
+import BaseComponent from '../../components/shared/baseComponent';
 
 import Card from '../../components/card';
 import ModalBox from '../../components/shared/modalBox';
-import Button from '../../components/shared/btn';
+import Button from '../../components/shared/button';
 
 import state from '../../state';
-import { Page } from '../../app.api';
+import { Page, ButtonType } from '../../app.models';
 import DBName from '../../constants';
 
 const isOver = (): boolean => {
   if (!state.settings.difficulty) return false;
-  return state.game.matches === +state.settings.difficulty / 2;
+  const {
+    game: { matches },
+    settings: { difficulty },
+  } = state;
+  return !!difficulty && matches === +difficulty / 2;
 };
 
 const scoreCount = (): number => {
@@ -94,14 +98,13 @@ export default class Game extends BasePage {
 
   private initCounter(): NodeJS.Timeout {
     this.counterValue = 0;
-    const timer = setInterval(() => {
+    return setInterval(() => {
       this.counterValue += 1;
       if (!this.counter) return;
       const min = Math.floor(this.counterValue / 60);
       const sec = this.counterValue % 60;
       this.counter.textContent = `${min}:${sec}`;
     }, 1000);
-    return timer;
   }
 
   private startGame(): void {
@@ -127,14 +130,24 @@ export default class Game extends BasePage {
       front1?.classList.remove(highlightClass);
       front2?.classList.remove(highlightClass);
       if (!isMatch) {
-        card1.flip();
-        card2.flip();
-        card1.node.addEventListener('click', () => this.cardsHandler(card1), {
-          once: true,
-        });
-        card2.node.addEventListener('click', () => this.cardsHandler(card2), {
-          once: true,
-        });
+        card1
+          .flip()
+          .then(() =>
+            card1.node.addEventListener(
+              'click',
+              () => this.cardsHandler(card1),
+              { once: true },
+            ),
+          );
+        card2
+          .flip()
+          .then(() =>
+            card2.node.addEventListener(
+              'click',
+              () => this.cardsHandler(card2),
+              { once: true },
+            ),
+          );
       }
     }, 1500);
   }
@@ -149,7 +162,7 @@ export default class Game extends BasePage {
       this.counterValue / 60,
     )}:${this.counterValue % 60} minutes! Your score is ${state.game.score}.`;
     const closeBtn = new Button(
-      'button',
+      ButtonType.button,
       ['btn', 'btn_dark', 'btn_end-game'],
       'ok',
       '#score',

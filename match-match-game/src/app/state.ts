@@ -1,4 +1,4 @@
-import { StateObj } from './app.api';
+import { StateObj } from './app.models';
 
 const state: StateObj = {
   router: {

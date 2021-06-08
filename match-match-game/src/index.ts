@@ -10,5 +10,3 @@ import App from './app/app';
   const app = new App(rootElem);
   app.render();
 })();
-
-// indexedDB.deleteDatabase('foggylight');

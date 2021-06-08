@@ -1,5 +1,5 @@
 import state from '../state';
-import BaseComponent from './baseComponent';
+import BaseComponent from './shared/baseComponent';
 
 const navContentList = [
   { name: 'About Game', class: 'navigation__about', href: '/' },

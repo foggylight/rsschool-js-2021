@@ -1,4 +1,4 @@
-import BaseComponent from '../components/baseComponent';
+import BaseComponent from '../components/shared/baseComponent';
 import Navigation from '../components/navigation';
 import UserBlock from '../components/userBlock';
 

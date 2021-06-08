@@ -1,9 +1,10 @@
 import state from '../state';
 
-import BaseComponent from './baseComponent';
+import BaseComponent from './shared/baseComponent';
 import RegisterButton from './registerBtn';
-import Button from './shared/btn';
-import Avatar from './shared/userAvatar';
+import Button from './shared/button';
+import Avatar from './shared/avatar';
+import { ButtonType } from '../app.models';
 
 export default class UserBlock extends BaseComponent<HTMLElement> {
   private btn: Button | null;
@@ -23,7 +24,7 @@ export default class UserBlock extends BaseComponent<HTMLElement> {
 
     if (state.user.name) {
       this.btn = new Button(
-        'button',
+        ButtonType.button,
         ['user-block__btn-start-game'],
         'Start game',
         '#game',

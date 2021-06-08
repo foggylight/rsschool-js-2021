@@ -1,4 +1,4 @@
-import { Page } from '../../app.api';
+import { Page } from '../../app.models';
 
 export default class BasePage {
   public path: string;
@@ -9,8 +9,7 @@ export default class BasePage {
     this.parent = parent;
     this.path = '/';
 
-    const elem = document.createElement('div');
-    elem.classList.add('content');
-    this.node = elem;
+    this.node = document.createElement('div');
+    this.node.classList.add('content');
   }
 }

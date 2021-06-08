@@ -16,6 +16,11 @@ export interface View {
   render(): void;
 }
 
+export enum ButtonType {
+  button = 'button',
+  submit = 'submit',
+}
+
 export interface StateObj {
   router: {
     routes: {

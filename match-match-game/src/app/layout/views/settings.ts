@@ -1,9 +1,9 @@
 import BasePage from './baseView';
-import BaseComponent from '../../components/baseComponent';
+import BaseComponent from '../../components/shared/baseComponent';
 import Heading from '../../components/shared/heading';
 
 import state from '../../state';
-import { Page } from '../../app.api';
+import { Page } from '../../app.models';
 
 interface ISettingsOption {
   description: string;

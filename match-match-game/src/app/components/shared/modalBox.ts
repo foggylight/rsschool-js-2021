@@ -1,4 +1,4 @@
-import BaseComponent from '../baseComponent';
+import BaseComponent from './baseComponent';
 
 import defaultImage from '../../../assets/user-image.png';
 

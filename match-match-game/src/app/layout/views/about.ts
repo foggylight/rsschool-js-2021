@@ -4,7 +4,7 @@ import img1 from '../../../assets/about-1.jpg';
 import img2 from '../../../assets/about-2.jpg';
 import img3 from '../../../assets/about-3.jpg';
 
-import { Page } from '../../app.api';
+import { Page } from '../../app.models';
 
 const template = `
     <h2 class="heading">How to play?</h2>

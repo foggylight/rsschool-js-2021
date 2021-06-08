@@ -1,8 +1,10 @@
+import { ButtonType } from '../../app.models';
+
 export default class Button {
   public node: HTMLButtonElement | HTMLAnchorElement;
 
   constructor(
-    type: 'button' | 'submit',
+    type: ButtonType,
     className: string[],
     content: string,
     href: string | null = null,
@@ -16,11 +18,10 @@ export default class Button {
       elem.setAttribute('type', type);
     }
     this.node = elem;
-    this.node.classList.add('btn');
-    this.node.classList.add(...className);
+    this.node.classList.add('btn', ...className);
     this.node.textContent = content;
 
-    if (type === 'submit' && this.node instanceof HTMLButtonElement) {
+    if (this.node instanceof HTMLButtonElement && type === 'submit') {
       this.node.disabled = true;
     }
   }

@@ -1,11 +1,11 @@
 import BasePage from './baseView';
-import BaseComponent from '../../components/baseComponent';
+import BaseComponent from '../../components/shared/baseComponent';
 
 import Heading from '../../components/shared/heading';
-import Avatar from '../../components/shared/userAvatar';
+import Avatar from '../../components/shared/avatar';
 
 import state from '../../state';
-import { Page } from '../../app.api';
+import { Page } from '../../app.models';
 import DBName from '../../constants';
 
 export default class ScorePage extends BasePage {

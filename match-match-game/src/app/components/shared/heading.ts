@@ -2,9 +2,8 @@ export default class Heading {
   node: HTMLHeadingElement;
 
   constructor(text: string) {
-    const elem = document.createElement('h2');
-    elem.classList.add('heading');
-    elem.textContent = text;
-    this.node = elem;
+    this.node = document.createElement('h2');
+    this.node.classList.add('heading');
+    this.node.textContent = text;
   }
 }

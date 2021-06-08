@@ -1,8 +1,8 @@
 import state from '../state';
 import DataBase from '../db';
 
-import BaseComponent from '../components/baseComponent';
-import { View } from '../app.api';
+import BaseComponent from '../components/shared/baseComponent';
+import { View } from '../app.models';
 
 import AboutPage from './views/about';
 import ScorePage from './views/score';
