@@ -1,4 +1,4 @@
-import { IPage } from '../app.models';
+import { IPage } from '../models';
 import Component from '../components/component';
 import state from '../state';
 import Garage from './garage';

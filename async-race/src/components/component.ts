@@ -16,6 +16,10 @@ export default class Component {
     }
   }
 
+  clear(): void {
+    this.node.innerHTML = '';
+  }
+
   delete(): void {
     this.node.remove();
   }
