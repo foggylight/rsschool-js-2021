@@ -1,0 +1,30 @@
+.car-container {
+  height: 95px;
+  margin: 0 0 25px;
+  border-bottom: 3px dashed $white;
+}
+
+.car-block {
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  &_bottom {
+    height: 60px;
+  }
+}
+
+.car-icon-container {
+  height: 40px;
+  margin: 15px 0 10px 5px;
+
+  &_winners {
+    height: 20px;
+    margin: 0;
+  }
+
+  svg {
+    width: auto;
+    height: 100%;
+  }
+}

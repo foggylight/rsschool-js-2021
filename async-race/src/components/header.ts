@@ -5,18 +5,18 @@ export default class Header extends Component {
   links: HTMLElement[];
 
   constructor(parentNode: HTMLElement) {
-    super(parentNode, 'header', ['page-header']);
+    super(parentNode, 'header', ['navigation']);
     this.links = [];
 
-    const list = new Component(this.node, 'ul').node;
+    const list = new Component(this.node, 'ul', ['navigation__list']).node;
     const pagesList = [
       { name: 'Garage', path: '/' },
       { name: 'Winners', path: '/winners' },
     ];
 
     pagesList.forEach(page => {
-      const listItem = new Component(list, 'li', ['header__list-item']).node;
-      const link = new Component(listItem, 'a', ['navigation__link'], page.name)
+      const listItem = new Component(list, 'li', ['navigation__list-item']).node;
+      const link = new Component(listItem, 'a', ['navigation__link', 'btn', 'btn-nav'], page.name)
         .node;
       if (state.currentRoute === page.path) {
         link.classList.add('navigation__link_active');

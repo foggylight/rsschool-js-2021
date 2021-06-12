@@ -1,0 +1,53 @@
+@import 'variables';
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+
+  background-color: $bgBlack;
+
+  color: $white;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+}
+
+.app {
+  margin: 30px 20px;
+}
+
+.content-wrapper {
+  margin: 30px 0 0;
+}

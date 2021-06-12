@@ -10,7 +10,7 @@ export default class CurrentPage extends Component {
   page: IPage | null;
 
   constructor(parentNode: HTMLElement) {
-    super(parentNode);
+    super(parentNode, 'main', ['content-wrapper']);
     this.views = [new Garage(this.node), new Winners(this.node)];
     this.page = null;
   }
