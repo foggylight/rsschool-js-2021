@@ -23,6 +23,8 @@ export default class Winners extends View {
     this.pageName = PageType.winners;
     this.currentPage = state.winnersPage;
 
+    this.initHeadings();
+
     this.table = new Component(this.node, 'table', ['winners-table']).node;
     const tableHead = new Component(this.table, 'thead').node;
     const headingRow = new Component(tableHead, 'tr', ['winners-table__h-row']).node;

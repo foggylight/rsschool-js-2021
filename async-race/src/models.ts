@@ -4,6 +4,13 @@ export interface IPage {
   delete(): void;
 }
 
+export interface IGarage {
+  node: HTMLElement;
+  currentCarId: number | null;
+  renderCarsList(): void;
+  renderItemsCount(pageName: string): Promise<void>;
+}
+
 export interface ICar {
   name: string;
   color: string;
@@ -20,4 +27,9 @@ export enum PageType {
   garage = 'garage',
   winners = 'winners',
   default = 'garage',
+}
+
+export enum FormType {
+  create = 'create',
+  update = 'update',
 }

@@ -1,12 +1,13 @@
-import { ICar, PageType } from '../models';
+import { FormType, ICar, IGarage, PageType } from '../models';
 import Component from '../components/component';
-import { getCars } from '../service';
+import { getCar, getCars } from '../service';
 import state from '../state';
 import View from './view';
 import Button from '../components/button';
 import CarImage from '../components/carImage';
+import Form from '../components/form';
 
-export default class Garage extends View {
+export default class Garage extends View implements IGarage {
   path: string;
 
   carsContainer: Component;
@@ -19,11 +20,23 @@ export default class Garage extends View {
 
   stopButtons: HTMLButtonElement[];
 
+  formUpdate: Form;
+
+  formCreate: Form;
+
+  currentCarId: number | null;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/';
     this.pageName = PageType.garage;
     this.currentPage = state.garagePage;
+    this.currentCarId = null;
+
+    this.formCreate = new Form(this, [], FormType.create);
+    this.formUpdate = new Form(this, [], FormType.update);
+
+    this.initHeadings();
 
     this.carsContainer = new Component(this.node, 'div', ['cars-container']);
     this.addPaginationButtons();
@@ -43,16 +56,17 @@ export default class Garage extends View {
       const bottomBlock = new Component(carContainer, 'div', ['car-block', 'car-block_bottom'])
         .node;
 
-      const selectBtn = new Button(topBlock, ['btn', 'btn_crud'], 'select', car.id).node;
+      const selectBtn = new Button(topBlock, ['btn_crud'], 'select', car.id).node;
       this.selectButtons.push(selectBtn);
-      const removeBtn = new Button(topBlock, ['btn', 'btn_crud'], 'remove', car.id).node;
+      const removeBtn = new Button(topBlock, ['btn_crud'], 'remove', car.id).node;
       const carName = new Component(topBlock, 'p', ['car-name'], car.name);
 
-      const startBtn = new Button(bottomBlock, ['btn', 'btn_move', 'btn_start'], 'start', car.id)
-        .node;
-      const stopBtn = new Button(bottomBlock, ['btn', 'btn_move', 'btn_stop'], 'stop', car.id).node;
+      const startBtn = new Button(bottomBlock, ['btn_move', 'btn_start'], 'start', car.id).node;
+      const stopBtn = new Button(bottomBlock, ['btn_move', 'btn_stop'], 'stop', car.id).node;
       const carIcon = new CarImage(bottomBlock, car.color);
     });
+
+    this.addListeners();
   }
 
   paginationHandler(nextPage: boolean): void {
@@ -64,5 +78,20 @@ export default class Garage extends View {
     this.parent.append(this.node);
     await this.renderItemsCount('Garage');
     await this.renderCarsList();
+  }
+
+  async selectHandler(id: number): Promise<void> {
+    this.formUpdate.disable(false);
+    this.currentCarId = id;
+    const car = await getCar(id);
+    this.formUpdate.nameInput.value = car.name;
+    this.formUpdate.colorInput.value = car.color;
+  }
+
+  addListeners(): void {
+    this.selectButtons.forEach(btn => {
+      const carId = btn.dataset.id;
+      if (carId) btn.addEventListener('click', () => this.selectHandler(+carId));
+    });
   }
 }

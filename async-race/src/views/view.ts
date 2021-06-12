@@ -25,13 +25,17 @@ export default class View extends Component {
     this.currentPage = 1;
     this.pageName = PageType.default;
 
-    this.heading = new Component(this.node, 'h1', ['heading']).node;
-    this.pageLabel = new Component(this.node, 'p', ['subheading']).node;
-    this.updatePageLabel();
+    this.heading = new Component(null, 'h1', ['heading']).node;
+    this.pageLabel = new Component(null, 'p', ['subheading']).node;
 
-    this.prevBtn = new Button(null, ['btn', 'btn-nav', 'btn-pagination'], 'prev').node;
-    this.nextBtn = new Button(null, ['btn', 'btn-nav', 'btn-pagination'], 'next').node;
+    this.prevBtn = new Button(null, ['btn-nav', 'btn-pagination'], 'prev').node;
+    this.nextBtn = new Button(null, ['btn-nav', 'btn-pagination'], 'next').node;
     this.addPaginationListeners();
+  }
+
+  initHeadings(): void {
+    this.node.append(this.heading, this.pageLabel);
+    this.updatePageLabel();
   }
 
   updatePageLabel(): void {
@@ -70,22 +74,6 @@ export default class View extends Component {
       state.garagePage = nextPage ? state.garagePage + 1 : state.garagePage - 1;
     if (this.pageName === 'winners')
       state.garagePage = nextPage ? state.winnersPage + 1 : state.winnersPage - 1;
-    this.updatePageLabel();
-    this.checkPaginationButtonState();
-  }
-
-  prevPaginationHandler(): void {
-    this.currentPage -= 1;
-    if (this.pageName === 'garage') state.garagePage -= 1;
-    if (this.pageName === 'winners') state.winnersPage -= 1;
-    this.updatePageLabel();
-    this.checkPaginationButtonState();
-  }
-
-  nextPaginationHandler(): void {
-    this.currentPage += 1;
-    if (this.pageName === 'garage') state.garagePage += 1;
-    if (this.pageName === 'winners') state.winnersPage += 1;
     this.updatePageLabel();
     this.checkPaginationButtonState();
   }
