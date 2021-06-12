@@ -1,6 +1,6 @@
 import { FormType, ICar, IGarage, PageType } from '../models';
 import Component from '../components/component';
-import { getCar, getCars } from '../service';
+import { deleteCar, getCar, getCars } from '../service';
 import state from '../state';
 import View from './view';
 import Button from '../components/button';
@@ -59,6 +59,7 @@ export default class Garage extends View implements IGarage {
       const selectBtn = new Button(topBlock, ['btn_crud'], 'select', car.id).node;
       this.selectButtons.push(selectBtn);
       const removeBtn = new Button(topBlock, ['btn_crud'], 'remove', car.id).node;
+      this.removeButtons.push(removeBtn);
       const carName = new Component(topBlock, 'p', ['car-name'], car.name);
 
       const startBtn = new Button(bottomBlock, ['btn_move', 'btn_start'], 'start', car.id).node;
@@ -74,13 +75,7 @@ export default class Garage extends View implements IGarage {
     this.renderCarsList();
   }
 
-  async render(): Promise<void> {
-    this.parent.append(this.node);
-    await this.renderItemsCount('Garage');
-    await this.renderCarsList();
-  }
-
-  async selectHandler(id: number): Promise<void> {
+  async handlerSelect(id: number): Promise<void> {
     this.formUpdate.disable(false);
     this.currentCarId = id;
     const car = await getCar(id);
@@ -88,10 +83,27 @@ export default class Garage extends View implements IGarage {
     this.formUpdate.colorInput.value = car.color;
   }
 
+  async handlerRemove(id: number): Promise<void> {
+    await deleteCar(id);
+    this.renderItemsCount('Garage');
+    this.renderCarsList();
+    this.checkPaginationButtonState();
+  }
+
   addListeners(): void {
     this.selectButtons.forEach(btn => {
       const carId = btn.dataset.id;
-      if (carId) btn.addEventListener('click', () => this.selectHandler(+carId));
+      if (carId) btn.addEventListener('click', () => this.handlerSelect(+carId));
     });
+    this.removeButtons.forEach(btn => {
+      const carId = btn.dataset.id;
+      if (carId) btn.addEventListener('click', () => this.handlerRemove(+carId));
+    });
+  }
+
+  async render(): Promise<void> {
+    this.parent.append(this.node);
+    await this.renderItemsCount('Garage');
+    await this.renderCarsList();
   }
 }

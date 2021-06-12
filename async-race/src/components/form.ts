@@ -76,6 +76,7 @@ export default class Form {
         this.nameInput.value = '';
         this.colorInput.value = '#000000';
         this.parent.renderItemsCount('Garage');
+        this.parent.checkPaginationButtonState();
       });
     }
     if (this.formType === FormType.update) {

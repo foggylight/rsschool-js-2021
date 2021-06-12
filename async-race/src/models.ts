@@ -9,6 +9,7 @@ export interface IGarage {
   currentCarId: number | null;
   renderCarsList(): void;
   renderItemsCount(pageName: string): Promise<void>;
+  checkPaginationButtonState(): void;
 }
 
 export interface ICar {

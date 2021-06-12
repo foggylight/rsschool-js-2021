@@ -62,3 +62,11 @@ export const updateCar = async (id: number, carName: string, carColor: string): 
   const res = await fetch(`${URL}${paths.garage.path}/${id}`, options);
   console.log(res);
 };
+
+export const deleteCar = async (id: number): Promise<void> => {
+  const options = {
+    method: 'DELETE',
+  };
+  const res = await fetch(`${URL}${paths.garage.path}/${id}`, options);
+  console.log(res);
+};
