@@ -21,5 +21,7 @@ module.exports = {
   ],
   rules: {
     "arrow-body-style": ["error", "as-needed"],
+    "max-lines-per-function": ["error", {"max": 40, "skipBlankLines": true}],
+    "max-len": ["error", { "code": 100 }]
   },
 };
