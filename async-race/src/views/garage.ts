@@ -1,4 +1,4 @@
-import { ICar } from '../models';
+import { ICar, PageType } from '../models';
 import Component from '../components/component';
 import { getCars } from '../service';
 import state from '../state';
@@ -8,8 +8,6 @@ import CarImage from '../components/carImage';
 
 export default class Garage extends View {
   path: string;
-
-  page: number;
 
   carsContainer: Component;
 
@@ -24,9 +22,11 @@ export default class Garage extends View {
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/';
-    this.page = state.garagePage;
+    this.pageName = PageType.garage;
+    this.currentPage = state.garagePage;
 
     this.carsContainer = new Component(this.node, 'div', ['cars-container']);
+    this.addPaginationButtons();
 
     this.selectButtons = [];
     this.removeButtons = [];
@@ -36,34 +36,28 @@ export default class Garage extends View {
 
   async renderCarsList(): Promise<void> {
     this.carsContainer.clear();
-    const cars = await getCars(this.page);
+    const cars = await getCars(this.currentPage);
     cars.forEach((car: ICar) => {
-      const carContainer = new Component(this.carsContainer.node, 'div', [
-        'car-container',
-      ]).node;
+      const carContainer = new Component(this.carsContainer.node, 'div', ['car-container']).node;
       const topBlock = new Component(carContainer, 'div', ['car-block']).node;
-      const bottomBlock = new Component(carContainer, 'div', ['car-block'])
+      const bottomBlock = new Component(carContainer, 'div', ['car-block', 'car-block_bottom'])
         .node;
 
-      const selectBtn = new Button(topBlock, ['btn'], 'select', car.id).node;
+      const selectBtn = new Button(topBlock, ['btn', 'btn_crud'], 'select', car.id).node;
       this.selectButtons.push(selectBtn);
-      const removeBtn = new Button(topBlock, ['btn'], 'remove', car.id).node;
+      const removeBtn = new Button(topBlock, ['btn', 'btn_crud'], 'remove', car.id).node;
       const carName = new Component(topBlock, 'p', ['car-name'], car.name);
 
-      const startBtn = new Button(
-        bottomBlock,
-        ['btn', 'btn_move'],
-        'start',
-        car.id,
-      ).node;
-      const stopBtn = new Button(
-        bottomBlock,
-        ['btn', 'btn_move'],
-        'stop',
-        car.id,
-      ).node;
+      const startBtn = new Button(bottomBlock, ['btn', 'btn_move', 'btn_start'], 'start', car.id)
+        .node;
+      const stopBtn = new Button(bottomBlock, ['btn', 'btn_move', 'btn_stop'], 'stop', car.id).node;
       const carIcon = new CarImage(bottomBlock, car.color);
     });
+  }
+
+  paginationHandler(nextPage: boolean): void {
+    super.paginationHandler(nextPage);
+    this.renderCarsList();
   }
 
   async render(): Promise<void> {

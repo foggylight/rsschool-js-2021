@@ -19,4 +19,5 @@ export interface IWinner {
 export enum PageType {
   garage = 'garage',
   winners = 'winners',
+  default = 'garage',
 }
