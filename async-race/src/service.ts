@@ -1,4 +1,5 @@
 import { ICar, IWinner, PageType } from './models';
+import { getRandomInt, getRandomColor } from './utils';
 
 const URL = 'http://127.0.0.1:3000';
 
@@ -63,10 +64,86 @@ export const updateCar = async (id: number, carName: string, carColor: string): 
   console.log(res);
 };
 
+const deleteWinner = async (id: number): Promise<void> => {
+  const options = {
+    method: 'DELETE',
+  };
+  const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
+  console.log(res);
+};
+
 export const deleteCar = async (id: number): Promise<void> => {
   const options = {
     method: 'DELETE',
   };
   const res = await fetch(`${URL}${paths.garage.path}/${id}`, options);
   console.log(res);
+
+  const winnersRes = await fetch(`${URL}${paths.winners.path}`);
+  const winnersData = await winnersRes.json();
+  console.log(winnersData);
+  winnersData.forEach(async (winner: IWinner) => {
+    if (winner.id === id) {
+      await deleteWinner(id);
+    }
+  });
+};
+
+const carsBrands = [
+  'Audi',
+  'BMW',
+  'Bentley',
+  'Cadillac',
+  'Chevrolet',
+  'Ford',
+  'Honda',
+  'Jaguar',
+  'Lexus',
+  'Mazda',
+  'Mercedes',
+  'Mitsubishi',
+  'Nissan',
+  'Porsche',
+  'Suzuki',
+  'Tesla',
+  'Toyota',
+  'Volkswagen',
+  'Volvo',
+  'Lada',
+  'GAZ',
+];
+
+const carsModels = [
+  'Volga',
+  'Pobeda',
+  'TT',
+  '200',
+  '850',
+  'Eldorado',
+  'Coupe de Ville',
+  'Camry',
+  'Corolla',
+  'X5',
+  'Captiva',
+  'Impala',
+  'Camaro',
+  'Corvette',
+  'Explorer',
+  'Fiesta',
+  'Focus',
+  'Mustang',
+  'Civic',
+  'Accord',
+];
+
+const getRandomName = (): string => {
+  const brand = carsBrands[getRandomInt(carsBrands.length - 1)];
+  const model = carsModels[getRandomInt(carsModels.length - 1)];
+  return `${brand} ${model}`;
+};
+
+export const generateCars = async (carsCount: number): Promise<void> => {
+  const newCarsRes = new Array(carsCount).fill('car');
+  newCarsRes.map(() => createCar(getRandomName(), getRandomColor()));
+  Promise.all(newCarsRes);
 };

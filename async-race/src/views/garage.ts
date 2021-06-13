@@ -1,6 +1,6 @@
 import { FormType, ICar, IGarage, PageType } from '../models';
 import Component from '../components/component';
-import { deleteCar, getCar, getCars } from '../service';
+import { deleteCar, generateCars, getCar, getCars } from '../service';
 import state from '../state';
 import View from './view';
 import Button from '../components/button';
@@ -26,6 +26,12 @@ export default class Garage extends View implements IGarage {
 
   currentCarId: number | null;
 
+  raceBtn: HTMLButtonElement;
+
+  resetBtn: HTMLButtonElement;
+
+  generateBtn: HTMLButtonElement;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode);
     this.path = '/';
@@ -35,6 +41,13 @@ export default class Garage extends View implements IGarage {
 
     this.formCreate = new Form(this, [], FormType.create);
     this.formUpdate = new Form(this, [], FormType.update);
+
+    const btnContainer = new Component(this.node, 'div', ['race-btn-container']).node;
+    this.raceBtn = new Button(btnContainer, [], 'race').node;
+    this.resetBtn = new Button(btnContainer, [], 'reset').node;
+    this.resetBtn.disabled = true;
+    this.generateBtn = new Button(btnContainer, [], 'generate cars').node;
+    this.addGenerateListener();
 
     this.initHeadings();
 
@@ -67,7 +80,7 @@ export default class Garage extends View implements IGarage {
       const carIcon = new CarImage(bottomBlock, car.color);
     });
 
-    this.addListeners();
+    this.addCarsButtonsListeners();
   }
 
   paginationHandler(nextPage: boolean): void {
@@ -85,12 +98,12 @@ export default class Garage extends View implements IGarage {
 
   async handlerRemove(id: number): Promise<void> {
     await deleteCar(id);
-    this.renderItemsCount('Garage');
-    this.renderCarsList();
-    this.checkPaginationButtonState();
+    await this.renderItemsCount('Garage');
+    await this.renderCarsList();
+    await this.checkPaginationButtonState();
   }
 
-  addListeners(): void {
+  addCarsButtonsListeners(): void {
     this.selectButtons.forEach(btn => {
       const carId = btn.dataset.id;
       if (carId) btn.addEventListener('click', () => this.handlerSelect(+carId));
@@ -98,6 +111,15 @@ export default class Garage extends View implements IGarage {
     this.removeButtons.forEach(btn => {
       const carId = btn.dataset.id;
       if (carId) btn.addEventListener('click', () => this.handlerRemove(+carId));
+    });
+  }
+
+  addGenerateListener(): void {
+    this.generateBtn.addEventListener('click', async () => {
+      await generateCars(5);
+      await this.renderItemsCount('Garage');
+      await this.renderCarsList();
+      await this.checkPaginationButtonState();
     });
   }
 
