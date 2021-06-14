@@ -1,13 +1,16 @@
 import { FormType, ICar, IEngine, IGarage, IResult, PageType } from '../models';
 import Component from '../components/component';
 import {
+  createWinner,
   deleteCar,
   driveCar,
   generateCars,
   getCar,
   getCars,
+  getWinner,
   startEngine,
   stopEngine,
+  updateWinner,
 } from '../service';
 import state from '../state';
 import View from './view';
@@ -21,7 +24,6 @@ export const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> 
   const car = document.getElementById(`car-${id}`);
   if (!car) throw new Error(`can't find the car`);
   const res: IEngine = await startEngine(+id);
-  console.log(res);
   let finishTime: number = res.distance / res.velocity;
   car.style.animationDuration = `${finishTime}ms`;
   car.classList.add('car-icon_driving');
@@ -29,11 +31,11 @@ export const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> 
   const stopBtn = document.getElementById(`stop-btn-${id}`);
   stopBtn?.removeAttribute('disabled');
   const drivingStatus = await driveCar(+id);
-  console.log(drivingStatus);
   if (drivingStatus === 500) {
     car.style.animationPlayState = 'paused';
     finishTime = 0;
   }
+  await stopEngine(+id);
   return { id: +id, time: finishTime };
 };
 
@@ -42,7 +44,7 @@ export const stopBtnHandler = async (btn: HTMLButtonElement): Promise<void> => {
   if (!id) throw new Error('no id in btn dataset');
   const car = document.getElementById(`car-${id}`);
   if (!car) throw new Error(`can't find the car`);
-  await stopEngine(+id);
+  // await stopEngine(+id);
   car.classList.remove('car-icon_driving');
   btn.setAttribute('disabled', 'disabled');
   const startBtn = document.getElementById(`start-btn-${id}`);
@@ -88,6 +90,7 @@ export default class Garage extends View implements IGarage {
     this.raceBtn = new Button(btnContainer, [], 'race').node;
     this.resetBtn = new Button(btnContainer, [], 'reset').node;
     this.resetBtn.disabled = true;
+    this.addRaceListeners();
     this.generateBtn = new Button(btnContainer, [], 'generate cars').node;
     this.addGenerateListener();
 
@@ -102,8 +105,18 @@ export default class Garage extends View implements IGarage {
     this.stopButtons = [];
   }
 
-  async renderCarsList(): Promise<void> {
+  resetCarsContainer(): void {
     this.carsContainer.clear();
+    this.selectButtons = [];
+    this.removeButtons = [];
+    this.startButtons = [];
+    this.stopButtons = [];
+  }
+
+  async renderCarsList(): Promise<void> {
+    this.resetCarsContainer();
+    this.raceBtn.disabled = false;
+    this.resetBtn.disabled = true;
     const cars = await getCars(this.currentPage);
     cars.forEach((car: ICar) => {
       const carContainer = new Component(this.carsContainer.node, 'div', ['car-container']).node;
@@ -128,7 +141,6 @@ export default class Garage extends View implements IGarage {
     });
 
     this.addCarsButtonsListeners();
-    this.addRaceListeners();
   }
 
   toggleRaceBtns(): void {
@@ -165,7 +177,12 @@ export default class Garage extends View implements IGarage {
       const carId = btn.dataset.id;
       if (carId) btn.addEventListener('click', () => this.handlerRemove(+carId));
     });
-    this.startButtons.forEach(btn => btn.addEventListener('click', () => startBtnHandler(btn)));
+    this.startButtons.forEach(btn =>
+      btn.addEventListener('click', () => {
+        console.log('start from btn listener');
+        startBtnHandler(btn);
+      }),
+    );
     this.stopButtons.forEach(btn => btn.addEventListener('click', () => stopBtnHandler(btn)));
   }
 
@@ -173,11 +190,18 @@ export default class Garage extends View implements IGarage {
     this.raceBtn.addEventListener('click', async () => {
       this.toggleRaceBtns();
       const finishTimes = this.startButtons.map(btn => startBtnHandler(btn));
+      console.log(this.startButtons);
       const results = await Promise.all(finishTimes);
       const winner = results.filter(res => res.time !== 0).sort((a, b) => a.time - b.time)[0];
       const winnerName = await (await getCar(winner.id)).name;
       const time = Math.round(winner.time / 10) / 100;
       console.log(winnerName, time);
+      console.log(await (await getWinner(winner.id)).status);
+      if ((await (await getWinner(winner.id)).status) === 200) {
+        await updateWinner(winner.id, time);
+      } else {
+        await createWinner(winner.id, time);
+      }
     });
     this.resetBtn.addEventListener('click', async () => {
       this.raceBtn.disabled = false;

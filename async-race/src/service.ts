@@ -89,13 +89,43 @@ export const getWinners = async (page: number): Promise<IWinner[]> => {
   return data;
 };
 
+export const getWinner = async (id: number): Promise<Response> => {
+  const response = await fetch(`${URL}${paths.winners.path}/${id}`);
+  return response;
+};
+
+export const createWinner = async (id: number, time: number): Promise<void> => {
+  const content = { id, wins: 1, time };
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(content),
+  };
+  const res = await fetch(`${URL}${paths.winners.path}`, options);
+  console.log(res);
+};
+
+export const updateWinner = async (id: number, newTime: number): Promise<void> => {
+  const winner: IWinner = await (await getWinner(id)).json();
+  const time = winner.time > newTime ? newTime : winner.time;
+  console.log({ wins: winner.wins + 1, time });
+  // const content = { wins: winner.wins + 1, time };
+  // const options = {
+  //   method: 'PUT',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(content),
+  // };
+  // const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
+  // console.log(res);
+};
+
 export const startEngine = async (id: number): Promise<IEngine> => {
   const data = await (await fetch(`${URL}/engine?id=${id}&status=started`)).json();
   return data;
 };
 
 export const stopEngine = async (id: number): Promise<void> => {
-  await (await fetch(`${URL}/engine?id=${id}&status=stopped`)).json();
+  await fetch(`${URL}/engine?id=${id}&status=stopped`);
 };
 
 export const driveCar = async (id: number): Promise<number> => {
