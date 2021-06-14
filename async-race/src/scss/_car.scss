@@ -15,8 +15,11 @@
 }
 
 .car-icon-container {
+  position: relative;
   height: 40px;
   margin: 15px 0 10px 5px;
+
+  flex-grow: 2;
 
   &_winners {
     height: 20px;
@@ -24,7 +27,21 @@
   }
 
   svg {
+    position: absolute;
+
     width: auto;
     height: 100%;
   }
+
+  .car-icon_driving {
+    animation-name: drive;
+    animation-duration: 1000ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes drive {
+  from { right: calc(100% - 130px); }
+  to { right: 0; }
 }

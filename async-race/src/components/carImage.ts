@@ -3,21 +3,21 @@ import icon from '../car.svg';
 export default class CarImage {
   public node: HTMLElement;
 
-  car: SVGPathElement;
+  public car: SVGSVGElement | null;
 
-  constructor(parentNode: HTMLElement | null = null, color: string) {
+  carShape: SVGPathElement;
+
+  constructor(parentNode: HTMLElement | null = null, color: string, id: number) {
     this.node = document.createElement('div');
     this.node.classList.add('car-icon-container');
     this.node.innerHTML = icon;
-    this.car = this.node.querySelector('.car-icon__shape') as SVGPathElement;
-    this.car.style.fill = color;
+    this.car = this.node.querySelector('svg');
+    if (this.car) this.car.id = `car-${id}`;
+    this.carShape = this.node.querySelector('.car-icon__shape') as SVGPathElement;
+    this.carShape.style.fill = color;
 
     if (parentNode) {
       parentNode.append(this.node);
     }
-  }
-
-  changeColor(color: string): void {
-    console.log(this.car, color);
   }
 }

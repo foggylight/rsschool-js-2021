@@ -51,7 +51,7 @@ export default class Winners extends View {
       const car = await getCar(winner.id);
       makeTableData(`${index + 1}`);
       const carIconCell = makeTableData(``).node;
-      const carIcon = new CarImage(carIconCell, car.color);
+      const carIcon = new CarImage(carIconCell, car.color, car.id);
       carIcon.node.classList.add('car-icon-container_winners');
       makeTableData(`${car.name}`);
       makeTableData(`${winner.wins}`);

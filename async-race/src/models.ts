@@ -24,6 +24,16 @@ export interface IWinner {
   time: number;
 }
 
+export interface IEngine {
+  velocity: number;
+  distance: number;
+}
+
+export interface IResult {
+  id: number;
+  time: number;
+}
+
 export enum PageType {
   garage = 'garage',
   winners = 'winners',

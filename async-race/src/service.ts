@@ -1,4 +1,4 @@
-import { ICar, IWinner, PageType } from './models';
+import { ICar, IEngine, IWinner, PageType } from './models';
 import { getRandomInt, getRandomColor } from './utils';
 
 const URL = 'http://127.0.0.1:3000';
@@ -30,14 +30,6 @@ export const getCars = async (page: number): Promise<ICar[]> => {
 
 export const getCar = async (id: number): Promise<ICar> => {
   const response = await fetch(`${URL}${paths.garage.path}/${id}`);
-  const data = await response.json();
-  return data;
-};
-
-export const getWinners = async (page: number): Promise<IWinner[]> => {
-  const response = await fetch(
-    `${URL}${paths.winners.path}?_page=${page}&_limit=${paths.winners.limit}`,
-  );
   const data = await response.json();
   return data;
 };
@@ -87,6 +79,28 @@ export const deleteCar = async (id: number): Promise<void> => {
       await deleteWinner(id);
     }
   });
+};
+
+export const getWinners = async (page: number): Promise<IWinner[]> => {
+  const response = await fetch(
+    `${URL}${paths.winners.path}?_page=${page}&_limit=${paths.winners.limit}`,
+  );
+  const data = await response.json();
+  return data;
+};
+
+export const startEngine = async (id: number): Promise<IEngine> => {
+  const data = await (await fetch(`${URL}/engine?id=${id}&status=started`)).json();
+  return data;
+};
+
+export const stopEngine = async (id: number): Promise<void> => {
+  await (await fetch(`${URL}/engine?id=${id}&status=stopped`)).json();
+};
+
+export const driveCar = async (id: number): Promise<number> => {
+  const res = await fetch(`${URL}/engine?id=${id}&status=drive`);
+  return res.status;
 };
 
 const carsBrands = [
