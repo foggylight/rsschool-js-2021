@@ -108,15 +108,14 @@ export const createWinner = async (id: number, time: number): Promise<void> => {
 export const updateWinner = async (id: number, newTime: number): Promise<void> => {
   const winner: IWinner = await (await getWinner(id)).json();
   const time = winner.time > newTime ? newTime : winner.time;
-  console.log({ wins: winner.wins + 1, time });
-  // const content = { wins: winner.wins + 1, time };
-  // const options = {
-  //   method: 'PUT',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(content),
-  // };
-  // const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
-  // console.log(res);
+  const content = { wins: winner.wins + 1, time };
+  const options = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(content),
+  };
+  const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
+  console.log(res);
 };
 
 export const startEngine = async (id: number): Promise<IEngine> => {
