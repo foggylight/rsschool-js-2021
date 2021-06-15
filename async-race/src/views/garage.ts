@@ -19,20 +19,19 @@ import CarImage from '../components/carImage';
 import Form from '../components/form';
 import ModalBox from '../components/modalBox';
 
-const race = async (promises: Promise<IResult>[]): Promise<IResult> => {
+const race = async (promises: Promise<IResult>[], ids: number[]): Promise<IResult> => {
   const res: IResult = await Promise.race(promises);
   console.log('from race, promises in arguments:', promises.length);
+  console.log('result from race:', res);
   if (res.time === 0 && promises.length !== 1) {
-    console.log('first part:', [...promises].slice(0, res.index));
-    console.log('second part:', [...promises].slice(res.index + 1, promises.length));
-    const part1 = [...promises].slice(0, res.index);
-    const part2 = [...promises].slice(res.index + 1, promises.length);
+    const failedIndex = ids.findIndex(id => id === res.id);
     const newPromises = [
-      ...promises.slice(0, res.index),
-      ...promises.slice(res.index + 1, promises.length),
+      ...promises.slice(0, failedIndex),
+      ...promises.slice(failedIndex + 1, promises.length),
     ];
-    console.log('code 500', newPromises);
-    const newRace = await race(newPromises);
+    const newIds = [...ids.slice(0, failedIndex), ...ids.slice(failedIndex + 1, ids.length)];
+    console.log('code 500', newPromises, newIds);
+    const newRace = await race(newPromises, newIds);
     return newRace;
   }
   console.log('code 200');
@@ -58,7 +57,7 @@ const startBtnHandler = async (btn: HTMLButtonElement, i = 0): Promise<IResult> 
     finishTime = 0;
   }
   // await stopEngine(+id);
-  console.log({ index: i, id: +id, time: finishTime });
+  // console.log({ index: i, id: +id, time: finishTime });
   return { index: i, id: +id, time: finishTime };
 };
 
@@ -216,8 +215,11 @@ export default class Garage extends View implements IGarage {
         const res = await startBtnHandler(btn, i);
         return res;
       });
-      console.log(this.startButtons);
-      const winner = await race(startingCars);
+      const ids: number[] = this.startButtons.map(btn => {
+        if (!btn.dataset.id) throw Error('start btn: no id in dataset');
+        return +btn.dataset.id;
+      });
+      const winner = await race(startingCars, ids);
       const winnerName = await (await getCar(winner.id)).name;
       const time = Math.round(winner.time / 10) / 100;
       const modal = new ModalBox(this.node, winnerName, time);
@@ -230,8 +232,12 @@ export default class Garage extends View implements IGarage {
     });
 
     this.resetBtn.addEventListener('click', async () => {
+      const stopBtnPromises = await this.stopButtons.map(async btn => {
+        const res = await stopBtnHandler(btn);
+        return res;
+      });
+      await Promise.all(stopBtnPromises);
       this.toggleRaceBtns();
-      this.stopButtons.forEach(btn => stopBtnHandler(btn));
     });
   }
 
