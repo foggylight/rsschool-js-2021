@@ -17,8 +17,29 @@ import View from './view';
 import Button from '../components/button';
 import CarImage from '../components/carImage';
 import Form from '../components/form';
+import ModalBox from '../components/modalBox';
 
-export const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> => {
+const race = async (promises: Promise<IResult>[]): Promise<IResult> => {
+  const res: IResult = await Promise.race(promises);
+  console.log('from race, promises in arguments:', promises.length);
+  if (res.time === 0 && promises.length !== 1) {
+    console.log('first part:', [...promises].slice(0, res.index));
+    console.log('second part:', [...promises].slice(res.index + 1, promises.length));
+    const part1 = [...promises].slice(0, res.index);
+    const part2 = [...promises].slice(res.index + 1, promises.length);
+    const newPromises = [
+      ...promises.slice(0, res.index),
+      ...promises.slice(res.index + 1, promises.length),
+    ];
+    console.log('code 500', newPromises);
+    const newRace = await race(newPromises);
+    return newRace;
+  }
+  console.log('code 200');
+  return { index: res.index, id: res.id, time: res.time };
+};
+
+const startBtnHandler = async (btn: HTMLButtonElement, i = 0): Promise<IResult> => {
   const { id } = btn.dataset;
   if (!id) throw new Error('no id in btn dataset');
   const car = document.getElementById(`car-${id}`);
@@ -31,20 +52,23 @@ export const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> 
   const stopBtn = document.getElementById(`stop-btn-${id}`);
   stopBtn?.removeAttribute('disabled');
   const drivingStatus = await driveCar(+id);
+  // console.log(id, drivingStatus);
   if (drivingStatus === 500) {
     car.style.animationPlayState = 'paused';
     finishTime = 0;
   }
-  await stopEngine(+id);
-  return { id: +id, time: finishTime };
+  // await stopEngine(+id);
+  console.log({ index: i, id: +id, time: finishTime });
+  return { index: i, id: +id, time: finishTime };
 };
 
-export const stopBtnHandler = async (btn: HTMLButtonElement): Promise<void> => {
+const stopBtnHandler = async (btn: HTMLButtonElement): Promise<void> => {
   const { id } = btn.dataset;
   if (!id) throw new Error('no id in btn dataset');
   const car = document.getElementById(`car-${id}`);
   if (!car) throw new Error(`can't find the car`);
-  // await stopEngine(+id);
+  await stopEngine(+id);
+  car.style.animationPlayState = 'running';
   car.classList.remove('car-icon_driving');
   btn.setAttribute('disabled', 'disabled');
   const startBtn = document.getElementById(`start-btn-${id}`);
@@ -179,7 +203,6 @@ export default class Garage extends View implements IGarage {
     });
     this.startButtons.forEach(btn =>
       btn.addEventListener('click', () => {
-        console.log('start from btn listener');
         startBtnHandler(btn);
       }),
     );
@@ -189,23 +212,25 @@ export default class Garage extends View implements IGarage {
   addRaceListeners(): void {
     this.raceBtn.addEventListener('click', async () => {
       this.toggleRaceBtns();
-      const finishTimes = this.startButtons.map(btn => startBtnHandler(btn));
+      const startingCars = await this.startButtons.map(async (btn, i) => {
+        const res = await startBtnHandler(btn, i);
+        return res;
+      });
       console.log(this.startButtons);
-      const results = await Promise.all(finishTimes);
-      const winner = results.filter(res => res.time !== 0).sort((a, b) => a.time - b.time)[0];
+      const winner = await race(startingCars);
       const winnerName = await (await getCar(winner.id)).name;
       const time = Math.round(winner.time / 10) / 100;
-      console.log(winnerName, time);
-      console.log(await (await getWinner(winner.id)).status);
+      const modal = new ModalBox(this.node, winnerName, time);
+      if (winner.time === 0) return;
       if ((await (await getWinner(winner.id)).status) === 200) {
         await updateWinner(winner.id, time);
       } else {
         await createWinner(winner.id, time);
       }
     });
+
     this.resetBtn.addEventListener('click', async () => {
-      this.raceBtn.disabled = false;
-      this.resetBtn.disabled = true;
+      this.toggleRaceBtns();
       this.stopButtons.forEach(btn => stopBtnHandler(btn));
     });
   }

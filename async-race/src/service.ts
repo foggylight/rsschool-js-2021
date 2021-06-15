@@ -42,7 +42,7 @@ export const createCar = async (carName: string, carColor: string): Promise<void
     body: JSON.stringify(content),
   };
   const res = await fetch(`${URL}${paths.garage.path}`, options);
-  console.log(res);
+  console.log('create car:', res);
 };
 
 export const updateCar = async (id: number, carName: string, carColor: string): Promise<void> => {
@@ -53,7 +53,12 @@ export const updateCar = async (id: number, carName: string, carColor: string): 
     body: JSON.stringify(content),
   };
   const res = await fetch(`${URL}${paths.garage.path}/${id}`, options);
-  console.log(res);
+  console.log('update car:', res);
+};
+
+export const getWinner = async (id: number): Promise<Response> => {
+  const response = await fetch(`${URL}${paths.winners.path}/${id}`);
+  return response;
 };
 
 const deleteWinner = async (id: number): Promise<void> => {
@@ -61,7 +66,7 @@ const deleteWinner = async (id: number): Promise<void> => {
     method: 'DELETE',
   };
   const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
-  console.log(res);
+  console.log('delete winner:', res);
 };
 
 export const deleteCar = async (id: number): Promise<void> => {
@@ -69,16 +74,11 @@ export const deleteCar = async (id: number): Promise<void> => {
     method: 'DELETE',
   };
   const res = await fetch(`${URL}${paths.garage.path}/${id}`, options);
-  console.log(res);
+  console.log('delete car:', res);
 
-  const winnersRes = await fetch(`${URL}${paths.winners.path}`);
-  const winnersData = await winnersRes.json();
-  console.log(winnersData);
-  winnersData.forEach(async (winner: IWinner) => {
-    if (winner.id === id) {
-      await deleteWinner(id);
-    }
-  });
+  if ((await (await getWinner(id)).status) === 200) {
+    await deleteWinner(id);
+  }
 };
 
 export const getWinners = async (page: number): Promise<IWinner[]> => {
@@ -89,11 +89,6 @@ export const getWinners = async (page: number): Promise<IWinner[]> => {
   return data;
 };
 
-export const getWinner = async (id: number): Promise<Response> => {
-  const response = await fetch(`${URL}${paths.winners.path}/${id}`);
-  return response;
-};
-
 export const createWinner = async (id: number, time: number): Promise<void> => {
   const content = { id, wins: 1, time };
   const options = {
@@ -102,7 +97,7 @@ export const createWinner = async (id: number, time: number): Promise<void> => {
     body: JSON.stringify(content),
   };
   const res = await fetch(`${URL}${paths.winners.path}`, options);
-  console.log(res);
+  console.log('create winner:', res);
 };
 
 export const updateWinner = async (id: number, newTime: number): Promise<void> => {
@@ -115,16 +110,18 @@ export const updateWinner = async (id: number, newTime: number): Promise<void> =
     body: JSON.stringify(content),
   };
   const res = await fetch(`${URL}${paths.winners.path}/${id}`, options);
-  console.log(res);
+  console.log('update winner:', res);
 };
 
 export const startEngine = async (id: number): Promise<IEngine> => {
   const data = await (await fetch(`${URL}/engine?id=${id}&status=started`)).json();
+  console.log('from start engine:', data);
   return data;
 };
 
 export const stopEngine = async (id: number): Promise<void> => {
-  await fetch(`${URL}/engine?id=${id}&status=stopped`);
+  const res = await fetch(`${URL}/engine?id=${id}&status=stopped`);
+  console.log('from stop engine:', res);
 };
 
 export const driveCar = async (id: number): Promise<number> => {

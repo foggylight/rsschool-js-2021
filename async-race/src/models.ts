@@ -30,6 +30,7 @@ export interface IEngine {
 }
 
 export interface IResult {
+  index: number;
   id: number;
   time: number;
 }
