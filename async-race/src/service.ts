@@ -81,9 +81,14 @@ export const deleteCar = async (id: number): Promise<void> => {
   }
 };
 
-export const getWinners = async (page: number): Promise<IWinner[]> => {
+export const getWinners = async (
+  page: number,
+  sortBy: string,
+  order: string,
+): Promise<IWinner[]> => {
+  const sortOptions = `&_sort=${sortBy}&_order=${order}`;
   const response = await fetch(
-    `${URL}${paths.winners.path}?_page=${page}&_limit=${paths.winners.limit}`,
+    `${URL}${paths.winners.path}?_page=${page}&_limit=${paths.winners.limit}${sortOptions}`,
   );
   const data = await response.json();
   return data;
