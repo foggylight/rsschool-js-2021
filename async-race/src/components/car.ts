@@ -1,6 +1,6 @@
 import icon from '../car.svg';
 
-export default class CarImage {
+export default class Car {
   public node: HTMLElement;
 
   public car: SVGSVGElement | null;

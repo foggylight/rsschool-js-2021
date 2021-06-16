@@ -15,14 +15,12 @@ import {
 import state from '../state';
 import View from './view';
 import Button from '../components/button';
-import CarImage from '../components/carImage';
+import Car from '../components/car';
 import Form from '../components/form';
 import ModalBox from '../components/modalBox';
 
 const race = async (promises: Promise<IResult>[], ids: number[]): Promise<IResult> => {
   const res: IResult = await Promise.race(promises);
-  console.log('from race, promises in arguments:', promises.length);
-  console.log('result from race:', res);
   if (res.time === 0 && promises.length !== 1) {
     const failedIndex = ids.findIndex(id => id === res.id);
     const newPromises = [
@@ -30,15 +28,13 @@ const race = async (promises: Promise<IResult>[], ids: number[]): Promise<IResul
       ...promises.slice(failedIndex + 1, promises.length),
     ];
     const newIds = [...ids.slice(0, failedIndex), ...ids.slice(failedIndex + 1, ids.length)];
-    console.log('code 500', newPromises, newIds);
     const newRace = await race(newPromises, newIds);
     return newRace;
   }
-  console.log('code 200');
-  return { index: res.index, id: res.id, time: res.time };
+  return { id: res.id, time: res.time };
 };
 
-const startBtnHandler = async (btn: HTMLButtonElement, i = 0): Promise<IResult> => {
+const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> => {
   const { id } = btn.dataset;
   if (!id) throw new Error('no id in btn dataset');
   const car = document.getElementById(`car-${id}`);
@@ -51,14 +47,11 @@ const startBtnHandler = async (btn: HTMLButtonElement, i = 0): Promise<IResult> 
   const stopBtn = document.getElementById(`stop-btn-${id}`);
   stopBtn?.removeAttribute('disabled');
   const drivingStatus = await driveCar(+id);
-  // console.log(id, drivingStatus);
   if (drivingStatus === 500) {
     car.style.animationPlayState = 'paused';
     finishTime = 0;
   }
-  // await stopEngine(+id);
-  // console.log({ index: i, id: +id, time: finishTime });
-  return { index: i, id: +id, time: finishTime };
+  return { id: +id, time: finishTime };
 };
 
 const stopBtnHandler = async (btn: HTMLButtonElement): Promise<void> => {
@@ -110,11 +103,11 @@ export default class Garage extends View implements IGarage {
     this.formUpdate = new Form(this, [], FormType.update);
 
     const btnContainer = new Component(this.node, 'div', ['race-btn-container']).node;
-    this.raceBtn = new Button(btnContainer, [], 'race').node;
-    this.resetBtn = new Button(btnContainer, [], 'reset').node;
+    this.raceBtn = new Button(btnContainer, ['btn-race'], 'race').node;
+    this.resetBtn = new Button(btnContainer, ['btn-reset'], 'reset').node;
     this.resetBtn.disabled = true;
     this.addRaceListeners();
-    this.generateBtn = new Button(btnContainer, [], 'generate cars').node;
+    this.generateBtn = new Button(btnContainer, ['btn-generate'], 'generate cars').node;
     this.addGenerateListener();
 
     this.initHeadings();
@@ -147,20 +140,22 @@ export default class Garage extends View implements IGarage {
       const bottomBlock = new Component(carContainer, 'div', ['car-block', 'car-block_bottom'])
         .node;
 
-      const selectBtn = new Button(topBlock, ['btn_crud'], 'select', car.id).node;
+      const selectBtn = new Button(topBlock, ['btn-crud'], 'select', car.id).node;
       this.selectButtons.push(selectBtn);
-      const removeBtn = new Button(topBlock, ['btn_crud'], 'remove', car.id).node;
+      const removeBtn = new Button(topBlock, ['btn-crud'], 'remove', car.id).node;
       this.removeButtons.push(removeBtn);
-      const carName = new Component(topBlock, 'p', ['car-name'], car.name);
+      const carName = new Component(null, 'p', ['car-name'], car.name).node;
+      topBlock.append(carName);
 
-      const startBtn = new Button(bottomBlock, ['btn_move', 'btn_start'], 'start', car.id).node;
+      const startBtn = new Button(bottomBlock, ['btn-move', 'btn_start'], 'start', car.id).node;
       startBtn.id = `start-btn-${car.id}`;
       this.startButtons.push(startBtn);
-      const stopBtn = new Button(bottomBlock, ['btn_move', 'btn_stop'], 'stop', car.id).node;
+      const stopBtn = new Button(bottomBlock, ['btn-move', 'btn_stop'], 'stop', car.id).node;
       stopBtn.id = `stop-btn-${car.id}`;
       stopBtn.disabled = true;
       this.stopButtons.push(stopBtn);
-      const carIcon = new CarImage(bottomBlock, car.color, car.id);
+      const carIcon = new Car(null, car.color, car.id).node;
+      bottomBlock.append(carIcon);
     });
 
     this.addCarsButtonsListeners();
@@ -211,8 +206,8 @@ export default class Garage extends View implements IGarage {
   addRaceListeners(): void {
     this.raceBtn.addEventListener('click', async () => {
       this.toggleRaceBtns();
-      const startingCars = await this.startButtons.map(async (btn, i) => {
-        const res = await startBtnHandler(btn, i);
+      const startingCars = await this.startButtons.map(async btn => {
+        const res = await startBtnHandler(btn);
         return res;
       });
       const ids: number[] = this.startButtons.map(btn => {
@@ -222,7 +217,8 @@ export default class Garage extends View implements IGarage {
       const winner = await race(startingCars, ids);
       const winnerName = await (await getCar(winner.id)).name;
       const time = Math.round(winner.time / 10) / 100;
-      const modal = new ModalBox(this.node, winnerName, time);
+      const modal = new ModalBox(null, winnerName, time).node;
+      this.node.append(modal);
       if (winner.time === 0) return;
       if ((await (await getWinner(winner.id)).status) === 200) {
         await updateWinner(winner.id, time);
@@ -243,7 +239,7 @@ export default class Garage extends View implements IGarage {
 
   addGenerateListener(): void {
     this.generateBtn.addEventListener('click', async () => {
-      await generateCars(5);
+      await generateCars(100);
       await this.renderItemsCount('Garage');
       await this.renderCarsList();
       await this.checkPaginationButtonState();

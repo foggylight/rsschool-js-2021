@@ -1,4 +1,4 @@
-import CarImage from '../components/carImage';
+import Car from '../components/car';
 import Component from '../components/component';
 import { IWinner, PageType } from '../models';
 import { getCar, getWinners } from '../service';
@@ -101,7 +101,7 @@ export default class Winners extends View {
       const car = await getCar(winner.id);
       makeTableData(`${index + 1}`);
       const carIconCell = makeTableData(``).node;
-      const carIcon = new CarImage(carIconCell, car.color, car.id);
+      const carIcon = new Car(carIconCell, car.color, car.id);
       carIcon.node.classList.add('car-icon-container_winners');
       makeTableData(`${car.name}`);
       makeTableData(`${winner.wins}`);

@@ -28,16 +28,14 @@ export default class Form {
     this.nameInput.type = 'text';
     this.nameInput.name = 'name';
     this.nameInput.classList.add('form__input');
-    // this.nameInput.value = state[this.formType as FormType.create | FormType.update].text;
 
     this.colorInput = document.createElement('input');
     this.colorInput.type = 'color';
     this.colorInput.name = 'color';
-    // this.colorInput.value = state[this.formType as FormType.create | FormType.update].color;
 
     this.node.append(this.nameInput, this.colorInput);
 
-    this.btn = new Button(this.node, ['btn-form'], type).node;
+    this.btn = new Button(this.node, ['btn-form', 'btn-crud'], type).node;
     this.btn.type = 'submit';
 
     if (type === FormType.update) {
@@ -53,18 +51,7 @@ export default class Form {
     this.btn.disabled = shouldDisable;
   }
 
-  // inputHandler(input: HTMLInputElement): void {
-  //   console.log(input.value);
-  //   if (input.type === 'color')
-  //     state[this.formType as FormType.create | FormType.update].color = input.value;
-  //   else state[this.formType as FormType.create | FormType.update].text = input.value;
-  //   console.log(state);
-  // }
-
   addListeners(): void {
-    // this.colorInput.addEventListener('input', () => this.inputHandler(this.colorInput));
-    // this.nameInput.addEventListener('input', () => this.inputHandler(this.nameInput));
-
     if (this.formType === FormType.create) {
       this.node.addEventListener('submit', async e => {
         e.preventDefault();

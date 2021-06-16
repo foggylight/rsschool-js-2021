@@ -8,7 +8,8 @@ export default class Button {
     id: number | null = null,
   ) {
     this.node = document.createElement('button');
-    this.node.classList.add(...classNames);
+    this.node.type = 'button';
+    this.node.classList.add('btn', ...classNames);
     this.node.textContent = content;
 
     if (id) {

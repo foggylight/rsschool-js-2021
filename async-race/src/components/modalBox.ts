@@ -3,7 +3,7 @@ import Component from './component';
 export default class ModalBox extends Component {
   content: HTMLElement;
 
-  constructor(parentNode: HTMLElement, winnerName: string, time: number) {
+  constructor(parentNode: HTMLElement | null, winnerName: string, time: number) {
     super(parentNode, 'div', ['modal-box__cover']);
     this.content = new Component(this.node, 'div', ['modal-box__content']).node;
     if (time === 0) {
