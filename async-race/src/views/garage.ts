@@ -7,7 +7,9 @@ import {
   generateCars,
   getCar,
   getCars,
+  getItemsCount,
   getWinner,
+  paths,
   startEngine,
   stopEngine,
   updateWinner,
@@ -166,6 +168,11 @@ export default class Garage extends View implements IGarage {
     this.resetBtn.disabled = !this.resetBtn.disabled;
   }
 
+  async checkCarsListReloadNeed(): Promise<boolean> {
+    const itemsCount = await getItemsCount(this.pageName);
+    return itemsCount - paths[this.pageName].limit * (this.currentPage - 1) < 7;
+  }
+
   paginationHandler(nextPage: boolean): void {
     super.paginationHandler(nextPage);
     this.renderCarsList();
@@ -239,9 +246,10 @@ export default class Garage extends View implements IGarage {
 
   addGenerateListener(): void {
     this.generateBtn.addEventListener('click', async () => {
+      const reload = await this.checkCarsListReloadNeed();
       await generateCars(100);
-      await this.renderCarsList();
       await this.checkPaginationButtonState();
+      if (reload) await this.renderCarsList();
       await this.renderItemsCount('Garage');
     });
   }

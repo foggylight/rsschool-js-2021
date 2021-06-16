@@ -59,9 +59,11 @@ export default class Form {
         const formData = new FormData(form);
         const carName = formData.get('name') as string;
         const carColor = formData.get('color') as string;
+        const reload = await this.parent.checkCarsListReloadNeed();
         await createCar(carName, carColor);
         this.nameInput.value = '';
         this.colorInput.value = '#000000';
+        if (reload) this.parent.renderCarsList();
         this.parent.renderItemsCount('Garage');
         this.parent.checkPaginationButtonState();
       });
