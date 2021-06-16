@@ -240,9 +240,9 @@ export default class Garage extends View implements IGarage {
   addGenerateListener(): void {
     this.generateBtn.addEventListener('click', async () => {
       await generateCars(100);
-      await this.renderItemsCount('Garage');
       await this.renderCarsList();
       await this.checkPaginationButtonState();
+      await this.renderItemsCount('Garage');
     });
   }
 

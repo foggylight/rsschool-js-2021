@@ -181,6 +181,9 @@ const getRandomName = (): string => {
 
 export const generateCars = async (carsCount: number): Promise<void> => {
   const newCarsRes = new Array(carsCount).fill('car');
-  newCarsRes.map(() => createCar(getRandomName(), getRandomColor()));
+  await newCarsRes.map(async () => {
+    const res = await createCar(getRandomName(), getRandomColor());
+    return res;
+  });
   Promise.all(newCarsRes);
 };
