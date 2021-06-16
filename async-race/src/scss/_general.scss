@@ -7,6 +7,7 @@ body {
   background-color: $bgBlack;
 
   color: $white;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
@@ -20,11 +21,11 @@ ul {
   margin: 0;
 }
 
-h1,
-h2 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  font-weight: 600;
+h1 {
+  margin: 30px 0 0;
+
+  font-weight: 100;
+  font-size: 48px;
 }
 
 a {
@@ -50,4 +51,11 @@ textarea {
 
 .content-wrapper {
   margin: 30px 0 0;
+}
+
+.subheading {
+  margin: 0 0 15px;
+
+  font-weight: 100;
+  font-size: 18px;
 }

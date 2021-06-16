@@ -8,6 +8,7 @@
 
   text-transform: uppercase;
 
+  transition: box-shadow 0.15s linear, text-shadow 0.15s linear, background-color 0.15s linear;
   cursor: pointer;
 
   &:disabled {
@@ -32,45 +33,114 @@
     }
   }
 
-  &-pagination {
-    margin: 0 15px 0 0;
+  &-race {
+    margin: 0 20px 0 0;
+    border: 2px solid $neonYellow;
+
+    &:hover:enabled {
+      box-shadow: inset 0 0 0.2em 0 $neonYellow, 0 0 0.3em 0 $neonYellow;
+
+      animation-name: race;
+      animation-duration: 1200ms;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    &:disabled {
+      border-color: $neonYellowDis;
+
+      color: $whiteDis;
+    }
   }
 
-  &_crud,
-  &_move {
-    &:hover {
+  &-generate,
+  &-reset {
+    margin: 0 20px 0 0;
+    border: 2px solid $neonYellow;
+
+    &:hover:enabled {
+      box-shadow: inset 0 0 0.2em 0 $neonYellow, 0 0 0.3em 0 $neonYellow;
+    }
+
+    &:disabled {
+      border-color: $neonYellowDis;
+
+      color: $whiteDis;
+    }
+  }
+
+  &-pagination {
+    margin: 30px 15px 0 0;
+  }
+
+  &-crud,
+  &-move,
+  &-race,
+  &-generate {
+    &:hover:enabled {
       text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em $white;
     }
   }
 
-  &_crud {
+  &-crud {
     margin: 0 15px 0 0;
     padding: 3px 10px;
     border: 2px solid $neonPurple;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $neonPurple;
+    }
+
+    &:disabled {
+      border-color: $neonPurpleDis;
+
+      color: $whiteDis;
     }
   }
 
-  &_move {
+  &-move {
     margin: 0 10px 0 0;
     padding: 5px 10px;
+
+    &:disabled {
+      color: $whiteDis;
+    }
   }
 
   &_start {
     border: 2px solid $neonGreen;
 
-    &:hover {
+    &:hover:enabled {
       box-shadow: inset 0 0 0.5em 0 $neonGreen, 0 0 0.5em 0 $neonGreen;
+    }
+
+    &:disabled {
+      border: 2px solid $neonGreenDis;
     }
   }
 
   &_stop {
     border: 2px solid $neonRed;
 
-    &:hover {
+    &:hover:enabled {
       box-shadow: inset 0 0 0.5em 0 $neonRed, 0 0 0.5em 0 $neonRed;
     }
+
+    &:disabled {
+      border: 2px solid $neonRedDis;
+    }
+  }
+}
+
+@keyframes race {
+  0% {
+    box-shadow: inset 0 0 0.2em 0 $neonYellow, 0 0 0.2em 0 $neonYellow;
+  }
+  30% {
+    box-shadow: inset 0 0 0.3em 0 $neonYellow, 0 0 0.8em 0 $neonYellow;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em $white;
+  }
+  100% {
+    box-shadow: inset 0 0 0.2em 0 $neonYellow, 0 0 0.2em 0 $neonYellow;
   }
 }

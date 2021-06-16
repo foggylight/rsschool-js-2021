@@ -1,0 +1,14 @@
+@import 'variables';
+
+.form {
+  margin: 0 0 12px;
+
+  &__input {
+    margin: 0 5px 0 0;
+    color: $bgBlack;
+  }
+}
+
+.btn-form {
+  margin: 0 0 0 10px;
+}

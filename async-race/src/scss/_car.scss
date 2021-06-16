@@ -12,6 +12,22 @@
   &_bottom {
     height: 60px;
   }
+
+  .car-icon-container {
+    &::after {
+      position: absolute;
+      z-index: 1;
+      right: 130px;
+
+      width: 20px;
+      height: 100%;
+
+      background: linear-gradient(90deg, #FFF 50%, #000 0) 0 / 10px, linear-gradient(#FFF 50%, #000 0) 0 / 9% 10px;
+      background-blend-mode: exclusion;
+
+      content: '';
+    }
+  }
 }
 
 .car-icon-container {
@@ -21,13 +37,9 @@
 
   flex-grow: 2;
 
-  &_winners {
-    height: 20px;
-    margin: 0;
-  }
-
   svg {
     position: absolute;
+    z-index: 10;
 
     width: auto;
     height: 100%;
@@ -35,9 +47,17 @@
 
   .car-icon_driving {
     animation-name: drive;
-    animation-duration: 1000ms;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+  }
+
+  &_winners {
+    height: 20px;
+    margin: 0;
+
+    svg {
+      position: relative;
+    }
   }
 }
 
