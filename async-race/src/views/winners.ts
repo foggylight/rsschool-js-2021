@@ -51,6 +51,9 @@ export default class Winners extends View {
     this.sortingBtnsListeners();
     this.tableBody = new Component(this.table, 'tbody');
     this.addPaginationButtons();
+
+    this.hide();
+    this.parent.append(this.node);
   }
 
   resetSortingClasses(): void {
@@ -89,8 +92,8 @@ export default class Winners extends View {
   }
 
   async renderTableBody(): Promise<void> {
-    this.tableBody.clear();
     const winners = await getWinners(this.currentPage, state.sortBy, state.sortOrder);
+    this.tableBody.clear();
 
     winners.map(async (winner: IWinner, index: number) => {
       const row = new Component(this.tableBody.node, 'tr').node;
@@ -115,9 +118,9 @@ export default class Winners extends View {
   }
 
   async render(): Promise<void> {
-    this.parent.append(this.node);
+    this.renderTableBody();
+    this.show();
     await this.renderItemsCount('Winners');
-    await this.renderTableBody();
     await this.checkPaginationButtonState();
   }
 }

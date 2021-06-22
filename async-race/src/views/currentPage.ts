@@ -25,7 +25,7 @@ export default class CurrentPage extends Component {
   }
 
   render(): void {
-    this.page?.delete();
+    this.page?.hide();
     this.initPage();
   }
 }

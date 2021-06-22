@@ -41,11 +41,11 @@ const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> => {
   if (!id) throw new Error('no id in btn dataset');
   const car = document.getElementById(`car-${id}`);
   if (!car) throw new Error(`can't find the car`);
+  btn.setAttribute('disabled', 'disabled');
   const res: IEngine = await startEngine(+id);
   let finishTime: number = res.distance / res.velocity;
   car.style.animationDuration = `${finishTime}ms`;
   car.classList.add('car-icon_driving');
-  btn.setAttribute('disabled', 'disabled');
   const stopBtn = document.getElementById(`stop-btn-${id}`);
   stopBtn?.removeAttribute('disabled');
   const drivingStatus = await driveCar(+id);
@@ -121,6 +121,10 @@ export default class Garage extends View implements IGarage {
     this.removeButtons = [];
     this.startButtons = [];
     this.stopButtons = [];
+
+    this.renderCarsList();
+    this.hide();
+    this.parent.append(this.node);
   }
 
   resetCarsContainer(): void {
@@ -255,8 +259,7 @@ export default class Garage extends View implements IGarage {
   }
 
   async render(): Promise<void> {
-    this.parent.append(this.node);
+    this.show();
     await this.renderItemsCount('Garage');
-    await this.renderCarsList();
   }
 }

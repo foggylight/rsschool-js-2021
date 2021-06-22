@@ -42,6 +42,14 @@ export default class View extends Component {
     this.pageLabel.textContent = `Page #${this.currentPage}`;
   }
 
+  hide(): void {
+    this.node.classList.add('hidden');
+  }
+
+  show(): void {
+    this.node.classList.remove('hidden');
+  }
+
   async renderItemsCount(pageName: string): Promise<void> {
     const itemsCount = await getItemsCount(this.pageName);
     this.heading.textContent = `${pageName} (${itemsCount})`;

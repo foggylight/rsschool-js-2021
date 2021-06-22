@@ -1,7 +1,8 @@
 export interface IPage {
   path: string;
+  hide(): void;
+  show(): void;
   render(): void;
-  delete(): void;
 }
 
 export interface IGarage {
