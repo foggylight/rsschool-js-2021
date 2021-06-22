@@ -12,7 +12,9 @@ export default class Car {
     this.node.classList.add('car-icon-container');
     this.node.innerHTML = icon;
     this.car = this.node.querySelector('svg');
-    if (this.car) this.car.id = `car-${id}`;
+    if (this.car) {
+      this.car.id = `car-${id}`;
+    }
     this.carShape = this.node.querySelector('.car-icon__shape') as SVGPathElement;
     this.carShape.style.fill = color;
 
