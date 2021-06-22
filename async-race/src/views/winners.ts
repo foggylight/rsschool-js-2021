@@ -1,6 +1,6 @@
 import Car from '../components/car';
 import Component from '../components/component';
-import { IWinner, PageType } from '../models';
+import { IWinner, PageType, SortOrder } from '../models';
 import { getCar, getWinners } from '../service';
 import state from '../state';
 import View from './view';
@@ -65,20 +65,24 @@ export default class Winners extends View {
     if (state.sortBy === 'wins') {
       this.resetSortingClasses();
       this.wins?.classList.add(
-        state.sortOrder === 'ASC' ? 'winners-table__h-sort_asc' : 'winners-table__h-sort_desc',
+        state.sortOrder === SortOrder.asc
+          ? 'winners-table__h-sort_asc'
+          : 'winners-table__h-sort_desc',
       );
     }
     if (state.sortBy === 'time') {
       this.resetSortingClasses();
       this.time?.classList.add(
-        state.sortOrder === 'ASC' ? 'winners-table__h-sort_asc' : 'winners-table__h-sort_desc',
+        state.sortOrder === SortOrder.asc
+          ? 'winners-table__h-sort_asc'
+          : 'winners-table__h-sort_desc',
       );
     }
   }
 
   async sortingHandler(sort: string): Promise<void> {
     if (state.sortBy === `${sort}`) {
-      state.sortOrder = state.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+      state.sortOrder = state.sortOrder === SortOrder.asc ? SortOrder.desc : SortOrder.asc;
     } else {
       state.sortBy = `${sort}`;
     }

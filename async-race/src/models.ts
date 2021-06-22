@@ -52,3 +52,8 @@ export enum CarStatus {
   stopped = 'stopped',
   drive = 'drive',
 }
+
+export enum SortOrder {
+  asc = 'ASC',
+  desc = 'DESC',
+}
