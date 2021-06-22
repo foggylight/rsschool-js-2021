@@ -46,3 +46,9 @@ export enum FormType {
   create = 'create',
   update = 'update',
 }
+
+export enum CarStatus {
+  started = 'started',
+  stopped = 'stopped',
+  drive = 'drive',
+}

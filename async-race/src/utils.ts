@@ -1,3 +1,50 @@
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * (max + 1));
 
 export const getRandomColor = (): string => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
+export const carsBrands = [
+  'Audi',
+  'BMW',
+  'Bentley',
+  'Cadillac',
+  'Chevrolet',
+  'Ford',
+  'Honda',
+  'Jaguar',
+  'Lexus',
+  'Mazda',
+  'Mercedes',
+  'Mitsubishi',
+  'Nissan',
+  'Porsche',
+  'Suzuki',
+  'Tesla',
+  'Toyota',
+  'Volkswagen',
+  'Volvo',
+  'Lada',
+  'GAZ',
+];
+
+export const carsModels = [
+  'Volga',
+  'Pobeda',
+  'TT',
+  '200',
+  '850',
+  'Eldorado',
+  'Coupe de Ville',
+  'Camry',
+  'Corolla',
+  'X5',
+  'Captiva',
+  'Impala',
+  'Camaro',
+  'Corvette',
+  'Explorer',
+  'Fiesta',
+  'Focus',
+  'Mustang',
+  'Civic',
+  'Accord',
+];
