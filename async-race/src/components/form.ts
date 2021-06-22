@@ -1,6 +1,5 @@
 import { FormType, IGarage } from '../models';
 import { createCar, updateCar } from '../service';
-// import state from '../state';
 import Button from './button';
 
 export default class Form {
@@ -51,18 +50,27 @@ export default class Form {
     this.btn.disabled = shouldDisable;
   }
 
+  setDefaultValue(): void {
+    this.nameInput.value = '';
+    this.colorInput.value = '#000000';
+  }
+
   addListeners(): void {
+    const getData = (e: Event): { name: string; color: string } => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      const carName = formData.get('name') as string;
+      const carColor = formData.get('color') as string;
+      return { name: carName, color: carColor };
+    };
+
     if (this.formType === FormType.create) {
       this.node.addEventListener('submit', async e => {
-        e.preventDefault();
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        const carName = formData.get('name') as string;
-        const carColor = formData.get('color') as string;
+        const { name, color } = getData(e);
         const reload = await this.parent.checkCarsListReloadNeed();
-        await createCar(carName, carColor);
-        this.nameInput.value = '';
-        this.colorInput.value = '#000000';
+        await createCar(name, color);
+        this.setDefaultValue();
         if (reload) this.parent.renderCarsList();
         this.parent.renderItemsCount('Garage');
         this.parent.checkPaginationButtonState();
@@ -70,16 +78,11 @@ export default class Form {
     }
     if (this.formType === FormType.update) {
       this.node.addEventListener('submit', async e => {
-        e.preventDefault();
-        const form = e.target as HTMLFormElement;
-        const formData = new FormData(form);
-        const carName = formData.get('name') as string;
-        const carColor = formData.get('color') as string;
+        const { name, color } = getData(e);
         const id = this.parent.currentCarId;
         if (!id) throw new Error('no current car id');
-        await updateCar(id, carName, carColor);
-        this.nameInput.value = '';
-        this.colorInput.value = '#000000';
+        await updateCar(id, name, color);
+        this.setDefaultValue();
         this.disable(true);
         this.parent.renderCarsList();
       });
