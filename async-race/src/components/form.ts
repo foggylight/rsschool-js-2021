@@ -71,7 +71,9 @@ export default class Form {
         const reload = await this.parent.checkCarsListReloadNeed();
         await createCar(name, color);
         this.setDefaultValue();
-        if (reload) this.parent.renderCarsList();
+        if (reload) {
+          this.parent.renderCarsList();
+        }
         this.parent.renderItemsCount('Garage');
         this.parent.checkPaginationButtonState();
       });
@@ -80,7 +82,9 @@ export default class Form {
       this.node.addEventListener('submit', async e => {
         const { name, color } = getData(e);
         const id = this.parent.currentCarId;
-        if (!id) throw new Error('no current car id');
+        if (!id) {
+          throw new Error('no current car id');
+        }
         await updateCar(id, name, color);
         this.setDefaultValue();
         this.disable(true);
