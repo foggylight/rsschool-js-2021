@@ -62,26 +62,20 @@ export default class View extends Component {
   }
 
   async checkPaginationButtonState(): Promise<void> {
-    if (this.currentPage === 1) {
-      this.prevBtn.disabled = true;
-    } else {
-      this.prevBtn.disabled = false;
-    }
+    this.prevBtn.disabled = this.currentPage === 1;
 
     const itemsCount = await getItemsCount(this.pageName);
-    if (itemsCount - paths[this.pageName].limit * this.currentPage <= 0) {
-      this.nextBtn.disabled = true;
-    } else {
-      this.nextBtn.disabled = false;
-    }
+    this.nextBtn.disabled = itemsCount - paths[this.pageName].limit * this.currentPage <= 0;
   }
 
   paginationHandler(nextPage: boolean): void {
     this.currentPage = nextPage ? this.currentPage + 1 : this.currentPage - 1;
-    if (this.pageName === 'garage')
+    if (this.pageName === 'garage') {
       state.garagePage = nextPage ? state.garagePage + 1 : state.garagePage - 1;
-    if (this.pageName === 'winners')
+    }
+    if (this.pageName === 'winners') {
       state.garagePage = nextPage ? state.winnersPage + 1 : state.winnersPage - 1;
+    }
     this.updatePageLabel();
     this.checkPaginationButtonState();
   }
