@@ -25,22 +25,24 @@ const race = async (promises: Promise<IResult>[], ids: number[]): Promise<IResul
   const res: IResult = await Promise.race(promises);
   if (res.time === 0 && promises.length !== 1) {
     const failedIndex = ids.findIndex(id => id === res.id);
-    const newPromises = [
-      ...promises.slice(0, failedIndex),
-      ...promises.slice(failedIndex + 1, promises.length),
-    ];
-    const newIds = [...ids.slice(0, failedIndex), ...ids.slice(failedIndex + 1, ids.length)];
-    const newRace = await race(newPromises, newIds);
-    return newRace;
+    const newPromises = [...promises];
+    newPromises.splice(failedIndex, 1);
+    const newIds = [...ids];
+    newIds.splice(failedIndex, 1);
+    return await race(newPromises, newIds);
   }
   return { id: res.id, time: res.time };
 };
 
 const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> => {
   const { id } = btn.dataset;
-  if (!id) throw new Error('no id in btn dataset');
+  if (!id) {
+    throw new Error('no id in btn dataset');
+  }
   const car = document.getElementById(`car-${id}`);
-  if (!car) throw new Error(`can't find the car`);
+  if (!car) {
+    throw new Error(`can't find the car`);
+  }
   btn.setAttribute('disabled', 'disabled');
   const res: IEngine = await startEngine(+id);
   let finishTime: number = res.distance / res.velocity;
@@ -58,9 +60,13 @@ const startBtnHandler = async (btn: HTMLButtonElement): Promise<IResult> => {
 
 const stopBtnHandler = async (btn: HTMLButtonElement): Promise<void> => {
   const { id } = btn.dataset;
-  if (!id) throw new Error('no id in btn dataset');
+  if (!id) {
+    throw new Error('no id in btn dataset');
+  }
   const car = document.getElementById(`car-${id}`);
-  if (!car) throw new Error(`can't find the car`);
+  if (!car) {
+    throw new Error(`can't find the car`);
+  }
   await stopEngine(+id);
   car.style.animationPlayState = 'running';
   car.classList.remove('car-icon_driving');
@@ -200,11 +206,15 @@ export default class Garage extends View implements IGarage {
   addCarsButtonsListeners(): void {
     this.selectButtons.forEach(btn => {
       const carId = btn.dataset.id;
-      if (carId) btn.addEventListener('click', () => this.handlerSelect(+carId));
+      if (carId) {
+        btn.addEventListener('click', () => this.handlerSelect(+carId));
+      }
     });
     this.removeButtons.forEach(btn => {
       const carId = btn.dataset.id;
-      if (carId) btn.addEventListener('click', () => this.handlerRemove(+carId));
+      if (carId) {
+        btn.addEventListener('click', () => this.handlerRemove(+carId));
+      }
     });
     this.startButtons.forEach(btn =>
       btn.addEventListener('click', () => {
@@ -222,7 +232,9 @@ export default class Garage extends View implements IGarage {
         return res;
       });
       const ids: number[] = this.startButtons.map(btn => {
-        if (!btn.dataset.id) throw Error('start btn: no id in dataset');
+        if (!btn.dataset.id) {
+          throw Error('start btn: no id in dataset');
+        }
         return +btn.dataset.id;
       });
       const winner = await race(startingCars, ids);
@@ -230,8 +242,10 @@ export default class Garage extends View implements IGarage {
       const time = Math.round(winner.time / 10) / 100;
       const modal = new ModalBox(null, winnerName, time).node;
       this.node.append(modal);
-      if (winner.time === 0) return;
-      if ((await (await getWinner(winner.id)).status) === 200) {
+      if (winner.time === 0) {
+        return;
+      }
+      if ((await getWinner(winner.id)).status === 200) {
         await updateWinner(winner.id, time);
       } else {
         await createWinner(winner.id, time);
@@ -253,7 +267,9 @@ export default class Garage extends View implements IGarage {
       const reload = await this.checkCarsListReloadNeed();
       await generateCars(100);
       await this.checkPaginationButtonState();
-      if (reload) await this.renderCarsList();
+      if (reload) {
+        await this.renderCarsList();
+      }
       await this.renderItemsCount('Garage');
     });
   }
