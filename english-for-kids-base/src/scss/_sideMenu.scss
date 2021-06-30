@@ -1,12 +1,25 @@
+@use 'sass:math';
 @import './variables';
+
+// some parts were taken from https://codepen.io/stevenfabre/pen/LGvzk/
+
 .side-menu {
-  &__btn_open {
+  $iconHeight: 28px;
+
+  &__btn_opened,
+  &__btn_closed {
     position: absolute;
     top: 20px;
     left: 25px;
-    z-index: 10;
+    z-index: 100;
+
+    height: $iconHeight;
+    width: 40px;
 
     .line {
+      position: absolute;
+      left: 0;
+
       display: block;
       height: 4px;
       width: 40px;
@@ -14,11 +27,36 @@
 
       background-color: $accent-green;
 
-      &:nth-child(2){
-        margin-top: 8px;
+      transition: transform 0.5s ease, opacity 0.2s ease;
+
+      &:nth-child(1) {
+        top: 0;
       }
-      &:nth-child(3){
-        margin-top: 8px;
+
+      &:nth-child(2) {
+        top: 50%;
+      }
+
+      &:nth-child(3) {
+        top: 100%;
+      }
+    }
+  }
+
+  &__btn_opened {
+    position: fixed;
+
+    .line {
+      &:nth-child(1) {
+        transform: translateX(0) translateY(math.div($iconHeight, 2)) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateX(0) translateY(-1 * math.div($iconHeight, 2)) rotate(-45deg);
       }
     }
   }
@@ -27,12 +65,15 @@
 .categories {
   position: fixed;
   top: 0;
+  z-index: 10;
 
   height: 100%;
   width: 200px;
   padding: 70px 20px 0;
 
   background-color: $bg-green;
+
+  transition: left 0.5s ease;
 
   &.closed {
     left: -200px;
@@ -41,4 +82,16 @@
   &.opened {
     left: 0;
   }
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
 }

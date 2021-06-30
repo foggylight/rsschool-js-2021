@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Animals",
+    "image": "base64"
+  },
+  {
+    "id": 2,
+    "name": "Fruits",
+    "image": "base64"
+  },
+  {
+    "id": 3,
+    "name": "Farm",
+    "image": "base64"
+  },
+  {
+    "id": 4,
+    "name": "Hobbies",
+    "image": "base64"
+  },
+  {
+    "id": 5,
+    "name": "Nature",
+    "image": "base64"
+  },
+  {
+    "id": 6,
+    "name": "Clothes",
+    "image": "base64"
+  },
+  {
+    "id": 7,
+    "name": "Vegetables",
+    "image": "base64"
+  },
+  {
+    "id": 8,
+    "name": "Space",
+    "image": "base64"
+  }
+]
