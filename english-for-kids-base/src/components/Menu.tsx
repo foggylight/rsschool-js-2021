@@ -13,7 +13,7 @@ function Menu(): ReactElement {
 
   const categories = getCategoriesData().map(category => (
     <li key={category.id} className="categories__item">
-      <NavLink to={`/${category.name.toLowerCase()}`}>{category.name}</NavLink>
+      <NavLink to={`/${category.id}`}>{category.name}</NavLink>
     </li>
   ));
 

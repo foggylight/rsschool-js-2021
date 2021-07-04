@@ -11,6 +11,7 @@ export interface IPropsCategory {
 }
 
 export interface IPropsCategoryCard {
+  id: number;
   name: string;
   image: string;
 }

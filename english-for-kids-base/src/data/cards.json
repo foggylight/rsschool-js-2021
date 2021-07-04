@@ -194,9 +194,321 @@
   {
     "id": 25,
     "categoryId": 4,
-    "word": "",
+    "word": "bear",
+    "translation": "медведь",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/bear.png"
+  },
+  {
+    "id": 26,
+    "categoryId": 4,
+    "word": "deer",
+    "translation": "олень",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/deer.png"
+  },
+  {
+    "id": 27,
+    "categoryId": 4,
+    "word": "elk",
+    "translation": "лось",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/elk.png"
+  },
+  {
+    "id": 28,
+    "categoryId": 4,
+    "word": "hare",
+    "translation": "заяц",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/hare.png"
+  },
+  {
+    "id": 29,
+    "categoryId": 4,
+    "word": "hedgehog",
+    "translation": "ёж",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/hedgehog.png"
+  },
+  {
+    "id": 30,
+    "categoryId": 4,
+    "word": "raccoon",
+    "translation": "енот",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/raccoon.png"
+  },
+  {
+    "id": 31,
+    "categoryId": 4,
+    "word": "squirrel",
+    "translation": "белка",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/squirrel.png"
+  },
+  {
+    "id": 32,
+    "categoryId": 4,
+    "word": "wolf",
+    "translation": "волк",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/forest-animals/wolf.png"
+  },
+  {
+    "id": 33,
+    "categoryId": 5,
+    "word": "bunny",
+    "translation": "кролик",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/bunny.png"
+  },
+  {
+    "id": 34,
+    "categoryId": 5,
+    "word": "chicken",
+    "translation": "курица",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/chicken.png"
+  },
+  {
+    "id": 35,
+    "categoryId": 5,
+    "word": "cow",
+    "translation": "корова",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/cow.png"
+  },
+  {
+    "id": 36,
+    "categoryId": 5,
+    "word": "duck",
+    "translation": "утка",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/duck.png"
+  },
+  {
+    "id": 37,
+    "categoryId": 5,
+    "word": "goose",
+    "translation": "гусь",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/goose.png"
+  },
+  {
+    "id": 38,
+    "categoryId": 5,
+    "word": "horse",
+    "translation": "лошадь",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/horse.png"
+  },
+  {
+    "id": 39,
+    "categoryId": 5,
+    "word": "pig",
+    "translation": "свинья",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/pig.png"
+  },
+  {
+    "id": 40,
+    "categoryId": 5,
+    "word": "sheep",
+    "translation": "овца",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/farm-animals/sheep.png"
+  },
+  {
+    "id": 41,
+    "categoryId": 6,
+    "word": "cat",
     "translation": "кот",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
-    "image": "../../public/images/sweets/sweets.png"
+    "image": "../../public/images/pets/cat.png"
+  },
+  {
+    "id": 42,
+    "categoryId": 6,
+    "word": "fish",
+    "translation": "рыбка",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/fish.png"
+  },
+  {
+    "id": 43,
+    "categoryId": 6,
+    "word": "hamster",
+    "translation": "хомяк",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/hamster.png"
+  },
+  {
+    "id": 44,
+    "categoryId": 6,
+    "word": "ferret",
+    "translation": "хорёк",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/ferret.png"
+  },
+  {
+    "id": 45,
+    "categoryId": 6,
+    "word": "mouse",
+    "translation": "мышь",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/mouse.png"
+  },
+  {
+    "id": 46,
+    "categoryId": 6,
+    "word": "dog",
+    "translation": "собака",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/dog.png"
+  },
+  {
+    "id": 47,
+    "categoryId": 6,
+    "word": "parrot",
+    "translation": "попугай",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/parrot.png"
+  },
+  {
+    "id": 48,
+    "categoryId": 6,
+    "word": "turtle",
+    "translation": "черепаха",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/pets/turtle.png"
+  },
+  {
+    "id": 49,
+    "categoryId": 7,
+    "word": "apple",
+    "translation": "яблоко",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/apple.png"
+  },
+  {
+    "id": 50,
+    "categoryId": 7,
+    "word": "banana",
+    "translation": "банан",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/banana.png"
+  },
+  {
+    "id": 51,
+    "categoryId": 7,
+    "word": "lemon",
+    "translation": "лимон",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/lemon.png"
+  },
+  {
+    "id": 52,
+    "categoryId": 7,
+    "word": "peach",
+    "translation": "персик",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/peach.png"
+  },
+  {
+    "id": 53,
+    "categoryId": 7,
+    "word": "orange",
+    "translation": "апельсин",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/orange.png"
+  },
+  {
+    "id": 54,
+    "categoryId": 7,
+    "word": "pomegranate",
+    "translation": "гранат",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/pomegranate.png"
+  },
+  {
+    "id": 55,
+    "categoryId": 7,
+    "word": "pear",
+    "translation": "груша",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/pear.png"
+  },
+  {
+    "id": 56,
+    "categoryId": 7,
+    "word": "plum",
+    "translation": "слива",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/fruits/plum.png"
+  },
+  {
+    "id": 57,
+    "categoryId": 8,
+    "word": "cook",
+    "translation": "готовить",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/cook.png"
+  },
+  {
+    "id": 58,
+    "categoryId": 8,
+    "word": "fishing",
+    "translation": "рыбалка",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/fishing.png"
+  },
+  {
+    "id": 59,
+    "categoryId": 8,
+    "word": "video game",
+    "translation": "видеоигра",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/video-games.png"
+  },
+  {
+    "id": 60,
+    "categoryId": 8,
+    "word": "guitar",
+    "translation": "гитара",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/guitar.png"
+  },
+  {
+    "id": 61,
+    "categoryId": 8,
+    "word": "puzzle",
+    "translation": "пазлы",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/puzzle.png"
+  },
+  {
+    "id": 62,
+    "categoryId": 8,
+    "word": "reading",
+    "translation": "чтение",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/reading.png"
+  },
+  {
+    "id": 63,
+    "categoryId": 8,
+    "word": "bake",
+    "translation": "печь",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/bake.png"
+  },
+  {
+    "id": 64,
+    "categoryId": 8,
+    "word": "workout",
+    "translation": "зарядка",
+    "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
+    "image": "../../public/images/hobby/workout.png"
   }
 ]

@@ -16,27 +16,27 @@
   },
   {
     "id": 4,
-    "name": "Hobbies",
-    "image": "base64"
+    "name": "Forest animals",
+    "image": "../../public/images/forest-animals/forest-animals.png"
   },
   {
     "id": 5,
-    "name": "Nature",
-    "image": "base64"
+    "name": "Farm animals",
+    "image": "../../public/images/farm-animals/farm-animals.png"
   },
   {
     "id": 6,
-    "name": "Clothes",
-    "image": "base64"
+    "name": "Pets",
+    "image": "../../public/images/pets/pets.png"
   },
   {
     "id": 7,
-    "name": "Vegetables",
-    "image": "base64"
+    "name": "Fruits",
+    "image": "../../public/images/fruits/fruits.png"
   },
   {
     "id": 8,
-    "name": "Space",
-    "image": "base64"
+    "name": "Hobby",
+    "image": "../../public/images/hobby/hobby.png"
   }
 ]

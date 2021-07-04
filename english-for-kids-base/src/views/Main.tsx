@@ -5,7 +5,7 @@ import getCategoriesData from '../data/getCategoriesData';
 
 function Main(): ReactElement {
   const cards = getCategoriesData().map(category => (
-    <CategoryCard key={category.id} image={category.image} name={category.name} />
+    <CategoryCard key={category.id} id={category.id} image={category.image} name={category.name} />
   ));
 
   return (
