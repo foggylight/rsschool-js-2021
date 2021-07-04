@@ -1,10 +1,18 @@
 import React, { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
+
+import { Routes } from '../models/app';
+import Menu from './Menu';
+import ToggleSwitch from './ToggleSwitch';
 
 function Header(): ReactElement {
   return (
     <header className="header">
-      <h1>English for kids</h1>
-      <p className="subtitle">Train & Play</p>
+      <Menu />
+      <Link className="header-link" to={Routes.main}>
+        <h1 className="main-heading">English for kids</h1>
+      </Link>
+      <ToggleSwitch />
     </header>
   );
 }

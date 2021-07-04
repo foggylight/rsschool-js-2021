@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "name": "Animals",
-    "image": "base64"
+    "name": "Weather",
+    "image": "../../public/images/weather/weather.png"
   },
   {
     "id": 2,
-    "name": "Fruits",
-    "image": "base64"
+    "name": "Vegetables",
+    "image": "../../public/images/vegetables/vegetables.png"
   },
   {
     "id": 3,
-    "name": "Farm",
-    "image": "base64"
+    "name": "Sweets",
+    "image": "../../public/images/sweets/sweets.png"
   },
   {
     "id": 4,

@@ -1,0 +1,23 @@
+@import './variables';
+
+.category-card {
+  height: 250px;
+  width: 250px;
+  border-radius: 15px;
+
+  background-color: $light;
+  box-shadow: 4px 4px 8px rgba(112, 112, 112, 0.2);
+
+  &:hover {
+    box-shadow: 4px 4px 18px rgba(112, 112, 112, 0.5);
+  }
+
+  &__text {
+    display: inline-block;
+    height: 20%;
+    margin: 0 15px;
+    padding: 0 0 10px;
+
+    font-family: $font-heading;
+  }
+}

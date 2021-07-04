@@ -1,0 +1,149 @@
+@use 'sass:math';
+@import './variables';
+
+// some parts were taken from https://codepen.io/stevenfabre/pen/LGvzk/
+
+.menu {
+  $iconHeight: 24px;
+
+  &-btn_opened,
+  &-btn_closed {
+    position: relative;
+    z-index: 100;
+
+    height: $iconHeight;
+    width: 40px;
+    margin: 0 25px;
+
+    .line {
+      position: absolute;
+      left: 0;
+
+      display: block;
+      height: 4px;
+      width: 40px;
+      border-radius: 3px;
+
+      background-color: $accent-blue;
+
+      transition: transform 0.5s ease, opacity 0.2s ease, box-shadow 0.3s ease;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+      }
+
+      &:nth-child(3) {
+        top: 100%;
+      }
+    }
+  }
+
+  &-btn_opened {
+    position: relative;
+
+    .line {
+      &:nth-child(1) {
+        transform: translateX(0) translateY(math.div($iconHeight, 2)) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateX(0) translateY(-1 * math.div($iconHeight, 2)) rotate(-45deg);
+      }
+    }
+  }
+
+  // &-btn_opened,
+  // &-btn_closed {
+  //   &:hover .line {
+  //     box-shadow: 2px 2px 4px rgba(112, 112, 112, 0.3);
+  //   }
+  // }
+
+  &-btn_closed {
+    &:hover .line {
+      &:nth-child(1) {
+        transform: translateY(-2px) ;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+.categories {
+  $menuWidth: 320px;
+
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  height: 100%;
+  width: $menuWidth;
+  padding: 70px 20px 0;
+
+  background-color: $bg-green;
+
+  transition: left 0.5s ease;
+
+  &.closed {
+    left: -$menuWidth;
+  }
+
+  &.opened {
+    left: 0;
+  }
+
+  &__item {
+    padding: 4px;
+    border-bottom: 1px solid $accent-blue;
+
+    font-size: 28px;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $accent-green;
+    }
+
+    .active {
+      font-weight: 700;
+    }
+
+    &.main-nav-item {
+      display: inline-block;
+      margin: 0 0 20px;
+
+      font-family: $font-heading;
+    }
+  }
+
+  @media (min-width: 1620px) {
+    width: calc(50vw - 470px);
+
+    &.closed {
+      left: calc((50vw - 450px) * -1);
+    }
+  }
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4);
+}

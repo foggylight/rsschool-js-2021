@@ -4,6 +4,9 @@ body {
   box-sizing: border-box;
   margin: 0;
 
+  background-color: $bg-light;
+
+  color: $font-dark;
   font-family: $font-main;
   font-weight: 400;
   font-size: 14px;
@@ -26,7 +29,6 @@ a {
 }
 
 button,
-input,
 select,
 textarea {
   margin: 0;
@@ -39,5 +41,12 @@ textarea {
 
 h1,
 h2 {
+  margin: 0;
+
   font-family: $font-heading;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 28px;
 }

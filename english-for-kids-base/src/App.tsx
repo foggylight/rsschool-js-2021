@@ -1,30 +1,38 @@
 import React, { ReactElement } from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
-import SideMenu from './components/sideMenu/SideMenu';
+import getCategoriesData from './data/getCategoriesData';
 import { Routes } from './models/app';
+import Category from './views/Category';
 import Main from './views/Main';
+import Statistics from './views/Statistics';
 
 function App(): ReactElement {
+  const categories = getCategoriesData().map(category => {
+    // тут вместо категори рендерить гейм или трейн в зависимости от стейта из редакса
+    return (
+      <Route exact path={`/${category.name.toLowerCase()}`} key={category.id}>
+        <Category id={category.id} name={category.name} />
+      </Route>
+    );
+  });
+
   return (
-    <BrowserRouter>
-      <SideMenu />
+    <>
       <Header />
       <Switch>
-        <Route path={Routes.main}>
+        <Route exact path={Routes.main}>
           <Main />
         </Route>
-        <Route path={Routes.categories}>
-          <div>category</div>
-        </Route>
-        <Route path={Routes.statistics}>
-          <div>statistics</div>
+        {categories}
+        <Route exact path={Routes.statistics}>
+          <Statistics />
         </Route>
       </Switch>
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
 

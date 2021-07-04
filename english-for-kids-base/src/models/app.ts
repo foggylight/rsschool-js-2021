@@ -8,8 +8,3 @@ export enum AppMode {
   play = 'play',
   train = 'train',
 }
-
-export enum SideMenuState {
-  opened = 'opened',
-  closed = 'closed',
-}

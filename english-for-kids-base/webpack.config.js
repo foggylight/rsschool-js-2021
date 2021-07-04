@@ -20,6 +20,7 @@ const config = {
   devServer: {
     open: true,
     host: "localhost",
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -27,7 +28,7 @@ const config = {
     }),
 
     new ESLintPlugin({ extensions: ['ts', 'tsx', 'js'] }),
-    
+
     new CopyPlugin({
       patterns: [
         { from: 'public' },

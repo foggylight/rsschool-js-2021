@@ -1,5 +1,43 @@
 @import './variables';
 
+@import './toggleSwitch';
+
 .header {
-  margin: 0 0 0 85px;
+  display: flex;
+  align-items: center;
+  height: 72px;
+  max-width: 1140px;
+  padding: 0 0 10px;
+  margin: 0 auto 10px;
+  border-radius: 0 0 80px 80px / 0 0 30px 30px;
+
+  background-color: $bg-green;
+}
+
+.header-link {
+  flex-grow: 2;
+}
+
+.main-heading {
+  color: $font-dark;
+  font-size: 32px;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: rotate(0.5deg);
+  }
+}
+
+@media (max-width: 620px) {
+  .main-heading {
+    font-size: 28px;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 18px;
+  }
 }

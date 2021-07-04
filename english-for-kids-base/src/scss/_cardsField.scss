@@ -1,0 +1,28 @@
+.cards-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.category-text {
+  font-size: 26px;
+}
+
+.category-name {
+  margin: 25px 20px;
+
+  font-size: 28px;
+}
+
+.cards-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.category-field {
+  gap: 0;
+}
+
+@import './card';
+@import './categoryCard';

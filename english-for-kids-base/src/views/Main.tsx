@@ -1,12 +1,19 @@
 import React, { ReactElement } from 'react';
-import getCardsData from '../data/getCardsData';
+
+import CategoryCard from '../components/CategoryCard';
+import getCategoriesData from '../data/getCategoriesData';
 
 function Main(): ReactElement {
-  const cards = getCardsData().map(card => (
-    <img key={card.id} src={`data:image/jpeg;base64,${card.image}`} alt="" />
+  const cards = getCategoriesData().map(category => (
+    <CategoryCard key={category.id} image={category.image} name={category.name} />
   ));
 
-  return <main>{cards}</main>;
+  return (
+    <main className="cards-container">
+      <p className="category-text">Choose category to train/play:</p>
+      <div className="cards-field category-field">{cards}</div>
+    </main>
+  );
 }
 
 export default Main;

@@ -1,6 +1,6 @@
 import categoriesData from './categories.json';
-import { Category } from '../models/data';
+import { ICategory } from '../models/data';
 
-const getCategoriesData = (): Category[] => JSON.parse(JSON.stringify(categoriesData));
+const getCategoriesData = (): ICategory[] => JSON.parse(JSON.stringify(categoriesData));
 
 export default getCategoriesData;
