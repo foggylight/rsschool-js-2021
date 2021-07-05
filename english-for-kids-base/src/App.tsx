@@ -11,7 +11,6 @@ import Statistics from './views/Statistics';
 
 function App(): ReactElement {
   const categories = getCategoriesData().map(category => {
-    // тут вместо категори рендерить гейм или трейн в зависимости от стейта из редакса
     return (
       <Route exact path={`/${category.id}`} key={category.id}>
         <Category id={category.id} name={category.name} />

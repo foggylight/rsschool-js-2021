@@ -8,3 +8,7 @@ export enum AppMode {
   play = 'play',
   train = 'train',
 }
+
+export interface IModeState {
+  mode: AppMode;
+}

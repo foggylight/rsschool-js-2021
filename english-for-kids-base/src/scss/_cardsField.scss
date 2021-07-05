@@ -7,10 +7,20 @@
   font-size: 26px;
 }
 
+.category-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .category-name {
   margin: 25px 20px;
 
   font-size: 28px;
+}
+
+.stars-field {
+  flex-grow: 2;
 }
 
 .cards-field {
@@ -22,6 +32,26 @@
 
 .category-field {
   gap: 0;
+}
+
+.game-btn {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 20px;
+
+  background-color: transparent;
+
+  &:hover {
+    box-shadow: none;
+
+    transform: rotate(5deg);
+  }
+
+  &__icon {
+    height: 48px;
+    width: 48px;
+  }
 }
 
 @import './card';
