@@ -11,7 +11,7 @@
   margin: 0 auto 10px;
   border-radius: 0 0 80px 80px / 0 0 30px 30px;
 
-  background-color: $bg-green;
+  background-color: $bg-light-green;
 }
 
 .header-link {
@@ -19,12 +19,14 @@
 }
 
 .main-heading {
-  color: $font-dark;
+  color: $font;
   font-size: 32px;
 
   transition: all 0.3s ease;
 
   &:hover {
+    color: $accent-green;
+
     transform: rotate(0.5deg);
   }
 }

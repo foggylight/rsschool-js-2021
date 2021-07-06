@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import getCardsData from '../data/getCardsData';
 import getCategoriesData from '../data/getCategoriesData';
-import { generateNewValue, IStorageValue } from '../storage';
+import { generateNewValue } from '../storage';
 
 function Statistics(): ReactElement {
   const categoryData = getCategoriesData();
@@ -29,7 +29,7 @@ function Statistics(): ReactElement {
       : generateNewValue();
     const percentage = Math.round((rightGuesses / (rightGuesses + mistakes)) * 100);
     return (
-      <tr key={card.id}>
+      <tr key={card.id} className="stat-table__d-row">
         <td className="stat-table__data">{category}</td>
         <td className="stat-table__data">{card.word}</td>
         <td className="stat-table__data">{card.translation}</td>

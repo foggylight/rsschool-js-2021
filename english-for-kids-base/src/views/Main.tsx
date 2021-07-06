@@ -17,7 +17,7 @@ function Main(): ReactElement {
       <p className="category-text">
         Choose category to {mode === AppMode.play ? 'play' : 'train'}:
       </p>
-      <div className="cards-field category-field">{cards}</div>
+      <div className="cards-field categories-field">{cards}</div>
     </main>
   );
 }
