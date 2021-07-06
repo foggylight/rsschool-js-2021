@@ -114,10 +114,17 @@
     }
 
     &.main-nav-item {
-      display: inline-block;
-      margin: 0 0 20px;
+      display: block;
 
       font-family: $font-heading;
+
+      &:last-of-type {
+        margin: 0 0 20px;
+      }
+
+      &.active {
+        color: $accent-green;
+      }
     }
   }
 

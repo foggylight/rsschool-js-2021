@@ -13,7 +13,7 @@ function Main(): ReactElement {
   ));
 
   return (
-    <main className="cards-container">
+    <main className="main-container">
       <p className="category-text">
         Choose category to {mode === AppMode.play ? 'play' : 'train'}:
       </p>

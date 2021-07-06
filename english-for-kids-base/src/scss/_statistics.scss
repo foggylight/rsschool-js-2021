@@ -1,0 +1,29 @@
+@import './variables';
+
+.stat-header {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.stat-table {
+  margin: 0 auto;
+
+  background-color: $light;
+
+  &__head {
+    background-color: $bg-dark;
+
+    font-weight: 700;
+  }
+
+  &__h-data {
+    padding: 5px 10px;
+
+    cursor: pointer;
+  }
+
+  &__data {
+    padding: 2px 5px;
+  }
+}

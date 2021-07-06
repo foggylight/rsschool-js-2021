@@ -32,6 +32,9 @@ function Menu(): ReactElement {
       </button>
       <nav className="menu">
         <ul className={`categories ${isOpen ? 'opened' : 'closed'}`}>
+          <NavLink exact to={Routes.main} className="categories__item main-nav-item">
+            Main
+          </NavLink>
           <NavLink to={Routes.statistics} className="categories__item main-nav-item">
             Statistics
           </NavLink>
