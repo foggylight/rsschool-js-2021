@@ -60,13 +60,6 @@
     }
   }
 
-  // &-btn_opened,
-  // &-btn_closed {
-  //   &:hover .line {
-  //     box-shadow: 2px 2px 4px rgba(112, 112, 112, 0.3);
-  //   }
-  // }
-
   &-btn_closed {
     &:hover .line {
       &:nth-child(1) {
@@ -86,6 +79,7 @@
   position: fixed;
   top: 0;
   z-index: 10;
+  overflow-y: auto;
 
   height: 100%;
   width: $menuWidth;
