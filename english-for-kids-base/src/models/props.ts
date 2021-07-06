@@ -1,4 +1,5 @@
 export interface IPropsCard {
+  id: number;
   word: string;
   translation: string;
   audio: string;

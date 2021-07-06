@@ -1,19 +1,30 @@
 import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '../components/Card';
 import getCardsData from '../data/getCardsData';
-import { AppMode, IModeState } from '../models/app';
+import { AppMode, IState } from '../models/app';
 import { IPropsCategory } from '../models/props';
+import { addCards, startGame } from '../redux/actions';
+import gameEngine from '../service';
+import { playAudio } from '../utils';
+import EndGame from './EndGame';
 
 function Category({ id, name }: IPropsCategory): ReactElement {
-  const mode = useSelector((state: IModeState) => state.mode);
+  const dispatch = useDispatch();
+
+  const mode = useSelector((state: IState) => state.mode.mode);
+  const currentCard = useSelector((state: IState) => state.game.game.currentCard);
+  const stars = useSelector((state: IState) => state.game.game.stars);
+  const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
+  const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
 
   const cardsData = getCardsData().filter(card => card.categoryId === id);
 
   const cards = cardsData.map(card => (
     <Card
       key={card.id}
+      id={card.id}
       image={card.image}
       audio={card.audio}
       word={card.word}
@@ -21,30 +32,49 @@ function Category({ id, name }: IPropsCategory): ReactElement {
     />
   ));
 
-  const startGame = () => {
+  const start = () => {
     const cardsAudio = cardsData.map(data => {
       return { id: data.id, audio: data.audio };
     });
+    dispatch(addCards(cardsAudio));
+    gameEngine();
 
-    console.log(cardsAudio);
+    dispatch(startGame(true));
+  };
+
+  const repeatWord = () => {
+    if (currentCard) {
+      playAudio(currentCard.audio);
+    }
   };
 
   const startBtn = (
-    <button onClick={startGame} className="btn game-btn" type="button">
+    <button onClick={isGameStarted ? repeatWord : start} className="btn game-btn" type="button">
+      {isGameStarted ? '' : 'Start game!'}
       <img
         className="game-btn__icon"
         height="100%"
         width="100%"
-        src="../../public/play-button.svg"
+        src={`../../public/${isGameStarted ? 'looping-arrows' : 'play-button'}.svg`}
         alt=""
       />
-      Start game!
     </button>
   );
 
-  const starsField = <div className="stars-field" />;
+  const starsField = (
+    <div className="stars-field">
+      {stars.map(star => (
+        <img
+          key={star.id}
+          className="stars"
+          src={`../../public/${star.isCorrect ? 'heart' : 'broken-heart'}.svg`}
+          alt=""
+        />
+      ))}
+    </div>
+  );
 
-  return (
+  const mainScreen = (
     <main className="cards-container">
       <div className="category-header">
         <h2 className="category-name">{name}</h2>
@@ -54,6 +84,12 @@ function Category({ id, name }: IPropsCategory): ReactElement {
       <div className="cards-field">{cards}</div>
     </main>
   );
+
+  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
+
+  const endGameScreen = <EndGame isSuccessful={!mistakes} />;
+
+  return isGameEnded ? endGameScreen : mainScreen;
 }
 
 export default Category;

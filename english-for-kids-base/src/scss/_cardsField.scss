@@ -1,6 +1,31 @@
+@import './variables';
+
 .cards-container {
   max-width: 1140px;
   margin: 0 auto;
+
+  &.end-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      color: $accent-orange;
+      font-size: 42px;
+    }
+
+    p {
+      margin: 0 0 30px;
+
+      color: $accent-orange;
+      font-size: 18px;
+    }
+
+    img {
+      max-height: 400px;
+      max-width: 100%;
+    }
+  }
 }
 
 .category-text {
@@ -9,8 +34,30 @@
 
 .category-header {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 540px) {
+    flex-wrap: wrap;
+  }
+}
+
+
+.stars-field {
+  overflow: hidden;
+
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .stars {
+    height: 36px;
+    margin: 2px;
+  }
+
+  @media (max-width: 540px) {
+    margin: 0 20px;
+  }
 }
 
 .category-name {
@@ -19,15 +66,13 @@
   font-size: 28px;
 }
 
-.stars-field {
-  flex-grow: 2;
-}
-
 .cards-field {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+
+  padding: 0 30px;
 }
 
 .category-field {
@@ -45,7 +90,7 @@
   &:hover {
     box-shadow: none;
 
-    transform: rotate(5deg);
+    transform: rotate(-5deg);
   }
 
   &__icon {

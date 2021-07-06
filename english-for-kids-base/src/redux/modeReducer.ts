@@ -2,7 +2,7 @@ import { AppMode, IModeState } from '../models/app';
 import { ActionType, CHANGE_MODE } from './actions';
 
 const initialState = {
-  mode: AppMode.play,
+  mode: AppMode.train,
 };
 
 const modeReducer = (state = initialState, action: ActionType): IModeState => {

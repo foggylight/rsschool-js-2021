@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppMode } from '../models/app';
-import { changeMode } from '../redux/actions';
+import { changeMode, resetGame } from '../redux/actions';
 
 function ToggleSwitch(): ReactElement {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function ToggleSwitch(): ReactElement {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const mode = value ? AppMode.play : AppMode.train;
     dispatch(changeMode(mode));
+    dispatch(resetGame());
   };
 
   return (
