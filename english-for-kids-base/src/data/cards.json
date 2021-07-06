@@ -5,7 +5,7 @@
     "word": "wind",
     "translation": "ветер",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukw/ukwil/ukwildl027.mp3",
-    "image": "../../public/images/weather/wind.png"
+    "image": "./images/weather/wind.png"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "word": "sun",
     "translation": "солнце",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uks/uksom/uksomet012.mp3",
-    "image": "../../public/images/weather/sun.png"
+    "image": "./images/weather/sun.png"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "word": "storm",
     "translation": "гроза",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uks/uksto/ukstore010.mp3",
-    "image": "../../public/images/weather/storm.png"
+    "image": "./images/weather/storm.png"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "word": "star",
     "translation": "звезда",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uks/uksta/ukstand022.mp3",
-    "image": "../../public/images/weather/star.png"
+    "image": "./images/weather/star.png"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "word": "snow",
     "translation": "снег",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uks/uksno/uksnobb020.mp3",
-    "image": "../../public/images/weather/snow.png"
+    "image": "./images/weather/snow.png"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "word": "rainbow",
     "translation": "радуга",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukr/ukraf/ukraffl026.mp3",
-    "image": "../../public/images/weather/rainbow.png"
+    "image": "./images/weather/rainbow.png"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "word": "rain",
     "translation": "дождь",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukr/ukraf/ukraffl025.mp3",
-    "image": "../../public/images/weather/rain.png"
+    "image": "./images/weather/rain.png"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "word": "moon",
     "translation": "луна",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukm/ukmon/ukmonot029.mp3",
-    "image": "../../public/images/weather/moon.png"
+    "image": "./images/weather/moon.png"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "word": "avocado",
     "translation": "авокадо",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcld/ukcld00050.mp3",
-    "image": "../../public/images/vegetables/avocado.png"
+    "image": "./images/vegetables/avocado.png"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "word": "carrot",
     "translation": "морковь",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcar/ukcarap002.mp3",
-    "image": "../../public/images/vegetables/carrot.png"
+    "image": "./images/vegetables/carrot.png"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "word": "corn",
     "translation": "кукуруза",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcor/ukcoran024.mp3",
-    "image": "../../public/images/vegetables/corn.png"
+    "image": "./images/vegetables/corn.png"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "word": "cucumber",
     "translation": "огурец",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcsa/ukcsa__018.mp3",
-    "image": "../../public/images/vegetables/cucumber.png"
+    "image": "./images/vegetables/cucumber.png"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "word": "onion",
     "translation": "лук",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uko/ukomn/ukomniv012.mp3",
-    "image": "../../public/images/vegetables/onion.png"
+    "image": "./images/vegetables/onion.png"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "word": "pea",
     "translation": "горошек",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uko/ukozo/ukozone002.mp3",
-    "image": "../../public/images/vegetables/pea.png"
+    "image": "./images/vegetables/pea.png"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "word": "pumpkin",
     "translation": "тыква",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukp/ukpum/ukpumme004.mp3",
-    "image": "../../public/images/vegetables/pumpkin.png"
+    "image": "./images/vegetables/pumpkin.png"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "word": "tomato",
     "translation": "помидор",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukb/ukb03/ukb03206.mp3",
-    "image": "../../public/images/vegetables/tomato.png"
+    "image": "./images/vegetables/tomato.png"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "word": "bun",
     "translation": "булочка",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukb/ukbul/ukbulru016.mp3",
-    "image": "../../public/images/sweets/bun.png"
+    "image": "./images/sweets/bun.png"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "word": "candy",
     "translation": "конфета",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcan/ukcandy001.mp3",
-    "image": "../../public/images/sweets/candy.png"
+    "image": "./images/sweets/candy.png"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "word": "cookie",
     "translation": "печенье",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcoo/ukcooke002.mp3",
-    "image": "../../public/images/sweets/cookie.png"
+    "image": "./images/sweets/cookie.png"
   },
   {
     "id": 20,
@@ -157,7 +157,7 @@
     "word": "cupcake",
     "translation": "кекс",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcun/ukcunt_004.mp3",
-    "image": "../../public/images/sweets/cupcake.png"
+    "image": "./images/sweets/cupcake.png"
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@
     "word": "donut",
     "translation": "пончик",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukd/ukdon/ukdonke005.mp3",
-    "image": "../../public/images/sweets/donut.png"
+    "image": "./images/sweets/donut.png"
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@
     "word": "ice cream",
     "translation": "мороженое",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukc/ukcld/ukcld00700.mp3",
-    "image": "../../public/images/sweets/ice-cream.png"
+    "image": "./images/sweets/ice-cream.png"
   },
   {
     "id": 23,
@@ -181,7 +181,7 @@
     "word": "lollipop",
     "translation": "леденец",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukl/uklog/uklogar027.mp3",
-    "image": "../../public/images/sweets/lollipop.png"
+    "image": "./images/sweets/lollipop.png"
   },
   {
     "id": 24,
@@ -189,7 +189,7 @@
     "word": "pie",
     "translation": "пирог",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukp/ukpho/ukphoto029.mp3",
-    "image": "../../public/images/sweets/pie.png"
+    "image": "./images/sweets/pie.png"
   },
   {
     "id": 25,
@@ -197,7 +197,7 @@
     "word": "bear",
     "translation": "медведь",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukb/ukban/ukbanqu030.mp3",
-    "image": "../../public/images/forest-animals/bear.png"
+    "image": "./images/forest-animals/bear.png"
   },
   {
     "id": 26,
@@ -205,7 +205,7 @@
     "word": "deer",
     "translation": "олень",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukd/ukddt/ukddt__026.mp3",
-    "image": "../../public/images/forest-animals/deer.png"
+    "image": "./images/forest-animals/deer.png"
   },
   {
     "id": 27,
@@ -213,7 +213,7 @@
     "word": "elk",
     "translation": "лось",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/uke/ukeli/ukelimi010.mp3",
-    "image": "../../public/images/forest-animals/elk.png"
+    "image": "./images/forest-animals/elk.png"
   },
   {
     "id": 28,
@@ -221,7 +221,7 @@
     "word": "hare",
     "translation": "заяц",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukh/ukhae/ukhaema018.mp3",
-    "image": "../../public/images/forest-animals/hare.png"
+    "image": "./images/forest-animals/hare.png"
   },
   {
     "id": 29,
@@ -229,7 +229,7 @@
     "word": "hedgehog",
     "translation": "ёж",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukh/ukhea/ukheave020.mp3",
-    "image": "../../public/images/forest-animals/hedgehog.png"
+    "image": "./images/forest-animals/hedgehog.png"
   },
   {
     "id": 30,
@@ -237,7 +237,7 @@
     "word": "raccoon",
     "translation": "енот",
     "audio": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukr/ukrab/ukrabbi007.mp3",
-    "image": "../../public/images/forest-animals/raccoon.png"
+    "image": "./images/forest-animals/raccoon.png"
   },
   {
     "id": 31,
@@ -245,7 +245,7 @@
     "word": "squirrel",
     "translation": "белка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/uks/uksqu/uksquee016.mp3",
-    "image": "../../public/images/forest-animals/squirrel.png"
+    "image": "./images/forest-animals/squirrel.png"
   },
   {
     "id": 32,
@@ -253,7 +253,7 @@
     "word": "wolf",
     "translation": "волк",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukw/ukwit/ukwitte022.mp3",
-    "image": "../../public/images/forest-animals/wolf.png"
+    "image": "./images/forest-animals/wolf.png"
   },
   {
     "id": 33,
@@ -261,7 +261,7 @@
     "word": "bunny",
     "translation": "кролик",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcld/ukcld00147.mp3",
-    "image": "../../public/images/farm-animals/bunny.png"
+    "image": "./images/farm-animals/bunny.png"
   },
   {
     "id": 34,
@@ -269,7 +269,7 @@
     "word": "chicken",
     "translation": "курица",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukche/ukchess018.mp3",
-    "image": "../../public/images/farm-animals/chicken.png"
+    "image": "./images/farm-animals/chicken.png"
   },
   {
     "id": 35,
@@ -277,7 +277,7 @@
     "word": "cow",
     "translation": "корова",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcov/ukcover011.mp3",
-    "image": "../../public/images/farm-animals/cow.png"
+    "image": "./images/farm-animals/cow.png"
   },
   {
     "id": 36,
@@ -285,7 +285,7 @@
     "word": "duck",
     "translation": "утка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukd/ukdub/ukdubio005.mp3",
-    "image": "../../public/images/farm-animals/duck.png"
+    "image": "./images/farm-animals/duck.png"
   },
   {
     "id": 37,
@@ -293,7 +293,7 @@
     "word": "goose",
     "translation": "гусь",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukg/ukgon/ukgonad027.mp3",
-    "image": "../../public/images/farm-animals/goose.png"
+    "image": "./images/farm-animals/goose.png"
   },
   {
     "id": 38,
@@ -301,7 +301,7 @@
     "word": "horse",
     "translation": "лошадь",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukh/ukhiv/ukhive_017.mp3",
-    "image": "../../public/images/farm-animals/horse.png"
+    "image": "./images/farm-animals/horse.png"
   },
   {
     "id": 39,
@@ -309,7 +309,7 @@
     "word": "pig",
     "translation": "свинья",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukpic/ukpictu020.mp3",
-    "image": "../../public/images/farm-animals/pig.png"
+    "image": "./images/farm-animals/pig.png"
   },
   {
     "id": 40,
@@ -317,7 +317,7 @@
     "word": "sheep",
     "translation": "овца",
     "audio": "https://dictionary.cambridge.org/media/english/us_pron/s/she/sheep/sheep.mp3",
-    "image": "../../public/images/farm-animals/sheep.png"
+    "image": "./images/farm-animals/sheep.png"
   },
   {
     "id": 41,
@@ -325,7 +325,7 @@
     "word": "cat",
     "translation": "кот",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcas/ukcaste011.mp3",
-    "image": "../../public/images/pets/cat.png"
+    "image": "./images/pets/cat.png"
   },
   {
     "id": 42,
@@ -333,7 +333,7 @@
     "word": "fish",
     "translation": "рыбка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukf/ukfir/ukfirew013.mp3",
-    "image": "../../public/images/pets/fish.png"
+    "image": "./images/pets/fish.png"
   },
   {
     "id": 43,
@@ -341,7 +341,7 @@
     "word": "hamster",
     "translation": "хомяк",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukh/ukhal/ukhallw026.mp3",
-    "image": "../../public/images/pets/hamster.png"
+    "image": "./images/pets/hamster.png"
   },
   {
     "id": 44,
@@ -349,7 +349,7 @@
     "word": "ferret",
     "translation": "хорёк",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukf/ukfer/ukferre001.mp3",
-    "image": "../../public/images/pets/ferret.png"
+    "image": "./images/pets/ferret.png"
   },
   {
     "id": 45,
@@ -357,7 +357,7 @@
     "word": "mouse",
     "translation": "мышь",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukm/ukmou/ukmourn002.mp3",
-    "image": "../../public/images/pets/mouse.png"
+    "image": "./images/pets/mouse.png"
   },
   {
     "id": 46,
@@ -365,7 +365,7 @@
     "word": "dog",
     "translation": "собака",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukd/ukdoc/ukdocud022.mp3",
-    "image": "../../public/images/pets/dog.png"
+    "image": "./images/pets/dog.png"
   },
   {
     "id": 47,
@@ -373,7 +373,7 @@
     "word": "parrot",
     "translation": "попугай",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukpar/ukparis028.mp3",
-    "image": "../../public/images/pets/parrot.png"
+    "image": "./images/pets/parrot.png"
   },
   {
     "id": 48,
@@ -381,7 +381,7 @@
     "word": "turtle",
     "translation": "черепаха",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukt/uktur/ukturnk015.mp3",
-    "image": "../../public/images/pets/turtle.png"
+    "image": "./images/pets/turtle.png"
   },
   {
     "id": 49,
@@ -389,7 +389,7 @@
     "word": "apple",
     "translation": "яблоко",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/uka/ukapp/ukappen014.mp3",
-    "image": "../../public/images/fruits/apple.png"
+    "image": "./images/fruits/apple.png"
   },
   {
     "id": 50,
@@ -397,7 +397,7 @@
     "word": "banana",
     "translation": "банан",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukb/ukbal/ukballs018.mp3",
-    "image": "../../public/images/fruits/banana.png"
+    "image": "./images/fruits/banana.png"
   },
   {
     "id": 51,
@@ -405,7 +405,7 @@
     "word": "lemon",
     "translation": "лимон",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukl/uklei/ukleisu005.mp3",
-    "image": "../../public/images/fruits/lemon.png"
+    "image": "./images/fruits/lemon.png"
   },
   {
     "id": 52,
@@ -413,7 +413,7 @@
     "word": "peach",
     "translation": "персик",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukpay/ukpayro020.mp3",
-    "image": "../../public/images/fruits/peach.png"
+    "image": "./images/fruits/peach.png"
   },
   {
     "id": 53,
@@ -421,15 +421,15 @@
     "word": "orange",
     "translation": "апельсин",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/uko/ukora/ukorang001.mp3",
-    "image": "../../public/images/fruits/orange.png"
+    "image": "./images/fruits/orange.png"
   },
   {
     "id": 54,
     "categoryId": 7,
     "word": "kiwi",
-    "translation": "гранат",
+    "translation": "киви",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukk/ukkit/ukkit__013.mp3",
-    "image": "../../public/images/fruits/kiwi.png"
+    "image": "./images/fruits/kiwi.png"
   },
   {
     "id": 55,
@@ -437,7 +437,7 @@
     "word": "pear",
     "translation": "груша",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukpai/ukpaink014.mp3",
-    "image": "../../public/images/fruits/pear.png"
+    "image": "./images/fruits/pear.png"
   },
   {
     "id": 56,
@@ -445,7 +445,7 @@
     "word": "plum",
     "translation": "слива",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukplo/ukplodd020.mp3",
-    "image": "../../public/images/fruits/plum.png"
+    "image": "./images/fruits/plum.png"
   },
   {
     "id": 57,
@@ -453,7 +453,7 @@
     "word": "cook",
     "translation": "готовить",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcon/ukconve028.mp3",
-    "image": "../../public/images/hobby/cook.png"
+    "image": "./images/hobby/cook.png"
   },
   {
     "id": 58,
@@ -461,7 +461,7 @@
     "word": "fishing",
     "translation": "рыбалка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukf/ukfir/ukfirew019.mp3",
-    "image": "../../public/images/hobby/fishing.png"
+    "image": "./images/hobby/fishing.png"
   },
   {
     "id": 59,
@@ -469,7 +469,7 @@
     "word": "video game",
     "translation": "видеоигра",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukc/ukcld/ukcld01585.mp3",
-    "image": "../../public/images/hobby/video-games.png"
+    "image": "./images/hobby/video-games.png"
   },
   {
     "id": 60,
@@ -477,7 +477,7 @@
     "word": "guitar",
     "translation": "гитара",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukg/ukgui/ukguime006.mp3",
-    "image": "../../public/images/hobby/guitar.png"
+    "image": "./images/hobby/guitar.png"
   },
   {
     "id": 61,
@@ -485,7 +485,7 @@
     "word": "puzzle",
     "translation": "головоломка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukp/ukput/ukputz_002.mp3",
-    "image": "../../public/images/hobby/puzzle.png"
+    "image": "./images/hobby/puzzle.png"
   },
   {
     "id": 62,
@@ -493,7 +493,7 @@
     "word": "reading",
     "translation": "чтение",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukr/ukrea/ukreadi003.mp3",
-    "image": "../../public/images/hobby/reading.png"
+    "image": "./images/hobby/reading.png"
   },
   {
     "id": 63,
@@ -501,7 +501,7 @@
     "word": "bake",
     "translation": "печь",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukb/ukbag/ukbag__023.mp3",
-    "image": "../../public/images/hobby/bake.png"
+    "image": "./images/hobby/bake.png"
   },
   {
     "id": 64,
@@ -509,6 +509,6 @@
     "word": "workout",
     "translation": "зарядка",
     "audio": "https://dictionary.cambridge.org/media/english-russian/uk_pron/u/ukw/ukwor/ukwordp028.mp3",
-    "image": "../../public/images/hobby/workout.png"
+    "image": "./images/hobby/workout.png"
   }
 ]

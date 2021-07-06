@@ -1,5 +1,5 @@
-export const correctSound = '../public/audio/correct.mp3';
-export const errorSound = '../public/audio/error.mp3';
+export const correctSound = './audio/correct.mp3';
+export const errorSound = './audio/error.mp3';
 
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * (max + 1));
 

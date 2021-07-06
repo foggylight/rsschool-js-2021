@@ -2,41 +2,41 @@
   {
     "id": 1,
     "name": "Weather",
-    "image": "../../public/images/weather/weather.png"
+    "image": "./images/weather/weather.png"
   },
   {
     "id": 2,
     "name": "Vegetables",
-    "image": "../../public/images/vegetables/vegetables.png"
+    "image": "./images/vegetables/vegetables.png"
   },
   {
     "id": 3,
     "name": "Sweets",
-    "image": "../../public/images/sweets/sweets.png"
+    "image": "./images/sweets/sweets.png"
   },
   {
     "id": 4,
     "name": "Forest animals",
-    "image": "../../public/images/forest-animals/forest-animals.png"
+    "image": "./images/forest-animals/forest-animals.png"
   },
   {
     "id": 5,
     "name": "Farm animals",
-    "image": "../../public/images/farm-animals/farm-animals.png"
+    "image": "./images/farm-animals/farm-animals.png"
   },
   {
     "id": 6,
     "name": "Pets",
-    "image": "../../public/images/pets/pets.png"
+    "image": "./images/pets/pets.png"
   },
   {
     "id": 7,
     "name": "Fruits",
-    "image": "../../public/images/fruits/fruits.png"
+    "image": "./images/fruits/fruits.png"
   },
   {
     "id": 8,
     "name": "Hobby",
-    "image": "../../public/images/hobby/hobby.png"
+    "image": "./images/hobby/hobby.png"
   }
 ]

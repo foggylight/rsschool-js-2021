@@ -25,6 +25,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
+      favicon: "./public/favicon.png"
     }),
 
     new ESLintPlugin({ extensions: ['ts', 'tsx', 'js'] }),

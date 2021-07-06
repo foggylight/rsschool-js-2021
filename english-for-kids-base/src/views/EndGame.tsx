@@ -10,7 +10,7 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    playAudio(`../../public/audio/${isSuccessful ? 'success' : 'failure'}.mp3`);
+    playAudio(`../../audio/${isSuccessful ? 'success' : 'failure'}.mp3`);
     setTimeout(() => {
       dispatch(resetGame());
       history.push('/');
@@ -20,10 +20,10 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
   const mistakes = useSelector((state: IState) => state.game.game.mistakes);
 
   return (
-    <main className="cards-container end-game">
+    <main className="main-container end-game">
       {isSuccessful ? <h2>You did it!</h2> : <h2>Oh no...</h2>}
       {isSuccessful ? null : <p>You have made {mistakes} mistakes</p>}
-      <img src={`../../public/${isSuccessful ? 'happy' : 'angry'}.png`} alt="Game end" />
+      <img src={`./${isSuccessful ? 'happy' : 'angry'}.png`} alt="Game end" />
     </main>
   );
 }

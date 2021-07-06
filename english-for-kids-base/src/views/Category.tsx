@@ -55,7 +55,7 @@ function Category({ id, name }: IPropsCategory): ReactElement {
         className="game-btn__icon"
         height="100%"
         width="100%"
-        src={`../../public/${isGameStarted ? 'looping-arrows' : 'play-button'}.svg`}
+        src={`./${isGameStarted ? 'looping-arrows' : 'play-button'}.svg`}
         alt=""
       />
     </button>
@@ -67,7 +67,7 @@ function Category({ id, name }: IPropsCategory): ReactElement {
         <img
           key={star.id}
           className="stars"
-          src={`../../public/${star.isCorrect ? 'heart' : 'broken-heart'}.svg`}
+          src={`./${star.isCorrect ? 'heart' : 'broken-heart'}.svg`}
           alt=""
         />
       ))}
@@ -75,7 +75,7 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   );
 
   const mainScreen = (
-    <main className="cards-container">
+    <main className="main-container">
       <div className="category-header">
         <h2 className="category-name">{name}</h2>
         {mode === AppMode.play ? starsField : null}
