@@ -4,6 +4,7 @@ import { AppMode, IState } from '../models/app';
 import { IPropsCard } from '../models/props';
 import { addMistake, addStar, endGame, spliceCards } from '../redux/actions';
 import gameEngine from '../service';
+import { sendToStorage, StorageValue } from '../storage';
 import { correctSound, errorSound, playAudio } from '../utils';
 
 const Card = (props: IPropsCard): ReactElement => {
@@ -32,6 +33,7 @@ const Card = (props: IPropsCard): ReactElement => {
       dispatch(spliceCards(currentCard));
       disable(() => !isDisabled);
       dispatch(addStar(true));
+      sendToStorage(`${id}`, StorageValue.rightGuess);
       const sound = playAudio(correctSound);
       sound.onended = () => {
         if (currentCards.length === 1) {
@@ -44,7 +46,13 @@ const Card = (props: IPropsCard): ReactElement => {
       playAudio(errorSound);
       dispatch(addMistake());
       dispatch(addStar(false));
+      sendToStorage(`${currentCard?.id}`, StorageValue.mistake);
     }
+  };
+
+  const train = () => {
+    playAudio(audio);
+    sendToStorage(`${id}`, StorageValue.click);
   };
 
   useEffect(() => {
@@ -60,7 +68,7 @@ const Card = (props: IPropsCard): ReactElement => {
     >
       <div className={`card ${isDisabled ? 'disabled' : ''} ${isFlipped ? 'flipped' : ''}`}>
         <div
-          onClick={mode === AppMode.train ? () => playAudio(audio) : () => null}
+          onClick={mode === AppMode.train ? train : () => null}
           aria-hidden="true"
           className="card__front"
         >

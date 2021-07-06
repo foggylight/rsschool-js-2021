@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import getCardsData from '../data/getCardsData';
 import getCategoriesData from '../data/getCategoriesData';
+import { generateNewValue, IStorageValue } from '../storage';
 
 function Statistics(): ReactElement {
   const categoryData = getCategoriesData();
@@ -13,7 +14,7 @@ function Statistics(): ReactElement {
     { id: 4, name: 'Train clicks' },
     { id: 5, name: 'Correct guesses' },
     { id: 6, name: 'Mistakes' },
-    { id: 7, name: '%' },
+    { id: 7, name: 'Correct / total' },
   ].map(header => (
     <td key={header.id} className="stat-table__h-data">
       {header.name}
@@ -22,22 +23,28 @@ function Statistics(): ReactElement {
 
   const tableData = cardsData.map(card => {
     const category = categoryData.find(data => data.id === card.categoryId)?.name;
+    const storageData = localStorage.getItem(`${card.id}`);
+    const { clicks, rightGuesses, mistakes } = storageData
+      ? JSON.parse(storageData)
+      : generateNewValue();
+    const percentage = Math.round((rightGuesses / (rightGuesses + mistakes)) * 100);
     return (
       <tr key={card.id}>
         <td className="stat-table__data">{category}</td>
         <td className="stat-table__data">{card.word}</td>
         <td className="stat-table__data">{card.translation}</td>
-        <td className="stat-table__data">clicks</td>
-        <td className="stat-table__data">correct</td>
-        <td className="stat-table__data">mistakes</td>
-        <td className="stat-table__data">%</td>
+        <td className="stat-table__data">{clicks}</td>
+        <td className="stat-table__data">{rightGuesses}</td>
+        <td className="stat-table__data">{mistakes}</td>
+        <td className="stat-table__data">{`${percentage || 0}%`}</td>
       </tr>
     );
   });
+
   return (
     <main className="main-container">
       <div className="stat-header">
-        <h2 className="stat-header__heading">Game statistic</h2>
+        <h2 className="stat-header__heading">Game statistics</h2>
       </div>
       <table className="stat-table">
         <thead className="stat-table__head">
