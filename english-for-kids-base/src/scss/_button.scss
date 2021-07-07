@@ -38,9 +38,9 @@ button:active {
   font-weight: 700;
   text-transform: uppercase;
 
-  transition: 0.3s;
+  transition: 0.2s;
 
   &:hover {
-    box-shadow: 1px 1px 8px rgba(112, 112, 112, 0.8);
+    box-shadow: 1px 1px 8px rgba(112, 112, 112, 0.6);
   }
 }

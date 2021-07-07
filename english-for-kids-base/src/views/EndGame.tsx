@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { IState } from '../models/app';
+import { IState, Routes } from '../models/app';
 import { resetGame } from '../redux/actions';
 import { playAudio } from '../utils';
 
@@ -13,7 +13,7 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
     playAudio(`../../audio/${isSuccessful ? 'success' : 'failure'}.mp3`);
     setTimeout(() => {
       dispatch(resetGame());
-      history.push('/');
+      history.push(Routes.main);
     }, 4000);
   }, []);
 

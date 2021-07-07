@@ -1,3 +1,7 @@
+import { ICard } from './models/data';
+import getCardsData from './data/getCardsData';
+import { countPercentage } from './utils';
+
 export interface IStorageValue {
   clicks: number;
   rightGuesses: number;
@@ -47,4 +51,26 @@ export const sendToStorage = (id: string, valueType: StorageValue): void => {
     ? JSON.parse(localStorageValue)
     : generateNewValue();
   localStorage.setItem(id, addValue(currentValue, valueType));
+};
+
+export const getDifficultWords = (): ICard[] => {
+  const keys = Object.keys(localStorage);
+  const difficultWordsData: { id: number; percentage: number }[] = keys
+    .map(key => ({ id: +key, data: localStorage.getItem(key) }))
+    .filter(({ data }) => data)
+    .map(({ id, data }) => {
+      const storageData: IStorageValue = data ? JSON.parse(data) : null;
+      return { id, data: storageData };
+    })
+    .map(({ id, data }) => {
+      const percentage = countPercentage(data.rightGuesses, data.rightGuesses + data.mistakes);
+      return { id, percentage };
+    })
+    .filter(({ percentage }) => percentage < 100)
+    .sort((data1, data2) => data1.percentage - data2.percentage);
+  difficultWordsData.splice(8);
+  const cardsData = getCardsData().filter(data =>
+    difficultWordsData.find(({ id }) => data.id === id),
+  );
+  return cardsData;
 };

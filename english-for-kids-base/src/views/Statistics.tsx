@@ -1,11 +1,17 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import getCardsData from '../data/getCardsData';
 import getCategoriesData from '../data/getCategoriesData';
+import { Routes } from '../models/app';
 import { generateNewValue } from '../storage';
+import { countPercentage } from '../utils';
 
 function Statistics(): ReactElement {
+  const history = useHistory();
   const categoryData = getCategoriesData();
   const cardsData = getCardsData();
+
+  const [, updateStorage] = useState(localStorage.length);
 
   const headers = [
     { id: 1, name: 'Category' },
@@ -27,7 +33,7 @@ function Statistics(): ReactElement {
     const { clicks, rightGuesses, mistakes } = storageData
       ? JSON.parse(storageData)
       : generateNewValue();
-    const percentage = Math.round((rightGuesses / (rightGuesses + mistakes)) * 100);
+    const percentage = countPercentage(rightGuesses, rightGuesses + mistakes);
     return (
       <tr key={card.id} className="stat-table__d-row">
         <td className="stat-table__data">{category}</td>
@@ -41,10 +47,27 @@ function Statistics(): ReactElement {
     );
   });
 
+  const resetStorage = () => {
+    localStorage.clear();
+    updateStorage(() => localStorage.length);
+  };
+
+  const repeatWords = () => {
+    history.push(Routes.difficultWords);
+  };
+
   return (
     <main className="main-container">
       <div className="stat-header">
-        <h2 className="stat-header__heading">Game statistics</h2>
+        <h2>Game statistics</h2>
+        <div>
+          <button className="btn stat-header__btn" onClick={repeatWords} type="button">
+            Repeat difficult words
+          </button>
+          <button className="btn stat-header__btn" onClick={resetStorage} type="button">
+            Reset
+          </button>
+        </div>
       </div>
       <table className="stat-table">
         <thead className="stat-table__head">

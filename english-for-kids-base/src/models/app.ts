@@ -4,6 +4,7 @@ export enum Routes {
   main = '/',
   categories = '/category',
   statistics = '/statistics',
+  difficultWords = '/difficult-words',
 }
 
 export enum AppMode {

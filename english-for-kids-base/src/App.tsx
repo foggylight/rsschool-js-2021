@@ -29,6 +29,9 @@ function App(): ReactElement {
         <Route exact path={Routes.statistics}>
           <Statistics />
         </Route>
+        <Route exact path={Routes.difficultWords}>
+          <Category id={0} name="Difficult words" />
+        </Route>
       </Switch>
       <Footer />
     </>

@@ -7,6 +7,7 @@ import { AppMode, IState } from '../models/app';
 import { IPropsCategory } from '../models/props';
 import { addCards, startGame } from '../redux/actions';
 import gameEngine from '../service';
+import { getDifficultWords } from '../storage';
 import { playAudio } from '../utils';
 import EndGame from './EndGame';
 
@@ -19,7 +20,8 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
   const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
 
-  const cardsData = getCardsData().filter(card => card.categoryId === id);
+  const cardsData =
+    id === 0 ? getDifficultWords() : getCardsData().filter(card => card.categoryId === id);
 
   const cards = cardsData.map(card => (
     <Card
