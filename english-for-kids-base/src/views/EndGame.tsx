@@ -1,9 +1,10 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { IState, Routes } from '../models/app';
+
 import { resetGame } from '../redux/actions';
 import { playAudio } from '../utils';
+import { IState, Routes } from '../models/app';
 
 function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
   const history = useHistory();

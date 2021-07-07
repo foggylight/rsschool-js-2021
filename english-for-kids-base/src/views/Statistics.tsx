@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import getCardsData from '../data/getCardsData';
 import getCategoriesData from '../data/getCategoriesData';
 import { Routes } from '../models/app';
@@ -8,17 +9,14 @@ import { SortDirection, SortType } from '../models/game';
 import { generateNewValue, getValue, StorageValue } from '../storage';
 import { countPercentage } from '../utils';
 
-const sort = (data: ICard[], type: SortType) => {
+const sortStatistics = (data: ICard[], type: SortType) => {
   switch (type) {
     case SortType.category:
       return data.sort((a, b) => {
         const categoryData = getCategoriesData();
         const categoryA = categoryData.find(category => category.id === a.categoryId);
         const categoryB = categoryData.find(category => category.id === b.categoryId);
-        if (!categoryA || !categoryB) {
-          return 0;
-        }
-        return categoryA.name.localeCompare(categoryB.name);
+        return !categoryA || !categoryB ? 0 : categoryA.name.localeCompare(categoryB.name);
       });
     case SortType.word:
       return data.sort((a, b) => a.word.localeCompare(b.word));
@@ -71,7 +69,7 @@ function Statistics(): ReactElement {
   };
 
   useEffect(() => {
-    sortData([...sort(cardsData, currentSortType)]);
+    sortData([...sortStatistics(cardsData, currentSortType)]);
   }, [currentSortType]);
 
   const headers = [

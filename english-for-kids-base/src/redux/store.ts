@@ -1,4 +1,5 @@
 import { combineReducers, createStore } from 'redux';
+
 import gameReducer from './gameReducer';
 import modeReducer from './modeReducer';
 

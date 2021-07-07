@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+
 import { IPropsCategoryCard } from '../models/props';
 
 function CategoryCard({ id, image, name }: IPropsCategoryCard): ReactElement {

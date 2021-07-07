@@ -24,21 +24,18 @@ const initialState: IGameState = {
 
 const gameReducer = (state = initialState, action: ActionType): IGameState => {
   switch (action.type) {
-    case CHANGE_CURRENT_CARD: {
+    case CHANGE_CURRENT_CARD:
       return { ...state, game: { ...state.game, currentCard: action.card } };
-    }
-    case ADD_CARDS: {
+    case ADD_CARDS:
       return { ...state, game: { ...state.game, currentCards: action.cards } };
-    }
     case SPLICE_CARDS: {
       const currentIndex = state.game.currentCards.findIndex(({ id }) => id === action.card.id);
       const newCards = [...state.game.currentCards];
       newCards.splice(currentIndex, 1);
       return { ...state, game: { ...state.game, currentCards: newCards } };
     }
-    case ADD_MISTAKE: {
+    case ADD_MISTAKE:
       return { ...state, game: { ...state.game, mistakes: state.game.mistakes + 1 } };
-    }
     case ADD_STAR: {
       const starsLength = state.game.stars.length;
       let id;
@@ -52,15 +49,12 @@ const gameReducer = (state = initialState, action: ActionType): IGameState => {
       newStars.push(star);
       return { ...state, game: { ...state.game, stars: newStars } };
     }
-    case START_GAME: {
+    case START_GAME:
       return { ...state, game: { ...state.game, isGameStarted: action.isGameStarted } };
-    }
-    case END_GAME: {
+    case END_GAME:
       return { ...state, game: { ...state.game, isGameEnded: action.isGameEnded } };
-    }
-    case RESET_GAME: {
+    case RESET_GAME:
       return initialState;
-    }
     default:
       return state;
   }

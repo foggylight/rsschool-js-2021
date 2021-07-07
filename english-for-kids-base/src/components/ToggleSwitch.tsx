@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { AppMode } from '../models/app';
 import { changeMode, resetGame } from '../redux/actions';
 
