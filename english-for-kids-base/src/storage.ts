@@ -9,9 +9,9 @@ export interface IStorageValue {
 }
 
 export enum StorageValue {
-  click = 'click',
-  rightGuess = 'rightGuess',
-  mistake = 'mistake',
+  click = 'clicks',
+  rightGuess = 'rightGuesses',
+  mistake = 'mistakes',
 }
 
 export const generateNewValue = (): IStorageValue => {
@@ -53,6 +53,14 @@ export const sendToStorage = (id: string, valueType: StorageValue): void => {
   localStorage.setItem(id, addValue(currentValue, valueType));
 };
 
+export const getValue = (id: number, value: StorageValue): number => {
+  const storageData = localStorage.getItem(`${id}`);
+  if (!storageData) {
+    return 0;
+  }
+  return JSON.parse(storageData)[value];
+};
+
 export const getDifficultWords = (): ICard[] => {
   const keys = Object.keys(localStorage);
   const difficultWordsData: { id: number; percentage: number }[] = keys
@@ -66,7 +74,7 @@ export const getDifficultWords = (): ICard[] => {
       const percentage = countPercentage(data.rightGuesses, data.rightGuesses + data.mistakes);
       return { id, percentage };
     })
-    .filter(({ percentage }) => percentage < 100)
+    .filter(({ percentage }) => percentage < 100 && percentage !== 0)
     .sort((data1, data2) => data1.percentage - data2.percentage);
   difficultWordsData.splice(8);
   const cardsData = getCardsData().filter(data =>

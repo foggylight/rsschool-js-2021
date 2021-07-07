@@ -14,7 +14,7 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
     setTimeout(() => {
       dispatch(resetGame());
       history.push(Routes.main);
-    }, 4000);
+    }, 3000);
   }, []);
 
   const mistakes = useSelector((state: IState) => state.game.game.mistakes);
