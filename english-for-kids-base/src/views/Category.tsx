@@ -1,11 +1,11 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '../components/Card';
 import getCardsData from '../data/getCardsData';
 import { AppMode, IState } from '../models/app';
 import { IPropsCategory } from '../models/props';
-import { addCards, startGame } from '../redux/actions';
+import { addCards, resetGame, startGame } from '../redux/actions';
 import gameEngine from '../service';
 import { getDifficultWords } from '../storage';
 import { playAudio } from '../utils';
@@ -23,6 +23,10 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   const [cardsData] = useState(
     id === 0 ? getDifficultWords() : getCardsData().filter(card => card.categoryId === id),
   );
+
+  useEffect(() => {
+    dispatch(resetGame());
+  }, []);
 
   const cards = cardsData.map(card => (
     <Card
