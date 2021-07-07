@@ -22,7 +22,11 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
   return (
     <main className="main-container end-game">
       {isSuccessful ? <h2>You did it!</h2> : <h2>Oh no...</h2>}
-      {isSuccessful ? null : <p>You have made {mistakes} mistakes</p>}
+      {isSuccessful ? null : (
+        <p>
+          You have made {mistakes} mistake{mistakes > 1 ? 's' : ''}
+        </p>
+      )}
       <img src={`./${isSuccessful ? 'happy' : 'angry'}.png`} alt="Game end" />
     </main>
   );

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '../components/Card';
@@ -20,8 +20,9 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
   const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
 
-  const cardsData =
-    id === 0 ? getDifficultWords() : getCardsData().filter(card => card.categoryId === id);
+  const [cardsData] = useState(
+    id === 0 ? getDifficultWords() : getCardsData().filter(card => card.categoryId === id),
+  );
 
   const cards = cardsData.map(card => (
     <Card
