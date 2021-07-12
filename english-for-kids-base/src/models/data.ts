@@ -6,7 +6,7 @@ export interface ICategory {
 
 export interface ICard {
   id: number;
-  categoryId: number;
+  category_id: number;
   word: string;
   translation: string;
   image: string;

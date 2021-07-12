@@ -1,21 +1,21 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import getCardsData from '../data/getCardsData';
+import { getCardsData } from '../data/getCardsData';
 import getCategoriesData from '../data/getCategoriesData';
 import { Routes } from '../models/app';
-import { ICard } from '../models/data';
+import { ICard, ICategory } from '../models/data';
 import { SortDirection, SortType } from '../models/game';
 import { generateNewValue, getValue, StorageValue } from '../storage';
 import { countPercentage } from '../utils';
 
-const sortStatistics = (data: ICard[], type: SortType) => {
+const sortStatistics = async (data: ICard[], type: SortType) => {
+  const categoryData = await getCategoriesData();
   switch (type) {
     case SortType.category:
       return data.sort((a, b) => {
-        const categoryData = getCategoriesData();
-        const categoryA = categoryData.find(category => category.id === a.categoryId);
-        const categoryB = categoryData.find(category => category.id === b.categoryId);
+        const categoryA = categoryData.find(category => category.id === a.category_id);
+        const categoryB = categoryData.find(category => category.id === b.category_id);
         return !categoryA || !categoryB ? 0 : categoryA.name.localeCompare(categoryB.name);
       });
     case SortType.word:
@@ -47,16 +47,22 @@ const sortStatistics = (data: ICard[], type: SortType) => {
   }
 };
 
-function Statistics(): ReactElement {
+const Statistics = (): ReactElement => {
   const history = useHistory();
-  const cards = getCardsData();
 
-  const [cardsData, sortData] = useState(cards);
+  const [cardsData, sortData] = useState((): ICard[] => []);
   const [sortDirection, changeDirection] = useState(SortDirection.ASC);
   const [currentSortType, changeSortType] = useState(SortType.default);
   const [, updateStorage] = useState(localStorage.length);
+  const [categoryData, updateData] = useState((): ICategory[] => []);
 
-  const categoryData = getCategoriesData();
+  useEffect(() => {
+    getCardsData().then(data => sortData(data));
+  }, []);
+
+  useEffect(() => {
+    getCategoriesData().then(data => updateData(data));
+  }, []);
 
   const sortHandler = (type: SortType) => {
     if (currentSortType === type) {
@@ -69,7 +75,7 @@ function Statistics(): ReactElement {
   };
 
   useEffect(() => {
-    sortData([...sortStatistics(cardsData, currentSortType)]);
+    sortStatistics(cardsData, currentSortType).then(data => sortData([...data]));
   }, [currentSortType]);
 
   const headers = [
@@ -94,7 +100,7 @@ function Statistics(): ReactElement {
   ));
 
   const tableData = cardsData.map(card => {
-    const category = categoryData.find(data => data.id === card.categoryId)?.name;
+    const category = categoryData.find(data => data.id === card.category_id)?.name;
     const storageData = localStorage.getItem(`${card.id}`);
     const { clicks, rightGuesses, mistakes } = storageData
       ? JSON.parse(storageData)
@@ -145,6 +151,6 @@ function Statistics(): ReactElement {
       </div>
     </main>
   );
-}
+};
 
 export default Statistics;

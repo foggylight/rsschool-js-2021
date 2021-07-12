@@ -2,8 +2,9 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '../components/Card';
-import getCardsData from '../data/getCardsData';
+import { getCardsByCategory } from '../data/getCardsData';
 import { AppMode, IState } from '../models/app';
+import { ICard } from '../models/data';
 import { IPropsCategory } from '../models/props';
 import { addCards, resetGame, startGame } from '../redux/actions';
 import gameEngine from '../service';
@@ -11,7 +12,7 @@ import { getDifficultWords } from '../storage';
 import { playAudio } from '../utils';
 import EndGame from './EndGame';
 
-function Category({ id, name }: IPropsCategory): ReactElement {
+const Category = ({ id, name }: IPropsCategory): ReactElement => {
   const dispatch = useDispatch();
 
   const mode = useSelector((state: IState) => state.mode.mode);
@@ -20,9 +21,15 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
   const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
 
-  const [cardsData] = useState(
-    id === 0 ? getDifficultWords() : getCardsData().filter(card => card.categoryId === id),
-  );
+  const [cardsData, updateData] = useState((): ICard[] => []);
+
+  useEffect(() => {
+    if (id === 0) {
+      getDifficultWords().then(data => updateData(data));
+    } else {
+      getCardsByCategory(id).then(data => updateData(data));
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(resetGame());
@@ -97,6 +104,6 @@ function Category({ id, name }: IPropsCategory): ReactElement {
   const endGameScreen = <EndGame isSuccessful={!mistakes} />;
 
   return isGameEnded ? endGameScreen : mainScreen;
-}
+};
 
 export default Category;

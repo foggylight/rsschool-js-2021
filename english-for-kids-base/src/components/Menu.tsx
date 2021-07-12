@@ -1,17 +1,23 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import getCategoriesData from '../data/getCategoriesData';
 import { Routes } from '../models/app';
+import { ICategory } from '../models/data';
 
-function Menu(): ReactElement {
+const Menu = (): ReactElement => {
   const [isOpen, changeState] = useState(false);
+  const [categoriesData, updateData] = useState((): ICategory[] => []);
 
   const menuHandler = () => {
     changeState(() => !isOpen);
   };
 
-  const categories = getCategoriesData().map(category => (
+  useEffect(() => {
+    getCategoriesData().then(data => updateData(data));
+  }, []);
+
+  const categories = categoriesData.map(category => (
     <li key={category.id} className="categories__item">
       <NavLink onClick={menuHandler} to={`/${category.id}`}>
         {category.name}
@@ -55,6 +61,6 @@ function Menu(): ReactElement {
       {isOpen ? cover : null}
     </>
   );
-}
+};
 
 export default Menu;

@@ -1,5 +1,5 @@
 import { ICard } from './models/data';
-import getCardsData from './data/getCardsData';
+import { getCardsData } from './data/getCardsData';
 import { countPercentage } from './utils';
 
 export interface IStorageValue {
@@ -61,7 +61,7 @@ export const getValue = (id: number, value: StorageValue): number => {
   return JSON.parse(storageData)[value];
 };
 
-export const getDifficultWords = (): ICard[] => {
+export const getDifficultWords = async (): Promise<ICard[]> => {
   const keys = Object.keys(localStorage);
   const difficultWordsData: { id: number; percentage: number }[] = keys
     .map(key => ({ id: +key, data: localStorage.getItem(key) }))
@@ -77,8 +77,7 @@ export const getDifficultWords = (): ICard[] => {
     .filter(({ percentage }) => percentage < 100 && percentage !== 0)
     .sort((data1, data2) => data1.percentage - data2.percentage);
   difficultWordsData.splice(8);
-  const cardsData = getCardsData().filter(data =>
-    difficultWordsData.find(({ id }) => data.id === id),
-  );
-  return cardsData;
+  const cardsData = await getCardsData();
+  const cards = cardsData.filter(data => difficultWordsData.find(({ id }) => data.id === id));
+  return cards;
 };
