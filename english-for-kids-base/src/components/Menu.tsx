@@ -4,13 +4,19 @@ import { NavLink } from 'react-router-dom';
 import getCategoriesData from '../data/getCategoriesData';
 import { Routes } from '../models/app';
 import { ICategory } from '../models/data';
+import ModalBox from './ModalBox';
 
 const Menu = (): ReactElement => {
   const [isOpen, changeState] = useState(false);
+  const [isModalOpen, changeModalState] = useState(false);
   const [categoriesData, updateData] = useState((): ICategory[] => []);
 
   const menuHandler = () => {
-    changeState(() => !isOpen);
+    changeState(!isOpen);
+  };
+
+  const modalHandler = () => {
+    changeModalState(!isModalOpen);
   };
 
   useEffect(() => {
@@ -25,7 +31,13 @@ const Menu = (): ReactElement => {
     </li>
   ));
 
-  const cover = <div onClick={menuHandler} className="cover" aria-hidden="true" />;
+  const cover = (
+    <div
+      onClick={isModalOpen ? modalHandler : menuHandler}
+      className={`cover ${isModalOpen ? 'modal-cover' : ''}`}
+      aria-hidden="true"
+    />
+  );
 
   return (
     <>
@@ -39,7 +51,7 @@ const Menu = (): ReactElement => {
         <span className="line" />
       </button>
       <nav className="menu">
-        <ul className={`categories ${isOpen ? 'opened' : 'closed'}`}>
+        <div className={`categories ${isOpen ? 'opened' : 'closed'}`}>
           <NavLink
             onClick={menuHandler}
             exact
@@ -55,9 +67,13 @@ const Menu = (): ReactElement => {
           >
             Statistics
           </NavLink>
-          {categories}
-        </ul>
+          <ul>{categories}</ul>
+          <button onClick={modalHandler} className="btn" type="button">
+            Log in
+          </button>
+        </div>
       </nav>
+      {isModalOpen ? <ModalBox closeHandler={modalHandler} /> : null}
       {isOpen ? cover : null}
     </>
   );

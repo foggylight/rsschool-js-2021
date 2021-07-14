@@ -2,6 +2,7 @@ export const correctSound = './audio/correct.mp3';
 export const errorSound = './audio/error.mp3';
 
 export const API_URL = 'https://kids-test.herokuapp.com/api/';
+export const AUTH_URL = 'https://kids-test.herokuapp.com/auth/';
 
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * (max + 1));
 

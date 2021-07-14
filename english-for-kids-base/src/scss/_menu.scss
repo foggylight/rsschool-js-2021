@@ -9,7 +9,7 @@
   &-btn_opened,
   &-btn_closed {
     position: relative;
-    z-index: 100;
+    z-index: 20;
 
     height: $iconHeight;
     width: 40px;
@@ -126,6 +126,10 @@
         color: $accent-green;
       }
     }
+  }
+
+  .btn {
+    margin: 30px 0 0;
   }
 
   @media (min-width: 1620px) {

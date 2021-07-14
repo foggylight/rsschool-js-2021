@@ -5,6 +5,7 @@ export enum Routes {
   categories = '/category',
   statistics = '/statistics',
   difficultWords = '/difficult-words',
+  admin = '/admin',
 }
 
 export enum AppMode {
@@ -28,6 +29,6 @@ export interface IGameState {
 }
 
 export interface IState {
-  mode: { mode: AppMode };
+  mode: { mode: AppMode; isAuth: boolean };
   game: IGameState;
 }

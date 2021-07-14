@@ -2,6 +2,7 @@ import { AppMode } from '../models/app';
 import { ICardAudio } from '../models/game';
 
 export const CHANGE_MODE = 'CHANGE_MODE';
+export const CHANGE_AUTH_STATE = 'CHANGE_AUTH_STATE';
 export const CHANGE_CURRENT_CARD = 'CHANGE_CURRENT_CARD';
 export const ADD_CARDS = 'ADD_CARDS';
 export const SPLICE_CARDS = 'SPLICE_CARDS';
@@ -14,6 +15,11 @@ export const RESET_GAME = 'RESET_GAME';
 interface IModeAction {
   type: typeof CHANGE_MODE;
   mode: AppMode;
+}
+
+interface IAuthAction {
+  type: typeof CHANGE_AUTH_STATE;
+  isAuth: boolean;
 }
 
 interface IGameCardAction {
@@ -56,6 +62,7 @@ interface IResetGame {
 
 export type ActionType =
   | IModeAction
+  | IAuthAction
   | IGameCardAction
   | IAddCards
   | ISpliceCards
@@ -69,6 +76,13 @@ export const changeMode = (mode: AppMode): IModeAction => {
   return {
     type: CHANGE_MODE,
     mode,
+  };
+};
+
+export const changeAuthState = (isAuth: boolean): IAuthAction => {
+  return {
+    type: CHANGE_AUTH_STATE,
+    isAuth,
   };
 };
 
