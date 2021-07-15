@@ -12,6 +12,13 @@ import AdminCategory from './AdminCategory';
 const AdminPanel = (): ReactElement => {
   const history = useHistory();
 
+  const [reload, setReload] = useState(false);
+  const [categoriesData, updateData] = useState((): ICategory[] => []);
+
+  useEffect(() => {
+    getCategoriesData().then(data => updateData(data));
+  }, [reload]);
+
   const checkAuthenticated = async () => {
     try {
       if (localStorage.token) {
@@ -33,15 +40,13 @@ const AdminPanel = (): ReactElement => {
     }
   };
 
-  const [categoriesData, updateData] = useState((): ICategory[] => []);
-
   useEffect(() => {
     getCategoriesData().then(data => updateData(data));
     checkAuthenticated();
   }, []);
 
   const cards = categoriesData.map(({ id, image, name }) => {
-    return <AdminCategoryCard key={id} id={id} image={image} name={name} />;
+    return <AdminCategoryCard setReload={setReload} key={id} id={id} image={image} name={name} />;
   });
 
   const cardsEditPages = categoriesData.map(({ id, name }) => (
@@ -58,7 +63,7 @@ const AdminPanel = (): ReactElement => {
           <main className="main-container">
             <p className="category-text">Choose category to change:</p>
             <div className="cards-field categories-field">
-              <NewCategoryCard />
+              <NewCategoryCard setReload={setReload} />
               {cards}
             </div>
           </main>

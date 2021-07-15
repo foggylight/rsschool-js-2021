@@ -1,10 +1,17 @@
 import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
-
 import { IPropsCard } from '../models/props';
-import { playAudio } from '../utils';
+import { API_URL, playAudio } from '../utils';
 
-const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactElement => {
+const AdminCard = ({
+  setReload,
+  id,
+  category_id,
+  image,
+  word,
+  translation,
+  audio,
+}: IPropsCard): ReactElement => {
   const [cardState, updateState] = useState(AdminCardState.default);
   const [currentImage, changeImage] = useState(image);
   const [currentAudio, changeAudio] = useState(audio);
@@ -43,6 +50,22 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const deleteHandler = async () => {
+    try {
+      console.log(id);
+      const options = {
+        method: 'DELETE',
+      };
+      await fetch(`${API_URL}/card/${id}`, options);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    if (setReload) {
+      setReload(true);
+    }
+  };
+
   const btnUpdateHandler = () => {
     updateState(AdminCardState.edit);
   };
@@ -53,6 +76,36 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
 
   const audioHandler = () => {
     playAudio(currentAudio);
+  };
+
+  const onSubmit: FormEventHandler = async e => {
+    e.preventDefault();
+
+    try {
+      const body = {
+        id,
+        category_id,
+        word: inputs.word,
+        translation: inputs.translation,
+        audio: currentAudio,
+        image: currentImage,
+      };
+      console.log(body);
+      const res = await fetch(`${API_URL}/card`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      await res.json();
+      console.log(res);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    if (setReload) {
+      setReload(true);
+    }
+    updateState(AdminCardState.default);
   };
 
   const defaultState = (
@@ -70,6 +123,7 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
           <span>Audio: </span>
           {`...${currentAudio.slice(-18)}`}
         </p>
+        <div onClick={deleteHandler} aria-hidden="true" className="admin-card__delete" />
       </div>
       <img className="card-image admin-card__image" src={currentImage} alt="category description" />
       <div className="admin-card__btn-container">
@@ -81,7 +135,7 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
   );
 
   const editState = (
-    <form className="admin-card">
+    <form onSubmit={onSubmit} className="admin-card">
       <div className="admin-card__top-block word-card">
         <input
           onChange={e => onChangeWord(e)}

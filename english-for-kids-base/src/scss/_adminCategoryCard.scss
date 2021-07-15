@@ -2,7 +2,7 @@
 
 .admin-card {
   &.admin-category-card {
-    height: 300px;
+    height: 320px;
 
     .admin-card__image {
       height: 70%;
@@ -16,6 +16,7 @@
   &__top-block {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
   }
 
   &__btn-container {

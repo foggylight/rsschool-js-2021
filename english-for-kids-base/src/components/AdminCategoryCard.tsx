@@ -5,10 +5,11 @@ import { AdminCardState } from '../models/app';
 import { ICard } from '../models/data';
 
 import { IPropsCategoryCard } from '../models/props';
+import { API_URL } from '../utils';
 
-function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElement {
+function AdminCategoryCard({ setReload, id, image, name }: IPropsCategoryCard): ReactElement {
   const [cardsData, updateData] = useState((): ICard[] => []);
-  const [cardState, updateState] = useState(AdminCardState.default);
+  const [cardState, updateCardState] = useState(AdminCardState.default);
   const [currentImage, updateImage] = useState(image);
   const [inputs, setInputs] = useState({
     categoryName: name,
@@ -24,11 +25,26 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   }, [cardState]);
 
   const btnUpdateHandler = () => {
-    updateState(AdminCardState.edit);
+    updateCardState(AdminCardState.edit);
   };
 
   const btnCancelHandler = () => {
-    updateState(AdminCardState.default);
+    updateCardState(AdminCardState.default);
+  };
+
+  const deleteHandler = async () => {
+    try {
+      const options = {
+        method: 'DELETE',
+      };
+      await fetch(`${API_URL}/category/${id}`, options);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    if (setReload) {
+      setReload(true);
+    }
   };
 
   const onChangeName: FormEventHandler = e => {
@@ -45,7 +61,6 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
         return;
       }
       updateImage(imageURL);
-      console.log(imageURL);
     };
     if (!e.target.files) {
       return;
@@ -53,11 +68,33 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const onSubmit: FormEventHandler = async e => {
+    e.preventDefault();
+
+    try {
+      const body = { id, name: inputs.categoryName, image: currentImage };
+      const res = await fetch(`${API_URL}/category`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      await res.json();
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    if (setReload) {
+      setReload(true);
+    }
+    updateCardState(AdminCardState.default);
+  };
+
   const defaultState = (
     <div className="admin-card admin-category-card">
       <div className="admin-card__top-block">
         <p className="card-word">{name}</p>
         <p className="card-word">{cardsData.length} words</p>
+        <div onClick={deleteHandler} aria-hidden="true" className="admin-card__delete" />
       </div>
       <img className="card-image admin-card__image" src={currentImage} alt="category description" />
       <div className="admin-card__btn-container">
@@ -72,7 +109,7 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   );
 
   const editState = (
-    <form className="admin-card admin-category-card">
+    <form onSubmit={onSubmit} className="admin-card admin-category-card">
       <div className="admin-card__top-block">
         <input
           onChange={e => onChangeName(e)}
@@ -80,6 +117,7 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
           type="text"
           placeholder="category name"
           value={inputs.categoryName}
+          required
         />
       </div>
       <div className="admin-card__image admin-card__image-edit">

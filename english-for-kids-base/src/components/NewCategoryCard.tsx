@@ -1,19 +1,24 @@
 import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
+import { API_URL } from '../utils';
 
-function NewCategoryCard(): ReactElement {
-  const [cardState, updateState] = useState(AdminCardState.default);
+function NewCategoryCard({
+  setReload,
+}: {
+  setReload: React.Dispatch<React.SetStateAction<boolean>>;
+}): ReactElement {
+  const [cardState, updateCardState] = useState(AdminCardState.default);
   const [currentImage, updateImage] = useState('');
   const [inputs, setInputs] = useState({
     categoryName: '',
   });
 
   const btnUpdateHandler = () => {
-    updateState(AdminCardState.edit);
+    updateCardState(AdminCardState.edit);
   };
 
   const btnCancelHandler = () => {
-    updateState(AdminCardState.default);
+    updateCardState(AdminCardState.default);
   };
 
   useEffect(() => {
@@ -35,12 +40,30 @@ function NewCategoryCard(): ReactElement {
         return;
       }
       updateImage(imageURL);
-      console.log(imageURL);
     };
     if (!e.target.files) {
       return;
     }
     reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const onSubmit: FormEventHandler = async e => {
+    e.preventDefault();
+
+    try {
+      const body = { name: inputs.categoryName, image: currentImage };
+      const res = await fetch(`${API_URL}/category`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      await res.json();
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    setReload(true);
+    updateCardState(AdminCardState.default);
   };
 
   const defaultState = (
@@ -55,7 +78,7 @@ function NewCategoryCard(): ReactElement {
   );
 
   const editState = (
-    <form className="admin-card admin-category-card">
+    <form onSubmit={onSubmit} className="admin-card admin-category-card">
       <div className="admin-card__top-block">
         <input
           onChange={e => onChangeName(e)}
@@ -63,6 +86,7 @@ function NewCategoryCard(): ReactElement {
           type="text"
           placeholder="category name"
           value={inputs.categoryName}
+          required
         />
       </div>
       <div className="admin-card__image admin-card__image-edit">
@@ -73,6 +97,7 @@ function NewCategoryCard(): ReactElement {
             id="image"
             type="file"
             accept="image/*"
+            required
           />
         </label>
       </div>

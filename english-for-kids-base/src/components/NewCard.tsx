@@ -1,9 +1,14 @@
 import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
 
-import { playAudio } from '../utils';
+import { API_URL, playAudio } from '../utils';
 
-const NewCard = (): ReactElement => {
+interface INewCard {
+  category_id: number;
+  setReload: (a: boolean) => void;
+}
+
+const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
   const [cardState, updateState] = useState(AdminCardState.default);
   const [currentAudio, changeAudio] = useState('');
   const [currentImage, changeImage] = useState('');
@@ -40,6 +45,32 @@ const NewCard = (): ReactElement => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const onSubmit: FormEventHandler = async e => {
+    e.preventDefault();
+
+    try {
+      const body = {
+        category_id,
+        word: inputs.word,
+        translation: inputs.translation,
+        audio: currentAudio,
+        image: currentImage,
+      };
+      console.log(body);
+      const res = await fetch(`${API_URL}/card`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      await res.json();
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+    setReload(true);
+    updateState(AdminCardState.default);
+  };
+
   const btnUpdateHandler = () => {
     updateState(AdminCardState.edit);
   };
@@ -67,7 +98,7 @@ const NewCard = (): ReactElement => {
   );
 
   const editState = (
-    <form className="admin-card">
+    <form onSubmit={onSubmit} className="admin-card">
       <div className="admin-card__top-block word-card">
         <input
           onChange={e => onChangeName(e)}
@@ -75,6 +106,7 @@ const NewCard = (): ReactElement => {
           type="text"
           placeholder="word"
           value={inputs.word}
+          required
         />
         <input
           onChange={e => onChangeName(e)}
@@ -82,11 +114,12 @@ const NewCard = (): ReactElement => {
           type="text"
           placeholder="translation"
           value={inputs.translation}
+          required
         />
         <div className="admin-card__audio-edit">
           <label htmlFor="audio">
             Select new audio
-            <input name="audio" id="audio" type="file" accept="audio/*" />
+            <input name="audio" id="audio" type="file" accept="audio/*" required />
           </label>
           <div onClick={audioHandler} aria-hidden="true" className="play-btn" />
         </div>
@@ -99,11 +132,12 @@ const NewCard = (): ReactElement => {
             id="image"
             type="file"
             accept="image/*"
+            required
           />
         </label>
       </div>
       <div className="admin-card__btn-container">
-        <button onClick={btnCancelHandler} type="button" className="btn admin-card__btn cancel">
+        <button onClick={btnCancelHandler} type="submit" className="btn admin-card__btn cancel">
           Cancel
         </button>
       </div>
