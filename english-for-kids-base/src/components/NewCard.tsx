@@ -1,4 +1,4 @@
-import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
 
 import { playAudio } from '../utils';
@@ -15,11 +15,29 @@ const NewCard = (): ReactElement => {
   useEffect(() => {
     setInputs({ ...inputs, word: '', translation: '' });
     changeImage('');
+    changeAudio('');
   }, [cardState]);
 
   const onChangeName: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
     setInputs({ ...inputs, [data.name]: data.value });
+  };
+
+  const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    let imageURL;
+    const reader = new FileReader();
+    reader.onload = () => {
+      imageURL = reader.result;
+      if (typeof imageURL !== 'string') {
+        return;
+      }
+      changeImage(imageURL);
+      console.log(imageURL);
+    };
+    if (!e.target.files) {
+      return;
+    }
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const btnUpdateHandler = () => {
@@ -75,7 +93,13 @@ const NewCard = (): ReactElement => {
       </div>
       <div className="admin-card__image admin-card__image-edit">
         <label style={{ backgroundImage: `url(${currentImage})` }} htmlFor="image">
-          <input name="image" id="image" type="file" accept=".png .jpg .jpeg" />
+          <input
+            onChange={e => onChangeImage(e)}
+            name="image"
+            id="image"
+            type="file"
+            accept="image/*"
+          />
         </label>
       </div>
       <div className="admin-card__btn-container">

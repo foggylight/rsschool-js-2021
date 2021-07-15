@@ -1,4 +1,4 @@
-import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
 
 import { IPropsCard } from '../models/props';
@@ -6,14 +6,41 @@ import { playAudio } from '../utils';
 
 const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactElement => {
   const [cardState, updateState] = useState(AdminCardState.default);
+  const [currentImage, changeImage] = useState(image);
+  const [currentAudio, changeAudio] = useState(audio);
   const [inputs, setInputs] = useState({
     word,
     translation,
   });
 
-  const onChangeName: FormEventHandler = e => {
+  useEffect(() => {
+    setInputs({ ...inputs, word, translation });
+    changeImage(image);
+    changeAudio(audio);
+  }, [cardState]);
+
+  const onChangeWord: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
     setInputs({ ...inputs, [data.name]: data.value });
+    changeImage(image);
+    changeAudio(audio);
+  };
+
+  const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    let imageURL;
+    const reader = new FileReader();
+    reader.onload = () => {
+      imageURL = reader.result;
+      if (typeof imageURL !== 'string') {
+        return;
+      }
+      changeImage(imageURL);
+      console.log(imageURL);
+    };
+    if (!e.target.files) {
+      return;
+    }
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const btnUpdateHandler = () => {
@@ -25,7 +52,7 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
   };
 
   const audioHandler = () => {
-    playAudio(audio);
+    playAudio(currentAudio);
   };
 
   const defaultState = (
@@ -41,10 +68,10 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
         </p>
         <p onClick={audioHandler} aria-hidden="true" className="admin-card__text audio">
           <span>Audio: </span>
-          {`...${audio.slice(-18)}`}
+          {`...${currentAudio.slice(-18)}`}
         </p>
       </div>
-      <img className="card-image admin-card__image" src={image} alt="category description" />
+      <img className="card-image admin-card__image" src={currentImage} alt="category description" />
       <div className="admin-card__btn-container">
         <button onClick={btnUpdateHandler} type="button" className="btn admin-card__btn">
           Change
@@ -57,14 +84,14 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
     <form className="admin-card">
       <div className="admin-card__top-block word-card">
         <input
-          onChange={e => onChangeName(e)}
+          onChange={e => onChangeWord(e)}
           name="word"
           type="text"
           placeholder="word"
           value={inputs.word}
         />
         <input
-          onChange={e => onChangeName(e)}
+          onChange={e => onChangeWord(e)}
           name="translation"
           type="text"
           placeholder="translation"
@@ -79,8 +106,14 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
         </div>
       </div>
       <div className="admin-card__image admin-card__image-edit">
-        <label style={{ backgroundImage: `url(${image})` }} htmlFor="image">
-          <input name="image" id="image" type="file" accept=".png .jpg .jpeg" />
+        <label style={{ backgroundImage: `url(${currentImage})` }} htmlFor="image">
+          <input
+            onChange={e => onChangeImage(e)}
+            name="image"
+            id="image"
+            type="file"
+            accept="image/*"
+          />
         </label>
       </div>
       <div className="admin-card__btn-container">

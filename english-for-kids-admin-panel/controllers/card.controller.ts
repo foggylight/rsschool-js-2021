@@ -12,6 +12,7 @@ export const createCard = async (req: Request, res: Response) => {
     );
     res.json(newCard.rows[0]);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err);
   }
 };
@@ -26,6 +27,7 @@ export const getCards = async (req: Request, res: Response) => {
       const cards = await db.query('SELECT * FROM card');
       res.json(cards.rows);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
     }
   }

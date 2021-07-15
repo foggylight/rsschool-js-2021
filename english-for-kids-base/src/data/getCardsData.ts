@@ -12,5 +12,3 @@ export const getCardsByCategory = async (categoryId: number): Promise<ICard[]> =
   const data = await response.json();
   return data;
 };
-
-export default getCardsData;

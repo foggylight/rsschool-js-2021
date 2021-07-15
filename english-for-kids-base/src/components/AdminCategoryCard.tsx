@@ -1,4 +1,4 @@
-import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCardsByCategory } from '../data/getCardsData';
 import { AdminCardState } from '../models/app';
@@ -10,10 +10,18 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   const [cardsData, updateData] = useState((): ICard[] => []);
   const [cardState, updateState] = useState(AdminCardState.default);
   const [currentImage, updateImage] = useState(image);
+  const [inputs, setInputs] = useState({
+    categoryName: name,
+  });
 
   useEffect(() => {
     getCardsByCategory(id).then(data => updateData(data));
   }, []);
+
+  useEffect(() => {
+    setInputs({ ...inputs, categoryName: name });
+    updateImage(image);
+  }, [cardState]);
 
   const btnUpdateHandler = () => {
     updateState(AdminCardState.edit);
@@ -23,16 +31,12 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
     updateState(AdminCardState.default);
   };
 
-  const [inputs, setInputs] = useState({
-    categoryName: name,
-  });
-
   const onChangeName: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
     setInputs({ ...inputs, [data.name]: data.value });
   };
 
-  const onChangeImage: FormEventHandler = ({ target }) => {
+  const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     let imageURL;
     const reader = new FileReader();
     reader.onload = () => {
@@ -41,9 +45,12 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
         return;
       }
       updateImage(imageURL);
+      console.log(imageURL);
     };
-    console.log(target);
-    // reader.readAsDataURL(target.files[0]);
+    if (!e.target.files) {
+      return;
+    }
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const defaultState = (
@@ -82,7 +89,7 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
             name="image"
             id="image"
             type="file"
-            accept=".png .jpg .jpeg"
+            accept="image/*"
           />
         </label>
       </div>

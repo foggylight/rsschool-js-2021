@@ -1,9 +1,12 @@
-import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
 
 function NewCategoryCard(): ReactElement {
   const [cardState, updateState] = useState(AdminCardState.default);
   const [currentImage, updateImage] = useState('');
+  const [inputs, setInputs] = useState({
+    categoryName: '',
+  });
 
   const btnUpdateHandler = () => {
     updateState(AdminCardState.edit);
@@ -12,10 +15,6 @@ function NewCategoryCard(): ReactElement {
   const btnCancelHandler = () => {
     updateState(AdminCardState.default);
   };
-
-  const [inputs, setInputs] = useState({
-    categoryName: '',
-  });
 
   useEffect(() => {
     setInputs({ ...inputs, categoryName: '' });
@@ -27,7 +26,7 @@ function NewCategoryCard(): ReactElement {
     setInputs({ ...inputs, [data.name]: data.value });
   };
 
-  const onChangeImage: FormEventHandler = ({ target }) => {
+  const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     let imageURL;
     const reader = new FileReader();
     reader.onload = () => {
@@ -36,9 +35,12 @@ function NewCategoryCard(): ReactElement {
         return;
       }
       updateImage(imageURL);
+      console.log(imageURL);
     };
-    console.log(target);
-    // reader.readAsDataURL(target.files[0]);
+    if (!e.target.files) {
+      return;
+    }
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const defaultState = (

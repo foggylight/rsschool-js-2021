@@ -37,7 +37,6 @@ const ModalBox = ({ closeHandler }: IModalProps): ReactElement => {
       });
 
       const parseRes = await res.json();
-      // console.log(parseRes);
 
       if (parseRes.token) {
         localStorage.setItem('token', parseRes.token);
