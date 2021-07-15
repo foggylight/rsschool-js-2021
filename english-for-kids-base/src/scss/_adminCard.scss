@@ -7,7 +7,7 @@
   height: 360px;
   width: 250px;
   padding: 10px;
-  margin: 1%;
+  margin: 5px;
   border-radius: 15px;
 
   background-color: $light;
@@ -48,7 +48,6 @@
       transition: all 0.2s;
 
       &::after {
-        display: block;
         content: '(click to play!)';
       }
 

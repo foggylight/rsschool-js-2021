@@ -1,6 +1,11 @@
 @import './variables';
 
 .admin {
+  &-main-container {
+    overflow-y: auto;
+    height: 85vh;
+  }
+
   &__header {
     justify-content: space-between;
 

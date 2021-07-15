@@ -46,9 +46,9 @@ const App = (): ReactElement => {
               <Category id={0} name="Difficult words" />
             </Route>
           </Switch>
+          <Footer />
         </Route>
       </Switch>
-      <Footer />
     </>
   );
 };
