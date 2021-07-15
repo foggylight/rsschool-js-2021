@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import AdminCard from '../components/AdminCard';
+import NewCard from '../components/NewCard';
 import { getCardsByCategory } from '../data/getCardsData';
 import { ICard } from '../models/data';
 
@@ -28,7 +29,10 @@ function AdminCategory({ id, name }: IPropsCategory): ReactElement {
       <div className="category-header">
         <h2 className="category-name">{name}</h2>
       </div>
-      <div className="cards-field admin-cards-field">{cards}</div>
+      <div className="cards-field admin-cards-field">
+        <NewCard />
+        {cards}
+      </div>
     </main>
   );
 }

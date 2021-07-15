@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import AdminCategoryCard from '../components/AdminCategoryCard';
 import AdminHeader from '../components/AdminHeader';
+import NewCategoryCard from '../components/NewCategoryCard';
 import getCategoriesData from '../data/getCategoriesData';
 import { Routes } from '../models/app';
 import { ICategory } from '../models/data';
@@ -56,7 +57,10 @@ const AdminPanel = (): ReactElement => {
         <Route exact path={Routes.adminC}>
           <main className="main-container">
             <p className="category-text">Choose category to change:</p>
-            <div className="cards-field categories-field">{cards}</div>
+            <div className="cards-field categories-field">
+              <NewCategoryCard />
+              {cards}
+            </div>
           </main>
         </Route>
         {cardsEditPages}

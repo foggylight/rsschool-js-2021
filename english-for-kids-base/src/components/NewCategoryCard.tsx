@@ -1,19 +1,9 @@
 import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getCardsByCategory } from '../data/getCardsData';
 import { AdminCardState } from '../models/app';
-import { ICard } from '../models/data';
 
-import { IPropsCategoryCard } from '../models/props';
-
-function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElement {
-  const [cardsData, updateData] = useState((): ICard[] => []);
+function NewCategoryCard(): ReactElement {
   const [cardState, updateState] = useState(AdminCardState.default);
-  const [currentImage, updateImage] = useState(image);
-
-  useEffect(() => {
-    getCardsByCategory(id).then(data => updateData(data));
-  }, []);
+  const [currentImage, updateImage] = useState('');
 
   const btnUpdateHandler = () => {
     updateState(AdminCardState.edit);
@@ -24,8 +14,13 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   };
 
   const [inputs, setInputs] = useState({
-    categoryName: name,
+    categoryName: '',
   });
+
+  useEffect(() => {
+    setInputs({ ...inputs, categoryName: '' });
+    updateImage('');
+  }, [cardState]);
 
   const onChangeName: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
@@ -47,20 +42,13 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   };
 
   const defaultState = (
-    <div className="admin-card admin-category-card">
-      <div className="admin-card__top-block">
-        <p className="card-word">{name}</p>
-        <p className="card-word">{cardsData.length} words</p>
+    <div className="admin-card admin-category-card new-card">
+      <div className="admin-card__top-block word-card">
+        <p className="card-word">Add new category</p>
       </div>
-      <img className="card-image admin-card__image" src={currentImage} alt="category description" />
-      <div className="admin-card__btn-container">
-        <button onClick={btnUpdateHandler} type="button" className="btn admin-card__btn">
-          Update
-        </button>
-        <Link to={`/admin/${id}/words`} className="btn admin-card__btn">
-          Add words
-        </Link>
-      </div>
+      <button onClick={btnUpdateHandler} type="button" className="new-card__btn">
+        +
+      </button>
     </div>
   );
 
@@ -82,7 +70,7 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
             name="image"
             id="image"
             type="file"
-            accept=".png .jpg .jpeg"
+            accept="image/*"
           />
         </label>
       </div>
@@ -100,4 +88,4 @@ function AdminCategoryCard({ id, image, name }: IPropsCategoryCard): ReactElemen
   return cardState === AdminCardState.default ? defaultState : editState;
 }
 
-export default AdminCategoryCard;
+export default NewCategoryCard;

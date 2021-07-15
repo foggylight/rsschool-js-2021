@@ -1,15 +1,21 @@
 import React, { FormEventHandler, ReactElement, useEffect, useState } from 'react';
 import { AdminCardState } from '../models/app';
 
-import { IPropsCard } from '../models/props';
 import { playAudio } from '../utils';
 
-const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactElement => {
+const NewCard = (): ReactElement => {
   const [cardState, updateState] = useState(AdminCardState.default);
+  const [currentAudio, changeAudio] = useState('');
+  const [currentImage, changeImage] = useState('');
   const [inputs, setInputs] = useState({
-    word,
-    translation,
+    word: '',
+    translation: '',
   });
+
+  useEffect(() => {
+    setInputs({ ...inputs, word: '', translation: '' });
+    changeImage('');
+  }, [cardState]);
 
   const onChangeName: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
@@ -25,31 +31,20 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
   };
 
   const audioHandler = () => {
-    playAudio(audio);
+    if (audioHandler.length === 0) {
+      return;
+    }
+    playAudio(currentAudio);
   };
 
   const defaultState = (
-    <div className="admin-card">
+    <div className="admin-card new-card">
       <div className="admin-card__top-block word-card">
-        <p className="admin-card__text">
-          <span>Word: </span>
-          {word}
-        </p>
-        <p className="admin-card__text">
-          <span>Translation: </span>
-          {translation}
-        </p>
-        <p onClick={audioHandler} aria-hidden="true" className="admin-card__text audio">
-          <span>Audio: </span>
-          {`...${audio.slice(-18)}`}
-        </p>
+        <p className="card-word">Add new word</p>
       </div>
-      <img className="card-image admin-card__image" src={image} alt="category description" />
-      <div className="admin-card__btn-container">
-        <button onClick={btnUpdateHandler} type="button" className="btn admin-card__btn">
-          Change
-        </button>
-      </div>
+      <button onClick={btnUpdateHandler} type="button" className="new-card__btn">
+        +
+      </button>
     </div>
   );
 
@@ -79,16 +74,13 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
         </div>
       </div>
       <div className="admin-card__image admin-card__image-edit">
-        <label style={{ backgroundImage: `url(${image})` }} htmlFor="image">
+        <label style={{ backgroundImage: `url(${currentImage})` }} htmlFor="image">
           <input name="image" id="image" type="file" accept=".png .jpg .jpeg" />
         </label>
       </div>
       <div className="admin-card__btn-container">
         <button onClick={btnCancelHandler} type="button" className="btn admin-card__btn cancel">
           Cancel
-        </button>
-        <button type="submit" className="btn admin-card__btn">
-          Save
         </button>
       </div>
     </form>
@@ -97,4 +89,4 @@ const AdminCard = ({ id, image, word, translation, audio }: IPropsCard): ReactEl
   return cardState === AdminCardState.default ? defaultState : editState;
 };
 
-export default AdminCard;
+export default NewCard;
