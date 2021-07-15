@@ -42,18 +42,22 @@ const ModalBox = ({ closeHandler }: IModalProps): ReactElement => {
         localStorage.setItem('token', parseRes.token);
         dispatch(changeAuthState(true));
         history.push(Routes.admin);
+        // eslint-disable-next-line no-alert
+        alert(
+          `Токен для входа будет действителен 1 час, после этого при попытке открыть /admin должно перебрасывать на главную страницу. После истечения срока годности токена просто залогинься под теми же данными снова`,
+        );
       } else {
         dispatch(changeAuthState(false));
+        // eslint-disable-next-line no-alert
+        alert(parseRes);
+        closeHandler();
+        history.push(Routes.main);
       }
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
     }
   };
-
-  // const loginHandler = () => {
-  //   history.push(Routes.admin);
-  // };
 
   return (
     <div className="modal">
@@ -70,6 +74,7 @@ const ModalBox = ({ closeHandler }: IModalProps): ReactElement => {
           type="text"
           placeholder="login"
           value={inputs.name}
+          required
         />
         <input
           onChange={e => onChange(e)}
@@ -78,6 +83,7 @@ const ModalBox = ({ closeHandler }: IModalProps): ReactElement => {
           type="password"
           placeholder="password"
           value={inputs.password}
+          required
         />
         <div className="btn-container">
           <button onClick={closeHandler} className="btn" type="button">

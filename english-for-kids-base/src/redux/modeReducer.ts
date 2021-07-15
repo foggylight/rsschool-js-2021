@@ -14,7 +14,6 @@ const modeReducer = (state = initialState, action: ActionType): IModeState => {
       return newState;
     case CHANGE_AUTH_STATE:
       newState.isAuth = action.isAuth;
-      console.log(newState);
       return newState;
     default:
       return state;
