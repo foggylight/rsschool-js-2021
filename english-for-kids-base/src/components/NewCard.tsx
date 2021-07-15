@@ -28,6 +28,23 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
     setInputs({ ...inputs, [data.name]: data.value });
   };
 
+  const onChangeAudio = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+    const sound = document.getElementById('audio') as HTMLAudioElement;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const res = reader.result;
+      if (typeof res === 'string') {
+        sound.src = res;
+        sound.controls = true;
+        changeAudio('audio');
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     let imageURL;
     const reader = new FileReader();
@@ -37,7 +54,6 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
         return;
       }
       changeImage(imageURL);
-      console.log(imageURL);
     };
     if (!e.target.files) {
       return;
@@ -47,17 +63,17 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
 
   const onSubmit: FormEventHandler = async e => {
     e.preventDefault();
+    const sound = document.getElementById('audio') as HTMLAudioElement;
 
     try {
       const body = {
-        category_id,
+        categoryId: category_id,
         word: inputs.word,
         translation: inputs.translation,
-        audio: currentAudio,
+        audio: sound.src,
         image: currentImage,
       };
-      console.log(body);
-      const res = await fetch(`${API_URL}/card`, {
+      const res = await fetch(`${API_URL}card`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -80,10 +96,11 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
   };
 
   const audioHandler = () => {
-    if (audioHandler.length === 0) {
+    if (currentAudio.length === 0) {
       return;
     }
-    playAudio(currentAudio);
+    const sound = document.getElementById('audio') as HTMLAudioElement;
+    playAudio(sound.src);
   };
 
   const defaultState = (
@@ -119,9 +136,19 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
         <div className="admin-card__audio-edit">
           <label htmlFor="audio">
             Select new audio
-            <input name="audio" id="audio" type="file" accept="audio/*" required />
+            <input
+              onChange={e => onChangeAudio(e)}
+              name="audio"
+              id="audio"
+              type="file"
+              accept="audio/*"
+              required
+            />
           </label>
           <div onClick={audioHandler} aria-hidden="true" className="play-btn" />
+          <audio id="audio" src={currentAudio}>
+            <track kind="captions" />
+          </audio>
         </div>
       </div>
       <div className="admin-card__image admin-card__image-edit">
@@ -139,6 +166,9 @@ const NewCard = ({ category_id, setReload }: INewCard): ReactElement => {
       <div className="admin-card__btn-container">
         <button onClick={btnCancelHandler} type="submit" className="btn admin-card__btn cancel">
           Cancel
+        </button>
+        <button type="submit" className="btn admin-card__btn">
+          Save
         </button>
       </div>
     </form>

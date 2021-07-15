@@ -22,15 +22,29 @@ const AdminCard = ({
 
   useEffect(() => {
     setInputs({ ...inputs, word, translation });
-    changeImage(image);
     changeAudio(audio);
   }, [cardState]);
 
   const onChangeWord: FormEventHandler = e => {
     const data = e.target as HTMLFormElement;
     setInputs({ ...inputs, [data.name]: data.value });
-    changeImage(image);
-    changeAudio(audio);
+  };
+
+  const onChangeAudio = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+    const sound = document.getElementById('audio') as HTMLAudioElement;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const res = reader.result;
+      if (typeof res === 'string') {
+        sound.src = res;
+        sound.controls = true;
+        changeAudio('');
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +56,6 @@ const AdminCard = ({
         return;
       }
       changeImage(imageURL);
-      console.log(imageURL);
     };
     if (!e.target.files) {
       return;
@@ -52,7 +65,6 @@ const AdminCard = ({
 
   const deleteHandler = async () => {
     try {
-      console.log(id);
       const options = {
         method: 'DELETE',
       };
@@ -72,32 +84,47 @@ const AdminCard = ({
 
   const btnCancelHandler = () => {
     updateState(AdminCardState.default);
+    changeImage(image);
+  };
+
+  const audioDefaultHandler = () => {
+    playAudio(audio);
   };
 
   const audioHandler = () => {
-    playAudio(currentAudio);
+    if (currentAudio.length !== 0) {
+      playAudio(currentAudio);
+      return;
+    }
+    const sound = document.getElementById('audio') as HTMLAudioElement;
+    playAudio(sound.src);
   };
 
   const onSubmit: FormEventHandler = async e => {
     e.preventDefault();
+    let newAudio;
+    if (currentAudio.length !== 0) {
+      newAudio = currentAudio;
+    } else {
+      const sound = document.getElementById('audio') as HTMLAudioElement;
+      newAudio = sound.src;
+    }
 
     try {
       const body = {
         id,
-        category_id,
+        categoryId: category_id,
         word: inputs.word,
         translation: inputs.translation,
-        audio: currentAudio,
+        audio: newAudio,
         image: currentImage,
       };
-      console.log(body);
-      const res = await fetch(`${API_URL}/card`, {
+      const res = await fetch(`${API_URL}card`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
       await res.json();
-      console.log(res);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
@@ -119,9 +146,8 @@ const AdminCard = ({
           <span>Translation: </span>
           {translation}
         </p>
-        <p onClick={audioHandler} aria-hidden="true" className="admin-card__text audio">
+        <p onClick={audioDefaultHandler} aria-hidden="true" className="admin-card__text audio">
           <span>Audio: </span>
-          {`...${currentAudio.slice(-18)}`}
         </p>
         <div onClick={deleteHandler} aria-hidden="true" className="admin-card__delete" />
       </div>
@@ -154,9 +180,18 @@ const AdminCard = ({
         <div className="admin-card__audio-edit">
           <label htmlFor="audio">
             Select new audio
-            <input name="audio" id="audio" type="file" accept="audio/*" />
+            <input
+              onChange={e => onChangeAudio(e)}
+              name="audio"
+              id="audio"
+              type="file"
+              accept="audio/*"
+            />
           </label>
           <div onClick={audioHandler} aria-hidden="true" className="play-btn" />
+          <audio id="audio" src={`${currentAudio}`}>
+            <track kind="captions" />
+          </audio>
         </div>
       </div>
       <div className="admin-card__image admin-card__image-edit">
