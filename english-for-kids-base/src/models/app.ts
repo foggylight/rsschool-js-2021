@@ -6,11 +6,18 @@ export enum Routes {
   statistics = '/statistics',
   difficultWords = '/difficult-words',
   admin = '/admin',
+  adminC = '/admin/categories',
+  adminW = '/admin/2/words',
 }
 
 export enum AppMode {
   play = 'play',
   train = 'train',
+}
+
+export enum AdminCardState {
+  edit = 'edit',
+  default = 'default',
 }
 
 export interface IModeState {

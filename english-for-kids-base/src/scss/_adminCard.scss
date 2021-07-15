@@ -1,0 +1,97 @@
+@import './variables';
+
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 360px;
+  width: 250px;
+  padding: 10px;
+  margin: 1%;
+  border-radius: 15px;
+
+  background-color: $light;
+  box-shadow: 4px 4px 8px rgba(112, 112, 112, 0.2);
+
+  transition: all 0.3s;
+
+  &__top-block {
+    &.word-card {
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    height: 60%;
+    margin: 5px 0;
+  }
+
+  &__text {
+    margin: 5px 0;
+
+    span {
+      font-weight: 700;
+    }
+
+    &.audio {
+      transition: all 0.2s;
+
+      &::after {
+        display: block;
+        content: '(click to play!)';
+      }
+
+      &:hover {
+        color: $accent-green;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__audio-edit {
+    display: flex;
+    align-items: center;
+
+    label {
+      display: inline-block;
+      padding: 6px 12px;
+      margin: 5px 0;
+      border: 2px solid $font;
+      border-radius: 4px;
+
+      cursor: pointer;
+
+      color: $font-dark;
+
+      &:hover {
+        border: 2px solid $accent-green;
+      }
+    }
+
+    input {
+      position: absolute;
+      overflow: hidden;
+      z-index: -1;
+
+      width: .1px;
+      height: .1px;
+      opacity: 0;
+    }
+
+    .play-btn {
+      height: 30px;
+      width: 30px;
+      margin: 0 0 0 10px;
+      border-radius: 4px;
+
+      background-image: url('../../public/play-button.svg');
+      background-size: contain;
+
+      cursor: pointer;
+
+      &:hover {
+        transform: rotate(5deg);
+      }
+    }
+  }
+}
