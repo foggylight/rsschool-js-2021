@@ -1,10 +1,13 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AdminCard from '../components/AdminCard';
 import NewCard from '../components/NewCard';
 import { getCardsByCategory } from '../data/getCardsData';
+import { Routes } from '../models/app';
 import { ICard } from '../models/data';
 
 import { IPropsCategory } from '../models/props';
+import { AUTH_URL } from '../utils';
 
 const setCardsCount = (screenWidth: number) => {
   if (screenWidth > 1114) {
@@ -20,6 +23,8 @@ const setCardsCount = (screenWidth: number) => {
 };
 
 function AdminCategory({ id, name }: IPropsCategory): ReactElement {
+  const history = useHistory();
+
   const [reload, setReload] = useState(false);
   const [screenWidth] = useState(window.screen.width);
   const [cardCount, incrementCount] = useState(setCardsCount(screenWidth));
@@ -28,7 +33,33 @@ function AdminCategory({ id, name }: IPropsCategory): ReactElement {
 
   const ref = useRef<HTMLDivElement>(null);
 
+  const checkAuthenticated = async () => {
+    try {
+      if (localStorage.token) {
+        const res = await fetch(`${AUTH_URL}verify`, {
+          headers: { token: localStorage.token },
+        });
+
+        const parseRes = await res.json();
+        if (!(parseRes === true)) {
+          history.push(Routes.main);
+        }
+      } else {
+        history.push(Routes.main);
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+      history.push(Routes.main);
+    }
+  };
+
+  window.addEventListener('storage', () => {
+    history.push(Routes.main);
+  });
+
   useEffect(() => {
+    checkAuthenticated();
     getCardsByCategory(id).then(data => updateData(data.splice(0, cardCount)));
   }, []);
 

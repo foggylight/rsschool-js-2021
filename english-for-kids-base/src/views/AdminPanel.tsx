@@ -40,6 +40,10 @@ const AdminPanel = (): ReactElement => {
     }
   };
 
+  window.addEventListener('storage', () => {
+    history.push(Routes.main);
+  });
+
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
