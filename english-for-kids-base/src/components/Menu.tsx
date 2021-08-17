@@ -11,6 +11,10 @@ const Menu = (): ReactElement => {
   const [isModalOpen, changeModalState] = useState(false);
   const [categoriesData, updateData] = useState((): ICategory[] => []);
 
+  useEffect(() => {
+    getCategoriesData().then(data => updateData(data));
+  }, []);
+
   const menuHandler = () => {
     changeState(!isOpen);
   };
@@ -18,10 +22,6 @@ const Menu = (): ReactElement => {
   const modalHandler = () => {
     changeModalState(!isModalOpen);
   };
-
-  useEffect(() => {
-    getCategoriesData().then(data => updateData(data));
-  }, []);
 
   const categories = categoriesData.map(category => (
     <li key={category.id} className="categories__item">
@@ -34,7 +34,7 @@ const Menu = (): ReactElement => {
   const cover = (
     <div
       onClick={isModalOpen ? modalHandler : menuHandler}
-      className={`cover ${isModalOpen ? 'modal-cover' : ''}`}
+      className={`cover ${isModalOpen && 'modal-cover'}`}
       aria-hidden="true"
     />
   );
@@ -73,8 +73,8 @@ const Menu = (): ReactElement => {
           </button>
         </div>
       </nav>
-      {isModalOpen ? <ModalBox closeHandler={modalHandler} /> : null}
-      {isOpen ? cover : null}
+      {isModalOpen && <ModalBox closeHandler={modalHandler} />}
+      {isOpen && cover}
     </>
   );
 };

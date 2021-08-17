@@ -6,9 +6,11 @@ import { resetGame } from '../redux/actions';
 import { playAudio } from '../utils';
 import { IState, Routes } from '../models/app';
 
-function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
+const EndGame = ({ isSuccessful }: { isSuccessful: boolean }): ReactElement => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
 
   useEffect(() => {
     playAudio(`../../audio/${isSuccessful ? 'success' : 'failure'}.mp3`);
@@ -18,19 +20,17 @@ function EndGame({ isSuccessful }: { isSuccessful: boolean }): ReactElement {
     }, 3000);
   }, []);
 
-  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
-
   return (
     <main className="main-container end-game">
       {isSuccessful ? <h2>You did it!</h2> : <h2>Oh no...</h2>}
-      {isSuccessful ? null : (
+      {!isSuccessful && (
         <p>
-          You have made {mistakes} mistake{mistakes > 1 ? 's' : ''}
+          You have made {mistakes} mistake{mistakes > 1 && 's'}
         </p>
       )}
       <img src={`./${isSuccessful ? 'happy' : 'angry'}.png`} alt="Game end" />
     </main>
   );
-}
+};
 
 export default EndGame;

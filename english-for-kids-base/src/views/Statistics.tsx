@@ -64,6 +64,10 @@ const Statistics = (): ReactElement => {
     getCategoriesData().then(data => updateData(data));
   }, []);
 
+  useEffect(() => {
+    sortStatistics(cardsData, currentSortType).then(data => sortData([...data]));
+  }, [currentSortType]);
+
   const sortHandler = (type: SortType) => {
     if (currentSortType === type) {
       changeDirection(() => (sortDirection ? SortDirection.DESC : SortDirection.ASC));
@@ -74,11 +78,16 @@ const Statistics = (): ReactElement => {
     changeDirection(SortDirection.ASC);
   };
 
-  useEffect(() => {
-    sortStatistics(cardsData, currentSortType).then(data => sortData([...data]));
-  }, [currentSortType]);
+  const resetStorage = () => {
+    localStorage.clear();
+    updateStorage(localStorage.length);
+  };
 
-  const headers = [
+  const repeatWords = () => {
+    history.push(Routes.difficultWords);
+  };
+
+  const headerData = [
     { id: 1, type: SortType.category, name: 'Category' },
     { id: 2, type: SortType.word, name: 'Word' },
     { id: 3, type: SortType.translation, name: 'Translation' },
@@ -86,7 +95,8 @@ const Statistics = (): ReactElement => {
     { id: 5, type: SortType.rightGuesses, name: 'Correct guesses' },
     { id: 6, type: SortType.mistakes, name: 'Mistakes' },
     { id: 7, type: SortType.percentage, name: 'Correct / total' },
-  ].map(header => (
+  ];
+  const headers = headerData.map(header => (
     <td
       key={header.id}
       onClick={() => sortHandler(header.type)}
@@ -101,32 +111,34 @@ const Statistics = (): ReactElement => {
 
   const tableData = cardsData.map(card => {
     const category = categoryData.find(data => data.id === card.category_id)?.name;
+
     const storageData = localStorage.getItem(`${card.id}`);
     const { clicks, rightGuesses, mistakes } = storageData
       ? JSON.parse(storageData)
       : generateNewValue();
+
     const percentage = countPercentage(rightGuesses, rightGuesses + mistakes);
+
+    const tData = [
+      { id: 1, data: category },
+      { id: 2, data: card.word },
+      { id: 3, data: card.translation },
+      { id: 4, data: clicks },
+      { id: 5, data: rightGuesses },
+      { id: 6, data: mistakes },
+      { id: 7, data: `${percentage || 0}%` },
+    ].map(col => (
+      <td key={col.id} className="stat-table__data">
+        {col.data}
+      </td>
+    ));
+
     return (
       <tr key={card.id} className="stat-table__d-row">
-        <td className="stat-table__data">{category}</td>
-        <td className="stat-table__data">{card.word}</td>
-        <td className="stat-table__data">{card.translation}</td>
-        <td className="stat-table__data">{clicks}</td>
-        <td className="stat-table__data">{rightGuesses}</td>
-        <td className="stat-table__data">{mistakes}</td>
-        <td className="stat-table__data">{`${percentage || 0}%`}</td>
+        {tData}
       </tr>
     );
   });
-
-  const resetStorage = () => {
-    localStorage.clear();
-    updateStorage(() => localStorage.length);
-  };
-
-  const repeatWords = () => {
-    history.push(Routes.difficultWords);
-  };
 
   return (
     <main className="main-container">

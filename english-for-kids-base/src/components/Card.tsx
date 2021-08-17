@@ -8,10 +8,8 @@ import gameEngine from '../service';
 import { sendToStorage, StorageValue } from '../storage';
 import { correctSound, errorSound, playAudio } from '../utils';
 
-const Card = (props: IPropsCard): ReactElement => {
+const Card = ({ id, image, word, translation, audio }: IPropsCard): ReactElement => {
   const dispatch = useDispatch();
-
-  const { id, image, word, translation, audio } = props;
 
   const mode = useSelector((state: IState) => state.mode.mode);
   const currentCard = useSelector((state: IState) => state.game.game.currentCard);
@@ -21,8 +19,12 @@ const Card = (props: IPropsCard): ReactElement => {
   const [isFlipped, changeFlipState] = useState(false);
   const [isDisabled, disable] = useState(false);
 
+  useEffect(() => {
+    disable(false);
+  }, [isGameStarted]);
+
   const flip = () => {
-    changeFlipState(() => !isFlipped);
+    changeFlipState(!isFlipped);
   };
 
   const checkCard = () => {
@@ -32,7 +34,7 @@ const Card = (props: IPropsCard): ReactElement => {
 
     if (currentCard?.id === id) {
       dispatch(spliceCards(currentCard));
-      disable(() => !isDisabled);
+      disable(!isDisabled);
       dispatch(addStar(true));
       sendToStorage(`${id}`, StorageValue.rightGuess);
       const sound = playAudio(correctSound);
@@ -56,23 +58,19 @@ const Card = (props: IPropsCard): ReactElement => {
     sendToStorage(`${id}`, StorageValue.click);
   };
 
-  useEffect(() => {
-    disable(() => false);
-  }, [isGameStarted]);
-
-  const cardBody = (
-    <div className={`card ${isDisabled ? 'disabled' : ''} ${isFlipped ? 'flipped' : ''}`}>
+  const renderCard = () => (
+    <div className={`card ${isDisabled && 'disabled'} ${isFlipped && 'flipped'}`}>
       <div
         onClick={mode === AppMode.train ? train : () => null}
         aria-hidden="true"
         className="card__front"
       >
         <img
-          className={`card-image ${mode === AppMode.play ? 'game-mode' : ''}`}
+          className={`card-image ${mode === AppMode.play && 'game-mode'}`}
           src={image}
           alt="word description"
         />
-        {mode === AppMode.train ? (
+        {mode === AppMode.train && (
           <div className="card__text-block">
             <p className="card-word">{word}</p>
             <button
@@ -82,8 +80,6 @@ const Card = (props: IPropsCard): ReactElement => {
               type="button"
             />
           </div>
-        ) : (
-          ''
         )}
       </div>
       <div className="card__back">
@@ -102,7 +98,7 @@ const Card = (props: IPropsCard): ReactElement => {
       aria-hidden="true"
       className="card-container"
     >
-      {cardBody}
+      {renderCard()}
     </div>
   );
 };

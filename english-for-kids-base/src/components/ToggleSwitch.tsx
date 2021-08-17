@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { AppMode } from '../models/app';
 import { changeMode, resetGame } from '../redux/actions';
 
-function ToggleSwitch(): ReactElement {
+const ToggleSwitch = (): ReactElement => {
   const dispatch = useDispatch();
 
   const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +23,6 @@ function ToggleSwitch(): ReactElement {
       <span className="switch__slider" />
     </label>
   );
-}
+};
 
 export default ToggleSwitch;

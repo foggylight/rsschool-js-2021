@@ -20,8 +20,20 @@ const Category = ({ id, name }: IPropsCategory): ReactElement => {
   const stars = useSelector((state: IState) => state.game.game.stars);
   const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
   const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
+  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
 
   const [cardsData, updateData] = useState((): ICard[] => []);
+
+  const cards = cardsData.map(card => (
+    <Card
+      key={card.id}
+      id={card.id}
+      image={card.image}
+      audio={card.audio}
+      word={card.word}
+      translation={card.translation}
+    />
+  ));
 
   useEffect(() => {
     if (id === 0) {
@@ -34,17 +46,6 @@ const Category = ({ id, name }: IPropsCategory): ReactElement => {
   useEffect(() => {
     dispatch(resetGame());
   }, []);
-
-  const cards = cardsData.map(card => (
-    <Card
-      key={card.id}
-      id={card.id}
-      image={card.image}
-      audio={card.audio}
-      word={card.word}
-      translation={card.translation}
-    />
-  ));
 
   const start = () => {
     const cardsAudio = cardsData.map(data => {
@@ -98,8 +99,6 @@ const Category = ({ id, name }: IPropsCategory): ReactElement => {
       <div className="cards-field">{cards}</div>
     </main>
   );
-
-  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
 
   const endGameScreen = <EndGame isSuccessful={!mistakes} />;
 

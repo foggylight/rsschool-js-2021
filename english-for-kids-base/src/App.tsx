@@ -18,13 +18,11 @@ const App = (): ReactElement => {
     getCategoriesData().then(data => updateData(data));
   }, []);
 
-  const categories = categoriesData.map(category => {
-    return (
-      <Route exact path={`/${category.id}`} key={category.id}>
-        <Category id={category.id} name={category.name} />
-      </Route>
-    );
-  });
+  const categories = categoriesData.map(category => (
+    <Route exact path={`/${category.id}`} key={category.id}>
+      <Category id={category.id} name={category.name} />
+    </Route>
+  ));
 
   return (
     <>
