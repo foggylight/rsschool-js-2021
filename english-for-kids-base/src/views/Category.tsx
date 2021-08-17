@@ -16,11 +16,11 @@ const Category = ({ id, name }: IPropsCategory): ReactElement => {
   const dispatch = useDispatch();
 
   const mode = useSelector((state: IState) => state.mode.mode);
-  const currentCard = useSelector((state: IState) => state.game.game.currentCard);
-  const stars = useSelector((state: IState) => state.game.game.stars);
-  const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
-  const isGameEnded = useSelector((state: IState) => state.game.game.isGameEnded);
-  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
+  const currentCard = useSelector((state: IState) => state.game.currentCard);
+  const stars = useSelector((state: IState) => state.game.stars);
+  const isGameStarted = useSelector((state: IState) => state.game.isGameStarted);
+  const isGameEnded = useSelector((state: IState) => state.game.isGameEnded);
+  const mistakes = useSelector((state: IState) => state.game.mistakes);
 
   const [cardsData, updateData] = useState((): ICard[] => []);
 

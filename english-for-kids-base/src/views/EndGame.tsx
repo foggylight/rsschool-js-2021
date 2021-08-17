@@ -10,7 +10,7 @@ const EndGame = ({ isSuccessful }: { isSuccessful: boolean }): ReactElement => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const mistakes = useSelector((state: IState) => state.game.game.mistakes);
+  const mistakes = useSelector((state: IState) => state.game.mistakes);
 
   useEffect(() => {
     playAudio(`../../audio/${isSuccessful ? 'success' : 'failure'}.mp3`);

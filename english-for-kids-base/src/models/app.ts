@@ -25,14 +25,12 @@ export interface IModeState {
 }
 
 export interface IGameState {
-  game: {
-    isGameStarted: boolean;
-    isGameEnded: boolean;
-    currentCard: null | ICardAudio;
-    currentCards: ICardAudio[];
-    mistakes: number;
-    stars: IStar[];
-  };
+  isGameStarted: boolean;
+  isGameEnded: boolean;
+  currentCard: null | ICardAudio;
+  currentCards: ICardAudio[];
+  mistakes: number;
+  stars: IStar[];
 }
 
 export interface IState {

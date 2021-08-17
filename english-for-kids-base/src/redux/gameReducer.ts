@@ -12,47 +12,45 @@ import {
 } from './actions';
 
 const initialState: IGameState = {
-  game: {
-    isGameStarted: false,
-    isGameEnded: false,
-    currentCard: null,
-    currentCards: [],
-    mistakes: 0,
-    stars: [],
-  },
+  isGameStarted: false,
+  isGameEnded: false,
+  currentCard: null,
+  currentCards: [],
+  mistakes: 0,
+  stars: [],
 };
 
 const gameReducer = (state = initialState, action: ActionType): IGameState => {
   switch (action.type) {
     case CHANGE_CURRENT_CARD:
-      return { ...state, game: { ...state.game, currentCard: action.card } };
+      return { ...state, currentCard: action.card };
     case ADD_CARDS:
-      return { ...state, game: { ...state.game, currentCards: action.cards } };
+      return { ...state, currentCards: action.cards };
     case SPLICE_CARDS: {
-      const currentIndex = state.game.currentCards.findIndex(({ id }) => id === action.card.id);
-      const newCards = [...state.game.currentCards];
+      const currentIndex = state.currentCards.findIndex(({ id }) => id === action.card.id);
+      const newCards = [...state.currentCards];
       newCards.splice(currentIndex, 1);
-      return { ...state, game: { ...state.game, currentCards: newCards } };
+      return { ...state, currentCards: newCards };
     }
     case ADD_MISTAKE:
-      return { ...state, game: { ...state.game, mistakes: state.game.mistakes + 1 } };
+      return { ...state, mistakes: state.mistakes + 1 };
     case ADD_STAR: {
-      const starsLength = state.game.stars.length;
+      const starsLength = state.stars.length;
       let id;
       if (starsLength === 0) {
         id = 1;
       } else {
-        id = state.game.stars[starsLength - 1].id + 1;
+        id = state.stars[starsLength - 1].id + 1;
       }
       const star = { id, isCorrect: action.isCorrect };
-      const newStars = [...state.game.stars];
+      const newStars = [...state.stars];
       newStars.push(star);
-      return { ...state, game: { ...state.game, stars: newStars } };
+      return { ...state, stars: newStars };
     }
     case START_GAME:
-      return { ...state, game: { ...state.game, isGameStarted: action.isGameStarted } };
+      return { ...state, isGameStarted: action.isGameStarted };
     case END_GAME:
-      return { ...state, game: { ...state.game, isGameEnded: action.isGameEnded } };
+      return { ...state, isGameEnded: action.isGameEnded };
     case RESET_GAME:
       return initialState;
     default:

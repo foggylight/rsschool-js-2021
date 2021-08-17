@@ -4,7 +4,7 @@ import { getRandomInt, playAudio } from './utils';
 
 const gameEngine = (): void => {
   const { game } = store.getState();
-  const data = game.game.currentCards;
+  const data = game.currentCards;
 
   const cardsCount = data.length;
   const random = getRandomInt(cardsCount - 1);

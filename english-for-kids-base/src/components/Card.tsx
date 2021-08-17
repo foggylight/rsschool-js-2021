@@ -12,9 +12,9 @@ const Card = ({ id, image, word, translation, audio }: IPropsCard): ReactElement
   const dispatch = useDispatch();
 
   const mode = useSelector((state: IState) => state.mode.mode);
-  const currentCard = useSelector((state: IState) => state.game.game.currentCard);
-  const currentCards = useSelector((state: IState) => state.game.game.currentCards);
-  const isGameStarted = useSelector((state: IState) => state.game.game.isGameStarted);
+  const currentCard = useSelector((state: IState) => state.game.currentCard);
+  const currentCards = useSelector((state: IState) => state.game.currentCards);
+  const isGameStarted = useSelector((state: IState) => state.game.isGameStarted);
 
   const [isFlipped, changeFlipState] = useState(false);
   const [isDisabled, disable] = useState(false);
